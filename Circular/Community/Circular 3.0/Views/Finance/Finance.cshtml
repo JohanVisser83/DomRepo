@@ -1,0 +1,2864 @@
+﻿@{
+    Layout = "_Layout";
+    var communityName = this.User.FindFirst(x => x.Type == System.Security.Claims.ClaimTypes.Locality).Value ?? "";
+}
+<div class="col-lg-11 col-md-11  col-sm-10 col-10">
+    <div class="body-content">
+
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="sidebar mt-4">
+
+                    <ul class="nav nav-tabs tab-data message-tab pt-lg-4">
+
+                        <li><a data-toggle="tab" href="#TransactionHistory" class="active">Transaction history</a></li>
+                        <li><p class="tab-text">Banking</p></li>
+                        <li><a data-toggle="tab" href="#SavedBankDetails">Saved bank details</a></li>
+                        <li><a data-toggle="modal" href="#AddBankAccount">Add a bank account</a></li>
+                        <li><a data-toggle="modal" href="#MakeWithdrawal">Make a withdrawal</a></li>
+                        <li id="viewpending"><a data-toggle="tab" href="#PendingWithdrawals">Pending withdrawals</a></li>
+                        @* <li><p class="tab-text">Payments</p></li>*@
+                        @*  <li><a data-toggle="modal" href="#MakePayment" data-target="#MakePayment">Pay a mobile numbers</a></li>
+                        <li><a data-toggle="modal" data-target="#RequestPayment">Request a payment</a></li>
+                        <li><a data-toggle="modal" data-target="#ProcessRefund">Process a refund</a></li>
+                        <li><a data-toggle="tab" href="#Refunds">Refunds</a></li>*@
+
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="col-lg-10">
+
+                <div class="tab-content">
+                    <!-- @* =====Transaction History=====*@ -->
+                    <div id="TransactionHistory" class="tab-pane fade active show ">
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 col-md-6 text-center">
+                                    <div class=" form-group search-bar-list mt-2 mb-lg-0 mb-md-0">
+                                        <div class=" input-group diff">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <img src="~/images/Search-2.png" class="img-fluid">
+                                                </span>
+                                            </div>
+                                            <input class="form-control search " type="text" id="transsearch" placeholder="Search">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 text-center">
+                                    <label>Start Date</label>
+                                    <div class="form-group">
+
+                                        <div class=" date-icon">
+                                            <input type="text" id="datefrom" class="form-control  btn-date datepicker-icon">
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-lg-3 col-md-6 text-center">
+                                    <label>End Date</label>
+                                    <div class="form-group">
+
+                                        <div class=" date-icon">
+                                            <input type="text" id="dateto" class="form-control  btn-date datepicker-icon">
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-lg-3 col-md-6 text-center">
+                                    <label>@communityName eWallet balance</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control disable-input bg-lumo text-center" value=" @Model.currencyModel.CurrencyCode@Model.Ewallet.WalletBalance" readonly>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+                                    <button type="button" class="btn btn-link "><span class="mr-2"><img src="~/images/Black-Download.png" onclick="exportCSVExcelTransactionHistory()"></span>Export CSV</button>
+                                    <button type="button" class="cross" id="transactioncross">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- For Attendance Registry purpose-->
+                        <!-- Users box-->
+                        <div class=" border-bx-area border-0">
+                            <div class="table-responsive">
+                                <table id="Attendance-Registrys" class="table ">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Date</th>
+                                            <th>From<span class="ml-2"><img src="/images/Filter-1.png"></span></th>
+                                            <th>To<span class="ml-2"><img src="/images/Filter-1.png"></span></th>
+                                            <th>Amount<span class="ml-2"><img src="/images/Filter-1.png"></span></th>
+                                            <th>Type <span class=""><img src="~/images/Filter1.png"></span></th>
+                                            <th>Description <span class=""><img src="~/images/Filter1.png"></span></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbltransactionHistory">
+
+                                        @*@foreach (var item in Model.lstTransacHistory)
+                                        {
+                                        <tr>
+                                        <td>@item.TransactionDate</td>
+                                        <td>@item.TransactionFrom</td>
+                                        <td>@item.TransactionTo</td>
+                                        <td>@item.Amount</td>
+                                        <td>Schedule</td>
+                                        <td>@item.PaymentDesc</td>
+                                        </tr>
+                                        }*@
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="3"></th>
+                                            <th> <span id="totalamounttrans"></span></th>
+                                            <th colspan="2"></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- @*==end===*@ -->
+                    <!--  @*  ====Saved Bank Details====*@ -->
+                    <div id="SavedBankDetails" class="tab-pane fade ">
+                        <div class="safty-top-area">
+                            <div class="safty-top-area">
+                                <div class="row align-items-center">
+
+                                    <div class="offset-md-6 col-lg-3  col-md-6 text-center">
+                                        <label>@communityName eWallet balance</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control bg-lumo disable-input text-center" value="  @Model.currencyModel.CurrencyCode@Model.Ewallet.WalletBalance" readonly>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+                                        <button type="button" class="btn btn-link "><span class="mr-2"><img src="~/images/Black-Download.png" onclick="exportCSVExcelBankDetails()"></span>Export CSV</button>
+                                        <button type="button" class="cross" id="savedbankcross">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" ">
+                            <div class="table-responsive">
+                                <table id="AttendanceAccount-Registry" class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>Account nickname</th>
+                                            <th>Country</th>
+                                            <th>Bank</th>
+                                            <th>Account name</th>
+                                            <th>Account number </th>
+                                            <th>View</th>
+                                            <th>Delete</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.lstbankDetails)
+                                        {
+                                            <tr>
+                                                <td>@item.Nickname </td>
+                                                <td>@item.CountryName</td>
+                                                <td>@item.BankName</td>
+                                                <td>@item.HolderName</td>
+                                                <td>@item.AccountNumber</td>
+                                                <td><span class="" onclick="ShowBankDetails(@item.Id)"><img src="~/images/Show.png"></span></td>
+                                                <td><span class=""><img onclick="deleteBankActive(@item.Id)" src="~/images/Delete2.png"></span></td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- @*====end===*@ -->
+                    <!-- @*  ====PendingWithdrawals====*@ -->
+                    <div id="PendingWithdrawals" class="tab-pane fade ">
+
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="offset-lg-6 col-lg-3 col-md-3 text-center">
+                                    <label>@communityName eWallet balance</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-lumo text-center disable-input" value="  @Model.currencyModel.CurrencyCode@Model.Ewallet.WalletBalance" readonly>
+                                    </div>
+
+                                </div>
+
+                                <div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+                                    <button type="button" class="btn btn-link "><span class="mr-2"><img src="~/images/Black-Download.png" onclick="exportCSVExcelPending()"></span>Export CSV</button>
+                                    <button type="button" class="cross" id="pendingcross">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="pending-withdrawal">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="table-responsive ">
+                                        <table id="Attendance-Registrytt" class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Status</th>
+                                                    <th>Date<span class="ml-2"><img src="/images/Filter-1.png"></span></th>
+                                                    <th>Amount</th>
+                                                    <th>View</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblPendinglist">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="table-responsive ">
+                                        <table id="Attendance-Registryty" class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Status</th>
+                                                    <th>Date</th>
+                                                    <th>Amount</th>
+                                                    <th>View</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblPaidlist">
+                                                @*    <tr>
+                                                <td>Paid</td>
+                                                <td>02.04.2023 05:05am</td>
+                                                <td>R8823.05</td>
+                                                <td><span class=""><img src="~/images/Show.png"></span></td>
+                                                </tr>*@
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!--@*====end===*@ -->
+                    <!-- @*  ====PendingWithdrawals====*@ -->
+                    <div id="Refunds" class="tab-pane fade ">
+
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="offset-lg-6 col-lg-3 col-md-3 text-center">
+                                    <label>@communityName eWallet balance</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-lumo text-center" value="  @Model.currencyModel.CurrencyCode@Model.Ewallet.WalletBalance">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+                                    <button type="button" class="btn btn-link "><span class="mr-2"><img src="~/images/Black-Download.png" onclick="exportCSVExcelRefund()"></span>Export CSV</button>
+                                    <button type="button" class="cross" id="pendcross">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="border-bx-area">
+                            <div class="table-responsive ">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th>Date<span class="ml-2"><img src="/images/Filter-1.png"></span></th>
+                                            <th>Amount</th>
+                                            <th>User name</th>
+                                            <th>Credit note</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Refund_User">
+                                        @* <tr>
+                                        <td>05.06.2023 14:02pm</td>
+                                        <td>R250.00</td>
+                                        <td>Mrs. Wilson</td>
+                                        <td>Jeffrey returned his size 14 Jumper to the store. </td>
+
+                                        </tr>*@
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <!--@*====end===*@ -->
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- @*======Process Refund====*@ -->
+<div class="modal fade modal-add-bx" id="ProcessRefund" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Process a refund</h5>
+
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+
+
+                    <div class="col-md-12">
+
+
+
+                        <div class=" form-group search-bar-list">
+                            <div class=" input-group diff2">
+                                <input class="form-control search text-center" type="text" placeholder="Search name or mobile number" id="Searchnumm">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <img src="~/images/Search-2.png" class="img-fluid">
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <ul id="ContactLiists">
+                        </ul>
+                        <div class="form-group  ">
+                            <label>Refund amount</label>
+
+                            <input type="text" class="form-control " id="txtRefAmo" value="@Model.currencyModel.CurrencyCode ">
+
+
+                        </div>
+                        <div class="form-group  ">
+                            <label>Credit note</label>
+
+                            <textarea class="form-control height-auto bg-gray border-gray" rows="6" placeholder="" id="TxtRefNote"></textarea>
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="col-md-12 text-right">
+
+                        <button type="button" class="btn btn-lumo-green" data-dismiss="modal" id="btnpostrefund">Process the refund</button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Security checkpoint Proceed====*@ -->
+<div class="modal fade modal-add-bx" id="SecurityProceed" tabindex="-1" aria-labelledby="SecurityProceedLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Security checkpoint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+                    <div class="col-md-12">
+                        <div class="form-group  text-center">
+                            <label>Please insert your OTP to proceed</label>
+                            <input type="text" class="form-control " id="txtpassword">
+                        </div>
+                        <div class="text-center">
+
+                            <button type="button" class="btn btn-lumo-green " id="">Proceed</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal-add-bx" id="WithdrawalSecurityProceed" tabindex="-1" aria-labelledby="SecurityProceedLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Security checkpoint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+                    <div class="col-md-12">
+                        <div class="form-group  text-center">
+                            <span id="otpmsg"></span>
+                            <p>OTP sent on your register email Id</p>
+                            <label>Please insert your OTP to proceed</label>
+                            <input type="text" class="form-control " id="txtwithdrawalpassword">
+                        </div>
+                        <div class="text-center">
+
+                            <button type="button" class="btn btn-lumo-green " id="btnWithdrawalverify">Proceed</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*=======CreditNote=====*@ -->
+
+<div class="modal fade modal-small-bx" id="CreditNote" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Bye bye earnings!</h5>
+                    <p>You’ve successfully posted a refund</p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*======Security checkpoint Proceed====*@ -->
+<div class="modal fade modal-add-bx" id="AccountInformation" tabindex="-1" aria-labelledby="SecurityProceedLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Account information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Name</label>
+                            <input type="text" class="form-control ">
+                        </div>
+                        <div class="form-group ">
+                            <label>Mobile number</label>
+                            <input type="text" class="form-control ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Add Bank Account====*@ -->
+<div class="modal fade modal-add-bx" id="AddBankAccount" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add a bank account</h5>
+
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Select your country</label>
+                            <select class="form-control" id="ddlCountry" asp-items="@(new SelectList(Model.lstCountry,"Id","Name"))">
+                                <option value="0">Select Country</option>
+                                @* <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>*@
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Bank</label>
+                            <input type="text" id="bankname" class="form-control" />
+                        </div>
+
+                        @*   <div class="form-group">
+                        <label>Bank</label>
+                        <select class="form-control" id="txtBank" asp-items="@(new SelectList(Model.lstMasterBanks,"Id","Name"))">
+                        </select>
+                        </div>*@
+
+                        @*                        <div class=" input-group diff2">
+                        <input type="hidden" id="bankname" value="" />
+                        <input class="form-control search " type="text" placeholder="Enter bank name" id="banklst">
+                        <ul id="ContactList">
+                        </ul>
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">
+                        <img src="~/images/Search-2.png" class="img-fluid">
+                        </span>
+                        </div>
+                        </div>*@
+
+                        <div class="form-group">
+                            <label>Account holder's name</label>
+                            <input type="text" class="form-control" id="txtAccName">
+                        </div>
+                        <div class="form-group">
+                            <label>Account number</label>
+                            <input type="text" class="form-control" id="txtAccNum">
+                        </div>
+                        <div class="form-group">
+                            <label>Branch code</label>
+                            <input type="text" class="form-control" id="txtBrCode">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Account nickname</label>
+                            <input type="text" class="form-control" id="txtAccNick">
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-12 text-right">
+
+                        <button type="button" class="btn btn-lumo-green" id="btnPostBankAcc">Add new bank account</button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Make a withdrawal====*@ -->
+<div class="modal fade modal-add-bx" id="MakeWithdrawal" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Make a withdrawal</h5>
+
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>
+                                
+                                
+                                feature</label>
+                            <select class="form-control" id="ddlEvent" onchange="BindEventName()">
+                                <option value="0">Select</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select</label>
+                            <select class="form-control" id="ddleventName" onchange="fillAvailabelBalance()">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Available Balance to withdraw</label>
+                            <div class="input-group doller-sign">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                </div>
+                                <input type="text" class="form-control" id="txtamo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>How much would you like to withdraw?</label>
+                            <div class="input-group doller-sign">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                </div>
+                                <input type="text" class="form-control" id="txtwithd" onchange="percentage_2()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Service fee (@Model?.lstsettings?.Value%)</label>
+                            <div class="input-group doller-sign">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">@Model?.currencyModel?.CurrencyCode</span>
+                                </div>
+                                <input type="text" class="form-control" id="servicefee" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select a save bank account</label>
+
+                            <select class="form-control" id="txtmo" onchange="BindAccountNo()">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Withdrawal reference for bank account</label>
+                            <input type="text" class="form-control" id="txtref">
+                        </div>
+
+                        <div class="col-md-12 text-right">
+
+                            <button type="button" class="btn btn-lumo-green" id="btnpostwithd">Process withdrawal</button>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Withdrawal confirmation====*@ -->
+<div class="modal fade modal-add-bx" id="WithdrawalsConfirmations" tabindex="-1" aria-labelledby="WithdrawalConfirmationLabel" aria-hidden="true" style="overflow:scroll">
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+
+        <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title ">Withdrawal confirmation</h5>
+
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="new-message">
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Select a feature</label>
+                                <input type="text" class="form-control" id="txtselecteventtype">
+                            </div>
+                            <div class="form-group">
+                                <label>Select </label>
+                                <input type="text" class="form-control" id="txtselecteventname">
+                            </div>
+                            <div class="form-group">
+                                <label>Withdrawal amount</label>
+                                <input type="text" class="form-control" id="txtwithdrawalAmount">
+                            </div>
+                            <div class="form-group">
+                                <label>Service fee(@Model?.lstsettings?.Value%)</label>
+                                <input type="text" class="form-control" id="txtservicefees" value="@Model.currencyModel.CurrencyCode">
+                            </div>
+                            <div class="form-group">
+                                <label>Bank name</label>
+                                <input type="text" class="form-control" id="txtbankname">
+                            </div>
+                            <div class="form-group">
+                                <label>Bank account number</label>
+                                <input type="text" class="form-control" id="txtaccountno">
+                            </div>
+                            <div class="form-group">
+                                <label>Amount to be paid to bank ccount</label>
+                                <div class="input-group doller-sign">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="txtamountbypaid">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <span id="errormsg"></span>
+                            <button type="button" class="btn btn-lumo-green bg-pink mr-2" id="cancelwithdrawal">Cancel withdrawal</button>
+                            <button type="button" class="btn btn-lumo-green" id="processwithdrawal">Process withdrawal</button>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Make a payment====*@ -->
+<div class="modal fade modal-add-bx" id="MakePayment" tabindex="-1" aria-labelledby="MakePaymentLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-500 ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Make a payment</h5>
+
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+
+
+
+
+                    <div class="col-md-12">
+
+
+
+                        <div class=" form-group search-bar-list">
+                            <div class=" input-group diff2">
+                                <input class="form-control search text-center" type="text" placeholder="Search name or mobile number" id="Searchnum">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <img src="~/images/Search-2.png" class="img-fluid">
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <ul id="ContactList">
+                        </ul>
+
+
+                        <div class="form-group  ">
+                            <label>How much would like to pay?</label>
+
+                            <input type="text" class="form-control " id="txtpay" value="@Model.currencyModel.CurrencyCode ">
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="col-md-12 text-right">
+
+                        <button type="button" class="btn btn-lumo-green" id="btnPostMobile">Process payment </button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*=======SecurityCheckpointPass=======*@ -->
+<div class="modal fade modal-add-bx" id="SecurityCheckpointPass" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered w-430px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Security checkpoint</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body  text-center p-3">
+                <div class="past-leave-box">
+                    <p>Please insert your four digit pincode to complete the transfer.</p>
+                </div>
+
+                <form class="digit-group">
+                    <input type="password" class="digit" name="digit-1">
+                    <input type="password" id="digit-2" class="digit" name="digit-2">
+                    <input type="password" id="digit-3" class="digit" name="digit-3">
+                    <input type="password" id="digit-4" class="digit" name="digit-4">
+                </form>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*====END=====*@ -->
+<!-- @*======Withdrawal Success====*@ -->
+<div class="modal fade modal-small-bx" id="WithdrawalSuccess" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>You’re rich!</h5>
+                    @*<p>You’ve successfully posted a withdrawal</p>*@
+                    <p id="withdrawalMessage"></p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " id="closewithdrawalsuccess" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- @*======END======*@ -->
+<!-- @*======Withdrawal review-pending payment====*@ -->
+<div class="modal fade modal-add-bx" id="PendingPayment" tabindex="-1" aria-labelledby="SecurityProceedLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Withdrawal information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label>Status</label>
+                                <input type="text" class="form-control" id="TxtStatus">
+                            </div>
+                            <div class="form-group ">
+                                <label>Reference</label>
+                                <input type="text" class="form-control" id="TxtReft">
+                            </div>
+                            <div class="form-group ">
+                                <label>Bank</label>
+                                <input type="text" class="form-control" id="viewbank">
+                            </div>
+                            <div class="form-group ">
+                                <label>Account number</label>
+                                <input type="text" class="form-control" id="viewaccnumb">
+                            </div>
+                            <div class="form-group ">
+                                <label>Service fee (2%)</label>
+                                <div class="input-group doller-sign">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="viewserfee">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label>Date</label>
+                                <input type="text" class="form-control" id="Viewdate">
+                            </div>
+                            <div class="form-group ">
+                                <label>Country</label>
+                                <input type="text" class="form-control" id="viewcountry">
+                            </div>
+
+                            <div class="form-group ">
+                                <label>Account name</label>
+                                <input type="text" class="form-control" id="viewaccname">
+                            </div>
+
+                            <div class="form-group ">
+                                <label>Withdrawal amount</label>
+                                <div class="input-group doller-sign">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="viewwithamount">
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label>Total withdrawal amount</label>
+                                <div class="input-group doller-sign">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="viewtotal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--PaidReview-->
+<div class="modal fade modal-add-bx" id="PaidPayment" tabindex="-1" aria-labelledby="SecurityProceedLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Withdrawal information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label>Status</label>
+                                <input type="text" class="form-control" id="TxtSttatus">
+                            </div>
+                            <div class="form-group ">
+                                <label>Reference</label>
+                                <input type="text" class="form-control" id="TxtRefp">
+                            </div>
+                            <div class="form-group ">
+                                <label>Bank</label>
+                                <input type="text" class="form-control" id="viewsbank">
+                            </div>
+
+                            <div class="form-group ">
+                                <label>Account number</label>
+                                <input type="text" class="form-control" id="viewsaccnumb">
+                            </div>
+                            <div class="form-group ">
+                                <label>Service fee (2%)</label>
+                                <div class="input-group doller-sign">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="vieewserfee">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group ">
+                                <label>Date</label>
+                                <input type="text" class="form-control" id="Viewsdate">
+                            </div>
+                            <div class="form-group ">
+                                <label>Country</label>
+                                <input type="text" class="form-control" id="viewscountry">
+                            </div>
+
+                            <div class="form-group ">
+                                <label>Account name</label>
+                                <input type="text" class="form-control" id="viewsaccname">
+                            </div>
+
+                            <div class="form-group ">
+                                <label>Withdrawal amount</label>
+                                <div class="input-group doller-sign">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="viewswithamount">
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <label>Total withdrawal amount</label>
+                                <div class="input-group doller-sign">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="viewstotal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======View Bank Account====*@ -->
+<div class="modal fade modal-add-bx" id="ViewAccount" tabindex="-1" aria-labelledby="SecurityProceedLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-430px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">View a bank account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Country</label>
+                            <input type="text" class="form-control" id="ShowCoun">
+                        </div>
+                        <div class="form-group ">
+                            <label>Bank</label>
+                            <input type="text" class="form-control" id="Showbank">
+                        </div>
+
+                        <div class="form-group ">
+                            <label>Account name</label>
+                            <input type="text" class="form-control" id="Shoeaccname">
+                        </div>
+                        <div class="form-group ">
+                            <label>Account number</label>
+                            <input type="text" class="form-control" id="showaccnumber">
+                        </div>
+                        <div class="form-group ">
+                            <label>Branch code</label>
+                            <input type="text" class="form-control" id="ShowCode">
+                        </div>
+                      @*  <div class="form-group ">
+                            <label>Account type</label>
+                            <input type="text" class="form-control" id="showacctype">
+                        </div>*@
+                        <div class="form-group ">
+                            <label>Account nickname</label>
+                            <input type="text" class="form-control" id="ShowAccnick">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Request Payment====*@ -->
+<div class="modal fade modal-add-bx" id="RequestPayment" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Request a payment</h5>
+
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+
+            </div>
+            <div class="modal-body">
+                <div class="new-message ">
+
+
+                    <div class="col-md-12">
+
+
+
+                        <div class=" form-group search-bar-list">
+                            <div class=" input-group diff2">
+                                <input class="form-control search text-center" type="text" placeholder="Search name or mobile number" id="Searchnumb">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <img src="~/images/Search-2.png" class="img-fluid">
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <ul id="ContactLists">
+                        </ul>
+
+
+
+                        <div class="form-group  ">
+                            <label>How much would you like to request?</label>
+
+                            <input type="text" class="form-control " id="txtReqpay" value="@Model.currencyModel.CurrencyCode ">
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="col-md-12 text-right">
+
+                        <button type="button" class="btn btn-lumo-green" id="btnReqPay">Request payment</button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="PaymentSuccess" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Bank Added</h5>
+                    @*<p>You’ve successfully processed a payment to {user name}</p>*@
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--bankdelete-->
+<div class="modal fade modal-small-bx" id="delete-Deletebankconfimation" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this bank forever.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" id="btndeletebankno" class="btn bg-pink" data-dismiss="modal">No</button>
+                    <button type="button" id="btndeletebankyes" class="btn bg-lumo">Yes</button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-small-bx" id="Items-Added" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5 id="itemaddheader"></h5>
+                    @*  <p>Your item is now LIVE in your community</p>*@
+                    <p id="message"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-small-bx" id="PaymentpaySuccess" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Success</h5>
+                    <p>You’ve successfully processed a payment </p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="RequestSuccess" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Your request is pending payment!</h5>
+                    <p>You’ve successfully requested a payment from {user name}</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+
+<input type="hidden" id="mobileid" value="" />
+<input type="hidden" id="mobileidname" value="" />
+<input type="hidden" id="hdnCommunityId" />
+<input type="hidden" id="Searchcustomerid" value="" />
+<input type="hidden" id="ModilePay" value="" />
+<input type="hidden" id="Searchbankid" value="" />
+<input type="hidden" id="BankId" />
+<div class="overlay">
+</div>
+<script>
+
+    $(function () {
+
+        $("#datefrom").datepicker();
+        $("#dateto").datepicker();
+        $("#datetime").datepicker();
+        $("#datetime1").datepicker();
+
+
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+        //forbusiness
+        const urlParams = new URLSearchParams(window.location.search);
+        const param_x = urlParams.get('id');
+        if (param_x == 'bank') {
+            $('[href="#SavedBankDetails"]').click();
+        }
+
+
+        const urlParamsgg = new URLSearchParams(window.location.search);
+        const param_gg = urlParams.get('id');
+        if (param_gg == 'bankd') {
+            $('[href="#SavedBankDetails"]').click();
+        }
+    });
+</script>
+@*<script type="text/javascript">
+    $("#datefrom").datepicker({
+        dateFormat: 'dd-mm-yy',
+        beforeShow: function (input, inst) {
+            $('.overlay').addClass('d-block');
+        },
+        onSelect: function (dateText, inst) {
+            $('.overlay').removeClass('d-block');
+        }
+    });
+
+
+    $("#dateto").datepicker({
+        dateFormat: 'dd-mm-yy',
+        beforeShow: function (input, inst) {
+            $('.overlay').addClass('d-block');
+        },
+        onSelect: function (dateText, inst) {
+            $('.overlay').removeClass('d-block');
+        }
+
+    });
+
+    $("#datetime1").datepicker({
+        dateFormat: 'dd-mm-yy',
+        beforeShow: function (input, inst) {
+            $('.overlay').addClass('d-block');
+        },
+        onSelect: function (dateText, inst) {
+            $('.overlay').removeClass('d-block');
+        }
+    });
+
+    $("#datetime").datepicker({
+        dateFormat: 'dd-mm-yy',
+        beforeShow: function (input, inst) {
+            $('.overlay').addClass('d-block');
+        },
+        onSelect: function (dateText, inst) {
+            $('.overlay').removeClass('d-block');
+        }
+    });
+
+    $(".overlay").on("click", function () {
+        $(".overlay").removeClass("d-block");
+    });
+</script>*@
+
+<script>
+
+
+    otable1 = $('#Attendance-Registrys').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+    otable1 = $('#Attendance-Registrytt').DataTable({
+        "ordering": false,
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+    otable1 = $('#Attendance-Registryty').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+    otable1 = $('#AttendanceAccount-Registry').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+
+</script>
+
+@*ADD A BANK ACCOUNT*@
+<script>
+    $(document).on("click", "#btnPostBankAcc", function () {
+
+        // var Bank = $('#txtBank').val();
+        //   var banklst = $('#Searchbankid').val();
+        var Accountname = $('#txtAccName').val();
+        var Countryname = $('#ddlCountry').val();
+        var Bankname = $('#bankname').val();
+        var Accountnumber = $('#txtAccNum').val();
+        var Branchcode = $('#txtBrCode').val();
+        var Accnickname = $('#txtAccNick').val();
+
+        //if (Bank == "" || Bank == 0 || Bank == null) {
+        //    $('#txtBank').focus();
+        //    document.getElementById("txtBank").style.border = "1px solid red";
+        //    return false;
+        //}
+
+        var formData = new FormData();
+
+        formData.append("HolderName", Accountname);
+        // formData.append("BankId", Bank);
+        formData.append("AccountNumber", Accountnumber);
+        formData.append("BankName", Bankname);
+        formData.append("CountryId", Countryname);
+        formData.append("BranchCode", Branchcode);
+        //  formData.append("Country", Country);
+        formData.append("BankAccountTypeId", 102);
+        // formdata.append('BankId', banklst);
+
+        formData.append("NickName", Accnickname);
+
+        // console.log(formData);
+        var Aurl = "/Finance/AddBankAccount";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+
+                    $('#txtBank').val('');
+                    $('#txtAccName').val('');
+                    $('#ddlCountry').val('');
+                    $('#txtAccNum').val('');
+                    $('#bankname').val('');
+                    $('#txtBrCode').val('');
+                    $('#txtAccNick').val('');
+                    $("#AddBankAccount").modal("hide");
+                    $("#PaymentSuccess").modal("show");
+                    $("#message").text(Result.message);
+                    window.location.href = '/Finance/Finance?id=bank';
+                }
+                else {
+                    $("#AddBankAccount").modal("hide");
+                    $("#PaymentSuccess").modal("show");
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#PaymentSuccess").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+    });
+
+    // PAY BY MOBILE
+
+    $(function () {
+
+        $("#Searchnum").autocomplete({
+            source: function (request, response) {
+                var searchList = $('#Searchnum').val()
+                var formdata = new FormData();
+                formdata.append("Search", searchList);
+
+                $.ajax({
+                    url: '/Finance/GetUserContactList',
+                    // data: formdata,
+                    dataType: "json",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+                        //   $("#Searchnum").val('');
+
+                        //  console.log(data)
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.name,
+                                value: item.mobile
+
+                            };
+
+                        }))
+
+                    },
+                    focus: function (event, i) {
+                        event.preventDefault();
+                        //$('#ContactList').val(i.item.label, i.item.value);
+                    },
+                    select: function (e, i, s) {
+                        $('#ContactList').val(i.item.label, i.item.value);
+                    }
+
+                });
+            },
+
+            minLength: 1 //This is the Char length of inputTextBox
+        });
+    });
+
+
+    //$(document).on("click", "#txtclose", function () {
+    //    var Password = $('#txtpassword').val().trim();
+    //    if (Password == "") {
+    //        $('#txtpassword').focus();
+    //        document.getElementById("txtpassword").style.border = "1px solid red";
+    //        return false;
+    //    }
+    //    var formData = new FormData();
+    //    formData.append("password", Password);
+    //    var Aurl = "/Finance/VerifyPassword";
+    //    $.ajax({
+    //        type: "Post",
+    //        url: Aurl,
+    //        cache: false,
+    //        contentType: false,
+    //        processData: false,
+    //        data: formData,
+    //        dataType: "json",
+    //        success: function (Result) {
+
+    //            if (Result == true) {
+    //                $('#txtpassword').focus();
+    //                document.getElementById("txtpassword").style.border = "1px solid grey";
+    //                $('#txtpassword').val('');
+    //                $("#SecurityProceed").modal("hide");
+    //                //$("#Withdrawal").modal("show");
+    //                PayaMobileFund();
+
+    //            }
+    //            else {
+    //                $('#txtpassword').focus();
+    //                document.getElementById("txtpassword").style.border = "1px solid red";
+    //            }
+    //        },
+    //        error: function (request, error) {
+    //            $('#txtpassword').focus();
+    //            document.getElementById("txtpassword").style.border = "1px solid red";
+    //        }
+    //    });
+    //});
+
+    //function PayaMobileFund() {
+    //    var MobilePay = $('#txtpay').val().trim().replace('@Model.currencyModel.CurrencyCode', "");
+    //    if (MobilePay == "") {
+    //        $('#txtpay').focus();
+    //        document.getElementById("txtpay").style.border = "1px solid red";
+    //        return false;
+    //    }
+    //    var ObjData = {
+    //        Amount: MobilePay,
+    //        MobileNumber: $("#Searchnum").val()
+    //    }
+    //    //    console.log(formData);
+    //    var Aurl = "/Finance/PayByMobile";
+    //    $.ajax({
+    //        type: "Post",
+    //        url: Aurl,
+    //        data: ObjData,
+    //        dataType: "json",
+    //        success: function (Result) {
+    //            var status = Result.success;
+    //            if (status == true) {
+    //                $("#SecurityProceed").modal("hide");;
+    //                $('#txtpay').val('');
+    //                $("#PaymentpaySuccess").modal("show");
+    //                $("#message").text(Result.message);
+    //            }
+    //            else {
+    //                $("#PaymentpaySuccess").modal("show");
+    //                $("#message").text(Result.message);
+    //            }
+    //        },
+    //        error: function (request, error) {
+    //            $("#PaymentpaySuccess").modal("show");
+    //            $("#message").text("Oops! something went wrong")
+    //        }
+    //    });
+    //}
+
+    //$(document).on("click", "#btnPostMobile", function () {
+    //    $("#MakePayment").modal("hide");
+    //    $("#SecurityProceed").modal("show");
+    //});
+
+    //$(document).on("click", "#txtclose", function () {
+    //    var Password = $('#txtpassword').val().trim();
+    //    if (Password == "") {
+    //        $('#txtpassword').focus();
+    //        document.getElementById("txtpassword").style.border = "1px solid red";
+    //        return false;
+    //    }
+    //    var formData = new FormData();
+    //    formData.append("password", Password);
+    //    var Aurl = "/Finance/VerifyPassword";
+    //    $.ajax({
+    //        type: "Post",
+    //        url: Aurl,
+    //        cache: false,
+    //        contentType: false,
+    //        processData: false,
+    //        data: formData,
+    //        dataType: "json",
+    //        success: function (Result) {
+
+    //            if (Result == true) {
+    //                $('#txtpassword').focus();
+    //                document.getElementById("txtpassword").style.border = "1px solid grey";
+    //                $('#txtpassword').val('');
+    //                $("#SecurityProceed").modal("hide");
+    //                SaveProcessRefund();
+    //            }
+    //            else {
+    //                $('#txtpassword').focus();
+    //                document.getElementById("txtpassword").style.border = "1px solid red";
+    //            }
+    //        },
+    //        error: function (request, error) {
+    //            $('#txtpassword').focus();
+    //            document.getElementById("txtpassword").style.border = "1px solid red";
+    //        }
+    //    });
+    //});
+
+
+    //Delete bankdetailss
+
+
+    function deleteBankActive(Id) {
+        $("#delete-Deletebankconfimation").modal("show");
+        $("#BankId").val(Id);
+    }
+    $(document).on("click", "#btndeletebankno", function () {
+        $("#delete-Deletebankconfimation").modal("hide");
+    });
+    $(document).on("click", "#btndeletebankyes", function () {
+        var objdata = {
+            Id: $("#BankId").val()
+        }
+        var Aurl = "/Finance/DeleteBankAccount";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.Status = true) {
+                    $("#delete-Deletebankconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Bank details');
+                    $("#message").text(Result.message);
+                    //GetBookingActiveItemsAsync();
+
+                    window.location.href = '/Finance/Finance?id=bankd';
+                }
+                else {
+                    $("#delete-Deletebankconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Bank details');
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    });
+    //Request a payment
+
+    $(function () {
+
+        $("#Searchnumb").autocomplete({
+            source: function (request, response) {
+                var searchList = $('#Searchnumb').val()
+                var formdata = new FormData();
+                formdata.append("Search", searchList);
+
+                $.ajax({
+                    url: '/Finance/GetUserContactList',
+                    data: formdata,
+                    dataType: "json",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var mobile = data[i].mobile;
+                            $("#Searchcustomerid").val(mobile);
+                            var customerId = data[i].customerId
+                            $('#ModilePay').val(customerId);
+                        }
+
+                        console.log(data)
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.name,
+                                value: item.mobile
+
+                            };
+
+                        }))
+
+                    },
+                    focus: function (event, i) {
+                        event.preventDefault();
+                        //$('#ContactList').val(i.item.label, i.item.value);
+                    },
+                    select: function (e, i, s) {
+                        $('#ContactLists').val(i.item.label, i.item.value);
+                    }
+
+                });
+            },
+
+            minLength: 1 //This is the Char length of inputTextBox
+        });
+    });
+
+    $(document).on("click", "#btnReqPay", function () {
+
+        var RequestPay = $('#txtReqpay').val().trim().replace('@Model.currencyModel.CurrencyCode', "");
+        var Mobileno = $("#Searchcustomerid").val()
+        var MobilecustomerId = $('#ModilePay').val()
+
+
+        if (RequestPay == "") {
+            $('#txtReqpay').focus();
+            document.getElementById("txtReqpay").style.border = "1px solid red";
+            return false;
+        }
+
+        var ObjData = {
+            Amount: RequestPay,
+            MobileNumber: Mobileno,
+            TransactionTo: MobilecustomerId
+        }
+
+        //    console.log(formData);
+        var Aurl = "/Finance/RequestPayment";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: ObjData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+
+                    $('#txtReqpay').val('');
+
+                    $("#PaymentpaySuccess").modal("show");
+                    $("#message").text(Result.message);
+                }
+                else {
+                    $("#PaymentpaySuccess").modal("show");
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#PaymentpaySuccess").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+    });
+
+    //Process A Refund
+    $(function () {
+
+        $("#Searchnumm").autocomplete({
+            source: function (request, response) {
+                var searchList = $('#Searchnumm').val()
+                var formdata = new FormData();
+                formdata.append("Search", searchList);
+
+                $.ajax({
+                    url: '/Finance/GetUserContactList',
+                    data: formdata,
+                    dataType: "json",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+
+
+                        console.log(data)
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.name,
+                                value: item.mobile
+
+                            };
+
+                        }))
+
+                    },
+                    focus: function (event, i) {
+                        event.preventDefault();
+                        //$('#ContactList').val(i.item.label, i.item.value);
+                    },
+                    select: function (e, i, s) {
+                        $('#ContactLiists').val(i.item.label, i.item.value);
+                    }
+
+                });
+            },
+
+            minLength: 1 //This is the Char length of inputTextBox
+        });
+    });
+    function SaveProcessRefund() {
+        var Amount = $('#txtRefAmo').val().trim();
+        var CreditNote = $('#TxtRefNote').val().trim();
+
+        if (Amount == "") {
+            $('#txtRefAmo').focus();
+            document.getElementById("txtRefAmo").style.border = "1px solid red";
+            return false;
+        }
+
+
+        var formData = new FormData();
+
+
+        formData.append("Amount", Amount.replace('@Model.currencyModel.CurrencyCode', ""));
+        formData.append("RefundNote", CreditNote);
+        console.log(formData);
+        var Aurl = "/Finance/ProcessRefund";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+
+
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+
+                    $('#txtRefAmo').val('');
+                    $('#TxtRefNote').val('');
+                    $("#CreditNote").modal("show");
+                    $("#message").text(Result.message);
+                }
+                else {
+                    $("#CreditNote").modal("show");
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#CreditNote").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+
+    };
+    $(document).on("click", "#btnpostrefund", function () {
+        $("#SecurityProceed").modal("show");;
+    });
+
+    //$(document).on("click", "#txtclose", function () {
+    //    var Password = $('#txtpassword').val().trim();
+    //    if (Password == "") {
+    //        $('#txtpassword').focus();
+    //        document.getElementById("txtpassword").style.border = "1px solid red";
+    //        return false;
+    //    }
+    //    var formData = new FormData();
+    //    formData.append("password", Password);
+    //    var Aurl = "/Finance/VerifyPassword";
+    //    $.ajax({
+    //        type: "Post",
+    //        url: Aurl,
+    //        cache: false,
+    //        contentType: false,
+    //        processData: false,
+    //        data: formData,
+    //        dataType: "json",
+    //        success: function (Result) {
+
+    //            if (Result == true) {
+    //                $('#txtpassword').focus();
+    //                document.getElementById("txtpassword").style.border = "1px solid grey";
+    //                $('#txtpassword').val('');
+    //                $("#SecurityProceed").modal("hide");
+    //                SaveProcessRefund();
+    //            }
+    //            else {
+    //                $('#txtpassword').focus();
+    //                document.getElementById("txtpassword").style.border = "1px solid red";
+    //            }
+    //        },
+    //        error: function (request, error) {
+    //            $('#txtpassword').focus();
+    //            document.getElementById("txtpassword").style.border = "1px solid red";
+    //        }
+    //    });
+    //});
+
+
+    //MAke a withdrawal
+    $(document).on("click", "#btnpostwithd", function () {
+        var eventtype = $("#ddlEvent").val();
+        var eventname = $("#ddleventName").val();
+        var withdrawalamt = $("#txtwithd").val().trim().replace('@Model.currencyModel.CurrencyCode', "");
+        if (eventtype == "" || eventtype == 0) {
+            document.getElementById("ddlEvent").style.border = "1px solid red";
+            return false;
+        }
+        if (eventname == '' || eventname == null || eventname == 0) {
+            document.getElementById("ddleventName").style.border = "1px solid red";
+            return false;
+        }
+        if (withdrawalamt == "" || withdrawalamt == null || withdrawalamt == 0) {
+            document.getElementById("txtwithd").style.border = "1px solid red";
+            return false;
+        }
+        var amountwithd = $("#txtamo").val();
+
+
+        if (amountwithd <= 0 || amountwithd == '0') {
+            $('#txtamo').focus();
+            document.getElementById("txtamo").style.border = "1px solid red";
+            return false;
+        }
+
+        $("#txtselecteventtype").val($("#ddlEvent option:selected").text());
+        $("#txtselecteventname").val($("#ddleventName option:selected").text());
+
+        $("#txtwithdrawalAmount").val($("#txtwithd").val());
+        $("#txtservicefees").val($("#servicefee").val());
+        $("#txtbankname").val($("#txtmo option:selected").text());
+        var PaidAmount = parseFloat($("#txtwithd").val().trim().replace('@Model.currencyModel.CurrencyCode', "")) - parseFloat($("#servicefee").val());
+        // alert(PaidAmount);
+        $("#txtamountbypaid").val(PaidAmount);
+        $("#MakeWithdrawal").modal("hide");
+        $("#WithdrawalsConfirmations").modal("show");
+    });
+
+
+
+    $("#processwithdrawal").on("click", function () {
+        var Aurl = "/Finance/SendOtpForWithdrawal";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function (Result) {
+                if (Result.success == true) {
+                    // $("#otpmsg").text('OTP sent on your register email Id');
+                    $("#WithdrawalsConfirmations").modal("hide");
+                    $("#WithdrawalSecurityProceed").modal("show");
+
+
+                }
+                else {
+                    $("#errormsg").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $('#txtwithdrawalpassword').focus();
+                document.getElementById("txtwithdrawalpassword").style.border = "1px solid red";
+            }
+        });
+    });
+
+    $("#btnWithdrawalverify").on("click", function () {
+
+        var otp = $('#txtwithdrawalpassword').val().trim();
+        if (otp == "") {
+            $('#txtwithdrawalpassword').focus();
+            document.getElementById("txtwithdrawalpassword").style.border = "1px solid red";
+            return false;
+        }
+        var formData = new FormData();
+        formData.append("otp", otp);
+        var Aurl = "/Finance/VerifyPassword";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                if (Result.success == true) {
+                    $('#txtwithdrawalpassword').focus();
+                    document.getElementById("txtwithdrawalpassword").style.border = "1px solid grey";
+                    $('#txtwithdrawalpassword').val('');
+                    $("#WithdrawalSecurityProceed").modal("hide");
+                    WithdrawalsConfirmation();
+                    PendingProcess();
+                    BindfeaturesName();
+                }
+                else {
+                    $('#txtwithdrawalpassword').focus();
+                    document.getElementById("txtwithdrawalpassword").style.border = "1px solid red";
+                }
+            },
+            error: function (request, error) {
+                $('#txtwithdrawalpassword').focus();
+                document.getElementById("txtwithdrawalpassword").style.border = "1px solid red";
+            }
+        });
+    });
+
+
+    $(document).on("click", "#closewithdrawalsuccess", function () {
+        window.location.href = '/finance/finance?id=save';
+    });
+
+    function WithdrawalsConfirmation() {
+        var WithdrawalPay = $('#txtwithdrawalAmount').val().trim().replace('@Model.currencyModel.CurrencyCode', "");
+        var WithdrawalRequest = $('#txtref').val().trim()
+
+        var ServiceFee = $('#txtservicefees').val().trim().replace('@Model.currencyModel.CurrencyCode', "");;
+        var FeatureName = $("#ddlEvent option:selected").text();
+        var FeatureId = $("#ddleventName option:selected").val();
+
+
+
+        if (WithdrawalPay == "" || WithdrawalPay == null || WithdrawalPay == 0) {
+            $('#txtwithdrawalAmount').focus();
+            document.getElementById("txtwithdrawalAmount").style.border = "1px solid red";
+            return false;
+        }
+
+
+        var ObjData = {
+            Amount: WithdrawalPay,
+            ReferenceComment: WithdrawalRequest,
+            ServiceFee: ServiceFee,
+            ReferenceType: FeatureName,
+            ReferenceId: FeatureId,
+            SavedBankId: $("#txtmo option:selected").val(),
+            BankName: $("#txtbankname").val()
+        }
+        //    console.log(formData);
+        var Aurl = "/Finance/Withdrawal";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: ObjData,
+            dataType: "json",
+            success: function (Result) {
+                console.log(Result);
+                var status = Result.success;
+                if (status == true) {
+                    $('#txtwithd').val('');
+                    $('#txtamo').val('');
+                    $('#txtref').val('');
+                    $('#servicefee').val('');
+                    $('#txtmo').val('');
+                    $('#ddlEvent').empty();
+                    $('#ddleventName').empty();
+                    $("#WithdrawalSecurityProceed").modal("hide");
+                    $("#WithdrawalSuccess").modal("show");
+                    $("#withdrawalMessage").text(Result.message);
+                }
+                else {
+                    $("#WithdrawalSuccess").modal("show");
+                    $("#withdrawalMessage").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#WithdrawalSuccess").modal("show");
+                $("#withdrawalMessage").text("Oops! something went wrong")
+            }
+        });
+    }
+
+    //$(document).ready(function () {
+    //    BindTransactionHistory();
+    //});
+
+    $("#dateto").on("change", function () {
+
+        BindTransactionHistory();
+    });
+
+
+
+    function BindTransactionHistory() {
+        var formData = {
+            StartDate: $("#datefrom").val(),
+            EndDate: $("#dateto").val(),
+            Count: 0
+        }
+        var Aurl = "/Finance/BindTransactionHistory";
+        $.ajax({
+            type: "Get",
+            url: Aurl,
+            data: formData,
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    console.log(Result);
+                    var rows = '';
+                    var totalAmount = 0;
+                    for (i = 0; i < Result.data.length; i++) {
+                        totalAmount += parseFloat(Result.data[i].Amount);
+
+                         rows += "<tr><td>" + Result.data[i].TransactionDate.split(/[-T]/).join('.') + "</td><td>" + Result.data[i].TransactionFromName + "</td><td>" + Result.data[i].TransactionToName + "</td><td> @Model.currencyModel.CurrencyCode" + Result.data[i].Amount.toFixed(2) + "</td><td>" + Result.data[i].TransactionType + "</td><td> " + Result.data[i].Description + "</td></tr >";
+                    }
+
+                    var oTable = $('#Attendance-Registrys').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#Attendance-Registrys tbody').html(rows);
+                        var tab = $('#Attendance-Registrys').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    } else {
+
+                    }
+
+                    $('#tbltransactionHistory').html(rows);
+                    $('#totalamounttrans').text('@Model.currencyModel.CurrencyCode' + ' ' + totalAmount.toFixed(2));
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+    }
+
+    //GetRefundDetails
+
+    $(document).ready(function () {
+        BindfeaturesName();
+        RefundProcess();
+        BindBankWithdrawal();
+    });
+
+    function RefundProcess() {
+        var CommunityId = $("#hdnCommunityId").val();
+        var objData = {
+            CommunityId: CommunityId
+        }
+
+        var Aurl = "/Finance/GetRefundDetails";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        rows += "<tr><td>" + Result.data[i].CreatedDate.replace('T', ' ') + "</td><td>" + Result.data[i].Amount + "</td><td>" + Result.data[i].Name + "</td><td>" + Result.data[i].RefundNote + "</td></tr>";
+                    }
+                    $("#Refund_User").html(rows);
+                    //$("#Refunds").modal('show');
+                }
+                else {
+
+                    //$("#Refunds").modal('show');
+                }
+            },
+            error: function (request, error) {
+                // $("#Refunds").modal('show');
+            }
+        });
+    }
+
+
+    //Make A Withdrawal
+
+
+    function BindEventName() {
+        var EventName = $("#ddlEvent option:selected").text();
+        var objData = {
+            EventName: EventName
+        }
+        var Aurl = "/Finance/GetEventName";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objData,
+            dataType: "json",
+            success: function (Result) {
+                console.log(Result);
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '<option value="0">Select</option>';
+                    for (i = 0; i < Result.data.length; i++) {
+                        rows += "<option value=" + Result.data[i].Id + ">" + Result.data[i].title + "</option>";
+                    }
+                    $("#ddleventName").html(rows);
+                }
+                else {
+                    var rows = '<option value="0">Select</option>';
+                    $("#ddleventName").html(rows);
+                }
+            },
+            error: function (request, error) {
+                // $("#Refunds").modal('show');
+            }
+        });
+    }
+
+    function BindfeaturesName() {
+        var Aurl = "/Finance/GetFeaturesName";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '<option value="0">Select</option>';
+                    for (i = 0; i < Result.data.length; i++) {
+                        rows += "<option value=" + Result.data[i].id + ">" + Result.data[i].name + "</option>";
+                    }
+                    $("#ddlEvent").html(rows);
+                }
+                else {
+                    var rows = '<option value="0">Select</option>';
+                    $("#ddlEvent").html(rows);
+                }
+            },
+            error: function (request, error) {
+                // $("#Refunds").modal('show');
+            }
+        });
+    }
+
+    function fillAvailabelBalance() {
+        var EventName = $("#ddlEvent option:selected").text();
+        var Id = $("#ddleventName option:selected").val();
+        var objData = {
+            EventName: EventName,
+            Id: Id
+        }
+        var Aurl = "/Finance/GetAvailabelBalance";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objData,
+            dataType: "json",
+            success: function (Result) {
+                //console.log(Result);
+                var status = Result.success;
+                if (status == true) {
+                    $("#txtamo").val(Result.data[0].Amount.toFixed(2));
+                }
+                else {
+                    $("#txtamo").val(0);
+                }
+            },
+            error: function (request, error) {
+                // $("#Refunds").modal('show');
+            }
+        });
+    }
+
+    //MASTER BANK
+
+
+    //function BindBankName() {
+    //    var Code = $("#ddlCountry option:selected").val();
+    //    var objData = {
+    //        Code: Code
+    //    }
+    //    var Aurl = "/Finance/GetMasterBank";
+    //    $.ajax({
+    //        type: "Post",
+    //        url: Aurl,
+    //        data: objData,
+    //        dataType: "json",
+    //        success: function (Result) {
+    //            console.log(Result);
+    //            var status = Result.success;
+    //            if (status == true) {
+    //                var rows = '<option value="0">Select</option>';
+    //                for (i = 0; i < Result.data.length; i++) {
+    //                    rows += "<option value=" + Result.data[i].id + ">" + Result.data[i].name + "</option>";
+    //                }
+    //                $("#txtBank").html(rows);
+    //            }
+    //            else {
+    //                var rows = '<option value="0">Select</option>';
+    //                $("#txtBank").html(rows);
+    //            }
+    //        },
+    //        error: function (request, error) {
+    //            // $("#Refunds").modal('show');
+    //        }
+    //    });
+    //}
+
+    //PENDING WITHDRAWAL
+    function returndateformat(date) {
+        var d = new Date(date.split("/").reverse().join("-"));
+        var dd = d.getDate();
+        var mm = d.getMonth() + 1;
+        var yy = d.getFullYear();
+        var newdate = dd + "." + mm + "." + yy;
+        return newdate;
+    }
+
+    $(document).ready(function () {
+
+        var d = new Date();
+
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+
+        var output = (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day + '/' + d.getFullYear();
+        $("#datefrom").val(output);
+        $("#dateto").val(output);
+        BindTransactionHistory();
+        PendingProcess();
+        PaidProcess();
+    });
+
+    function PendingProcess() {
+        var Aurl = "/Finance/PendingWithdrawal";
+        $.ajax({
+            type: "Get",
+            url: Aurl,
+            dataType: "json",
+            success: function (Result) {
+                console.log(Result);
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        var createddate = returndateformat(Result.data[i].CreatedDate)
+
+                        rows += "<tr><td>" + Result.data[i].WithDrawalRequestStatusId + "</td><td>" + createddate + "</td><td> @Model.currencyModel.CurrencyCode" + Result.data[i].Amount.toFixed(2) + "</td><td><img src='/images/Show.png' onclick='showpendingDetails(" + Result.data[i].Id + ")' ></td></tr>";
+                    }
+                    $("#tblPendinglist").html(rows);
+                    //$("#PendingWithdrawals").modal('show');
+                }
+                else {
+                    $("#tblPendinglist").html('');
+                    //$("#PendingWithdrawals").modal('show');
+                }
+            },
+            error: function (request, error) {
+                //$("#PendingWithdrawals").modal('show');
+            }
+        });
+    }
+
+
+
+    //VIEW OF BANK DETAILS
+
+    function ShowBankDetails(Id) {
+        
+        var objdata =
+        {
+            Id: Id
+        }
+        var Aurl = "/Finance/ViewBankDetails";
+        $.ajax(
+            {
+                type: "Post",
+                url: Aurl,
+                data: objdata,
+                success: function (Result) {
+                    console.log(Result);
+                    if (Result.success == true) {
+
+
+                        $("#ShowCoun").val(Result.data[0].CountryName);
+                        $("#ShowCoun").attr("readonly", "readonly");
+                        $("#Showbank").val(Result.data[0].BankName);
+                        $("#Showbank").attr("readonly", "readonly");
+                        $("#Shoeaccname").val(Result.data[0].HolderName);
+                        $("#Shoeaccname").attr("readonly", "readonly");
+                        $("#showaccnumber").val(Result.data[0].AccountNumber);
+                        $("#showaccnumber").attr("readonly", "readonly");
+                        $("#ShowCode").val(Result.data[0].BranchCode);
+                        $("#ShowCode").attr("readonly", "readonly");
+                        $("#showacctype").val(Result.data[0].AccountType);
+                        $("#showacctype").attr("readonly", "readonly");
+                        $("#ShowAccnick").val(Result.data[0].Nickname);
+                        $("#ShowAccnick").attr("readonly", "readonly");
+
+
+
+
+
+                        $("#ViewAccount").modal('show');
+                    }
+                    else {
+                        $("#Eventnameattendees").text('');
+                        $("#ViewAccount").modal('show');
+                    }
+                },
+                error: function (request, error) {
+
+                }
+            });
+    }
+
+
+
+    //SEARCH BANK
+
+
+    //VIEW OF PENDING WITHDRAWAL
+
+    function showpendingDetails(Id) {
+        var objdata = {
+            Id: Id
+        }
+        var Aurl = "/Finance/pendingWithdrawalView";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.success == true) {
+                    if (Result.data.length > 0) {
+                        $("#viewaccnumb").val(Result.data[0].AccountNumber);
+                        $("#viewaccnumb").attr("readonly", "readonly");
+                        $("#viewaccname").val(Result.data[0].AccountName);
+                        $("#viewaccname").attr("readonly", "readonly");
+                        $("#TxtReft").val(Result.data[0].ReferenceType);
+                        $("#TxtReft").attr("readonly", "readonly");
+                        $("#viewserfee").val(Result.data[0].ServiceFee);
+                        $("#viewserfee").attr("readonly", "readonly");
+                        $("#viewwithamount").val(Result.data[0].WithdrawalAmount.toFixed(2));
+                        $("#viewwithamount").attr("readonly", "readonly");
+                        $("#viewtotal").val(Result.data[0].TotalWithdrawalAmount.toFixed(2));
+                        $("#viewtotal").attr("readonly", "readonly");
+                        $("#viewcountry").val(Result.data[0].CountryName);
+                        $("#viewcountry").attr("readonly", "readonly");
+                        $("#viewbank").val(Result.data[0].BankName);
+                        $("#viewbank").attr("readonly", "readonly");
+                        var enddate = returndateformat(Result.data[0].CreatedDate);
+                        $("#Viewdate").val(enddate);
+                        $("#Viewdate").attr("readonly", "readonly");
+                        $("#TxtStatus").val('Pending withdrawal');
+                        $("#TxtStatus").attr("readonly", "readonly");
+                        $("#PendingPayment").modal('show');
+                    }
+                    else {
+                        $("#viewaccnumb").val('');
+                        $("#viewaccname").val('');
+                        $("#TxtReft").val('');
+                        $("#viewserfee").val('');
+                        $("#viewwithamount").val('');
+                        $("#viewtotal").val('');
+                        $("#viewcountry").val('');
+                        $("#viewbank").val('');
+                        $("#Viewdate").val('');
+                        $("#TxtStatus").val('');
+                        $("#Eventnameattendees").text('');
+                        $("#PendingPayment").modal('show');
+                    }
+                }
+                else {
+                    $("#viewaccnumb").val('');
+                    $("#viewaccname").val('');
+                    $("#TxtReft").val('');
+                    $("#viewserfee").val('');
+                    $("#viewwithamount").val('');
+                    $("#viewtotal").val('');
+                    $("#viewcountry").val('');
+                    $("#viewbank").val('');
+                    $("#Viewdate").val('');
+                    $("#TxtStatus").val('');
+                    $("#Eventnameattendees").text('');
+                    $("#PendingPayment").modal('show');
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    }
+
+
+
+
+    //CALCULATE PERCENTAGE
+
+    //function percentage_2() {
+    //    var withdrawalAmt = $("#txtwithd").val().replace('@Model.currencyModel.CurrencyCode', "");
+    //    var Servicechargeper = 4;
+    //    var _calculateVal = withdrawalAmt * @Model?.lstsettings?.Value / 100;
+    //    _calculateVal = _calculateVal + @Model?.lstsettings?.FixedValue
+    //        $("#servicefee").val(_calculateVal);
+    //}
+    ///EXPORT CSV
+
+
+
+    function exportCSVExcelTransactionHistory() {
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `TransactionHistory_Registry_${formattedDate}.xls`;
+
+        const clonedTable = $('#TransactionHistory').clone();
+
+        //  clonedTable.find('th:last-child, td:last-child').remove();
+
+
+        clonedTable.find('thead tr th:eq(1) img').remove();
+        clonedTable.find('tbody tr td:eq(1) img').remove();
+
+        clonedTable.find('thead tr th:eq(2) img').remove();
+        clonedTable.find('tbody tr td:eq(2) img').remove();
+
+        // Remove the filter icon from the fourth column
+        clonedTable.find('thead tr th:eq(3) img').remove();
+        clonedTable.find('tbody tr td:eq(3) img').remove();
+
+        // Remove the filter icon from the fifth column
+        clonedTable.find('thead tr th:eq(4) img').remove();
+        clonedTable.find('tbody tr td:eq(4) img').remove();
+
+        clonedTable.find('thead tr th:eq(5) img').remove();
+        clonedTable.find('tbody tr td:eq(5) img').remove();
+
+        clonedTable.find('tbody tr td:nth-child(2)').each(function () {
+            const mobileNumber = $(this).text();
+            if (mobileNumber.startsWith('+')) {
+                $(this).text("'" + mobileNumber);
+            }
+        });
+
+        clonedTable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+    function exportCSVExcelPending() {
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `Pending_Registry_${formattedDate}.xls`;
+
+        const clonedTable = $('#PendingWithdrawals').clone();
+
+        clonedTable.find('th:last-child, td:last-child').remove();
+
+
+        clonedTable.find('thead tr th:eq(1) img').remove();
+        clonedTable.find('tbody tr td:eq(1) img').remove();
+
+
+
+        clonedTable.find('tbody tr td:nth-child(2)').each(function () {
+            const mobileNumber = $(this).text();
+            if (mobileNumber.startsWith('+')) {
+                $(this).text("'" + mobileNumber);
+            }
+        });
+
+        clonedTable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+
+
+    function exportCSVExcelRefund() {
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `Refund_Registry_${formattedDate}.xls`;
+
+        $('#Refunds').table2excel({
+            exclude: ".no-export",
+            filename: filename,
+            fileext: ".xls",
+            exclude_links: true,
+            exclude_inputs: true
+        });
+    }
+
+    //function exportCSVExcelPending() {
+    //    const currentDate = new Date();
+    //    const day = String(currentDate.getDate()).padStart(2, '0');
+    //    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    //    const year = currentDate.getFullYear();
+    //    const formattedDate = `${day}-${month}-${year}`;
+    //    const filename = `Pending_Registry_${formattedDate}.xls`;
+
+    //    $('#PendingWithdrawals').table2excel({
+    //        exclude: ".no-export",
+    //        filename: filename,
+    //        fileext: ".xls",
+    //        exclude_links: true,
+    //        exclude_inputs: true
+    //    });
+    //}
+
+
+
+    function exportCSVExcelBankDetails() {
+
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `Bank_Registry_${formattedDate}.xls`;
+
+        const clonedTable = $('#SavedBankDetails').clone();
+
+        clonedTable.find('th:last-child, td:last-child').remove();
+
+
+        clonedTable.find('th:last-child, td:last-child').remove();
+        clonedTable.find('th:eq(5), td:eq(5)').remove();
+
+
+        clonedTable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+
+
+    //PAID
+
+
+    function PaidProcess() {
+        var ObjData = {
+            transactionStatusId: 101,
+            transactionTypeId: 102
+        }
+        var Aurl = "/Finance/PaidWithdrawal";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            dataType: "json",
+            data: ObjData,
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        var createddate = returndateformat(Result.data[i].createdDate)
+                        rows += "<tr><td>Paid</td><td>" + createddate + "</td><td> @Model.currencyModel.CurrencyCode" + Result.data[i].amount + "</td><td><img src='/images/Show.png' onclick='showpaidDetails(" + Result.data[i].Id + ")' ></td></tr>";
+                    }
+                    $("#tblPaidlist").html(rows);
+                    //$("#PendingWithdrawals").modal('show');
+                }
+                else {
+
+                    //$("#PendingWithdrawals").modal('show');
+                }
+            },
+            error: function (request, error) {
+                //$("#PendingWithdrawals").modal('show');
+            }
+        });
+    }
+
+
+    //Paid View
+    function showpaidDetails(Id) {
+
+        var objdata = {
+            Id: Id
+        }
+        var Aurl = "/Finance/pendingWithdrawalView";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.success == true) {
+
+
+                    $("#TxtSttatus").val('Paid');
+                    $("#TxtSttatus").attr("readonly", "readonly");
+                    $("#TxtSttatus").css('background-color', '#32e3c9');
+
+                    $("#TxtRefp").val(Result.data[0].ReferenceType);
+                    $("#TxtRefp").attr("readonly", "readonly");
+
+                    $("#viewsaccnumb").val(Result.data[0].AccountNumber);
+                    $("#viewsaccnumb").attr("readonly", "readonly");
+                    $("#viewsaccname").val(Result.data[0].AccountName);
+                    $("#viewsaccname").attr("readonly", "readonly");
+                    $("#vieewserfee").val(Result.data[0].ServiceFee);
+                    $("#vieewserfee").attr("readonly", "readonly");
+                    $("#viewswithamount").val(Result.data[0].WithdrawalAmount);
+                    $("#viewswithamount").attr("readonly", "readonly");
+                    $("#viewstotal").val(Result.data[0].TotalWithdrawalAmount);
+                    $("#viewstotal").attr("readonly", "readonly");
+                    $("#viewscountry").val(Result.data[0].CountryName);
+                    $("#viewscountry").attr("readonly", "readonly");
+                    $("#viewsbank").val(Result.data[0].BankName);
+                    $("#viewsbank").attr("readonly", "readonly");
+                    var enddatee = returndateformat(Result.data[0].CreatedDate);
+                    $("#Viewsdate").val(enddatee);
+                    // $("#Viewsdate").val(Result.data[0].CreatedDate);
+                    $("#Viewsdate").attr("readonly", "readonly");
+
+
+                    $("#PaidPayment").modal('show');
+                }
+                else {
+                    $("#Eventnameattendees").text('');
+                    $("#PaidPayment").modal('show');
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    }
+
+    function BindBankWithdrawal() {
+        var ObjData = {
+            BankId: 0
+        }
+        var Aurl = "/Finance/GetWithdrawalBank";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: ObjData,
+            success: function (Result) {
+                if (Result.success == true) {
+                    var bank = '<option value="0">Select</option>';
+                    for (i = 0; i < Result.data.length; i++) {
+                        bank += "<option value=" + Result.data[i].BankId + ">" + Result.data[i].NickName + "</option>";
+                    }
+                    $("#txtmo").html(bank);
+                }
+                else {
+
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    }
+
+    function BindAccountNo() {
+        var ObjData = {
+            BankId: $("#txtmo option:selected").val()
+        }
+        var Aurl = "/Finance/GetWithdrawalBank";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: ObjData,
+            success: function (Result) {
+
+                if (Result.success == true) {
+                    $("#txtaccountno").val(Result.data[0].AccountNumber);
+                }
+                else {
+                    $("#txtaccountno").val('');
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    }
+
+    //CROSS
+    $('#transactioncross').click(function (e) {
+        window.location.href = "/Dashboard/Dashboard";
+    })
+    $('#savedbankcross').click(function (e) {
+        window.location.href = "/Dashboard/Dashboard";
+    })
+    $('#pendingcross').click(function (e) {
+        window.location.href = "/Dashboard/Dashboard";
+    })
+    $('#pendcross').click(function (e) {
+        window.location.href = "/Dashboard/Dashboard";
+    })
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#transsearch").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#tbltransactionHistory tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        //Students
+        const redirectStudents = new URLSearchParams(window.location.search);
+        const communityStudent = redirectStudents.get('id');
+        if (communityStudent == 'save') {
+            $('[href="#PendingWithdrawals"]').click();
+        }
+    });
+
+    $("#cancelwithdrawal").on("click", function () {
+        window.location.reload();
+    });
+
+            function percentage_2() {
+            var withdrawalAmt = $("#txtwithd").val().replace('@Model.currencyModel.CurrencyCode', "");
+            var Servicechargeper = 4;
+            var _calculateVal = withdrawalAmt * @Model?.lstsettings?.Value / 100;
+            _calculateVal = _calculateVal + @Model?.lstsettings?.FixedValue
+                $("#servicefee").val(_calculateVal);
+        }
+</script>

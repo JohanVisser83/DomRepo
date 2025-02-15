@@ -1,0 +1,366 @@
+﻿@model NewCircularSubscription.Models.CommunityDetailsModel;
+@{
+    Layout = "_Layout";
+}
+<!-- ===========================
+   Start Main body  ============================ -->
+
+<style>
+
+    .spinner-border-custom {
+        width: 3rem;
+        height: 3rem;
+        border-width: 0.25rem;
+        color: grey;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        vertical-align: middle;
+    }
+
+    .loading-text {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: grey;
+    }
+
+    .button-class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<section class="member-form">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="content-box">
+                    <h3>Security checkpoint</h3>
+                    @if(Model != null && Model.lstCommunitydetails.Count() > 0)
+                    {
+                        <div class="text-para">
+                            <p>To ensure the utmost security, you'll need your access code to join <b>@Model.lstCommunitydetails.FirstOrDefault().CommunityName</b>. You should have received this code from your community manager via email.</p>
+
+                            <p>
+                                No access code? No problem, <a href="https://circularapp.io/contact/" target="_blank">contact us</a> and we'll assist you promptly.<br>
+                                Join us today and become part of our exclusive network!
+                            </p>
+
+                        </div>
+                    }
+                    
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Full name</label>
+                                    <input type="text" class="form-control" id="txtfullname">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Mobile number</label>
+                                    @* <input type="text" class="form-control" id="txtmobileno"> *@
+                                    <div class="input-group mb-3 form-control">
+                                        <div class="input-group-prepend">
+                                            <select class="vodiapicker" asp-items="@(new SelectList(Model.lstCountryName,"Code","Name"))" id="ddlCountryCode">
+                                              
+
+                                                @foreach (var a in Model.lstCountryName)
+                                                {
+
+                                                    <option class="test" data-thumbnail="@a.Desc" id="countrycode">
+                                                        @a.Code
+                                                    </option>
+
+                                                }
+                                            </select>
+
+                                            <div class="lang-select">
+                                                <button type="button" class="btn-select border-right-0" value=""></button>
+                                                <div class="b">
+                                                    <ul id="a"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control border-left-0" aria-label="Text input with segmented dropdown button" id="txtmobileno" maxlength="15">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Access code</label>
+                                    <input type="text" class="form-control" id="txtAccessCode">
+                                    <span id="error-message" style="display:none;"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                               @* <button id="ReqAccessbtn" type="button">Join Community</button>*@
+
+                                <button id="ReqAccessbtn" type="button" class="button-class has-spinner">
+                                    <span class="button-text">Join Community</span>
+                                    <span class="loading-text" style="display:none;">
+                                        <span class="spinner-border spinner-border-custom" role="status" aria-hidden="true"></span>
+                                        Loading...
+                                    </span>
+                                </button>
+
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade otp-popup" id="Verifyotp-popup" tabindex="-1" aria-labelledby="otp-popup" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <h3>Security checkpoint</h3>
+                <p>
+                    You have received an OTP registration code in your mobile.
+                    Please enter the code to confirm your account and complete the sign-up process.
+                </p>
+               
+                    <div class="form-group">
+                        <label>One Time Password</label>
+                        <input type="text" class="form-control" id="otp"  maxlength="5">
+                    <span id="error-otp" style="display:none;"></span>
+                    <p class="resend-otp" id="resend-text">
+                        Didn't receive the OTP?
+                        <a id="resendLink" onclick="resendOTP()">Resend OTP</a>
+                    </p>
+                    <p class="resend-otp" id="sending-text" style="display:none; font-weight: 700;">
+                        <b>Sending otp...</b>
+                    </p>
+                    </div>
+                   
+                <button type="button" class="btn mt-4" id="otpbtn">
+                    <span class="button-text">Proceed</span>
+                    <span class="loading-text" style="display:none;">
+                        <span class="spinner-border spinner-border-custom" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Javascript Files
+       ================================================== -->
+
+<script type="text/javascript" src="~/js/jquery.min.js"></script>
+
+
+
+
+<script>
+
+   
+    $(document).on("click", ".button-class", function () {
+      
+        event.preventDefault();  // Prevent the default form submission
+
+
+        var $button = $(this);
+        var $spinner = $button.find('.spinner-border-custom');
+        var $buttonText = $button.find('.button-text');
+        var $loadingText = $button.find('.loading-text');
+
+        // Show the spinner
+        $buttonText.hide();
+        $loadingText.show(); 
+        $spinner.show();
+        $button.prop('disabled', true); 
+
+        var fullname = $("#txtfullname").val();
+        var mobileno = $("#txtmobileno").val();
+        var accesscode = $("#txtAccessCode").val();
+        var countryCode = $('#countryCodeIDS').val().trim();
+
+        var formdata = new FormData();
+        formdata.append('Fullname', fullname);
+        formdata.append('Mobile', mobileno);
+        formdata.append('CountryCode', countryCode)
+        formdata.append('AccessCode', accesscode);
+       
+
+        $.ajax({
+            type: "POST",
+            url: '/AccessCodeRequired/SendOTPOnMobile',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: "json",
+
+            success: function (response) {
+                $("#Verifyotp-popup").modal('show');
+                
+            },
+            error: function (response) {
+            },
+            complete: function () {
+                
+                $loadingText.hide();
+                $spinner.hide();
+                $buttonText.show();
+                $button.prop('disabled', false);
+            }
+        });
+    });
+
+    $("#otpbtn").click(function () {
+        var otp = $("#otp").val();
+
+        var $button = $(this);
+        var $spinner = $button.find('.spinner-border-custom');
+        var $buttonText = $button.find('.button-text');
+        var $loadingText = $button.find('.loading-text');
+
+        
+        $buttonText.hide();
+        $loadingText.show();
+        $spinner.show();
+        $button.prop('disabled', true); 
+
+        $.ajax({
+            url: '/AccessCodeRequired/VerifyOTP',
+            type: 'POST',
+            data: {
+                Otp: otp
+            },
+            dataType: 'json',
+            success: function (response) {
+               
+                if (response.success == true) {
+                   
+                    $("#otp").val('');
+                    $("#Verifyotp-popup").modal('hide');
+                    $("#error-message").text(response.message).hide();
+                   
+                    window.location.href = response.redirectUrl;
+                }
+                else
+                {
+                    $("#otp").val('');
+                    if (response.message != 'Invalid OTP.') {
+                        $("#Verifyotp-popup").modal('hide');
+                        $("#error-message").text(response.message).show();
+                    }
+                    else {
+                        $("#error-otp").text(response.message).show();
+                    }
+                }
+            },
+             error: function (response) {
+                 console.log('failded')
+                     $("#error-message").text("An error occurred. Please try again.").show();
+             },
+            complete: function () {
+                
+                $loadingText.hide();
+                $spinner.hide();
+                $buttonText.show();
+                $button.prop('disabled', false);
+            }
+            
+        });
+    })
+
+
+    function resendOTP() {
+
+
+        var resendText = $('#resend-text');
+        var sendingText = $('#sending-text');
+
+        resendText.hide();
+        sendingText.show();
+
+        var otp = $('#otp').val();
+
+        $.ajax({
+            url: '/AccessCodeRequired/ResendOTP',
+            type: 'POST',
+            data: {
+                otp: otp
+            },
+            dataType: 'json',
+            success: function (response) {
+
+                sendingText.hide();
+                resendText.show();
+
+                $("#Verifyotp-popup").modal('show');
+            },
+            error: function (response) {
+
+                sendingText.hide();
+                resendText.show();
+            }
+        });
+
+    }
+
+
+
+</script>
+<input type="hidden" id="countryCodeIDS" />
+<script type="text/javascript">
+        var langArray = [];
+      $('.vodiapicker option').each(function(){
+        var img = $(this).attr("data-thumbnail");
+        var text = this.innerText;
+        var value = $(this).val();
+        var item = '<li><img src="'+ img +'" alt="" value="'+value+'"/><span>'+ text +'</span></li>';
+        langArray.push(item);
+      })
+ 
+      $('#a').html(langArray);
+ 
+      //Set the button value to the first el of the array
+      $('.btn-select').html(langArray[0]);
+      $('.btn-select').attr('value', 'en');
+ 
+      //change button stuff on click
+      $('#a li').click(function(){
+         var img = $(this).find('img').attr("src");
+         var value = $(this).find('img').attr('value');
+         var text = this.innerText;
+         var item = '<li><img src="'+ img +'" alt="" /><span>'+ text +'</span></li>';
+        $('.btn-select').html(item);
+        $('.btn-select').attr('value', value);
+        $(".b").toggle();
+        $('#countryCodeIDS').val(text);
+        //console.log(value);
+      });
+ 
+      $(".btn-select").click(function(){
+              $(".b").toggle();
+          });
+ 
+      //check local storage for the lang
+      var sessionLang = localStorage.getItem('lang');
+      if (sessionLang){
+        //find an item with value of sessionLang
+        var langIndex = langArray.indexOf(sessionLang);
+        $('.btn-select').html(langArray[langIndex]);
+        $('.btn-select').attr('value', sessionLang);
+      } else {
+         var langIndex = langArray.indexOf('ch');
+        console.log(langIndex);
+        $('.btn-select').html(langArray[langIndex]);
+        //$('.btn-select').attr('value', 'en');
+      }
+</script>
+

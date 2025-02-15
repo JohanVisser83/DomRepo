@@ -1,0 +1,1577 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\CircularWeb.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CircularWeb.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GenerateAttendanceQR\\1_9a42.png",
+      "PackagePath": "staticwebassets\\GenerateAttendanceQR\\1_9a42.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\+919718511462_7038.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\+919718511462_7038.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\a_0be1.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\a_0be1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\a_2f53.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\a_2f53.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\a_50ea.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\a_50ea.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\a_dcb1.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\a_dcb1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\a_ef31.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\a_ef31.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_177f.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_177f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_1ab9.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_1ab9.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_2a48.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_2a48.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_66cf.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_66cf.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_79c6.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_79c6.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_8b65.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_8b65.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_8db6.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_8db6.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_91fe.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_91fe.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_935a.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_935a.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_a9bf.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_a9bf.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_cc2b.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_cc2b.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aa_d3fb.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aa_d3fb.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\abc_8e3f.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\abc_8e3f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\abc_ca66.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\abc_ca66.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\ac_87ee.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\ac_87ee.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\add_064f.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\add_064f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\aparanad_1578.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\aparanad_1578.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\app_31ec.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\app_31ec.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\app_a9b4.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\app_a9b4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\app_cc7a.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\app_cc7a.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\app_f793.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\app_f793.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\asaa_0395.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\asaa_0395.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\asaa_4ad9.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\asaa_4ad9.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\asaa_72bf.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\asaa_72bf.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\asas_b019.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\asas_b019.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\axza_68c1.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\axza_68c1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\axza_7a19.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\axza_7a19.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\axza_ed21.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\axza_ed21.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bb_7e66.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bb_7e66.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bhb_e19f.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bhb_e19f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bhmmmm_3c3a.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bhmmmm_3c3a.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bika_07a2.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bika_07a2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bike _f7d4.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bike _f7d4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bike_0f43.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bike_0f43.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bike_15ec.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bike_15ec.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bike_8aca.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bike_8aca.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bus_0c6b.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bus_0c6b.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\bus_abb6.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\bus_abb6.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\cargadi_10ff.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\cargadi_10ff.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\cargadi_397c.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\cargadi_397c.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\cargadi_8923.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\cargadi_8923.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\cargadi_bd6d.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\cargadi_bd6d.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\cargadi_c034.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\cargadi_c034.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\cc_d7d6.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\cc_d7d6.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\dcsds_7089.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\dcsds_7089.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\dd_a825.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\dd_a825.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\dddd_1a57.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\dddd_1a57.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\dddd_8c1d.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\dddd_8c1d.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\ddddd_5019.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\ddddd_5019.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\ddddd_aa65.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\ddddd_aa65.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\dsfgh_fb74.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\dsfgh_fb74.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\g_bee8.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\g_bee8.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\g_e072.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\g_e072.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\hh_b96f.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\hh_b96f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\nova_4570.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\nova_4570.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\nova_67bd.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\nova_67bd.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_2050.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_2050.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_26f7.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_26f7.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_5960.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_5960.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_6d23.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_6d23.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_8695.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_8695.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_8a3e.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_8a3e.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_bc74.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_bc74.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\q_e4b6.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\q_e4b6.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\qrcode.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\qrcode.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\resting_8232.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\resting_8232.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\rr_5e64.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\rr_5e64.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\rrr_b8af.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\rrr_b8af.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\schooty_21c1.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\schooty_21c1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sd_117a.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sd_117a.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sd_589e.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sd_589e.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sd_cb9b.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sd_cb9b.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sd_dce7.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sd_dce7.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sd_df39.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sd_df39.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sd_f078.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sd_f078.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sm_5ad7.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sm_5ad7.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\sm_d63c.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\sm_d63c.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\ss_b31b.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\ss_b31b.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\ss_f286.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\ss_f286.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\string1_2170.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\string1_2170.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\string1_93eb.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\string1_93eb.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\ws_1439.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\ws_1439.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\ws_764c.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\ws_764c.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\GeneratedQRCode\\y_db3d.png",
+      "PackagePath": "staticwebassets\\GeneratedQRCode\\y_db3d.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_0c31.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_0c31.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_1ae2.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_1ae2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_1ba7.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_1ba7.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_5988.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_5988.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_59ba.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_59ba.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_7f5f.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_7f5f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_b69a.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_b69a.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_bddc.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_bddc.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100+919718511462_f30d.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100+919718511462_f30d.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_13f1.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_13f1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_1b1e.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_1b1e.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_292e.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_292e.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_37ae.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_37ae.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_4c6f.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_4c6f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_5950.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_5950.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_7aea.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_7aea.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_7b54.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_7b54.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_8528.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_8528.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_9402.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_9402.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_b498.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_b498.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_d23b.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_d23b.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PaymentQRCode\\10100_dbbc.png",
+      "PackagePath": "staticwebassets\\PaymentQRCode\\10100_dbbc.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\10100_1d40.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\10100_1d40.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\10100_37c0.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\10100_37c0.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\10100_402d.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\10100_402d.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\10100_d712.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\10100_d712.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\a3_e190.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\a3_e190.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\a55_16b9.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\a55_16b9.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\aa44_8963.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\aa44_8963.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\aaa2_689c.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\aaa2_689c.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\ap10_bbb8.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\ap10_bbb8.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\app500_a85e.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\app500_a85e.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\asdsa665_5b30.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\asdsa665_5b30.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\f4_a9bc.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\f4_a9bc.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\ggh666_8038.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\ggh666_8038.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\hello12_0f63.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\hello12_0f63.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\hello12_1dad.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\hello12_1dad.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\hello12_2f84.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\hello12_2f84.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\hello12_469c.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\hello12_469c.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\hello12_a173.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\hello12_a173.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\newdisplay one1_f69f.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\newdisplay one1_f69f.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\ws334_1df9.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\ws334_1df9.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\PriceDisplayQRCode\\ws334_69f5.png",
+      "PackagePath": "staticwebassets\\PriceDisplayQRCode\\ws334_69f5.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\Loader.css",
+      "PackagePath": "staticwebassets\\css\\Loader.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\buttonLoader.css",
+      "PackagePath": "staticwebassets\\css\\buttonLoader.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\jquery-ui.css",
+      "PackagePath": "staticwebassets\\css\\jquery-ui.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\jquery.dataTables.min.css",
+      "PackagePath": "staticwebassets\\css\\jquery.dataTables.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\css\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\css\\style1.css",
+      "PackagePath": "staticwebassets\\css\\style1.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\AvenirNextLTPro-Bold.otf",
+      "PackagePath": "staticwebassets\\fonts\\AvenirNextLTPro-Bold.otf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\AvenirNextLTPro-It.otf",
+      "PackagePath": "staticwebassets\\fonts\\AvenirNextLTPro-It.otf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\AvenirNextLTPro-Regular.otf",
+      "PackagePath": "staticwebassets\\fonts\\AvenirNextLTPro-Regular.otf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\Helvetica-Bold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Helvetica-Bold.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\Helvetica.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Helvetica.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\Inter-VariableFont_slnt,wght.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-VariableFont_slnt,wght.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\fontawesome-webfont5b62.eot",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont5b62.eot"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\fontawesome-webfont5b62.svg",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont5b62.svg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\fontawesome-webfont5b62.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont5b62.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\fontawesome-webfont5b62.woff",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont5b62.woff"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\fontawesome-webfont5b62.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont5b62.woff2"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\fontawesome-webfontd41d.eot",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfontd41d.eot"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\fonts\\helvetica-light-587ebe5a59211.ttf",
+      "PackagePath": "staticwebassets\\fonts\\helvetica-light-587ebe5a59211.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\01.png",
+      "PackagePath": "staticwebassets\\images\\01.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Add-Circle.png",
+      "PackagePath": "staticwebassets\\images\\Add-Circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Award-blue.png",
+      "PackagePath": "staticwebassets\\images\\Award-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Award.png",
+      "PackagePath": "staticwebassets\\images\\Award.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Bag 6-blue.png",
+      "PackagePath": "staticwebassets\\images\\Bag 6-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Bag 6.png",
+      "PackagePath": "staticwebassets\\images\\Bag 6.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Black-Download.png",
+      "PackagePath": "staticwebassets\\images\\Black-Download.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Calender 2.png",
+      "PackagePath": "staticwebassets\\images\\Calender 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Calender-2.png",
+      "PackagePath": "staticwebassets\\images\\Calender-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Calender.png",
+      "PackagePath": "staticwebassets\\images\\Calender.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Category-blue.png",
+      "PackagePath": "staticwebassets\\images\\Category-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Category.png",
+      "PackagePath": "staticwebassets\\images\\Category.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\CleanShot.png",
+      "PackagePath": "staticwebassets\\images\\CleanShot.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Delete2.png",
+      "PackagePath": "staticwebassets\\images\\Delete2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Document-Justify.png",
+      "PackagePath": "staticwebassets\\images\\Document-Justify.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Document-add.png",
+      "PackagePath": "staticwebassets\\images\\Document-add.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\DocumentAdd-2.png",
+      "PackagePath": "staticwebassets\\images\\DocumentAdd-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Dollar-Circle.png",
+      "PackagePath": "staticwebassets\\images\\Dollar-Circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Down Square 1.png",
+      "PackagePath": "staticwebassets\\images\\Down Square 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Down-Square1.png",
+      "PackagePath": "staticwebassets\\images\\Down-Square1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Download QR Code - Attendance Icon.png",
+      "PackagePath": "staticwebassets\\images\\Download QR Code - Attendance Icon.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Download-white.png",
+      "PackagePath": "staticwebassets\\images\\Download-white.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Edit-Square.png",
+      "PackagePath": "staticwebassets\\images\\Edit-Square.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\FilledPin.png",
+      "PackagePath": "staticwebassets\\images\\FilledPin.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Filter-1.png",
+      "PackagePath": "staticwebassets\\images\\Filter-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Filter-black.png",
+      "PackagePath": "staticwebassets\\images\\Filter-black.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Filter1.png",
+      "PackagePath": "staticwebassets\\images\\Filter1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Filter_up.png",
+      "PackagePath": "staticwebassets\\images\\Filter_up.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Form- DPT-3_AA3230082.xlsx",
+      "PackagePath": "staticwebassets\\images\\Form- DPT-3_AA3230082.xlsx"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Image.png",
+      "PackagePath": "staticwebassets\\images\\Image.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Information-Circle.png",
+      "PackagePath": "staticwebassets\\images\\Information-Circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Input-Left-Side-Base.png",
+      "PackagePath": "staticwebassets\\images\\Input-Left-Side-Base.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Left-Square.png",
+      "PackagePath": "staticwebassets\\images\\Left-Square.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Location-Tick.png",
+      "PackagePath": "staticwebassets\\images\\Location-Tick.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Lock-3.png",
+      "PackagePath": "staticwebassets\\images\\Lock-3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Message-blue.png",
+      "PackagePath": "staticwebassets\\images\\Message-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Password 1.png",
+      "PackagePath": "staticwebassets\\images\\Password 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Password-blue.png",
+      "PackagePath": "staticwebassets\\images\\Password-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Pin.png",
+      "PackagePath": "staticwebassets\\images\\Pin.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Profile Square-blue.png",
+      "PackagePath": "staticwebassets\\images\\Profile Square-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Profile Square.png",
+      "PackagePath": "staticwebassets\\images\\Profile Square.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\QR_code.png",
+      "PackagePath": "staticwebassets\\images\\QR_code.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Rectangle.png",
+      "PackagePath": "staticwebassets\\images\\Rectangle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Right-Square.png",
+      "PackagePath": "staticwebassets\\images\\Right-Square.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Right-circle.png",
+      "PackagePath": "staticwebassets\\images\\Right-circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Search 2.png",
+      "PackagePath": "staticwebassets\\images\\Search 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Search-2.png",
+      "PackagePath": "staticwebassets\\images\\Search-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Setting 2.png",
+      "PackagePath": "staticwebassets\\images\\Setting 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Setting-blue.png",
+      "PackagePath": "staticwebassets\\images\\Setting-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Show.png",
+      "PackagePath": "staticwebassets\\images\\Show.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Tick-Circle.png",
+      "PackagePath": "staticwebassets\\images\\Tick-Circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Ticket 2.png",
+      "PackagePath": "staticwebassets\\images\\Ticket 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Ticket-black.png",
+      "PackagePath": "staticwebassets\\images\\Ticket-black.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Ticket-blue.png",
+      "PackagePath": "staticwebassets\\images\\Ticket-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Time-Circle-1.png",
+      "PackagePath": "staticwebassets\\images\\Time-Circle-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Voice Shape 2.png",
+      "PackagePath": "staticwebassets\\images\\Voice Shape 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Volume High.png",
+      "PackagePath": "staticwebassets\\images\\Volume High.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Volume-High.png",
+      "PackagePath": "staticwebassets\\images\\Volume-High.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Wallet-blue.png",
+      "PackagePath": "staticwebassets\\images\\Wallet-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Wallet-white.png",
+      "PackagePath": "staticwebassets\\images\\Wallet-white.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\Wifi.png",
+      "PackagePath": "staticwebassets\\images\\Wifi.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\account-white.png",
+      "PackagePath": "staticwebassets\\images\\account-white.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\accounts-blue.png",
+      "PackagePath": "staticwebassets\\images\\accounts-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\accounts-white.png",
+      "PackagePath": "staticwebassets\\images\\accounts-white.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\add-Bimg.png",
+      "PackagePath": "staticwebassets\\images\\add-Bimg.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\add-image-icon.png",
+      "PackagePath": "staticwebassets\\images\\add-image-icon.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\attached-pdf.png",
+      "PackagePath": "staticwebassets\\images\\attached-pdf.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\bg-login.png",
+      "PackagePath": "staticwebassets\\images\\bg-login.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\check.png",
+      "PackagePath": "staticwebassets\\images\\check.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\checkins.png",
+      "PackagePath": "staticwebassets\\images\\checkins.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\cil_qr-code-blue.png",
+      "PackagePath": "staticwebassets\\images\\cil_qr-code-blue.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\cil_qr-code-white.png",
+      "PackagePath": "staticwebassets\\images\\cil_qr-code-white.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\cil_qr-code.png",
+      "PackagePath": "staticwebassets\\images\\cil_qr-code.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\cil_qr-code1.png",
+      "PackagePath": "staticwebassets\\images\\cil_qr-code1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\cir-logo.png",
+      "PackagePath": "staticwebassets\\images\\cir-logo.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\circular_update.png",
+      "PackagePath": "staticwebassets\\images\\circular_update.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\cross-big.png",
+      "PackagePath": "staticwebassets\\images\\cross-big.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\cross2.png",
+      "PackagePath": "staticwebassets\\images\\cross2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\download (1)_8a81.jpg",
+      "PackagePath": "staticwebassets\\images\\download (1)_8a81.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\download_762b.jpg",
+      "PackagePath": "staticwebassets\\images\\download_762b.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\edit.png",
+      "PackagePath": "staticwebassets\\images\\edit.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\images\\favicon.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\feature.png",
+      "PackagePath": "staticwebassets\\images\\feature.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\fingerprint-circle-black.png",
+      "PackagePath": "staticwebassets\\images\\fingerprint-circle-black.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\fingerprint-circle.png",
+      "PackagePath": "staticwebassets\\images\\fingerprint-circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\forget-img.png",
+      "PackagePath": "staticwebassets\\images\\forget-img.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\ft-logo.png",
+      "PackagePath": "staticwebassets\\images\\ft-logo.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\images.jpg",
+      "PackagePath": "staticwebassets\\images\\images.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\line-message.png",
+      "PackagePath": "staticwebassets\\images\\line-message.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\link.png",
+      "PackagePath": "staticwebassets\\images\\link.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\login-bg.png",
+      "PackagePath": "staticwebassets\\images\\login-bg.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\login-image.png",
+      "PackagePath": "staticwebassets\\images\\login-image.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\login-img.png",
+      "PackagePath": "staticwebassets\\images\\login-img.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\login_logo.png",
+      "PackagePath": "staticwebassets\\images\\login_logo.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\logo-black.png",
+      "PackagePath": "staticwebassets\\images\\logo-black.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\logout-purple.png",
+      "PackagePath": "staticwebassets\\images\\logout-purple.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\message.png",
+      "PackagePath": "staticwebassets\\images\\message.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\otp-bg.png",
+      "PackagePath": "staticwebassets\\images\\otp-bg.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\pdf2.png",
+      "PackagePath": "staticwebassets\\images\\pdf2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\photo-1570295999919-56ceb5ecca61.jpg",
+      "PackagePath": "staticwebassets\\images\\photo-1570295999919-56ceb5ecca61.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\select-arrow.png",
+      "PackagePath": "staticwebassets\\images\\select-arrow.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\shape1.9.png",
+      "PackagePath": "staticwebassets\\images\\shape1.9.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\up-arrow.png",
+      "PackagePath": "staticwebassets\\images\\up-arrow.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\images\\white-down-sqaure.png",
+      "PackagePath": "staticwebassets\\images\\white-down-sqaure.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Bag 4.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Bag 4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Camera 1.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Camera 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Chart.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Chart.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Circular_Logo_White.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Circular_Logo_White.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Delete 1.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Delete 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Dislike.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Dislike.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Document Align Center 6.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Document Align Center 6.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Document Download 3.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Document Download 3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Down Square 2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Down Square 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Download.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Download.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Ellipse 1.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Ellipse 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Ellipse 2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Ellipse 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Ellipse 3.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Ellipse 3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Ellipse 7.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Ellipse 7.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Ellipse 8.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Ellipse 8.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\FAQ Circle.png",
+      "PackagePath": "staticwebassets\\img\\circular\\FAQ Circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\FAQ Circle2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\FAQ Circle2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Folder 3.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Folder 3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Group 1688.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Group 1688.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Group 1700.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Group 1700.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Happy 1.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Happy 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Heart 3.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Heart 3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Heart-white.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Heart-white.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Left Square 2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Left Square 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Left Square 4.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Left Square 4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Like 1.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Like 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Lock 1.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Lock 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Logout.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Logout.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Message 12.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Message 12.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Scan 3.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Scan 3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Search 2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Search 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Setting.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Setting.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Show.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Show.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Show2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Show2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Up Square 4.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Up Square 4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Upload.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Upload.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Vector.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Vector.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\Wallet.png",
+      "PackagePath": "staticwebassets\\img\\circular\\Wallet.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\cart.png",
+      "PackagePath": "staticwebassets\\img\\circular\\cart.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\coming.png",
+      "PackagePath": "staticwebassets\\img\\circular\\coming.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\ewallet.png",
+      "PackagePath": "staticwebassets\\img\\circular\\ewallet.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\login_logo.png",
+      "PackagePath": "staticwebassets\\img\\circular\\login_logo.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\maxim-hopman 2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\maxim-hopman 2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\minus.png",
+      "PackagePath": "staticwebassets\\img\\circular\\minus.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\payment-unsuccess.png",
+      "PackagePath": "staticwebassets\\img\\circular\\payment-unsuccess.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\payment.png",
+      "PackagePath": "staticwebassets\\img\\circular\\payment.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\plus.png",
+      "PackagePath": "staticwebassets\\img\\circular\\plus.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\report.png",
+      "PackagePath": "staticwebassets\\img\\circular\\report.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\star.png",
+      "PackagePath": "staticwebassets\\img\\circular\\star.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\circular\\wallet2.png",
+      "PackagePath": "staticwebassets\\img\\circular\\wallet2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\login-bg.jpg",
+      "PackagePath": "staticwebassets\\img\\login-bg.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\img\\login-logo.jpg",
+      "PackagePath": "staticwebassets\\img\\login-logo.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\calender.js",
+      "PackagePath": "staticwebassets\\js\\calender.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\cropbox.js",
+      "PackagePath": "staticwebassets\\js\\cropbox.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\custom.js",
+      "PackagePath": "staticwebassets\\js\\custom.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\html5-qrcode.min.js",
+      "PackagePath": "staticwebassets\\js\\html5-qrcode.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\huicalendar.js",
+      "PackagePath": "staticwebassets\\js\\huicalendar.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\jquery-ui.js",
+      "PackagePath": "staticwebassets\\js\\jquery-ui.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\jquery.buttonLoader.js",
+      "PackagePath": "staticwebassets\\js\\jquery.buttonLoader.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\jquery.buttonLoader.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.buttonLoader.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\jquery.dataTables.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.dataTables.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\jquery.js",
+      "PackagePath": "staticwebassets\\js\\jquery.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\js\\tableHTMLExport.js",
+      "PackagePath": "staticwebassets\\js\\tableHTMLExport.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.CircularWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.build.CircularWeb.props",
+      "PackagePath": "build\\CircularWeb.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.CircularWeb.props",
+      "PackagePath": "buildMultiTargeting\\CircularWeb.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildTransitive.CircularWeb.props",
+      "PackagePath": "buildTransitive\\CircularWeb.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

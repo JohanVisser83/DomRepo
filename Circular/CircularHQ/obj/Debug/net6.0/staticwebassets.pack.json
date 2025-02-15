@@ -1,0 +1,533 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CircularHQ.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CircularHQ.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\css\\jquery-ui.css",
+      "PackagePath": "staticwebassets\\css\\jquery-ui.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\css\\jquery.dataTables.min.css",
+      "PackagePath": "staticwebassets\\css\\jquery.dataTables.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\AvenirNextLTPro-Bold.otf",
+      "PackagePath": "staticwebassets\\fonts\\AvenirNextLTPro-Bold.otf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\AvenirNextLTPro-It.otf",
+      "PackagePath": "staticwebassets\\fonts\\AvenirNextLTPro-It.otf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\AvenirNextLTPro-Regular.otf",
+      "PackagePath": "staticwebassets\\fonts\\AvenirNextLTPro-Regular.otf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Helvetica-Bold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Helvetica-Bold.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Helvetica.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Helvetica.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-Black.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Black.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-Bold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Bold.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-ExtraBold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-ExtraBold.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-ExtraLight.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-ExtraLight.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-Light.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Light.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-Medium.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Medium.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-Regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Regular.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-SemiBold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-SemiBold.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-Thin.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-Thin.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\Inter-VariableFont_slnt,wght.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Inter-VariableFont_slnt,wght.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\fontawesome-webfont5b62.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont5b62.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\fonts\\helvetica-light-587ebe5a59211.ttf",
+      "PackagePath": "staticwebassets\\fonts\\helvetica-light-587ebe5a59211.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Add-Circle.png",
+      "PackagePath": "staticwebassets\\images\\Add-Circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Calender-2.png",
+      "PackagePath": "staticwebassets\\images\\Calender-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Category.png",
+      "PackagePath": "staticwebassets\\images\\Category.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Circular_Logo.png",
+      "PackagePath": "staticwebassets\\images\\Circular_Logo.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Circularlogo_long1.png",
+      "PackagePath": "staticwebassets\\images\\Circularlogo_long1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Close.png",
+      "PackagePath": "staticwebassets\\images\\Close.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Community-Management-pur.png",
+      "PackagePath": "staticwebassets\\images\\Community-Management-pur.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Community-Management.png",
+      "PackagePath": "staticwebassets\\images\\Community-Management.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Document-add.png",
+      "PackagePath": "staticwebassets\\images\\Document-add.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Down-Square1.png",
+      "PackagePath": "staticwebassets\\images\\Down-Square1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Edit.png",
+      "PackagePath": "staticwebassets\\images\\Edit.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Filter-black.png",
+      "PackagePath": "staticwebassets\\images\\Filter-black.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Filter.png",
+      "PackagePath": "staticwebassets\\images\\Filter.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Happy.png",
+      "PackagePath": "staticwebassets\\images\\Happy.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Lock.png",
+      "PackagePath": "staticwebassets\\images\\Lock.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Member-Management-pur.png",
+      "PackagePath": "staticwebassets\\images\\Member-Management-pur.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Member-Management.png",
+      "PackagePath": "staticwebassets\\images\\Member-Management.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Message-pur.png",
+      "PackagePath": "staticwebassets\\images\\Message-pur.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Message.png",
+      "PackagePath": "staticwebassets\\images\\Message.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\QR_CODE.png",
+      "PackagePath": "staticwebassets\\images\\QR_CODE.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Right-circle.png",
+      "PackagePath": "staticwebassets\\images\\Right-circle.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Scan.png",
+      "PackagePath": "staticwebassets\\images\\Scan.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Search-2.png",
+      "PackagePath": "staticwebassets\\images\\Search-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Send-pur.png",
+      "PackagePath": "staticwebassets\\images\\Send-pur.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Send.png",
+      "PackagePath": "staticwebassets\\images\\Send.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Show.png",
+      "PackagePath": "staticwebassets\\images\\Show.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\Time-Circle-1.png",
+      "PackagePath": "staticwebassets\\images\\Time-Circle-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\add-Bimg.png",
+      "PackagePath": "staticwebassets\\images\\add-Bimg.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\circular_update.png",
+      "PackagePath": "staticwebassets\\images\\circular_update.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\copy.png",
+      "PackagePath": "staticwebassets\\images\\copy.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\cross.png",
+      "PackagePath": "staticwebassets\\images\\cross.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\images\\favicon.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\login-img.png",
+      "PackagePath": "staticwebassets\\images\\login-img.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\logo-black.png",
+      "PackagePath": "staticwebassets\\images\\logo-black.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\logout-purple.png",
+      "PackagePath": "staticwebassets\\images\\logout-purple.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\select-arrow.png",
+      "PackagePath": "staticwebassets\\images\\select-arrow.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\images\\up-arrow.png",
+      "PackagePath": "staticwebassets\\images\\up-arrow.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\cropbox.js",
+      "PackagePath": "staticwebassets\\js\\cropbox.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\custom.js",
+      "PackagePath": "staticwebassets\\js\\custom.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\jquery-ui.js",
+      "PackagePath": "staticwebassets\\js\\jquery-ui.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\jquery.dataTables.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.dataTables.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\js\\tableHTMLExport.js",
+      "PackagePath": "staticwebassets\\js\\tableHTMLExport.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.CircularHQ.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.CircularHQ.props",
+      "PackagePath": "build\\CircularHQ.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.CircularHQ.props",
+      "PackagePath": "buildMultiTargeting\\CircularHQ.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.CircularHQ.props",
+      "PackagePath": "buildTransitive\\CircularHQ.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

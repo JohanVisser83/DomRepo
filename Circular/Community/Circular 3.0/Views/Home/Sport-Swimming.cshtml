@@ -1,0 +1,785 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+<div class="col-lg-11 col-md-11  col-sm-10 col-10">
+    <div class="body-content">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="sidebar mt-38">
+                    <ul class="nav nav-tabs tab-data message-tab">
+                        <li>
+                            <p class="tab-text">Sports</p>
+                        </li>
+                        <li><a data-toggle="tab" href="#SportsManagement" class="active">Sports management</a></li>
+                        <li><a data-toggle="tab" href="#Rankings">Rankings</a></li>
+                        <li><a data-toggle="tab" href="#PlayerStatistics">Player statistics</a></li>
+                        <li><a data-toggle="tab" href="#SeasonResults">Season results</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="tab-content ">
+                    <!-- @* =====SportsManagement Groups =====*@ -->
+                    <div id="SportsManagement" class="tab-pane fade new-event active show">
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+                                    <button type="button" class="cross ml-3">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row custom-group-area">
+                            <!--  @* ====col-4====*@ -->
+                            <div class="col-lg-4 ">
+                                <div class=" border-bx-area ">
+                                    <div class="table-responsive h-100vh overflow-auto">
+                                        <table id="swimming" class="table table-sports">
+                                            <thead>
+                                                <tr>
+                                                    <th>Activites</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Rugby</td>
+                                                    <td><span class=""><img src="images/Delete 2.png"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cricket</td>
+                                                    <td><span class=""><img src="images/Delete 2.png"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hockey</td>
+                                                    <td><span class=""><img src="images/Delete 2.png"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="active">Swimming</td>
+                                                    <td><span class=""><img src="images/Delete 2.png"></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @*=====end====*@ -->
+                            <!-- @* ====col-8===*@ -->
+                            <div class="col-lg-8 ">
+                                <div class=" border-bx-area ">
+                                    <ul class="nav nav-tabs sports-tabs">
+                                        <li><a data-toggle="tab" href="#Spotlight" class="active">Spotlight</a></li>
+                                        <li><a data-toggle="tab" href="#Programmes">Programmes</a></li>
+                                        <li><a data-toggle="tab" href="#Results">Results</a></li>
+                                        <li><a data-toggle="tab" href="#ArchivedResults">Archived results</a></li>
+                                    </ul>
+                                    <div class="tab-content pb-0">
+                                        <!-- @* =====Activities=====*@ -->
+                                        <div id="Spotlight" class="tab-pane fade active show h-100vh overflow-auto">
+                                            <div class="col-lg-12 p-6">
+                                                <p class="border-bottom">Spotlight information</p>
+                                                <div class="form-group ">
+                                                    <label>Spotlight title</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label>Time</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label>Date</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label>Location</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div>
+                                                    <label>Upload a cover image</label>
+                                                    <div class="form-group  add-icon-bx">
+                                                        <div class="form-control  pt-3"></div>
+                                                        <div class="add-icon center-dateicon">
+                                                            <input type="file" name="myfile" class="form-control">
+                                                            <img src="images/add-image-icon.png">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label>Select a programme</label>
+                                                    <select class="form-control">
+                                                        <option selected></option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="">
+                                                    <button type="button" class="btn btn-lumo-green btn-block">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ====end==== -->
+                                        <!-- @* =====Team=====*@ -->
+                                        <div id="Programmes" class="tab-pane fade ">
+                                            <div class="table-responsive h-100vh overflow-auto">
+                                                <table class="table border-radius-0 attendence">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Time</th>
+                                                            <th>Programme</th>
+                                                            <th>Archive</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>13 March 2023, Saturday</td>
+                                                            <td>07:00am</td>
+                                                            <td>A Team Swimming Gala <span class="ml-2"> <img src="images/edit.png"></span></td>
+                                                            <td><img src="images/Black-Download.png"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>13 March 2023, Saturday</td>
+                                                            <td>14:25am</td>
+                                                            <td>B Team Swimming Gala <span class="ml-2"> <img src="images/edit.png"></span></td>
+                                                            <td><img src="images/Black-Download.png"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button type="button" class="btn btn-block  btn-blue "><span class="mr-2"><img src="images/Add-Circle.png"></span>Add a new team name</button>
+                                            <div class="program">
+                                                <div class="row p-6">
+                                                    <div class="col-md-12 ">
+                                                        <div class="form-group">
+                                                            <label class="d-none">Programme title</label>
+                                                            <div class="add-icon-bx">
+                                                                <input class="form-control" value="A Team Swimming Gala"></input>
+                                                                <div class="add-icon ">
+                                                                    <input type="file" name="myfile" class="form-control">
+                                                                    <img src="images/edit.png">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 ">
+                                                        <button type="button" class="btn btn-lumo-blue">Add a heat</button>
+                                                    </div>
+                                                </div>
+                                                <div class="table-responsive h-100vh overflow-auto">
+                                                    <table id="" class="table attendence ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Time</th>
+                                                                <th>Heat</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>07:00am</td>
+                                                                <td>Under 14 Breaststroke 50m <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td><span class="ml-2"><img src="images/Delete 2.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07:05am</td>
+                                                                <td>Under 14 Breaststroke 50m <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td><span class="ml-2"><img src="images/Delete 2.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07:00am</td>
+                                                                <td>Under 14 Breaststroke 50m <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td><span class="ml-2"><img src="images/Delete 2.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07:00am</td>
+                                                                <td>Under 14 Breaststroke 50m <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td><span class="ml-2"><img src="images/Delete 2.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07:00am</td>
+                                                                <td>Under 14 Breaststroke 50m <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td><span class="ml-2"><img src="images/Delete 2.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>07:00am</td>
+                                                                <td>Under 14 Breaststroke 50m <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td><span class="ml-2"><img src="images/Delete 2.png"></span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-12  mb-4">
+                                                    <button type="button" class="btn btn-block btn-lumo-gray">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--  @*==end===*@ -->
+                                        <!-- @* =====Fixtures=====*@ -->
+                                        <div id="Fixtures" class="tab-pane fade ">
+                                            <div class="top-blue-area">
+                                                <div class="col-lg-5">
+                                                    <div class="form-group ">
+                                                        <select class="form-control">
+                                                            <option selected>Select a team</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive  h-100vh overflow-auto">
+                                                <table class="table table-gray border-radius-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date<img src="images/edit.png" class="ml-3"></th>
+                                                            <th>Time</th>
+                                                            <th>Fixture</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>3 March 2023, Saturday</td>
+                                                            <td>14:05pm</td>
+                                                            <td>2nd XV Team vs Hilton College <span><img src="images/edit.png" class="ml-3"></span></td>
+                                                            <td><img src="images/Delete 2.png"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Saturday, 21.03.2023</td>
+                                                            <td>14:05pm</td>
+                                                            <td>2nd XV Team vs Durban High School<span><img src="images/edit.png" class="ml-3"></span> </td>
+                                                            <td><img src="images/Delete 2.png"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <button type="button" class="btn btn-block btn-link btn-lumo "><span class="mr-2"><img src="images/Add-Circle.png"></span>Add a new team name</button>
+                                        </div>
+                                        <!--  @*==end===*@ -->
+                                        <!-- @* =====Results=====*@ -->
+                                        <div id="Results" class="tab-pane fade ">
+                                            <div class="table-responsive h-100vh overflow-auto">
+                                                <table class="table border-radius-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Time</th>
+                                                            <th>Fixture</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>3 March 2023, Saturday</td>
+                                                            <td>14:05pm</td>
+                                                            <td>2nd XV Team vs Hilton College<img src="images/Show.png" class="ml-2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3 March 2023, Saturday</td>
+                                                            <td>14:25pm</td>
+                                                            <td>16A Team vs SACS<img src="images/Show.png" class="ml-2"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="program p-6">
+                                                <div class="row ">
+                                                    <div class="col-md-12 ">
+                                                        <div class="form-group d-flex justify-content-between align-items-center">
+                                                            <label>{programme name}</label>
+                                                            <button type="button" class="btn btn-lumo-green">Update</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="table-responsive h-100vh overflow-auto">
+                                                    <table id="" class="table attendence result-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Heat name</th>
+                                                                <th>Position</th>
+                                                                <th>Participant name</th>
+                                                                <th>Time</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td rowspan="4">Under 14 Backstroke 50m</td>
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">Under 14 Backstroke 50m</td>
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">Under 14 Backstroke 50m</td>
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Insert name</td>
+                                                                <td>Insert time</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-12  mb-4">
+                                                    <button type="button" class="btn btn-block btn-lumo-gray">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--  @*==end===*@ -->
+                                        <!-- @* =====ArchivedResults=====*@ -->
+                                        <div id="ArchivedResults" class="tab-pane fade ">
+                                            <div class="table-responsive h-100vh overflow-auto">
+                                                <table class="table border-radius-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Time</th>
+                                                            <th>Fixture</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>3 March 2023, Saturday</td>
+                                                            <td>14:05pm</td>
+                                                            <td>2nd XV Team vs Hilton College<img src="images/Show.png" class="ml-2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3 March 2023, Saturday</td>
+                                                            <td>14:25pm</td>
+                                                            <td>16A Team vs SACS<img src="images/Show.png" class="ml-2"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="program p-6">
+                                                <div class="row ">
+                                                    <div class="col-md-12 ">
+                                                        <div class="form-group d-flex justify-content-between align-items-center">
+                                                            <label>KZN Provincials 2022</label>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="table-responsive h-100vh overflow-auto">
+                                                    <table id="" class="table attendence result-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Heat name</th>
+                                                                <th>Position</th>
+                                                                <th>Participant name</th>
+                                                                <th>Time</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td rowspan="4">Under 14 Backstroke 50m</td>
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">Under 14 Backstroke 50m</td>
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td rowspan="4">Under 14 Backstroke 50m</td>
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Sally Mcphee <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                                <td>52.01 <span class="ml-2"><img src="images/edit.png"></span></td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-12  mb-4">
+                                                    <button type="button" class="btn btn-block btn-lumo-gray">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!--  @*==end===*@ -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @* ====end=====*@ -->
+                        </div>
+                    </div>
+                    <!-- @*==end===*@ -->
+                    <!-- @* =====SeasonResults Groups =====*@ -->
+                    <div id="SeasonResults" class="tab-pane fade new-event ">
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+                                    <button type="button" class="cross ml-3">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row custom-group-area">
+                            <!--  @* ====col-4====*@ -->
+                            <div class="col-lg-4 ">
+                                <div class=" border-bx-area ">
+                                    <div class="table-responsive table-radius h-100vh overflow-auto">
+                                        <table id="custom-groups" class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Season results</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Rugby</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cricket</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hockey</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Swimming</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @*=====end====*@ -->
+                            <!-- @* ====col-8===*@ -->
+                            <div class="col-lg-8 ">
+                                <div class=" border-bx-area ">
+                                    <div class="table-responsive table-gray h-100vh overflow-auto">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Season period</th>
+                                                    <th>Download results CSV</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>01.03.2022 - 01.08.2022</td>
+                                                    <td><img src="images/Down Square 1.png"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @* ====end=====*@ -->
+                        </div>
+                    </div>
+                    <!-- @*==end===*@ -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- @*======Add New program====*@ -->
+<div class="modal fade modal-add-bx" id="AddNewProgram" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add a new programme</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Programme title</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group ">
+                            <label>Date</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group ">
+                            <label>Location</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group ">
+                            <label>Start time</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group active-timeslot-area mt-4">
+                            <label>Duration <img src="images/Information-Circle.png"></label>
+                            <select class="form-control">
+                                <option selected>30 minutes</option>
+                                <option>60 minutes</option>
+                                <option>120 minutes</option>
+                                <option>180 minutes</option>
+                                <option>240 minutes</option>
+                                <option>300 minutes</option>
+                                <option>360 minutes</option>
+                                <option>420 minutes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-lumo-green">Add programme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="ItemDeletionConf" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this item forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-default ">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- Add Heat Modal -->
+<div class="modal fade modal-add-bx" id="AddHeat" tabindex="-1" aria-labelledby="PollResultsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title left-modal-title">Add players</h5>
+                <div class="d-flex">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body p-0">
+                <div class="new-message">
+                    <div class="p-6">
+
+                        <div class="row ">
+                            <div class="col-md-12 ">
+                                <div class="form-group">
+                                    <label>Heat name</label>
+                                    <input type="text" class="form-control " placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Start time</label>
+                                    <input type="text" class="form-control " placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 text-right">
+                                <button type="button" class="btn btn-lumo-blue">Add a participant</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive ">
+                        <table id="" class="table attendence ">
+                            <thead>
+                                <tr>
+                                    <th>Lane</th>
+                                    <th>Heat</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Joshua Nel <span class="ml-2"><img src="images/edit.png"></span></td>
+                                    <td><span><img src="images/Delete 2.png"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Bradley Bassett<span class="ml-2"><img src="images/edit.png"></span></td>
+                                    <td><span><img src="images/Delete 2.png"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Steven Fry <span class="ml-2"><img src="images/edit.png"></span></td>
+                                    <td><span><img src="images/Delete 2.png"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Jeffrey Low <span class="ml-2"><img src="images/edit.png"></span></td>
+                                    <td><span><img src="images/Delete 2.png"></span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12 text-right mb-4">
+                        <button type="button" class="btn btn-lumo-green">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======end====*@ -->
+<!-- @*======Edit New Team====*@ -->
+<div class="modal fade modal-add-bx" id="AddParticipant" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add a participant </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Participant name</label>
+                            <input type="text" class="form-control " value=""></input>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-lumo-green">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+
+<script>
+    $(function () {
+
+        $("#datefrom").datepicker();
+        $("#datetime").datepicker();
+        $("#datetime1").datepicker();
+
+
+    });
+</script>

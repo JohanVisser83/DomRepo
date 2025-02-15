@@ -1,0 +1,467 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\CircularSphere\\Circular\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|d:\\projects\\circularsphere\\circular\\circularhq\\controllers\\affiliatemanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|solutionrelative:circularhq\\controllers\\affiliatemanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|d:\\projects\\circularsphere\\circular\\circularhq\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|solutionrelative:circularhq\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|d:\\projects\\circularsphere\\circular\\circularhq\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|solutionrelative:circularhq\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB4FE5E6-1633-4866-80A5-309C54700B2C}|Circular.core\\Circular.Core.csproj|d:\\projects\\circularsphere\\circular\\circular.core\\entity\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB4FE5E6-1633-4866-80A5-309C54700B2C}|Circular.core\\Circular.Core.csproj|solutionrelative:circular.core\\entity\\customers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\controllers\\plannercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\controllers\\plannercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|d:\\projects\\circularsphere\\circular\\circularhq\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A680F252-939F-4FB7-B105-804694BB0E3A}|CircularHQ\\CircularHQ.csproj|solutionrelative:circularhq\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\filters\\actionlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\filters\\actionlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\filters\\timezonefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\filters\\timezonefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C69F5D68-17D5-47B6-8535-244C6DDD4657}|Circular.Framework\\Circular.Framework.csproj|d:\\projects\\circularsphere\\circular\\circular.framework\\shortmessages\\bulksms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C69F5D68-17D5-47B6-8535-244C6DDD4657}|Circular.Framework\\Circular.Framework.csproj|solutionrelative:circular.framework\\shortmessages\\bulksms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\filters\\timezonefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\filters\\timezonefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\controllers\\bookingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\views\\planner\\planner.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\views\\planner\\planner.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92F35D00-646B-49D7-A65E-AC497C07851C}|Circular.Data\\Circular.Data.csproj|d:\\projects\\circularsphere\\circular\\circular.data\\repositories\\planners\\iplannerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92F35D00-646B-49D7-A65E-AC497C07851C}|Circular.Data\\Circular.Data.csproj|solutionrelative:circular.data\\repositories\\planners\\iplannerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|d:\\projects\\circularsphere\\circular\\community\\circular 3.0\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}|Community\\Circular 3.0\\Circular 3.0.csproj|solutionrelative:community\\circular 3.0\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AB4FE5E6-1633-4866-80A5-309C54700B2C}|Circular.core\\Circular.Core.csproj|d:\\projects\\circularsphere\\circular\\circular.core\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB4FE5E6-1633-4866-80A5-309C54700B2C}|Circular.core\\Circular.Core.csproj|solutionrelative:circular.core\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\filters\\authorizeoidc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\filters\\authorizeoidc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|d:\\projects\\circularsphere\\circular\\circular\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80B13AA5-BB11-4648-A210-0FAC921BC5F1}|Circular\\Circular.csproj|solutionrelative:circular\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AffiliateManagementController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\Controllers\\AffiliateManagementController.cs",
+              "RelativeDocumentMoniker": "CircularHQ\\Controllers\\AffiliateManagementController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\Controllers\\AffiliateManagementController.cs",
+              "RelativeToolTip": "CircularHQ\\Controllers\\AffiliateManagementController.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAkwEsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T12:14:55.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\Program.cs",
+              "RelativeDocumentMoniker": "CircularHQ\\Program.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\Program.cs",
+              "RelativeToolTip": "CircularHQ\\Program.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAowHMAAABUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T12:06:40.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "CircularHQ\\Controllers\\LoginController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "CircularHQ\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAQwD8AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T06:18:46.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\Controllers\\PaymentController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "Community\\Circular 3.0\\Controllers\\PaymentController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwBYAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T06:36:49.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IPlannerRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular.Data\\Repositories\\Planners\\IPlannerRepository.cs",
+              "RelativeDocumentMoniker": "Circular.Data\\Repositories\\Planners\\IPlannerRepository.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular.Data\\Repositories\\Planners\\IPlannerRepository.cs",
+              "RelativeToolTip": "Circular.Data\\Repositories\\Planners\\IPlannerRepository.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAA+wD4AAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T10:32:30.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "MessageController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\MessageController.cs",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\Controllers\\MessageController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\MessageController.cs",
+              "RelativeToolTip": "Community\\Circular 3.0\\Controllers\\MessageController.cs",
+              "ViewState": "AQIAANoAAAAA10VhOZYhwOAAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T08:33:15.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BookingController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\BookingController.cs",
+              "RelativeDocumentMoniker": "Circular\\Controllers\\BookingController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\BookingController.cs",
+              "RelativeToolTip": "Circular\\Controllers\\BookingController.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAgwDcAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T08:29:26.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Planner.cshtml",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Views\\Planner\\Planner.cshtml",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\Views\\Planner\\Planner.cshtml",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Views\\Planner\\Planner.cshtml",
+              "RelativeToolTip": "Community\\Circular 3.0\\Views\\Planner\\Planner.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-16T08:25:30.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Customers.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular.core\\Entity\\Customers.cs",
+              "RelativeDocumentMoniker": "Circular.core\\Entity\\Customers.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular.core\\Entity\\Customers.cs",
+              "RelativeToolTip": "Circular.core\\Entity\\Customers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:02:46.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "jquery.validate.js",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+              "RelativeDocumentMoniker": "CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+              "RelativeToolTip": "CircularHQ\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+              "ViewState": "AQIAACkAAAAAAAAAAAAuwDUAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-22T06:38:10.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlannerController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\PlannerController.cs",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\Controllers\\PlannerController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\PlannerController.cs",
+              "RelativeToolTip": "Community\\Circular 3.0\\Controllers\\PlannerController.cs",
+              "ViewState": "AQIAADQBAAAAAAAAAAAiwEABAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T08:22:28.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Community\\Circular 3.0\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAawE8AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T12:36:26.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\CustomerController.cs",
+              "RelativeDocumentMoniker": "Circular\\Controllers\\CustomerController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\CustomerController.cs",
+              "RelativeToolTip": "Circular\\Controllers\\CustomerController.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:02:46.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ActionLog.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\filters\\ActionLog.cs",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\filters\\ActionLog.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\filters\\ActionLog.cs",
+              "RelativeToolTip": "Community\\Circular 3.0\\filters\\ActionLog.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAcwGQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T05:39:38.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BulkSMS.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular.Framework\\ShortMessages\\BulkSMS.cs",
+              "RelativeDocumentMoniker": "Circular.Framework\\ShortMessages\\BulkSMS.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular.Framework\\ShortMessages\\BulkSMS.cs",
+              "RelativeToolTip": "Circular.Framework\\ShortMessages\\BulkSMS.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T10:34:36.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\appsettings.json",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\appsettings.json",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\appsettings.json",
+              "RelativeToolTip": "Community\\Circular 3.0\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-13T12:35:29.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Program.cs",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\Program.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\Program.cs",
+              "RelativeToolTip": "Community\\Circular 3.0\\Program.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAawDAAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T12:35:24.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular.core\\DTOs\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "Circular.core\\DTOs\\LoginDTO.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular.core\\DTOs\\LoginDTO.cs",
+              "RelativeToolTip": "Circular.core\\DTOs\\LoginDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:58:49.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Circular\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Circular\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAPYAAAAAAAAAAAAswPYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:41:57.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AuthorizeOIDC.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Filters\\AuthorizeOIDC.cs",
+              "RelativeDocumentMoniker": "Circular\\Filters\\AuthorizeOIDC.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Filters\\AuthorizeOIDC.cs",
+              "RelativeToolTip": "Circular\\Filters\\AuthorizeOIDC.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAjwCcAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:36:49.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TimeZoneFilter.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\filters\\TimeZoneFilter.cs",
+              "RelativeDocumentMoniker": "Community\\Circular 3.0\\filters\\TimeZoneFilter.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Community\\Circular 3.0\\filters\\TimeZoneFilter.cs",
+              "RelativeToolTip": "Community\\Circular 3.0\\filters\\TimeZoneFilter.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAcwGcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T12:43:58.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TimeZoneFilter.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Filters\\TimeZoneFilter.cs",
+              "RelativeDocumentMoniker": "Circular\\Filters\\TimeZoneFilter.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Filters\\TimeZoneFilter.cs",
+              "RelativeToolTip": "Circular\\Filters\\TimeZoneFilter.cs",
+              "ViewState": "AQIAACcAAACA2+YtPC8wwDYAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:01:53.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\appsettings.json",
+              "RelativeDocumentMoniker": "Circular\\appsettings.json",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\appsettings.json",
+              "RelativeToolTip": "Circular\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-30T08:01:29.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Program.cs",
+              "RelativeDocumentMoniker": "Circular\\Program.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Program.cs",
+              "RelativeToolTip": "Circular\\Program.cs",
+              "ViewState": "AQIAAPIAAAAAAAAAAAD4vwABAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:01:27.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MessageController.cs",
+              "DocumentMoniker": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\MessageController.cs",
+              "RelativeDocumentMoniker": "Circular\\Controllers\\MessageController.cs",
+              "ToolTip": "D:\\Projects\\CircularSphere\\Circular\\Circular\\Controllers\\MessageController.cs",
+              "RelativeToolTip": "Circular\\Controllers\\MessageController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAewDgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T08:01:12.692Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

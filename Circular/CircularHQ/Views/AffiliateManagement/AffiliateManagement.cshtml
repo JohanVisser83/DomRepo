@@ -1,0 +1,480 @@
+﻿@model CircularHQ.Models.AffiliateManagementModel;
+@{
+    Layout = "_Layout";
+}
+
+
+
+
+   
+                    
+               
+        <div class="main-content-area">
+                    <div class="bg-gray main-top-area">
+                    </div>
+                    <div class="sidebar col-12">
+                        <div class="row justify-content-between align-items-center pr-5">
+                            <ul class="nav nav-tabs tab-data-area ">
+                                <li><a data-toggle="tab" href="#AffiliateDatabase" class="active ">Affiliate database</a></li>
+
+
+                            </ul>
+            <button type="button" class="btn btn-success  btn-rounded " onclick="exportCSVActiveCommunities()">Export CSV</button>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <!-- =============MemberDatabase===================== -->
+                        <div class="tab-pane fade show active" id="AffiliateDatabase" role="tabpanel" aria-labelledby="AffiliateDatabase-tab">
+                            <div class="main-content-bx">
+                                <div class="community-top-tab col-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class=" search-bar-list  ">
+                                <input class="form-control search bg-white" type="text" placeholder="Search for a member" id="SearchMemberlist">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive ">
+                                    <table class="table filter-table" id="affiliate-database-table">
+                                        <thead>
+                                            <tr>
+                                                <th><span>First name(s)</span> <span class="ml-2 position-absolute"><img src="~/images/Filter.png"></span></th>
+
+                                                <th><span>Last name(s)</span> <span class="ml-2 position-absolute"><img src="~/images/Filter.png"></span></th>
+                                                <th>Mobile number</th>
+                                                <th>Email address</th>
+                                                <th>Affiliate code</th>
+                                                <th>Code usage</th>
+                                                <th>Action</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        @if (Model.lstaffiliateCode != null && Model.lstaffiliateCode.Count() > 0)
+                                        {
+                            <tbody id="member-database-tablebody">
+                                                @foreach (var item in Model.lstaffiliateCode)
+                                                {
+                                                    <tr>
+                                                        <td>@item.FirstName</td>
+                                                        <td>@item.LastName</td>
+                                                        <td>@item.phone</td>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.AffiliateCode</td>
+                                                        <td>@item.UsageCount</td>
+                                                        <td id="@item.Id" class="lblaffiliate">View</td>
+                                                    </tr>
+                                                }
+                                               
+                                               
+
+                                            </tbody>
+                                        }
+                                       
+                                    </table>
+                                </div>
+                                <div class="add-community col-12">
+                                    <div class="">
+                                        <h5><a href="" data-toggle="modal" data-target="#add_affiliate">Add an Affiliate</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =============END===================== -->
+
+
+                    </div>
+
+
+                </div>
+     
+        <!-- @*======end====*@ -->
+        <!-- ===========modal=================== -->
+        <!--add_affiliate-->
+        <div class="modal fade modal-add-bx" id="add_affiliate" tabindex="-1" aria-labelledby="add_affiliateLabel" aria-hidden="true">
+            <div class="modal-dialog   modal-dialog-scrollable modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add an affiliate</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <img src="~/images/Close.png">
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="community-profile-block">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>First name(s)</label>
+                                            <input type="text" class="form-control" placeholder="" id="affFirstname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last name(s)</label>
+                                            <input type="text" class="form-control" placeholder="" id="affLastname">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mobile number</label>
+                                            <input type="text" class="form-control" placeholder="" id="affMobileNumber">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email address</label>
+                                            <input type="text" class="form-control" placeholder="" id="affEmail">
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Allocate a code</label>
+                                            <select class="form-control " id="ddlaffiliatedCode" asp-items="@(new SelectList(Model.AffiliateCode,"Id","Code"))">
+                                                <option selected value="0">Select Allocate code</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="row">
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-secondary btn-block btn-rounded " data-dismiss="modal">Cancel</button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-success btn-block btn-rounded " id="AddAffiliated_Code">Add new affiliate</button>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END-->
+        <!--EDITadd_affiliate-->
+        <div class="modal fade modal-add-bx" id="edit_affiliate" tabindex="-1" aria-labelledby="edit_affiliateLabel" aria-hidden="true">
+            <div class="modal-dialog   modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit an affiliate</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <img src="~/images/Close.png">
+                        </button>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="community-profile-block">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="form-group">
+                                            <label>First name(s)</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtFirstName">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last name(s)</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtLastName">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mobile number</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtMobileno">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email address</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtEmailAdd">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Allocate a code</label>
+                                           @* <select class="form-control " id="ddlEditaffiliateCode" asp-items="@(new SelectList(Model.AffiliateCode,"Id","Code"))">
+                                                <option selected>Select Allocate code</option>
+                                            </select>*@
+                                    <input type="text" class="form-control" placeholder="" id="ddlEditaffiliateCode" readonly>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>System access</label>
+                                            <select class="form-control ">
+                                                <option selected>Active</option>
+                                                <option value="all">InActive</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-secondary btn-block btn-rounded ">Cancel</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-success btn-block btn-rounded " id="UpdateAffiliateCode">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-group">
+                                            <label id="abc">Code usage</label>
+                                           @* <textarea class="form-control" rows="28" placeholder="" id="Countuser">
+                                           </textarea>*@
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END-->
+        <!-- successfull Modal -->
+        <div class="modal fade modal-small-bx" id="successfull" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <div class="past-leave-box">
+                            <h5>Yippee!</h5>
+                            <p>Affiliate code has been added successfully.</p>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-secondary btn-md btn-rounded" id="closeaffpopupbtn">
+                                <span aria-hidden="true">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @*======end====*@ -->
+<!-- successfull Modal -->
+<div class="modal fade modal-small-bx" id="ErrorAffiliatedModal" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Error!</h5>
+                    <p id="errorMessage"></p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-secondary btn-md btn-rounded" id="closeErroraffpopupbtn">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======end====*@ -->
+
+
+
+
+
+        <!-- Javascript Files
+           ================================================== -->
+        <!-- initialize jQuery Library -->
+        <!-- Bootstrap jQuery -->
+        <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery-ui.js" type="text/javascript"></script>
+        <script src="~/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <!-- ==== custom js==== -->
+        <script src="~/js/custom.js" type="text/javascript"></script>
+
+
+
+<input type="hidden" id="typeofselection" />
+<input type="hidden" id="hiddenAffiliteId" />
+
+<script>
+
+    $("#AddAffiliated_Code").click(function () {
+       
+        var firstName =     $("#affFirstname").val();
+        var lastName =      $("#affLastname").val();
+        var mobile  =       $("#affMobileNumber").val();
+        var email  =        $("#affEmail").val();
+        var affiliateCodeId = $("#ddlaffiliatedCode").val();
+        var formdata = new FormData();
+        formdata.append('AffiliateCodeId', affiliateCodeId)
+        formdata.append('FirstName', firstName);
+        formdata.append('LastName', lastName);
+        formdata.append('Email', email);
+        formdata.append('phone', mobile);
+        $.ajax({
+            url: '/AffiliateManagement/AddAffiliateCode',
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: 'json',
+            success: function (result) {
+                if(result.success == true)
+                {
+                    $('#add_affiliate').modal('hide');
+                    $('#successfull').modal('show');
+
+                }
+                else{
+                    $("#ErrorAffiliatedModal").modal('show');
+                    $("#errorMessage").text(result.message);
+                }
+                
+            },
+            error: function () {
+                console.log('Failed ');
+            }
+        });
+
+    });
+
+
+    $(".lblaffiliate").on('click', function () {
+        var id = $(this).attr("id");
+        $('#typeofselection').val(id);
+        var Aurl = "/AffiliateManagement/GetEditAffiliateCode"
+        $.post(Aurl, { id: id }, function (result) {
+            if (result.success == true) {
+                $("#edit_affiliate").modal('show');
+                console.log(result.data);
+                $("#hiddenAffiliteId").val(result.data.result[0].id);
+                $("#txtFirstName").val(result.data.result[0].firstName);
+                $("#txtLastName").val(result.data.result[0].lastName);
+                $("#txtMobileno").val(result.data.result[0].phone);
+                $("#txtEmailAdd").val(result.data.result[0].email);
+                $("#ddlEditaffiliateCode").val(result.data.result[0].affiliateCode)
+                $('#abc').empty();
+                if (result.data.result[0].usageCount == "0")
+                {
+                    $("#Countuser").text('');
+                }
+                else{             
+                $('#abc').append('<textarea class="form-control" rows="28" placeholder="" id="Countuser">' + result.data.result[0].communityName + '  ' + result.data.result[0].usageCount + '</textarea>')
+                }
+
+
+            }
+            else
+            {
+
+            }
+           
+        });
+
+    });
+
+    $("#UpdateAffiliateCode").on('click', function () {
+       var Id = $("#hiddenAffiliteId").val();
+       var first_name = $("#txtFirstName").val();
+       var last_name = $("#txtLastName").val();
+       var phone = $("#txtMobileno").val();
+       var email= $("#txtEmailAdd").val();
+        var affiliate = $("#ddlEditaffiliateCode").val();
+
+        var formdata = new FormData();
+        formdata.append('Id', Id);
+        formdata.append('FirstName', first_name);
+        formdata.append('LastName', last_name);
+        formdata.append('Email', email);
+        formdata.append('phone', phone);
+
+        $.ajax({
+            url: '/AffiliateManagement/UpdateAffiliateCodeDetails',
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: 'json',
+            success: function (result) {
+                $('#add_affiliate').modal('hide');
+                $('#successfull').modal('show');
+
+            },
+            error: function () {
+                console.log('Failed ');
+            }
+        });
+
+    })
+
+
+    $("#SearchMemberlist").on("keyup", function () {
+        var value = this.value.toLowerCase().trim();
+        $("#member-database-tablebody tr").show().filter(function () {
+            return $(this).text().toLowerCase().trim().indexOf(value) == -1;
+        }).hide();
+    });
+
+
+    function exportCSVActiveCommunities() {
+
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `affiliate-database-table_${formattedDate}.xls`;
+
+        const clonedTable = $('#affiliate-database-table').clone();
+
+
+        clonedTable.find('thead tr th:first-child img').remove();
+        clonedTable.find('tbody tr td:first-child img').remove();
+
+        clonedTable.find('thead tr th:eq(1) img').remove();
+        clonedTable.find('tbody tr td:eq(1) img').remove();
+
+        clonedTable.find('thead tr th:eq(6) img').remove();
+        clonedTable.find('tbody tr td:eq(6) img').remove();
+
+        clonedTable.find('tbody tr td:nth-child(3)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("'" + mobileNumber);
+        });
+
+        clonedTable.find('tbody tr td:nth-child(5)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("'" + mobileNumber);
+        });
+
+        clonedTable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+
+
+    $("#closeaffpopupbtn").click(function () {
+        location.reload();
+    })
+
+    $("#closeErroraffpopupbtn").click(function () {
+        location.reload();
+    })
+
+    
+   
+</script>

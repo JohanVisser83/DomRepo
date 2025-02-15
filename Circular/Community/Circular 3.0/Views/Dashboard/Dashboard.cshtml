@@ -1,0 +1,1794 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model CircularWeb.Models.MessageModel
+
+
+
+
+<script type="text/javascript">
+    var croppers = [];
+    var fileImgNames = [];
+    var fileType = [];
+    var fileName;
+    var i;
+
+    $(document).ready(function () {
+    $('.imageBox').hide();
+    $('#btnCrop').hide();
+
+    var options =
+    {
+    thumbBox: '.thumbBox',
+    spinner: '.spinner',
+    }
+    var cropper = $('.imageBox').cropbox(options);
+
+    $('#cover').on('change', function (e) {
+
+    var file = e.target.files;
+    if ((file[0].type) != "undefined") {
+    for (i = 0; i < file.length; i++) {
+    fileImgNames.push(file[i].name);
+    fileType.push(file[i].type);
+    }
+    if (fileType[fileType.length - 1] == "image/jpeg" || fileType[fileType.length - 1] == "image/jpg" || fileType[fileType.length - 1] == "image/png") {
+    $('.imageBox').show();
+    $('#btnCrop').show();
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+    options.imgSrc = e.target.result;
+    cropper = $('.imageBox').cropbox(options);
+    }
+    reader.readAsDataURL(this.files[0]);
+    }
+    else {
+    showThumbnail(file);
+    }
+    }
+
+
+
+
+
+    })
+
+    $('#btnCrop').on('click', function (e) {
+    var img = cropper.getDataURL();
+    $('.cropped').append('<img class="col-md-4" src="' + img + '"><div class="cross-icon image-icon pl-1"><button type="button" class="cross" onclick="dltCircleInfoItemsdashboard(this)"><span aria-hidden="true" >×</span></button></div>');
+    $('.cropped').each(function () {
+    croppers.push(img);
+    $('.imageBox').hide();
+    $('#btnCrop').hide();
+    console.log(croppers);
+    })
+
+    })
+
+    function showThumbnail(files) {
+    for (let i = 0; i < files.length; i++) {
+    let file = files[i];
+    let thumbnail = document.getElementById("thumbnail");
+    let pDiv = document.createElement("div");
+    let video = document.createElement("video");
+    let div = document.createElement("div");
+    let crossDiv = document.createElement("div");
+    let button = document.createElement("button");
+    let span = document.createElement("span");
+
+    pDiv.setAttribute('class', 'col-sm-4');
+    thumbnail.appendChild(pDiv);
+    video.setAttribute('class', 'imgKLIK5');
+    pDiv.appendChild(video);
+    div.setAttribute('class', 'closeDiv');
+    pDiv.appendChild(div);
+    crossDiv.setAttribute('class', 'cross-icon image-icon pl-2');
+    div.appendChild(crossDiv);
+    button.setAttribute('type', 'button');
+    button.setAttribute('onclick', 'dltCircleInfoItemsmessageVedios(this)');
+    crossDiv.appendChild(button);
+
+    button.setAttribute('class', 'cross');
+    //div.appendChild(crossDiv);
+    span.setAttribute('aria-hidden', 'true');
+    span.innerHTML = '×';
+    button.appendChild(span);
+    video.file = file;
+    let reader = new FileReader()
+    reader.onload = (function (aImg) {
+    return function (e) {
+    let blobURL = URL.createObjectURL(file);
+    aImg.imgSrc = e.target.result;
+    aImg.src = blobURL;
+    aImg.setAttribute("controls", "");
+    croppers.push(aImg.imgSrc);
+    };
+    }(video))
+    reader.readAsDataURL(file);
+    let canvas = document.createElement("canvas");
+    let ctx = canvas.getContext("2d");
+    video.onload = function () {
+    ctx.drawImage(video, 100, 100);
+    }
+    }
+    }
+    });
+
+
+
+    function dltCircleInfoItemsmessageVedios(button) {
+
+    let pDiv = $(button).closest('.col-sm-4').prev('video');
+    if (pDiv) {
+    var indexToRemove = pDiv.index();
+    croppers.splice(indexToRemove, 1);
+    pDiv.remove();
+    $(button).closest('.col-sm-4').remove()
+    $('#cover').val('');
+    console.log(croppers);
+    }
+    }
+
+
+
+    function dltCircleInfoItemsdashboard(button) {
+
+    var imageToRemove = $(button).closest('div').prev('img');
+    var indexToRemove = imageToRemove.index();  
+    croppers.splice(indexToRemove, 1);
+    imageToRemove.remove();
+    $(button).closest('div').remove();
+    $('#cover').val('');   
+    console.log(croppers);
+    }
+
+
+</script>
+
+
+<style>
+    .imageBox {
+    position: relative;
+    height: 323px;
+    width: 465px;
+    border: 1px solid #aaa;
+    background: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor: move;
+    }
+
+    .imageBox .thumbBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 432px;
+    height: 300px;
+    margin-top: -149px;
+    margin-left: -216px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 102, 102);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0% 0% transparent;
+    }
+
+    .imageBox .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 400px;
+    background: rgba(0,0,0,0.7);
+    }
+
+    #thumbnail video {
+    width: 100%;
+    }
+
+    .cropped {
+    margin-bottom: 20px;
+    }
+
+
+
+    /* .cropped img{
+    margin:0 4px;
+    }*/
+</style>
+
+
+
+
+
+
+
+
+<style>
+
+    .circular-model #logo-upload2 #imgfile1, .circular-model #logo-upload2 #imgfile2 {
+    color: transparent;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    }
+
+    .circular-model #logo-upload11 #imgfile1, .circular-model #logo-upload11 #imgfile2 {
+    color: transparent;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    }
+
+    .circular-model #logo-upload11 #imgfile1, .circular-model #logo-upload12 #imgfile2 {
+    color: transparent;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    }
+
+    .circular-model #logo-upload11 #imgfile1, .circular-model #logo-upload127 #imgfile2 {
+    color: transparent;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    }
+
+    .image_container {
+    max-width: 200px;
+    max-height: 450px;
+    }
+
+    .ui-menu .ui-menu-item a {
+    font-size: 12px;
+    }
+
+    .ui-autocomplete {
+    z-index: 1051 !important;
+    float: left;
+    height: 230px;
+    overflow-y: auto;
+    border-radius: 6px 6px 11px 11px;
+    }
+
+    .ui-widget.ui-widget-content {
+    border: none !important;
+    }
+
+    .ui-menu li.ui-menu-item .ui-menu-item-wrapper {
+    border-radius: unset;
+    }
+
+    .ui-widget.ui-widget-content {
+    box-shadow: none;
+
+    color: #101C28;
+    font-size: 14px;
+    font-weight: 500;
+    }
+
+    .ui-menu .ui-menu-item {
+    margin-bottom: 3px;
+    }
+</style>
+<div class="col-lg-11 col-md-11  col-sm-10 col-10">
+    <div class="body-content ">
+        <div class="dashboard-area">
+            <div class="main-top-bx mt-0">
+                @* @if (User.Identity.IsAuthenticated)
+                {
+                <h4>Welcome @User.Identity.Name @Surname to the @communityName web portal</h4>
+                }
+                else
+                {
+                <h4>Welcome to the web portal</h4>
+                }*@
+                @*<p>Today is @DateTime.Now.ToString("dd MMM yyyy")</p>*@
+            </div>
+            <div class="main-content-bx">
+                <div class="row">
+@*                    @if (Model != null || Model.CommunityFeatures.Count() > 0)
+                    {*@
+                        <div class="col-lg-4 col-md-5">
+                            <p>What would you like to do first?</p>
+@*                           // @foreach (var item in Model.CommunityFeatures)
+                           //{*@
+@*                                //@if (item.code == "M-003")
+*@                                @if (Model.IsFeatureAvailable("M-003"))
+                                {
+                                    <div class="form-group field-active">
+                                        <a id="second" class="form-control ss" href="/Messages/Message" data-toggle="modal" data-target="#NewMessage"> Send a message</a>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <a id="second" class="form-control" data-toggle="modal" data-target="#broadcast"> Send a broadcast message</a>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <a id="four" class="form-control" data-toggle="modal" data-target="#composeArticle">Add an article to your newsfeed</a>
+                                    </div>
+                                }
+@*                                //@if (item.code == "AC-006")
+*@                                    @if (Model.IsFeatureAvailable("AC-006"))
+                                {
+                                    <div class="form-group ">
+                                        <a id="third" class="form-control" href="/Account/Account?id=addAccountInAccount">Add an account</a>
+                                    </div>
+                                }
+@*                               // @if (item.code == "P-001")
+*@                                    @if (Model.IsFeatureAvailable("P-001"))
+                                {
+                                    <div class="form-group ">
+                                        <a id="fifth" class="form-control" href="/Planner?id=addPlannerEvent">Plan an event</a>
+                                    </div>
+                                }
+@*                               // @if (item.code == "S-002")
+*@                                @if (Model.IsFeatureAvailable("S-002"))
+                                {
+                                    <div class="form-group ">
+                                        <a id="seventh" class="form-control" href="/Safety/Safety">Review your attendance register</a>
+                                    </div>
+                                }
+
+                           
+                           
+                          
+                           
+                           
+                           //}
+
+                            @*<div class="form-group ">
+                            <a id="Eight" class="form-control" href="/Storefront/Storefront">Launch POS</a>
+                            </div>*@
+                        @if (Model.IsOwner)
+                        {
+                            <div class="form-group ">
+                                <a id="Nine" class="form-control" href="/Finance/Finance">Review your transactional history</a>
+                            </div>
+                        }
+                        @if (Model.IsFeatureAvailable("C-004"))
+                        {
+                            <div class="form-group ">
+                                <a id="Nine" class="form-control" href="/Community/Community?id=communityprofile">Update your community profile</a>
+                            </div>
+                        }
+                        </div>
+@*                    }
+*@                    @if (Model.IsFeatureAvailable("C-004"))
+                    {
+                        <div class="col-lg-4 col-md-7 mt-4 mt-lg-0 mt-md-0">
+                            <p>Pending business approvals</p>
+                            @if (Model.lstCustomerBusinessIndex != null && Model.lstCustomerBusinessIndex.Count() > 0)
+                            {
+                                @foreach (var item in Model.lstCustomerBusinessIndex)
+                                {
+                                    if (@item.IsBusinessapproved == false)
+                                    {
+                                        <div class="form-group ">
+                                            <a class="form-control" onclick="GetBusinessDetailById(@item.Id)" id="">@item.CompanyName</a>
+                                            <input type="hidden" id="BusinessApproveId" value="@item.Id" />
+                                        </div>
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                <div class="form-group">
+                                    <a class="form-control">No pending business to approve</a>
+                                </div>
+                            }
+
+                            <div class="pending-job-posting mt-5">
+                                <p>Pending job postings</p>
+                                @if (Model.lstJobPostingList != null && Model.lstJobPostingList.Count() > 0)
+                                {
+                                    @foreach (var item in Model.lstJobPostingList)
+                                    {
+                                        if (@item != null && @item.IsApproved == false)
+                                        {
+                                            <div class="form-group">
+                                                <a class="form-control" onclick="GetJobPostingById(@item.Id)">@item.JobTitle</a>
+                                                <input type="hidden" id="JobApproveId" value="@item.Id" />
+                                            </div>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="form-group">
+                                        <a class="form-control">No pending job to approve</a>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @*<div class="bottom-sponsers-box">
+            <span>Sponsored by </span>
+            <span class="ft-logo">
+                @if (Model != null && Model.lstSponsorInformation != null && !string.IsNullOrEmpty(Model.lstSponsorInformation.SponsorLogo))
+                {
+                    <img src="@Model.lstSponsorInformation.SponsorLogo" alt="Sponsor Image">
+                }
+                else
+                {
+                    <img src="~/uploads/Default/DefaultSponsorLogo.png" alt="Default Sponsor Image">
+                }
+            </span>
+        </div>*@
+
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-add-bx" id="NewMessage" tabindex="-1" aria-labelledby="NewMessagLabel" aria-hidden="true">
+    <div class="modal-dialog w-500 modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Compose a NEW message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+                    <form>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class=" form-group search-bar-list">
+                                    <div class=" input-group diff2">
+                                        <input type="hidden" id="Number" value="" />
+                                        <input class="form-control search text-center" type="text" autocomplete="off" placeholder="Search name or mobile number" id="ContactNo">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <img src="~/images/Search-2.png" class="img-fluid">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <ul id="ContactList">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Schedule delivery</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class=" date-icon">
+                                                <input type="text" id="Scheduledate" class="form-control  btn-date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="time" class="form-control" id="ScheduleTime">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="6" id="Message"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row align-items-center" id="logo-upload12">
+                    <div class="col-md-7">
+                        <div class="cross-icon document-upld">
+                            <label for="pdffilesMessages" class="custom-file-upload1 nameimage1" id="messPDF">
+                                <span>
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="text-right">
+                            <div class="add-icon-bx d-inline">
+                                <input type="file" id="pdffilesMessages">
+
+                                <button type="button" class="btn-link btn"><img src="" /><img id="MessageImage" src="/images/Document-add.png" /></button>
+
+                            </div>
+                            <button type="button" class="btn btn-lumo-green SendMessage" data-toggle="modal" data-dismiss="modal" id="SendMessage">Send message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--New Modal Broadcast-->
+<div class="modal fade modal-add-bx" id="broadcast" tabindex="-1" aria-labelledby="boardcastLabel" aria-hidden="true">
+    <div class="modal-dialog w-500 modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Compose a NEW broadcast message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div class="new-message">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <select class="form-control text-center" onchange="onchangeMasterType(this)">
+                                        <option selected>Select an audience</option>
+                                        <option value="all">All</option>
+                                        <option value="group">Group</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group select-wrap ">
+                                    <select class="form-control select-box text-center allUsers" id="ddlMasterUsers">
+                                        <option selected>Select a group</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Schedule delivery</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="date-icon">
+                                                <input type="date" id="Schedulebroadcastdate" class="form-control  btn-date">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="time" class="form-control" id="ScheduleBroadcastTime">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-boder-bx" placeholder="Insert your notification title" id="BroadcastTitle">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="9" placeholder="Compose your message" id="BroadcastMess"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <label for="imgfiles" id="lblBroadcastPdf">
+
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row align-items-center" id="logo-upload127">
+                    <div class="col-md-5">
+                        <div class="cross-icon document-upld">
+                            <label for="pdffilesBroadcast" class="custom-file-upload1 nameimage1">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="text-right">
+                            <div class="add-icon-bx d-inline">
+                                <input type="file" id="pdffilesBroadcast" accept="">
+                                <button type="button" class="btn-link btn"><img src="" /><img id="imageBroad" src="~/images/Document-add.png" /></button>
+
+                            </div>
+                            <button type="button" class="btn btn-lumo-green button-class has-spinner" id="BroadCastMessage">Broadcast message</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END-->
+<div class="modal fade modal-small-bx" id="LeavePast" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Leave it in the past.</h5>
+                    <p>Are you sure you want to archive this item.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn bg-lumo">Yes</button>
+                    <button type="button" class="btn bg-pink">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-small-bx" id="Unarchive" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Unarchive item</h5>
+                    <p>Are you sure?</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn bg-lumo">Yes</button>
+                    <button type="button" class="btn bg-pink">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<!--NewFeeds Modal Popup-->
+<!-- composeArticle Modal -->
+<div class="modal fade modal-add-bx" id="composeArticle" tabindex="-1" aria-labelledby="boardcastLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500 modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Compose a NEW article</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-boder-bx" placeholder="Insert your article title" id="txtArticleTitle">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <select class="form-control bg-boder-bx" onchange="onchangeArticleMasterType(this)" id="ddlArticleAudience">
+                                        <option selected value="1">Select an audience</option>
+                                        <option value="all">All</option>
+                                        <option value="group">Group</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <select class="form-control bg-boder-bx allArticleUsers" id="ddlArticleMasterUsers">
+                                        <option selected>Select a group</option>
+                                        @*<option value="all">All</option>
+                                        <option value="group">Group</option>*@
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control bg-boder-bx" placeholder="Who wrote this article?" id="txtWroteArticle">
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="form-group  add-icon-bx" id="logo-upload2">
+                                    <label for="cover" class="custom-file-upload nameimage bg-transparent">
+                                        <span>Add cover media</span>
+                                    </label>
+                                    <div class="add-icon bg-white">
+                                        @*onchange="readURL(this);"*@
+                                        <input id="cover" type="file" accept="image/video/*" />
+                                        <img src="~/images/Add-Circle.png">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="imageBox">
+                                    <div class="thumbBox"></div>
+                                    <div class="spinner" style="display: none">Loading...</div>
+                                </div>
+                                <div class="action">
+                                    <input type="button" id="btnCrop" value="Crop">
+                                </div>
+                                <div class="cropped">
+                                </div>
+                                <div id="thumbnail" class="row m-0 video-thumb"></div>
+                            </div>
+                         
+                            <div class="col-md-12">
+                                <div class="form-group ">
+                                    <textarea class="form-control" rows="15" placeholder="Compose your article" id="txtcomposeArticle"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row align-items-center" id="logo-upload11">
+                    <div class="col-md-4">
+                       <div class="cross-icon document-upld">
+                        <label for="Articlepdfdoc" class="custom-file-upload1 nameimage1">
+                            <span></span>
+                        </label>
+                       </div>
+
+                    </div>
+                  <div class="col-md-8">
+                    <div class="text-right">
+                        <div class="add-icon-bx d-inline">
+                            <input type="file" id="Articlepdfdoc" accept=".pdf,.doc">
+                                <button type="button" class="btn-link btn">Attach a pdf<img src="~/images/Document-add.png" class="ml-1" /></button>
+                        </div>
+                            <button type="button" class="btn btn-lumo-green button-class has-spinner" id="SendArticle">Post new article</button>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*=====end=====*@ -->
+<!-- END-->
+<div class="modal fade modal-small-bx" id="wentWrong" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Oops!</h5>
+                    <p id="ErrorMessage">Seems like something went wrong</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-block" data-dismiss="modal">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-small-bx" id="successfull" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Yippee!</h5>
+                    <p>Your message has been sent successfully.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-block" data-dismiss="modal" id="redirectMessageView">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Business Approve *@
+<div class="modal fade modal-small-bx" id="BusinessSuccessfull" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Yippee!</h5>
+                    <p>Item approved successfully.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-block" data-dismiss="modal" id="redirectBusinessView">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-small-bx" id="SpreadingNews" tabindex="-1" aria-labelledby="SpreadingNewsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Spreading the good news!</h5>
+                    <p>Your article has been posted successfully</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-block">close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade circular-model" id="Emailmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Share Dashboard</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="label3">Email Address</label>
+                            <input type="text" class="form-control" id="txtEmail" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <button type="button" id="EmailIds" class="btn btn-dark sharedashb">Share Dashboard  </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- @*=====modal popup Event Popup==*@ -->
+<!-- Business Pending Approval Modal -->
+<div class="modal fade modal-add-bx" id="BusinessApproval" tabindex="-1" aria-labelledby="EventPopupLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500 modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-lumo">Pending approval</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Business name</label>
+                                <input type="text" id="BusinessName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Email address</label>
+                                <input type="email" id="BusinessEmail" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Contact number</label>
+                                <input type="text" id="BusinessContact" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control bg-gray border-gray" id="BusinessDescription" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @* onclick="this.parentNode.parentNode.remove();" *@
+                                <div class="text-right">
+                                    <button type="button" id="closebtn" class="btn btn-lumo-green bg-pink">Decline</button>
+                                    <button type="button" id="BusinessApprove" class="btn btn-lumo-green">Approve</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*======end====*@ -->
+<!-- Job Pending Approval Modal -->
+<div class="modal fade modal-add-bx" id="JobAapproval" tabindex="-1" aria-labelledby="JobAapprovalLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500 modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-lumo">Pending approval</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Job title</label>
+
+                                <input type="text" class="form-control " id="JTitleName">
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Business name</label>
+                                <input type="text" class="form-control " id="JBusinessName">
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Job description</label>
+                                <textarea class="form-control bg-gray border-gray" id="JDescription" rows="5"></textarea>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="text-right">
+
+
+                                    <button type="button" id="closeJob" class="btn btn-lumo-green bg-pink">Decline</button>
+                                    <button type="button" id="JobApprove" class="btn btn-lumo-green">Approve</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*======end====*@ -->
+<!-- Hiddenfield value-->
+<input type="hidden" id="dropdown" value="0" />
+
+<input type="hidden" id="articleDropdown" value="0" />
+<input type="hidden" id="dropdownId" />
+<input type="hidden" id="typeofselection" value="" />
+
+
+<input type="hidden" id="articledropdownid" />
+<input type="hidden" id="articleTypeofselection" />
+<input type="hidden" id="Searchcustomerid" value="" />
+
+
+<input type="hidden" id="first" value="">
+<input type="hidden" id="second" value="">
+
+
+<!-- end-->
+
+<script>
+    $(document).ready(function () {
+        $('#security').on('click', function () {
+            $('.security-popup').addClass('visible');
+            $('body').addClass('overl');
+        });
+        $('#request-payment').on('click', function () {
+            $('.security-popup').addClass('visible');
+            $('body').addClass('overl');
+        });
+        $('.overlay').click(function () {
+            $('body').removeClass('overl');
+            $('.security-popup').removeClass('visible');
+        });
+    });
+
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var minDate = year + '-' + month + '-' + day;
+
+
+        $('#Schedulebroadcastdate').attr('min', minDate);
+</script>
+
+<script>
+
+    $("#logo-upload2 .custom-file-upload span").show();
+    $("#logo-upload2 input").change(function () {
+        $("#logo-upload2 .custom-file-upload span").show();
+        $("#logo-upload2 .custom-file-upload span").text(this.files[0].name);
+    });
+
+    $("#logo-upload11 .custom-file-upload1 span").show();
+    $("#logo-upload11 input").change(function () {
+
+        $("#logo-upload11 .custom-file-upload1 span").show();
+        $("#logo-upload11 .custom-file-upload1 span").text(this.files[0].name);
+
+    });
+
+
+    $("#logo-upload12 .custom-file-upload1 span").show();
+    $("#logo-upload12 input").change(function () {
+
+        $("#logo-upload12 .custom-file-upload1 span").show();
+        $("#logo-upload12 .custom-file-upload1 span").text(this.files[0].name);
+
+    });
+
+    $("#logo-upload127 .custom-file-upload1 span").show();
+    $("#logo-upload127 input").change(function () {
+
+        $("#logo-upload127 .custom-file-upload1 span").show();
+        $("#logo-upload127 .custom-file-upload1 span").text(this.files[0].name);
+
+    });
+
+</script>
+
+<script>
+    //$("#datepicker").datepicker({
+    //    x
+    //                                    dayNamesMin: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+    //    showOtherMonths: true,
+    //});
+
+    //$("#datepickerto").datepicker({
+    //    dayNamesMin: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+    //    showOtherMonths: true,
+    //});
+
+</script>
+
+<script>
+
+    $(function () {
+
+        $("#datefrom").datepicker();
+        $("#Scheduledate").datepicker({
+            dateFormat: 'dd-mm-yy'
+        });
+
+        //$("#Schedulebroadcastdate").datepicker({
+        //    dateFormat: 'dd-mm-yy'
+        //});
+
+
+
+        $("#datetime1").datepicker();
+        $("#datetime2").datepicker();
+
+    });
+
+    $("#first").addClass("active");
+
+</script>
+
+<script type="text/javascript">
+
+    $('#SendMessage').click(function () {
+  
+        var contactNo = $("#Searchcustomerid").val();
+        var txtMessage = $("#Message").val();
+        var pdfMessage = document.getElementById('pdffilesMessages');
+        var ScheduleDate = $('#Scheduledate').val();
+        var ScheduleTime = $('#ScheduleTime').val();
+
+        var schedule = ScheduleDate + ' ' + ScheduleTime;
+
+        if ((ScheduleDate == "" || ScheduleDate == 0) && (ScheduleTime == "" || ScheduleTime == 0)) {
+            var formdata = new FormData();
+            formdata.append('ToId', contactNo);
+            formdata.append('Message', txtMessage);
+            formdata.append('Mediafiles', pdfMessage.files[0]);
+
+            $.ajax({
+                url: '/Dashboard/SaveMessage',
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function (result) {
+                    $('#successfull').modal('show')
+                    window.location.href = '@Url.Action("Message", "Message")';
+                },
+                error: function () {
+
+                    console.log('Failed ');
+                }
+            });
+        }
+        else {
+
+            var formdata = new FormData();
+            formdata.append('ToId', contactNo);
+            formdata.append('Message', txtMessage);
+            formdata.append('MessageExchangecode', 0);
+            formdata.append('Mediafiles', pdfMessage.files[0]);
+            formdata.append('Schedule', schedule);
+
+            $.ajax({
+                url: '/Dashboard/SaveScheduleMessage',
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function (result) {
+                    $('#successfull').modal('show')
+                    window.location.href = '@Url.Action("Message", "Message")';
+                },
+                error: function () {
+
+                    console.log('Failed ');
+                }
+            });
+        }
+    });
+
+
+    //Autocomplete Search contactList and Name Functinality for Send Messasge
+
+    $(function () {
+        $("#ContactNo").autocomplete({
+            source: function (request, response) {
+                var searchList = $('#ContactNo').val()
+                var formdata = new FormData();
+                formdata.append('Search', searchList);
+                $.ajax({
+                    url: '/Message/GetUserContactList',
+                    data: formdata,
+                    dataType: "json",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    dataFilter: function (Result) { return Result; },
+                    success: function (Result) {
+                        console.log(Result)
+
+                        for (var i = 0; i < Result.length; i++) {
+                            var Spont = Result[i].customerId;
+                            $("#Searchcustomerid").val(Spont);
+                        }
+
+                        console.log(Spont)
+                        response($.map(Result, function (item) {
+                            var x = item.name + "(" + item.mobile + ")";
+                            var y = item.customerId;
+                            return {
+                                value: x, label: x, desc: y,
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        var err = eval("(" + XMLHttpRequest.responseText + ")");
+
+                    }
+                });
+
+            },
+            select: function (e, i, s) {
+                $("#ContactNo").val(i.item.value);
+                $("#Searchcustomerid").val(i.item.desc);
+            },
+            focus: function (event, ui) {
+                event.preventDefault();
+                $('#ContactNo').val(ui.item.label);
+            },
+            minLength: 1 //This is the Char length of inputTextBox
+        });
+
+    });
+
+
+</script>
+
+
+<script>
+    function onchangeMasterType(event) {
+        $("#dropdown").val(event.value);
+        var userType = event.value;
+        if (userType == "all") {
+            $('#ddlMasterUsers').hide();
+            $('.allUsers').hide();
+        }
+        var Url = '/Dashboard/DropDownGroupList';
+        $.post(Url, { type: userType }, function (data) {
+
+            if (data.length < 1) {
+
+            }
+            var lstUsers = [];
+            for (var i = 0; i <= data.length - 1; i++) {
+
+                if (userType == "group") {
+
+                    lstUsers.push("<option value=" + data[i].id + ">" + data[i].groupName + "</option>")
+                    var grouplist = data[i].id
+                    $("#dropdownId").val(grouplist);
+                    $('.allUsers').show();
+                    $('#ddlMasterUsers').show();
+
+
+                }
+
+                if (userType == "all") {
+
+                    $('#ddlMasterUsers').hide();
+                    $('.allUsers').hide();
+                }
+            }
+
+            document.getElementById("ddlMasterUsers").innerHTML = "<option value='0'>Select a group</option>" + lstUsers;
+
+            $('.preloader').addClass('hide').removeClass('show');
+
+        })
+    }
+
+
+
+
+
+    $('#BroadCastMessage').click(function () {
+       
+        var broadcastTitle = $("#BroadcastTitle").val();
+        var message = $("#BroadcastMess").val();
+        var drpvalue = $("#dropdown").val();
+        var rdbtn = $("#selectval").val();
+        var selecteddropdown = $("#dropdownId").val();
+        var UploadImg = document.getElementById('pdffilesBroadcast')
+       
+        var GroupIdSelected = $('#ddlMasterUsers').val();
+
+        var scheduleDate = $('#Schedulebroadcastdate').val();
+        var schedulebroadcastTime = $('#ScheduleBroadcastTime').val();
+        
+
+
+
+        if (drpvalue == "all") {
+            var Isgroup = 0
+            var ReferenceId = 0
+        } else {
+            var Isgroup = 1
+            var ReferenceId = selecteddropdown
+        }
+
+        var btn = $(this);
+        $(btn).buttonLoader('start');
+
+        var formdata = new FormData()
+        formdata.append('Title', broadcastTitle);
+        formdata.append('Text', message);
+        formdata.append('SelectedId', GroupIdSelected);
+        formdata.append('Type', drpvalue);
+        formdata.append('IsGroup', Isgroup);
+        formdata.append('ScheduleDateTime', scheduleDate);
+        formdata.append('ScheduleTime', schedulebroadcastTime);
+        formdata.append('ReferenceId', ReferenceId);
+        formdata.append('Mediafile', UploadImg.files[0])
+
+        $.ajax({
+            url: '/Dashboard/SendBroadcastMessage',
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: 'json',
+            success: function (result) {
+                $(btn).buttonLoader('stop');
+                $('#composeArticle').modal('hide')
+                $('#successfull').modal('show')
+                window.location.href = '@Url.Action("Message", "Message")';
+            },
+            error: function () {
+
+                console.log('Failed ');
+            }
+        });
+    })
+
+
+
+
+
+
+
+
+</script>
+
+
+
+<script>
+
+
+
+    $("#SendArticle").click(function () {
+        var articletitle = $('#txtArticleTitle').val();
+        var composeArticle = $('#txtcomposeArticle').val();
+
+        var drpvalue = $("#ddlArticleAudience").val();
+        var rdbtn = $("#selectval").val();
+        var selecteddropdown = $("#articledropdownid").val();
+
+        var GroupIdSelected = $('#ddlArticleMasterUsers').val();
+
+        var uploadImg = document.getElementById('cover');
+        var UploadArticlepdfdoc = document.getElementById('Articlepdfdoc');
+        var wroteArticle = $('#txtWroteArticle').val();
+
+        var imgs = document.getElementById('cover');
+
+
+
+
+        if (articletitle == "") {
+            $('#txtArticleTitle').focus();
+            document.getElementById("txtArticleTitle").style.border = "1px solid red";
+            return false;
+        }
+
+        if (drpvalue == '1') {
+            $('#ddlArticleAudience').focus();
+            document.getElementById("ddlArticleAudience").style.border = "1px solid red";
+            return false;
+        }
+
+        if (wroteArticle == "") {
+            $('#txtWroteArticle').focus();
+            document.getElementById("txtWroteArticle").style.border = "1px solid red";
+            return false;
+        }
+        if (composeArticle == "") {
+            $('#txtcomposeArticle').focus();
+            document.getElementById("txtcomposeArticle").style.border = "1px solid red";
+            return false;
+        }
+
+
+        if (drpvalue == "all") {
+            var Isgroup = 0
+            var ReferenceId = 0
+        } else {
+            var Isgroup = 1
+            var ReferenceId = selecteddropdown
+        }
+
+        var btn = $(this);
+        $(btn).buttonLoader('start');
+
+        var formdata = new FormData()
+        formdata.append('Title', articletitle);
+        formdata.append('Summary', composeArticle);
+        formdata.append('SelectedId', GroupIdSelected);
+        formdata.append('Type', drpvalue);
+        formdata.append('IsGroup', Isgroup);
+        formdata.append('ReferenceId', ReferenceId);
+        formdata.append('WroteArticle', wroteArticle);
+        formdata.append('Mediafile', uploadImg.files[0]);
+        formdata.append('Mediafile', UploadArticlepdfdoc.files[0]);
+
+
+        if (croppers.length == 0) {
+
+            formdata.append('Mediafile', imgs);
+            formdata.append("ArticleMedia[0].filename", fileImgNames);
+            formdata.append("ArticleMedia[0].MediaType", fileType);
+        }
+        else {
+            for (var i = 0; i < croppers.length; i++) {
+                var articleMediaItem = croppers[i];
+                formdata.append("ArticleMedia[" + i + "].Media", articleMediaItem);
+
+                var articleMediafilename = fileImgNames[i];
+                formdata.append("ArticleMedia[" + i + "].filename", articleMediafilename);
+
+                var articleMediaType = fileType[i];
+                formdata.append("ArticleMedia[" + i + "].MediaType", articleMediaType);
+            }
+        }
+
+
+
+       
+
+        $.ajax({
+            url: '/Dashboard/SendNewFeeds',
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: 'json',
+            success: function (result) {
+                $(btn).buttonLoader('stop');
+                $('#composeArticle').modal('hide')
+                window.location.href = '@Url.Action("Message", "Message")';
+
+
+            },
+            error: function () {
+
+                console.log('Failed ');
+            }
+        });
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function onchangeArticleMasterType(event) {
+
+        $("#articleDropdown").val(event.value);
+
+        var userType = event.value;
+
+
+        if (userType == "all") {
+
+            $('#ddlArticleMasterUsers').hide();
+            $('.allArticleUsers').hide();
+        }
+
+        var Url = '/Dashboard/DropDownGroupList';
+        $.post(Url, { type: userType }, function (data) {
+
+            if (data.length < 1) {
+
+            }
+            var lstUsers = [];
+            for (var i = 0; i <= data.length - 1; i++) {
+
+                if (userType == "group") {
+
+                    lstUsers.push("<option value=" + data[i].orgId + + data[i].id + ">" + data[i].groupName + "</option>")
+                    var grouplist = data[i].id
+                    $("#articledropdownid").val(grouplist);
+                    $('.allArticleUsers').show();
+                    $('#ddlArticleMasterUsers').show();
+
+
+                }
+
+                if (userType == "all") {
+
+                    $('#ddlArticleMasterUsers').hide();
+                    $('.allArticleUsers').hide();
+                }
+            }
+
+            document.getElementById("ddlArticleMasterUsers").innerHTML = "<option value='0'>Select a group</option>" + lstUsers;
+
+            $('.preloader').addClass('hide').removeClass('show');
+
+        })
+    }
+
+    function GetBusinessDetailById(Id) {
+
+        var Obj = {
+            BusinessIndexId: Id
+        }
+
+        var Aurl = "/Dashboard/GetDashboardBusinessIndex";
+        $.ajax({
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+            success: function (Result) {
+                console.log(Result);
+
+                var status = Result.success;
+                if (status == true) {
+                   
+
+                    console.log(Result.data);
+                    var BusinessId = Result.data[0].id
+
+                    $("#BusinessApproveId").val(BusinessId);
+                    $('#BusinessName').val(Result.data[0].companyName);
+                    $('#BusinessEmail').val(Result.data[0].companyEmail);
+                    $('#BusinessContact').val(Result.data[0].contactNumber);
+                    $('#BusinessDescription').val(Result.data[0].description);
+
+                    $("#BusinessApproval").modal('show');
+                }
+            },
+            error: function (request, error) {
+                $("#erroritem").modal("show");
+                $("#errmsg1").text("Oops! something went wrong")
+            }
+        });
+    }
+
+    function GetJobPostingById(Id) {
+
+        var Obj = {
+            IsApproved: Id
+        }
+
+  
+        var Aurl = "/Dashboard/GetDashboardJobPosting";
+        $.ajax({
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+            success: function (Result) {
+                console.log(Result);
+
+                var status = Result.success;
+                if (status == true) {
+
+                    console.log(Result.data);
+                    var JobId = Result.data[0].id
+
+                    $('#JobApproveId').val(JobId);
+                    $('#JTitleName').val(Result.data[0].jobTitle);
+                    $('#JBusinessName').val(Result.data[0].companyName);
+                    $('#JDescription').val(Result.data[0].jobDesc);
+
+                    $("#JobAapproval").modal('show');
+                }
+            },
+            error: function (request, error) {
+                $("#erroritem").modal("show");
+                $("#errmsg1").text("Oops! something went wrong")
+            }
+
+        });
+    }
+
+   
+
+    $('#BusinessApprove').click(function () {
+        var DashBusinessId = $("#BusinessApproveId").val();
+        var objData = {
+            Id: DashBusinessId
+        }
+       
+        $.ajax({
+            url: '/Dashboard/DashboardIsBusinessApprove',
+            type: 'POST',
+            data: objData,
+            dataType: 'json',
+            success: function (result) {
+                window.location.href = '/Community/Community?id=business';
+            },
+            error: function () {
+
+                console.log('Failed ');
+            }
+        });
+
+    });
+
+
+
+
+    $(function () {
+        $("#closeJob").click(function () {
+            $("#JobAapproval").modal("hide");
+        });
+    });
+
+    $('#JobApprove').click(function () {
+      
+        var DashJobId = $("#JobApproveId").val();
+        $("#JobApproveId").val();
+        var objData = {
+            Id: DashJobId
+        }
+      
+        $.ajax({
+            url: '/Dashboard/DashboardIsJobApprove',
+            type: 'POST',
+            data: objData,
+            dataType: 'json',
+            success: function (result) {
+                window.location.href = '/Community/Community?id=job';
+
+            },
+            error: function () {
+
+                console.log('Failed ');
+            }
+        });
+
+    });
+</script>
+<script>
+    $("#closebtn").click(function () {
+        var DashBusinessId = $("#BusinessApproveId").val();
+        var objdata =
+        {
+            IsBusinessApproved: false,
+            Id: DashBusinessId
+        }
+        var Aurl = "/Dashboard/DeclineBusiness";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            dataType: "json",
+            success: function (Result) {                
+                if (Result.success == true) {
+                    location.reload();                    
+                }
+            },
+            error: function (request, error) {
+               
+            }
+        });
+    });
+
+    $("#closeJob").click(function () {
+        var DashBusinessId = $("#JobApproveId").val();
+        var objdata =
+        {
+            IsBusinessApproved: false,
+            Id: DashBusinessId
+        }
+        var Aurl = "/Dashboard/UpdateJobApproved";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            dataType: "json",
+            success: function (Result) {
+                if (Result.success == true) {
+                    location.reload();
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    });
+
+</script>
+
+
+<script>
+
+              // Send Message functionality either Text or Pdf/Img
+
+
+          $(document).ready(function() {
+          $('#Message').on('input', function() {
+
+            if ($(this).val().trim() !== '')
+            {
+
+             $('#MessageImage').hide();
+
+              $('#pdffilesMessages').prop('disabled', true);
+            }
+            else
+            {
+             $('#MessageImage').show();
+
+              $('#pdffilesMessages').prop('disabled', false);
+            }
+
+          });
+
+         });
+
+          $('#pdffilesMessages').on('change', function () {
+          $('#Message').prop('readonly', true)
+
+         });
+
+
+
+
+
+
+        // Send BroadcastMessage functionality either Text or Pdf/Img
+
+
+          $(document).ready(function() {
+          $('#BroadcastMess').on('input', function() {
+
+            if ($(this).val().trim() !== '')
+            {
+
+              $('#btnpdfbroadcast').hide();
+              $('#imageBroad').hide();
+              $('#pdffilesBroadcast').prop('disabled', true);
+            }
+            else
+            {
+              $('#btnpdfbroadcast').show();
+              $('#imageBroad').show();
+              $('#pdffilesBroadcast').prop('disabled', false);
+
+            }
+
+          });
+
+         });
+
+
+         $('#pdffilesBroadcast').on('change', function () {
+          $('#BroadcastMess').prop('readonly', true)
+
+         });
+
+</script>
+
+
+<script>
+    $('#Message').emojioneArea({
+        pickerPosition: 'bottom'
+    });
+
+    $('#txtcomposeArticle').emojioneArea({
+        pickerPosition: 'bottom'
+    });
+
+    $('#BroadcastMess').emojioneArea({
+        pickerPosition: 'bottom'
+    });
+
+
+
+</script>
+
+

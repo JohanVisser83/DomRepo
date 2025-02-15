@@ -1,0 +1,1919 @@
+﻿@model CircularWeb.Models.AccountModel
+@{
+    Layout = "_Layout";
+}
+    <style>
+
+        .circular-model #logo-upload2 #imgfile1, .circular-model #logo-upload2 #imgfile2 {
+            color: transparent;
+            width: 100%;
+            position: absolute;
+            left: 0;
+        }
+
+        .image_container {
+            max-width: 200px;
+            max-height: 450px;
+        }
+
+        .ui-menu .ui-menu-item a {
+            font-size: 12px;
+        }
+
+        .ui-autocomplete {
+            z-index: 1051 !important;
+            float: left;
+            height: 230px;
+            overflow-y: auto;
+                border-radius: 6px 6px 11px 11px;
+        }
+
+        .ui-menu li.ui-menu-item .ui-menu-item-wrapper {
+            border-radius: unset;
+        }
+
+        .ui-widget.ui-widget-content {
+            box-shadow: none;
+            background: #ffffff;
+            color: #101C28;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+    <div class="col-lg-11 col-md-11  col-sm-10 col-10">
+        <div class="body-content">
+
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="sidebar mt-38">
+
+                        <ul class="nav nav-tabs tab-data message-tab">
+
+                            <li><a data-toggle="tab" href="#ActiveAccount" class="active">Active accounts</a></li>
+                            <li><a data-toggle="tab" href="#NewAccount">Add a new account</a></li>
+                            <li><a data-toggle="tab" href="#ClosedAccount">Closed accounts</a></li>
+                             @*<li><a data-toggle="tab" href="#ViewAccount">View accounts</a></li>*@
+                            @*<li><a data-toggle="tab" href="#ClosedViewAccount">View accounts</a></li>*@
+
+
+
+                        </ul>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-10">
+
+                    <div class="tab-content">
+                        <!-- @* =====Upcoming Event=====*@ -->
+                        <div id="ActiveAccount" class="tab-pane fade active show ">
+                           <div class="istdiv">
+                               <div class="cross-icon text-right d-block cross-relative planner-cross">
+
+                                <button type="button" class="cross" id="active_cross">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
+                            <!-- For UpcomingEvent purpose-->
+                            <!-- Users box-->
+                                <div class=" border-bx-area border-0">
+                                <div class="table-responsive ">
+                                    <table id="Active-Account" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="display:none">Id</th>
+                                                <th>Account title<span ><img src="~/images/Filter1.png"></span></th>
+
+                                                <th>Amount collected<span class="ml-2"><img src="~/images/Filter1.png"></span></th>
+                                                <th>Paid</th>
+                                                <th>Recipient Group</th>
+                                                <th>Attached PDF</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.ActiveAccount)
+                                            @*@if (Model.lstActiveAccount.Count() >= 0)*@
+                                            {
+                                                <tr>
+                                                   <td style="display:none">@item.Id</td>
+                                                   <td class="text-left"><span class="text-over">@item.title </span><a  class="viewClossedAccount"><span class="ml-3 position-absolute"><img src="~/images/Show.png" onclick="BindActiveAccount(@item.Id)"></span></a></td>
+
+                                                    <td>@Model.currencyModel.CurrencyCode @item.AmountCollected</td>
+                                                    <td>@item.TotalPaid/@item.TotalMemberAtCreation</td>
+                                                    <td>@item.GroupName</td>
+                                               
+                                                    <td>@if (!string.IsNullOrEmpty(item.AccountMedia))
+                                                    {
+                                                        <a href="@item.AccountMedia" target='_blank'><img src="~/images/attached-pdf.png"></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span></span>
+                                                    }
+                                                    </td>
+                                                   
+                                                    <td><span class="" data-toggle="modal"><img onclick="deleteActiveAccountitem(@item.Id)" src="~/images/Delete2.png"></span></td>
+                                                </tr>
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                             </div>
+                            <div id="ViewAccount" class=" new-event" style="display:none;">
+                            <!-- For demo purpose-->
+                            <div class="cross-icon text-right d-block cross-relative">
+
+                                <button type="button" class="cross" id="ViewCrossActivebtn">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
+                            <div class="p-6 border-bx-area">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Account title</label>
+                                        <input type="text" class="form-control " value="" id="clstxtTitle">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label> Event start date and time</label>
+                                        <input type="text" class="form-control " value="" id="clsEventStartDate">
+
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                    <label>Who is the organiser for this event?</label>
+                                       <input type="text" class="form-control " value="" id="clsOrganiser">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Event end date and time</label>
+                                       <input type="text" class="form-control " value="" id="clsventTime">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                        <label>Who would you like to invite?</label>
+                                        <input type="text" class="form-control "  id="clsGroups">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Payment closure date</label>
+                                        <input type="text" class="form-control " value="" id="clspaymentcloserdate">
+
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                        <label>Search an individual</label>
+                                        <input type="text" class="form-control " id="clsIndividuals">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Schedule delivery</label>
+                                        <input type="text" class="form-control " value="" id="clsScheduledlvery">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+
+                                        <div class="form-group ">
+                                            <label>Select a group</label>
+                                            <input type="text" class="form-control " value="" id="clsddlgroup">
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <label>Account amount</label>
+                                            <input type="text" class="form-control " value="" id="clsAmount">
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group ">
+                                            <label>Account description</label>
+
+                                            <textarea class="form-control height-auto" rows="7" placeholder="" id="clsAccountDesc"></textarea>
+                                        </div>
+                                        <div class="form-group  ">
+                                            <label>Upload a PDF </label>
+                                            <div class="add-icon-bx" id="logo-uploadAccount11">
+                                                <label for="pdfMessages1" class=" custom-file-upload nameimage" id="uploadSec31">
+                                                    <span>Upload PDF</span>
+                                                </label>
+                                                <div class="add-icon upload-icon">
+                                                    <input id="pdfMessages1" type="file" />
+                                                    <img src="~/images/Document-add.png">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-lumo-green pink-bg" id="IsclosedAccount">Close account</button>
+                                    <button type="button" class="btn-link btn" onclick="activecollection()">View account data</button>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        </div>
+                        <!-- @*==end===*@ -->
+                        <!-- @*=====New Event=====*@ -->
+                        <div id="NewAccount" class="tab-pane fade new-event ">
+                            <!-- For demo purpose-->
+                            <div class="cross-icon text-right d-block cross-relative" >
+
+                            <button type="button" class="cross" id="crossNewAccount">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
+                            <div class="p-6 border-bx-area">
+                                <div class="row">
+
+                                    <div class="form-group col-md-6">
+                                        <label>Account title</label>
+                                        <input id="title" class="form-control">
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Event start date and time</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class=" date-icon">
+                                                    <input type="date" id="EventStartDate" class="form-control  btn-date datepicker-icon">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <input type="time" class="form-control" id="EventStartTime">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                    <label>Who is the organiser for this event?</label>
+
+                                        <select class="form-control" id="EventOrganiser" asp-items="@(new SelectList(Model.Organizers,"CustomerId","Name"))">
+                                        <option selected value="1">Select a Event Organiser</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Event end date and time</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="date-icon">
+                                                    <input type="date" id="eventenddate" class="form-control  btn-date">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <input type="time" class="form-control" id="eventendtime">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                        <label>Who would you like to invite?</label>
+                                        <select class="form-control" id="Invite">
+                                        <option selected>Select who would you like to invite</option>
+                                            <option>All</option>
+                                            <option>Group</option>
+                                            <option>Individual</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Expiry date for account collection</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="date-icon">
+                                                    <input type="date" id="ExpirydateCollection" class="form-control  btn-date">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <input type="time" class="form-control" id="ExpirytimeCollection">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6" style="display:;">
+
+                                        <label>Search an individual</label>
+                                        <input type="text" id="Individual" class="form-control  btn-date">
+                                    </div>
+                                    @* <div>
+                                <ul id="ContactList">
+                                </ul>
+                                </div>*@
+                                    <div class="form-group col-md-6">
+                                        <label>Schedule delivery</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="date-icon">
+                                                    <input type="date" id="Scheduledeliverydate" class="form-control  btn-date">
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <input type="time" class="form-control" id="Scheduleddeliverytime">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+
+                                        <div class="form-group ">
+                                            <label>Select a group</label>
+                                            <select class="form-control" id="GroupId" asp-items="@(new SelectList(Model.Groups,"Id","GroupName"))">
+                                                <option selected>Select Group Name</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <label>Account amount</label>
+                                              <div class="input-group doller-sign">
+                                                 <div class="input-group-prepend">
+                                                   <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                                </div>
+                                                 <input type="text" class="form-control" id="Amount" value="" min="1" onkeyup="priceValidation()">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group ">
+                                            <label>Account description</label>
+                                            <textarea id="Description" class="form-control height-auto" rows="7" placeholder=""></textarea>
+                                        </div>
+
+                                        <div class="form-group  add-icon-bx" id="logo-uploadAccount">
+                                            <label for="pdfMessages" class="custom-file-upload nameimage" id="uploadSec3">
+                                                <span>Upload PDF</span>
+                                            </label>
+                                            <div class="add-icon upload-icon">
+                                                <input id="pdfMessages" type="file" />
+                                                <img src="~/images/Document-add.png">
+                                            </div>
+                                        </div>
+                                        <div class="text-right">
+
+                                            <button type="button" class="btn btn-lumo-green" data-toggle="modal" id="AccountAdd" data-target="#collection-Added">Add Account</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        <!-- ======End===== -->
+                         <div id="ClosedAccount" class="tab-pane fade ">
+                              <div class="closedist">
+                                        <!-- For demo purpose-->
+                                        <div class="cross-icon text-right d-block cross-relative planner-cross">
+
+                                            <button type="button" class="cross" id="crossClsAccountss">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+
+                                       <div class="border-bx-area border-0">
+                                            <div class="table-responsive ">
+                                                <table id="Closed-Account" class="table">
+                                                    <thead>
+
+                                                        <tr>
+                                                            @*<th style="display:none">Id</th>*@
+                                                        <th>Account title<span class="ml-2"><img src="~/images/Filter1.png"></span></th>
+                                                            <th>Account Details</th>
+                                                            <th>Amount collected <span class="position-absolute ml-2"><img src="~/images/Filter1.png"></span></th>
+                                                            <th>Paid</th>
+                                                            <th>Recipient Group</th>
+                                                            <th>Attached PDF</th>
+
+                                                        </tr>
+
+                                                    </thead>
+
+                                                    <tbody>
+                                                    @foreach (var item in Model.ClosedAccount)
+                                                        {
+                                                            <tr>
+                                                                @*<td style="display:none">@item.Id</td>*@
+                                                                <td><span class="text-over"> @item.title</span><a class="viewclossed1"> <span  class="position-absolute ml-3"><img src="~/images/Show.png" onclick="BindClosedAccount(@item.Id)"></span></a></td>
+                                                                <td><a  class="viewclossed" onclick="BindClosedAccount(@item.Id)">View Details</a></td>
+                                                                <td>@Model.currencyModel.CurrencyCode @item.AmountCollected</td>
+                                                                <td>@item.TotalPaid/@item.TotalMemberAtCreation</td>
+                                                                <td>@item.GroupName</td>
+                                                                <td>
+                                                                @if (!string.IsNullOrEmpty(item.AccountMedia))
+                                                                    {
+                                                                        <a href="@item.AccountMedia" target='_blank'><span class=""><img src="~/images/attached-pdf.png"></span></a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <span></span>
+                                                                    }
+                                                                </td>
+                                                               
+
+
+                                                            </tr>
+                                                        }
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                               </div>
+                               <div id="ClosedViewAccount" class="new-event " style="display:none;">
+                            <!-- For demo purpose-->
+                            <div class="cross-icon text-right d-block cross-relative">
+
+                                <button type="button" class="cross" id="clsViewCrossAccount">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+
+                            <div class="p-6 border-bx-area">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label>Account title</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " value="" id="clstxtTitle1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label> Event start date and time</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " value="" id="clsEventStartDate1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                    <label>Who is the organiser for this event?</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " value="" id="clsOrganiser1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Event end date and time</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " value="" id="clsventTime1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                        <label>Who would you like to invite?</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " value="" id="clsGroups1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Payment closure date</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " value="" id="clspaymentcloserdate1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+
+                                        <label>Search an individual</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " id="clsIndividuals1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Schedule delivery</label>
+                                        <div class="add-icon-bx">
+                                            <input type="text" class="form-control " value="" id="clsScheduledlvery1">
+
+                                            <div class="add-icon ">
+
+                                                <img src="~/images/Lock-3.png">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                       @* <div class="form-group ">
+                                            <label>Select a community</label>
+                                            <div class="add-icon-bx">
+                                                <input type="text" class="form-control " value="" id="">
+
+                                                <div class="add-icon ">
+
+                                                    <img src="~/images/Lock-3.png">
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                        <div class="form-group ">
+                                            <label>Select a group</label>
+                                            <div class="add-icon-bx">
+                                                <input type="text" class="form-control " value="" id="clsddlgroup1">
+
+                                                <div class="add-icon ">
+
+                                                    <img src="~/images/Lock-3.png">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <label>Account amount</label>
+                                            <div class="add-icon-bx">
+                                                <input type="text" class="form-control " value="" id="clsAmount1">
+
+                                                <div class="add-icon ">
+
+                                                    <img src="~/images/Lock-3.png">
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group ">
+                                            <label>Account description</label>
+
+                                            <div class="add-icon-bx">
+                                                <textarea class="form-control" rows="7" placeholder="" id="clsAccountDesc1"></textarea>
+
+                                                <div class="add-icon ">
+
+                                                    <img src="~/images/Lock-3.png">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group  ">
+                                            <label>Upload a PDF </label>
+                                            <div class="add-icon-bx" id="logo-uploadAccount11">
+                                                <label for="pdfMessages1" class="custom-file-upload nameimage" id="uploadSec311">
+                                                    <span>Upload PDF</span>
+                                                </label>
+                                                <div class="add-icon upload-icon">
+                                                    <input id="pdfMessages1" type="file" />
+                                                    <img src="~/images/Document-add.png">
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                        <div class="text-right">
+                                            <button type="button" class="btn-link btn" data-toggle="modal" data-target="#ClosedAttendees" onclick="closedcollection()">View account data</button>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                         </div>
+                        <!-- @*=====New Event=====*@ -->
+                        
+
+
+                        
+
+
+
+
+                        <!-- ======End===== -->
+                        <!-- @*====PassedEvent====*@ -->
+                        
+
+                        <!--  @*====end===*@ -->
+                    
+
+
+                    </div>
+
+                        
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--     @*======Item Added====*@ -->
+    <div class="modal fade modal-small-bx" id="AccountAddedModel" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Things are happening!</h5>
+                        @*<p>Your account has been sent successfully</p>*@
+                        <p id="AccountMsg"></p>
+                    </div>
+                    <div class="text-center">
+
+                        <button type="button" class="btn btn-default btn-block" id="AddedAccountClosedbtn">Close</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade modal-small-bx" id="SucessfullyClosedAccountModel" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>That's all folks!</h5>
+                        <p id="doneeeee"></p>
+                    </div>
+                    <div class="text-center">
+
+                        <button type="button" class="btn btn-default btn-block" data-dismiss="modal">close</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- @*======END======*@ -->
+    <!-- Attendees Modal -->
+    <div class="modal fade modal-add-bx" id="Attendees" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title left-modal-title"><span id="collectionDataTitle"></span></h5>
+
+                    <button type="button" class="btn btn-link text-white mr-5"><span class="mr-2"><img src="~/images/Download-white.png" onclick="exportCSVExcelActiveCollection()"></span>Export CSV</button>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+
+                <div class="modal-body p-0">
+                    <div class="new-message">
+                        <div class="table-responsive">
+                            <table id="ActiveAccountCollectionData" class="table attendence ">
+                                <thead>
+                                    <tr>
+                                    <th>Date <span class="ml-2 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                    <th>Payee name <span class="ml-2 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                        <th>Payee mobile </th>
+                                        <th>Recipient name</th>
+                                        <th><span class="text-nowrap">Recipient Mobile</span></th>
+                                        <th>Amount requested</th>
+                                    <th>Amount collected<span class="ml-2 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bodyActiveAccountCollection">
+                                </tbody>
+                                <tfoot id="Amounts">
+                                    
+                                </tfoot>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- closed Collection data -->
+
+    <div class="modal fade modal-add-bx" id="ClosedAttendees" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title left-modal-title"><span id="closedcollectionDataTitle"></span></h5>
+
+                    <button type="button" class="btn btn-link text-white mr-5"><span class="mr-2"><img src="~/images/Download-white.png" onclick="exportCSVExcelClosedCollection()"></span>Export CSV</button>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+
+                <div class="modal-body p-0">
+                    <div class="new-message">
+                        <div class="table-responsive">
+                            <table id="ClosedAccountCollectionData" class="table attendence ">
+                                <thead>
+                                    <tr>
+                                        <th>Date <span class="ml-2 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                        <th>Payee name <span class="ml-2 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                        <th>Payee mobile </th>
+                                        <th>Recipient name</th>
+                                        <th><span class="text-nowrap">Recipient mobile </span></th>
+                                        <th>Amount requested</th>
+                                    <th>Amount collected<span class="ml-2 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="">
+                                </tbody>
+                                <tfoot id="ClosedAmounts">
+                                   
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- @*======end====*@ -->
+    <!-- @*=======item deletion confirmation=====*@ -->
+
+    <div class="modal fade modal-small-bx" id="delete-Upcommingconfimation" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Are you sure?</h5>
+                        <p>You are about to delete this account forever :(</p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="btnupcomingyes" class=" btn bg-lumo">Yes</button>
+                        <button type="button" id="btnupcomingno" class="btn bg-pink">No</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade modal-small-bx" id="IsclosedAccountModal" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Are you sure?</h5>
+                        <p>You are about to close this account :(</p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" id="btnclsyes" class=" btn bg-lumo">Yes</button>
+                        <button type="button" id="btnupcomingno" class="btn bg-pink" data-dismiss="modal">No</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <input type="hidden" id="contactIdAccountNo" />
+    <input type="hidden" id="UpcomingId" />
+    <input type="hidden" id="hdnEventId" />
+    <input type="hidden" id="Searchcustomerid" value="" />
+    <input type="hidden" id="ddlSelected" />
+    <!-- @*========END======*@ -->
+ <script type="text/javascript">
+  otable1 = $('#Active-Account').DataTable({
+            "order": [[0, "desc"]],
+            searching: false,
+            pagination: false,
+            
+
+            "dom": 'rt<"bottom"flp><"bottom"i>'
+        })
+      otable2 = $('#Closed-Account').DataTable({
+            "order": [[0, "desc"]],
+            searching: false,
+            pagination: false,
+           
+
+            "dom": 'rt<"bottom"flp><"bottom"i>'
+        })
+      
+       
+
+       
+       otable = $('#ActiveAccountCollectionData').DataTable({
+            "order": [[0, "desc"]],
+            searching: false,
+            pagination: false,
+           "dom": 'rt<"bottom"flp><"bottom"i>'
+        })
+
+    otable3 = $('#ClosedAccountCollectionData').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+       
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+/* otable4 = $('#Attendees').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })*/
+
+    </script>
+    <script>
+    $("#datefrom").datepicker();
+        $(function () {
+
+            $("#datefrom").datepicker();
+            $("#datetime").datepicker();
+            $("#datetime1").datepicker();
+            $("#datetime2").datepicker();
+
+        });
+
+    </script>
+
+
+
+    <script>
+
+
+        $("#logo-uploadAccount .custom-file-upload span").show();
+        $("#logo-uploadAccount input").change(function () {
+            $("#logo-uploadAccount .custom-file-upload span").show();
+            $("#logo-uploadAccount .custom-file-upload span").text(this.files[0].name);
+        });
+
+
+
+
+
+        /*  $('#viewclossed').click(function () {
+
+              $('.message-tab a[href="#NewAccount"]').tab('show');
+          })*/
+
+        /*
+            $('#viewClossedAccount').click(function () {
+               
+                $('.message-tab a[href="#ViewAccount"]').tab('show');
+                $("#ActiveAccount").hide();
+                
+            })*/
+
+        $(document).ready(function () {
+
+         $('.viewClossedAccount').click(function (e) {
+           
+                $(".istdiv").hide();
+                $("#ViewAccount").show();
+                
+            });
+            $('.message-tab a[href="#ActiveAccount"]').click(function (e) {
+           
+                $(".istdiv").show();
+                $("#ViewAccount").hide();
+                
+            });
+           $('#ViewCrossActivebtn').click(function (e) {
+           
+                $(".istdiv").show();
+                $("#ViewAccount").hide();
+                
+            });
+           $('.viewclossed1').click(function (e) {
+               $(".closedist").hide();
+                $("#ClosedViewAccount").show();
+                
+            });
+             $('.viewclossed').click(function (e) {
+               $(".closedist").hide();
+                $("#ClosedViewAccount").show();
+                
+            });
+            $('.message-tab a[href="#ClosedAccount"]').click(function (e) {
+           
+                $(".closedist").show();
+                $("#ClosedViewAccount").hide();
+                
+            });
+           $('#clsViewCrossAccount').click(function (e) {
+               $(".closedist").show();
+                $("#ClosedViewAccount").hide();
+                
+            });
+
+           
+        });
+      if (~window.location.href.indexOf("launchUM")) {
+			$('.message-tab a[href="#AttendanceManagement"]').tab('show');
+		}
+
+        $("#AddedAccountClosedbtn").click(function () {
+            location.reload();
+        })
+
+
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            const param_x = urlParams.get('id');
+        if (param_x == 'addAccountInAccount') {
+            $('[href="#NewAccount"]').click();
+            }
+        });
+    
+    </script>
+
+   
+
+
+
+
+    <script>
+
+        $('#AccountAdd').click(function () {
+          
+            var title = $("#title").val();
+            var eventStartDate = $("#EventStartDate").val().trim();
+            var eventStartTime = $("#EventStartTime").val().trim();
+            var eventOrganiser = $("#EventOrganiser").val();
+            var eventEndDate = $("#eventenddate").val().trim();
+            var eventEndTime = $("#eventendtime").val();
+            var type = $("#ddlSelected").val();
+            var expirydateCollection = $("#ExpirydateCollection").val().trim();
+            var expirytimeCollection = $("#ExpirytimeCollection").val().trim();
+            var individual = $("#Searchcustomerid").val();
+            var scheduledeliverydate = $("#Scheduledeliverydate").val().trim();
+            var scheduleddeliverytime = $("#Scheduleddeliverytime").val().trim();
+
+            var description = $("#Description").val();
+            var amount = $("#Amount").val().trim().replace('@Model.currencyModel.CurrencyCode',"");
+            var pdfMessage = document.getElementById('pdfMessages');
+        var CombinedStartDate = eventStartDate + ' ' + eventStartTime;
+        var CombinedEndtDate = eventEndDate + ' ' + eventEndTime;
+        var CombinedDeliveryDate = scheduledeliverydate + ' ' + scheduleddeliverytime;
+        var CombinedexpiryDate = expirydateCollection + ' ' + expirytimeCollection;
+
+
+        if (title == "") {
+            $('#title').focus();
+            document.getElementById("title").style.border = "1px solid red";
+            return false;
+        }
+
+        if (eventOrganiser == '1') {
+            $('#EventOrganiser').focus();
+            document.getElementById("EventOrganiser").style.border = "1px solid red";
+            return false;
+        }
+
+        if (amount == "") {
+            $('#Amount').focus();
+            document.getElementById("Amount").style.border = "1px solid red";
+            return false;
+        }
+
+        if (eventStartDate == "") {
+            $('#EventStartDate').focus();
+            document.getElementById("EventStartDate").style.border = "1px solid red";
+            return false;
+        }
+
+        if (eventStartTime == "") {
+            $('#EventStartTime').focus();
+            document.getElementById("EventStartTime").style.border = "1px solid red";
+            return false;
+        }
+
+        if (eventEndDate == "") {
+            $('#eventenddate').focus();
+            document.getElementById("eventenddate").style.border = "1px solid red";
+            return false;
+        }
+
+        if (eventEndTime == "") {
+            $('#eventendtime').focus();
+            document.getElementById("eventendtime").style.border = "1px solid red";
+            return false;
+        }
+
+        if (expirydateCollection == "") {
+            $('#ExpirydateCollection').focus();
+            document.getElementById("ExpirydateCollection").style.border = "1px solid red";
+            return false;
+        }
+
+        if (expirytimeCollection == "") {
+            $('#ExpirytimeCollection').focus();
+            document.getElementById("ExpirytimeCollection").style.border = "1px solid red";
+            return false;
+        }
+
+        if (description == "") {
+            $('#Description').focus();
+            document.getElementById("Description").style.border = "1px solid red";
+            return false;
+        }
+
+        if (type == "Group") {
+
+            var groupId = $("#GroupId").val();
+
+        }
+
+
+
+            var formdata = new FormData();
+
+            formdata.append('title', title);
+           // formdata.append('EventStartDate', eventStartDate);
+        formdata.append('EventStartDate', CombinedStartDate);
+            formdata.append('EventStartTime', eventStartTime);
+            formdata.append('EventOrganiser', eventOrganiser);
+        formdata.append('EventEndDate', CombinedEndtDate);
+            //formdata.append('EventEndDate', eventEndDate);
+            formdata.append('EventEndTime', eventEndTime);
+            formdata.append('Type', type)
+            //formdata.append('ExpirydateCollection', expirydateCollection);
+        formdata.append('ExpirydateCollection', CombinedexpiryDate);
+            formdata.append('ExpirytimeCollection', expirytimeCollection);
+            formdata.append('Individual', individual);
+           // formdata.append('Scheduledeliverydate', scheduledeliverydate);
+        formdata.append('Scheduledeliverydate', CombinedDeliveryDate);
+            formdata.append('Scheduleddeliverytime', scheduleddeliverytime);
+            formdata.append('GroupId', groupId);
+            formdata.append('Description', description);
+            formdata.append('Amount', amount);
+            formdata.append('Mediafile', pdfMessage.files[0]);
+
+
+            $.ajax({
+                url: '/Account/SaveAccount',
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function (result) {
+                var status = result.success;
+                    if(status == true)
+                    {
+                     $('#AccountAddedModel').modal('show')
+                     $('#AccountMsg').text(result.message)
+                   
+                    }
+                    else
+                    {
+                     $('#AccountAddedModel').modal('show')
+                     $('#AccountMsg').text(result.message)
+                    }
+                    
+                  
+                },
+                error: function (request, error) {
+
+                    console.log('Failed ');
+                }
+            });
+
+        });
+
+        //Delete Active Account
+
+        function deleteActiveAccountitem(Id) {
+            $("#delete-Upcommingconfimation").modal("show");
+            $("#UpcomingId").val(Id);
+        }
+
+        function CloseActiveAccountitem(Id) {
+
+            $("#UpcomingId").val(Id);
+        }
+
+
+
+
+
+        $(document).on("click", "#btnupcomingno", function () {
+            $("#delete-Upcommingconfimation").modal("hide");
+        });
+
+        $(document).on("click", "#btnupcomingyes", function () {
+
+            var objdata = {
+                Id: $("#UpcomingId").val()
+            }
+            var Aurl = "/Account/DeleteActiveAccountitems";
+            $.ajax({
+                type: "Post",
+                url: Aurl,
+                data: objdata,
+                success: function (Result) {
+                    if (Result.Status = true) {
+                        $("#delete-Upcommingconfimation").modal("hide");
+                        $("#Items-Added").modal("show");
+                        $("#itemaddheader").text('Item Deleted!');
+                        $("#message").text(Result.message);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2500);
+                    }
+                    else {
+                        $("#delete-Upcommingconfimation").modal("hide");
+                        $("#Items-Added").modal("show");
+                        $("#itemaddheader").text('Item Deleted!');
+                        $("#message").text(Result.message);
+                    }
+                },
+                error: function (request, error) {
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Something went wrong!');
+                    $("#message").text(error);
+                }
+
+            });
+        });
+
+
+        $(document).on("change", "#Invite", function () {
+            var inviteid = $('#Invite').val().trim();
+            $("#ddlSelected").val(inviteid);
+
+            if (inviteid.toLowerCase() == "all") {
+
+                $('#GroupId').attr("disabled", "disabled");
+                $('#Individual').attr("disabled", "disabled")
+            }
+            if (inviteid.toLowerCase() == "individual") {
+
+                $('#Individual').attr("disabled", false)
+                $('#GroupId').attr("disabled", "disabled");
+
+            }
+            if (inviteid.toLowerCase() == "group") {
+
+                $('#Individual').attr("disabled", "disabled")
+                $('#GroupId').attr("disabled", false);
+            }
+        });
+
+
+
+        function BindClosedAccount(Id) {
+
+            $("#hdnEventId").val(Id);
+            var objdata = {
+                Id: Id
+            }
+            var Aurl = "/Account/GetViewAccountDetails";
+            $.ajax({
+                type: "Get",
+                url: Aurl,
+                data: objdata,
+                success: function (result) {
+                   /* var status = result.success;
+                    console.log(result);*/
+                if (result.success == true) {
+
+                        console.log(result.data);
+
+                        $('#clstxtTitle1').val(result.data[0].Title);
+                        $("#clstxtTitle1").attr("readonly", "readonly");
+
+                        $('#clsOrganiser1').val(result.data[0].EventOrganiser);
+                        $("#clsOrganiser1").attr("readonly", "readonly");
+
+                        $('#clsGroups1').val(result.data[0].GroupName);
+                        $("#clsGroups1").attr("readonly", "readonly");
+
+                        $('#clsIndividuals1').val(result.data[0].Individual)
+                        $('#clsIndividuals1').attr("readonly", "readonly");
+
+                        $('#clsddlgroup1').val(result.data[0].GroupActualName);
+                        $("#clsddlgroup1").attr("readonly", "readonly");
+
+                       var amounts = result.data[0].Amount.toFixed(2)
+
+                        $('#clsAmount1').val('@Model.currencyModel.CurrencyCode' + amounts);
+                        $("#clsAmount1").attr("readonly", "readonly")
+
+                        var startdate = returndateformat(result.data[0].EventStartDate);
+                        $("#clsEventStartDate1").val(startdate + ' ' + formatTime(result.data[0].EventStartTime));
+                        $("#clsEventStartDate1").attr("readonly", "readonly");
+
+
+                        var enddate = returndateformat(result.data[0].EventStartDate);
+                        $("#clsventTime1").val(enddate + ' ' + formatTime(result.data[0].EventStartTime));
+                        $("#clsventTime1").attr("readonly", "readonly");
+
+
+                        var expirydate = returndateformat(result.data[0].ExpirydateCollection);
+                        $("#clspaymentcloserdate1").val(expirydate + ' ' + formatTime(result.data[0].Expirytimecollection));
+                        $("#clspaymentcloserdate1").attr("readonly", "readonly");
+
+
+                        var scheduleDeliverydate = returndateformat(result.data[0].Scheduledeliverydate);
+                        $("#clsScheduledlvery1").val(scheduleDeliverydate + ' ' + formatTime(result.data[0].Scheduleddeliverytime));
+                        $("#clsScheduledlvery1").attr("readonly", "readonly");
+
+
+
+
+                        $('#clsAccountDesc1').val(result.data[0].Description);
+                        $("#clsAccountDesc1").attr("readonly", "readonly");
+
+
+                        var index = result.data[0].AccountMedia.lastIndexOf("\\") + 1;
+                        var filename = result.data[0].AccountMedia.substr(index);
+                        $('#uploadSec311').html(filename);
+
+
+
+
+                        //$('#uploadSec311').html(result.data[0].AccountMedia);
+                        $("#uploadSec311").attr("readonly", "readonly");
+
+
+
+
+                    }
+                    else {
+
+                    }
+                },
+                error: function (request, error) {
+
+                }
+
+            });
+        }
+
+
+    function returndateformat(date) {
+        var d = new Date(date.split("/").reverse().join("-"));
+        var dd = d.getDate().toString().padStart(2, '0');
+        var mm = (d.getMonth() + 1).toString().padStart(2, '0');
+        var yy = d.getFullYear();
+        var newdate = dd + "." + mm + "." + yy;
+        return newdate;
+    }
+
+    //For Time in AM/PM format
+    function formatTime(timeString) {
+        var time = new Date("1970-01-01T" + timeString);
+        return time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    }
+        
+
+        function BindActiveAccount(Id) {
+         
+            $("#hdnEventId").val(Id);
+            var objdata = {
+                Id: Id
+            }
+            var Aurl = "/Account/GetViewAccountDetails";
+            $.ajax({
+                type: "Get",
+                url: Aurl,
+                data: objdata,
+                success: function (Result) {
+                    /*var status = result.success;*/
+                    //console.log(Result);
+                      if (Result.success == true) {
+
+                   
+
+                        var activeId = Result.data[0].Id
+                        $("#hdnEventId").val(activeId);
+
+
+
+                        $("#hdnEventId").val(Result.data[0].Id);
+
+                        $('#clstxtTitle').val(Result.data[0].Title);
+                        $("#clstxtTitle").attr("readonly", "readonly");
+
+                        $('#clsOrganiser').val(Result.data[0].EventOrganiser);
+                        $("#clsOrganiser").attr("readonly", "readonly");
+
+                       
+
+                        $('#clsGroups').val(Result.data[0].GroupName);
+                        $("#clsGroups").attr("readonly", "readonly");
+
+                        
+                       
+
+                       //$('#clsGroups').text("Individual");
+                       //$("#clsGroups").attr("readonly", "readonly");
+
+                        $('#clsIndividuals').val(Result.data[0].Individual)
+                        $('#clsIndividuals').attr("readonly", "readonly");
+                       
+                       // $('#clsddlgroup').val(Result.data[0].GroupName)
+                       $('#clsddlgroup').val(Result.data[0].GroupActualName);
+                        $("#clsddlgroup").attr("readonly", "readonly");
+
+                        var amounts = Result.data[0].Amount.toFixed(2)
+                        $('#clsAmount').val('@Model.currencyModel.CurrencyCode' + amounts);
+                        $("#clsAmount").attr("readonly", "readonly");
+
+                        var startdate = returndateformat(Result.data[0].EventStartDate);
+                           /* var starttimes = timeformat(result.data[0].eventStartTime);*/
+                        $("#clsEventStartDate").val(startdate + ' ' + formatTime(Result.data[0].EventStartTime));
+                        $("#clsEventStartDate").attr("readonly", "readonly");
+
+
+                       var enddate = returndateformat(Result.data[0].EventEndDate);
+                      /*  var endtimes = timeformat(result.data[0].eventEndTime);*/
+                        $("#clsventTime").val(enddate + ' ' + formatTime(Result.data[0].EventEndTime));
+                        $("#clsventTime").attr("readonly", "readonly");
+
+
+                        var expirydate = returndateformat(Result.data[0].ExpirydateCollection);
+                        $("#clspaymentcloserdate").val(expirydate + ' ' + formatTime(Result.data[0].Expirytimecollection));
+                        $("#clspaymentcloserdate").attr("readonly", "readonly");
+
+
+                        var scheduleDeliverydate = returndateformat(Result.data[0].Scheduledeliverydate);
+                        $("#clsScheduledlvery").val(scheduleDeliverydate + ' ' + formatTime(Result.data[0].Scheduleddeliverytime));
+                        $("#clsScheduledlvery").attr("readonly", "readonly");
+
+                        $('#clsAccountDesc').val(Result.data[0].Description);
+                        $("#clsAccountDesc").attr("readonly", "readonly");
+
+                        var index = Result.data[0].AccountMedia.lastIndexOf("\\") + 1;
+                        var filename = Result.data[0].AccountMedia.substr(index);
+                        $('#uploadSec31').html(filename);
+                        $("#uploadSec31").attr("readonly", "readonly");
+
+                    }
+                    else {
+
+                    }
+                },
+                error: function (request, error) {
+
+                }
+
+            });
+        }
+
+        $('#IsclosedAccount').click(function () {
+
+            $('#IsclosedAccountModal').modal('show');
+        })
+
+
+
+
+        $('#btnclsyes').click(function () {
+            var id = $("#hdnEventId").val();
+           
+            var Aurl = "/Account/ClosedAccount";
+
+            $.post(Aurl, { Id: id }, function (result) {
+                location.reload();
+
+                /* $('SucessfullyClosedAccountModel').modal('show')*/
+
+            });
+
+
+
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#Individual").autocomplete({
+                source: function (request, response) {
+                    var searchList = $('#Individual').val()
+                    var formdata = new FormData();
+                    formdata.append('Search', searchList);
+                    $.ajax({
+                        url: '/Account/GetUserContactList',
+                        data: formdata,
+                        dataType: "json",
+                        type: "POST",
+                        contentType: false,
+                        processData: false,
+                        dataFilter: function (Result) { return Result; },
+                        success: function (Result) {
+                            var Spont = Result[0].customerId;
+                            $("#Searchcustomerid").val(Spont);
+                            response($.map(Result, function (item) {
+                                var x = item.name + "(" + item.mobile + ")";
+                                var y = item.customerId;
+                                return {
+                                  value: x, label: x, desc: y,
+                                 }
+                               
+                            }))
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            var err = eval("(" + XMLHttpRequest.responseText + ")");
+                            //$('#wentWorng').modal('show');
+                            //$("#ErrorMessage").html("OOPS! Something went Wrong");
+                        }
+                    });
+
+                },
+                select: function (e, i, s) {
+                    $("#Individual").val(i.item.name);
+                    $("#contactIdAccountNo").val(i.item.mobile);
+                    
+                    //SelectecDataSearch(i.item.label, i.item.value, i.item.id);
+                    //return false;
+                },
+                focus: function (event, ui) {
+                    event.preventDefault();
+                    $('#Individual').val(ui.item.label);
+                },
+                minLength: 1 //This is the Char length of inputTextBox
+            });
+
+        });
+    </script>
+
+    <script>
+
+    function formatDateTime(dateTimeString) {
+        const [dateString, timeString] = dateTimeString.split(' '); 
+        const [day, month, year] = dateString.split('.'); 
+        const [hour, minute, second] = timeString.split(':'); // Split time into hour, minute, second
+
+        const dateTime = new Date(year, month - 1, day, hour, minute, second);
+
+        const date = dateTime.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.');
+        const time = dateTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+        return `${date} ${time}`;
+    }
+
+
+
+        function activecollection() {
+            var Amountrequested = 0;
+            var AmountCollected = 0;
+            var id = $("#hdnEventId").val();
+            var abcs = 'Account data';
+           var n=0;
+
+            var objdata = {
+                CollectionId: id
+            }
+
+            var Aurl = "/Account/ActiveAccountCollectionData";
+
+            $.ajax({
+                type: "Post",
+                url: Aurl,
+                data: objdata,
+                success: function (Result) {
+                console.log(Result);
+                Amountrequested=0;
+                AmountCollected=0;
+                    if (Result.success == true) {
+                        
+                        var rows = '';
+                        var tfoots='';
+                        for (i = 0; i < Result.data.result.length; i++) 
+                        {
+                            n = 1;
+                            Amountrequested += parseFloat(Result.data.result[i].AmountRequest);
+                            AmountCollected = parseFloat(Result.data.result[i].TotalAmountCollected);
+                            abcs = Result.data.result[0].Title;
+                        rows += "<tr><td>" + formatDateTime(Result.data.result[i].PaidDate) + "</td><td>" + Result.data.result[i].Payeename + "</td><td>" + Result.data.result[i].PayeeMobilenumber + "</td><td>" + Result.data.result[i].RecipientName + "</td><td>" + Result.data.result[i].RecipentMobile + "</td><td>@Model.currencyModel.CurrencyCode " + Result.data.result[i].AmountCollected.toFixed(2) + "</td><td>@Model.currencyModel.CurrencyCode " + Result.data.result[i].AmountRequest.toFixed(2) + "</td></tr>";
+                        }
+                        if(n==0)
+                        {
+                        rows += "<tr><td>No data available</td></tr>" ;
+
+                        }
+                        tfoots = "<tr><th colspan= '5'> </th><th>@Model.currencyModel.CurrencyCode" + AmountCollected.toFixed(2) + " </th><th>@Model.currencyModel.CurrencyCode" + Amountrequested.toFixed(2) + "</th></tr>"
+                        $("#collectionDataTitle").text(abcs);
+                        $('#titlename').val(abcs)
+                        //$("#ActiveAccountCollectionData tbody").html(rows);
+                        $('#bodyActiveAccountCollection').html(rows)
+                        $("#Amounts").html(tfoots);
+                        $("#Attendees").modal('show');
+                    }
+                    else {
+                    
+                        $("#collectionDataTitle").text('');
+                        $('#Attendees').modal('show');
+                    }
+                },
+                error: function (request, error) {
+                $('#Attendees').modal('show');
+                }
+            });
+
+
+        }
+    </script>
+
+    <script>
+
+    function formatDateTime(dateTimeString) {
+        const [dateString, timeString] = dateTimeString.split(' ');
+        const [day, month, year] = dateString.split('.');
+        const [hour, minute, second] = timeString.split(':'); // Split time into hour, minute, second
+
+        const dateTime = new Date(year, month - 1, day, hour, minute, second);
+
+        const date = dateTime.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.');
+        const time = dateTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+        return `${date} ${time}`;
+    }
+
+        function closedcollection() {
+        var Amountrequesteds = 0;
+        var AmountCollecteds = 0;
+        var id = $("#hdnEventId").val();
+        var n = 0;
+        var abcs = 'Account data';
+
+            var objdata = {
+                CollectionId: id
+            }
+
+            var Aurl = "/Account/ClosedAccountCollectionData";
+
+            $.ajax({
+                type: "Post",
+                url: Aurl,
+                data: objdata,
+                success: function (Result) {
+                Amountrequesteds = 0;
+                AmountCollecteds = 0;
+                    if (Result.success == true) {
+                        var rows = '';
+                        for (i = 0; i < Result.data.result.length; i++)
+                        {
+                        n = 1;
+
+                        Amountrequesteds += parseFloat(Result.data.result[i].AmountRequest);
+                        AmountCollecteds = parseFloat(Result.data.result[i].TotalAmountCollected);
+                        abcs = Result.data.result[0].Title
+
+                        rows += "<tr><td>" + formatDateTime(Result.data.result[i].PaidDate) + "</td><td>" + Result.data.result[i].Payeename + "</td><td>" + Result.data.result[i].PayeeMobilenumber + "</td><td>" + Result.data.result[i].RecipientName + "</td><td>" + Result.data.result[i].RecipentMobile + "</td><td>@Model.currencyModel.CurrencyCode " + Result.data.result[i].AmountCollected.toFixed(2) + "</td><td>@Model.currencyModel.CurrencyCode " + Result.data.result[i].AmountRequest.toFixed(2) + "</td></tr>";
+
+                       
+                        }
+                        if(n == 0)
+                        {
+                        rows += "<tr><td>No data available</td></tr>";
+
+                        }
+                        tfoots = "<tr><th colspan= '5'> </th><th>@Model.currencyModel.CurrencyCode" + AmountCollecteds.toFixed(2) + " </th><th>@Model.currencyModel.CurrencyCode" + Amountrequesteds.toFixed(2) + "</th></tr>"
+                        $("#closedcollectionDataTitle").text(abcs);
+                        $("#clstitlename").val(abcs);
+                        $("#ClosedAccountCollectionData tbody").html(rows);
+                        $("#ClosedAmounts").html(tfoots);
+                        $("#ClosedAttendees").modal('show'); 
+
+                    }
+                    else {
+                        $("#closedcollectionDataTitle").text('');
+                        $('#ClosedAttendees').modal('show');
+                    }
+                },
+                error: function (request, error) {
+
+                }
+            });
+
+
+        }
+    </script>
+    <input type="hidden" id="titlename" />
+    <input type="hidden" id="clstitlename" />
+    <script>
+     
+
+    function exportCSVExcelActiveCollection() {
+      
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `ActiveAccountCollectionData_${formattedDate}.xls`;
+
+        const clonedTable = $('#ActiveAccountCollectionData').clone();
+
+       // clonedTable.find('th:last-child, td:last-child').remove();
+
+        clonedTable.find('thead tr th:first-child img').remove();
+        clonedTable.find('tbody tr td:first-child img').remove();
+
+        clonedTable.find('thead tr th:eq(1) img').remove();
+        clonedTable.find('tbody tr td:eq(1) img').remove();
+
+        clonedTable.find('thead tr th:eq(6) img').remove();
+        clonedTable.find('tbody tr td:eq(6) img').remove();
+
+        clonedTable.find('tbody tr td:nth-child(3)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("'" + mobileNumber);
+        });
+
+        clonedTable.find('tbody tr td:nth-child(5)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("'" + mobileNumber);
+        });
+
+        clonedTable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+
+
+    //ForCloseAccounts
+
+    function exportCSVExcelClosedCollection() {
+      
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `ClosedAccountCollectionData{formattedDate}.xls`;
+
+        const clonedTable = $('#ClosedAccountCollectionData').clone();
+
+        // clonedTable.find('th:last-child, td:last-child').remove();
+
+        clonedTable.find('thead tr th:first-child img').remove();
+        clonedTable.find('tbody tr td:first-child img').remove();
+
+        clonedTable.find('thead tr th:eq(1) img').remove();
+        clonedTable.find('tbody tr td:eq(1) img').remove();
+
+        clonedTable.find('thead tr th:eq(6) img').remove();
+        clonedTable.find('tbody tr td:eq(6) img').remove();
+
+        clonedTable.find('tbody tr td:nth-child(3)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("'" + mobileNumber);
+        });
+
+        clonedTable.find('tbody tr td:nth-child(5)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("'" + mobileNumber);
+        });
+
+        clonedTable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+
+
+
+        // function exportCSVExcelClosedCollection() {
+        // var clsxlss = $("#clstitlename").val();
+        //     const currentDate = new Date();
+        //     const day = String(currentDate.getDate()).padStart(2, '0');
+        //     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        //     const year = currentDate.getFullYear();
+        //     const formattedDate = `${day}-${month}-${year}`;
+        //     const filename = clsxlss + `_${formattedDate}.xls`;
+
+        // const clonedTable = $('#ClosedAccountCollectionData').clone();
+
+        // clonedTable.find('tbody tr td:nth-child(3)').each(function () {
+        //     const mobileNumber = $(this).text();
+        //     if (mobileNumber.startsWith('+')) {
+        //         $(this).text("" + mobileNumber);
+        //     }
+        // });
+
+        // clonedTable.find('tbody tr td:nth-child(5)').each(function () {
+        //     const mobileNumber = $(this).text();
+        //     if (mobileNumber.startsWith('+')) {
+        //         $(this).text("" + mobileNumber);
+        //     }
+        // });
+
+
+
+
+        //     $('#ClosedAccountCollectionData').table2excel({
+        //         exclude: ".no-export",
+        //         filename: filename,
+        //         fileext: ".xls",
+        //         exclude_links: true,
+        //         exclude_inputs: true
+        //     });
+        // }
+
+
+    $('#active_cross').click(function (e) {
+       // $('.message-tab   a[href="#message"]').tab('show');
+        window.location.href = '@Url.Action("Dashboard", "Dashboard")';
+
+    })
+
+    $('#crossNewAccount').click(function (e) {
+        $('.message-tab   a[href="#ActiveAccount"]').tab('show');
+    })
+
+    
+
+    $('#clsViewCrossAccount').click(function (e) {
+        $('.message-tab   a[href="#ClosedAccount"]').tab('show');
+    })
+
+    
+    $('#ViewCrossActivebtn').click(function (e) {
+        $('.message-tab   a[href="#ActiveAccount"]').tab('show');
+    })
+
+    $('#crossClsAccountss').click(function (e) {
+        $('.message-tab   a[href="#ActiveAccount"]').tab('show');
+    })
+
+   
+
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var minDate = year + '-' + month + '-' + day;
+
+        $('#EventStartDate').attr('min', minDate);
+        $('#eventenddate').attr('min', minDate);
+        $('#ExpirydateCollection').attr('min', minDate);
+        $('#Scheduledeliverydate').attr('min', minDate);
+       
+
+    });
+
+
+    //Validation for Account Amount
+    function priceValidation() {
+        var priceValue = parseFloat(document.getElementById("Amount").value);
+
+        if (!isNaN(priceValue) && priceValue > 0) {
+            document.getElementById("priceError").innerText = "";
+        } else {
+            document.getElementById("priceError").innerText = "Price should be greater than 0";
+        }
+    }
+    </script>
+
+

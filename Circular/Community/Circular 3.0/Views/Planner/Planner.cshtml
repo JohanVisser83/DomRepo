@@ -1,0 +1,3194 @@
+﻿@{
+    Layout = "_Layout";
+    int i = 1;
+}
+<style>
+    .ui-menu .ui-menu-item a {
+        font-size: 12px;
+    }
+
+    .ui-autocomplete {
+        z-index: 1051 !important;
+        border: none;
+        height: 230px;
+        overflow-y: auto;
+        border-radius: 0 0 11px 11px;
+        left: 50% !important;
+        transform: translateX(-50%);
+    }
+
+    .ui-widget.ui-widget-content {
+        border: none !important;
+    }
+
+    .ui-menu li.ui-menu-item .ui-menu-item-wrapper {
+        border-radius: unset;
+    }
+
+    .ui-widget.ui-widget-content {
+        box-shadow: none;
+        background: #ffffff;
+        color: #101C28;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .ui-menu .ui-menu-item {
+        margin-bottom: 3px;
+    }
+</style>
+
+<div class="col-lg-11 col-md-11  col-sm-10 col-10">
+    <div class="body-content">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="sidebar mt-38">
+
+                    <ul class="nav nav-tabs tab-data message-tab">
+                        <li><p class="tab-text">Schedule</p></li>
+                        <li><a data-toggle="tab" href="#UpcomingEvent" class="active">Upcoming events</a></li>
+                        <li><a data-toggle="tab" href="#NewEvent">Add a new event</a></li>
+                        <li><a data-toggle="tab" href="#PassedEvent">Passed events</a></li>
+
+                        <li><p class="tab-text">Planner</p></li>
+                        <li><a data-toggle="tab" href="#AddItem-New">Add a new item</a></li>
+                        <li><a data-toggle="tab" href="#ActiveItems">Active items</a></li>
+                        <li><p class="tab-text">Booking system</p></li>
+                        <li><a data-toggle="tab" href="#ActiveBooking" id="ActivebookingId">Active bookings</a></li>
+                        <li><a data-toggle="tab" href="#BookingAttendance">Booking attendance</a></li>
+                        <li><a data-toggle="tab" href="#NewBooking" id="NewBookingId">New booking</a></li>
+                        <li><p class="tab-text">Ticket scanner</p></li>
+                        <li><a data-toggle="tab" href="#UserManagement">User management</a></li>
+                        <li><a data-toggle="modal" data-target="#NewScannerUser">Add a scanner profile</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-10">
+
+                <div class="tab-content">
+                    <!-- @* =====Upcoming Event=====*@ -->
+                    <div id="UpcomingEvent" class="tab-pane fade active show ">
+                        <div class="cross-icon text-right d-block cross-relative planner-cross" id="Upcomingcross">
+
+                            <button type="button" class="cross">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <!-- For UpcomingEvent purpose-->
+                        <!-- Users box-->
+                        <div class=" border-bx-area border-0">
+                            <div class="table-responsive ">
+                                <table id="UpcomingTable" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th><span>Event title</span> <span class="ml-2 position-absolute"><img src="~/images/Filter1.png"></span></th>
+                                            <th><span>Event date</span> <span class="ml-2 position-absolute"><img src="~/images/Filter1.png"></span></th>
+                                            <th>Ticket Price</th>
+                                            <th><span>Amount collected</span> <span class="ml-2 position-absolute"><img src="~/images/Filter1.png"></span></th>
+                                            <th>Registered</th>
+                                            <th>Checkins</th>
+                                            <th>Attached PDF</th>
+                                            <th>Delete event</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.UpcomingEvents)
+                                        {
+                                            <tr>
+                                                <td><span class="text-over">@item.Title</span><span class="ml-3 position-absolute" onclick="BindUpcoming(@item.Id)"><img src="~/images/Show.png"></span></td>
+                                                <td><span>@item.EventStartDate.ToString("MM.dd.yyyy") -- @item.EventEndDate.ToString("MM.dd.yyyy")</span></td>
+                                                <td>
+                                                    @Model.currencyModel.CurrencyCode  @item.TicketPrice
+
+                                                </td>
+                                                <td> @Model.currencyModel.CurrencyCode @item.AmountCollected</td>
+                                                <td>@item.PaidCount/@item.TotalMembersAtCreation</td>
+                                                <td><span class="" onclick="ShowReviewAttendance(@item.Id, '@item.Title')"><img src="~/images/Location-Tick.png"></span></td>                          
+                                                <td>
+                                                    @if (!string.IsNullOrEmpty(item.EventPdf))
+                                                    {
+                                                        <a href="@item.EventPdf" target='_blank'><img src='/images/attached-pdf.png' alt='Download' /></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span></span>
+                                                    }
+                                                </td>
+
+                                                <td><span class=""><img onclick="deleteUpcomingActive(@item.Id)" src="~/images/Delete2.png"></span></td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--  @*==end===*@ -->
+                    <!-- @* =====New Event=====*@ -->
+                    <div id="NewEvent" class="tab-pane fade new-event ">
+                        <!-- For demo purpose-->
+                        <div class="cross-icon text-right d-block cross-relative">
+
+                            <button type="button" class="cross" id="eventcross">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="p-6 border-bx-area">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Event title</label>
+                                    <input type="text" class="form-control" id="txtEveTitle" required>
+                                </div>
+                                @*<div class="form-group col-md-6">
+                                <label>Upload a PDF </label>
+                                <div class="add-icon-bx">
+
+                                <div class="form-control "></div>
+                                <div class="add-icon">
+                                <input type="file" name="myfile" id="imagefile" class="form-control">
+                                <img src="~/images/Document-add.png">
+                                </div>
+                                </div>
+                                </div>*@
+                                <div class="form-group  col-md-6">
+                                    <label>Upload a PDF </label>
+                                    <div class="add-icon-bx" id="logo-uploadedAccount">
+                                        <label for="pdfplanner" class="custom-file-upload nameimage" id="uploadSec3">
+                                            <span></span>
+
+                                            <label for="pdfplanner" class="custom-file-upload nameimage" @* id="uploaded"*@>
+                                            </label>
+                                        </label>
+                                        <div class="add-icon upload-icon">
+                                            <input id="pdfplanner" type="file" />
+                                            <img src="~/images/Document-add.png">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group  col-md-6">
+                                    <label>Add a cover image</label>
+                                    <div class="add-icon-bx" id="logo-uploadAccount">
+                                        <label for="imgplanner" class="custom-file-upload nameimage" id="uploadSec4">
+                                            <span></span>
+                                        </label>
+                                        <div class="add-icon upload-icon">
+                                            <input id="imgplanner" type="file" />
+                                            <img src="~/images/Document-add.png">
+                                        </div>
+                                    </div>
+                                    @*  <div class=" add-icon-bx" id="uploadpdf">
+
+                                    <label for="imgplanner" class="custom-file-upload nameimage" id="uploadedimg">
+
+                                    </label>
+                                    <div class="add-icon upload-icon">
+                                    <input id="imgplanner" type="file" />
+                                    <img src="~/images/add-image-icon.png">
+                                    </div>
+                                    </div>*@
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Event start date and time</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class=" date-icon">
+                                                <input type="date" class="form-control  btn-date" id="txtStartd">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="time" class="form-control" id="txtStartt">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Who would you like to invite?</label>
+                                    <select class="form-control" id="txtInvite">
+                                        <option selected></option>
+                                        <option value="All">All</option>
+                                        <option value="group">Group</option>
+
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Event end date and time </label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class=" date-icon">
+                                                <input type="date" class="form-control  btn-date" id="txtEndd">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="time" class="form-control" id="txtEndt">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Select a group</label>
+                                    <select class="form-control" id="txtGroup" asp-items="@(new SelectList(Model.Groups,"Id","GroupName"))">
+                                        <option selected></option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Schedule delivery</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class=" date-icon">
+                                                <input type="date" class="form-control  btn-date" id="DeliveryDate">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="time" class="form-control" id="Deliverytime">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label>Add a location</label>
+                                        <input type="text" class="form-control" id="txtLoc">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ticket price per invite</label>
+                                        <div class="input-group doller-sign">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                            </div>
+                                            <input type="text" class="form-control" id="txtTicket">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>How many tickets are available? </label>
+                                        <input type="number" class="form-control" id="txtQTicket">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Event description</label>
+                                        <textarea class="form-control" id="txtEventDesc" rows="7" placeholder=""></textarea>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label>Who is the Organiser of this event?</label>
+                                        <select class="form-control" id="txtOrg"
+                                                asp-items="@(new SelectList(Model.Organizers,"CustomerId","Name"))">
+                                            <option selected></option>
+                                        </select>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-lumo-green" id="btnPostNewEvent">Add event</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- @*  ====PassedEvent====*@ -->
+                    <div id="PassedEvent" class="tab-pane fade ">
+                        <!-- For demo purpose-->
+                        <div class="cross-icon text-right d-block cross-relative planner-cross">
+                            <button type="button" class="cross" id="passedcross">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class=" border-bx-area border-0">
+                            <div class="table-responsive ">
+                                <table id="PassedEventTable" class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th><span>Event title </span><span class="mr-2 position-absolute"><img src="~/images/Filter1.png"></span></th>
+                                            <th><span>Event details</span></th>
+                                            <th>Ticket Price</th>
+                                            <th><span class="text-nowarp">Amount collected</span> <span class="mr-2 position-absolute"><img src="~/images/Filter1.png"></span></th>
+
+                                            <th>Registered</th>
+                                            <th>Checkins</th>
+                                            <th><span class="text-nowarp">Attached PDF</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.PassedEvents)
+                                        {
+                                            <tr>
+                                                <td>@item.Title</td>
+
+                                                <td><a data-toggle="modal" onclick="Bindpassed(@item.Id)">View event</a> </td>
+                                                <td>
+                                                    @Model.currencyModel.CurrencyCode @item.TicketPrice
+                                                </td>
+                                                <td> @Model.currencyModel.CurrencyCode @item.AmountCollected</td>
+                                                <td>@item.PaidCount/@item.TotalMembersAtCreation</td>
+                                                <td onclick="ShowReviewAttendance(@item.Id, '@item.Title')"><span class=""><img src="~/images/Location-Tick.png"></span></td>
+                                                <td><a href="@item.EventPdf" target='_blank'><img src='/images/attached-pdf.png' alt='Download' /></a></td>
+
+                                            </tr>
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- @*====end===*@ -->
+                    <!-- @*  ====Add NEW ITEM====*@ -->
+                    <div id="AddItem-New" class="tab-pane fade">
+                        <!-- For demo purpose-->
+
+                        <div class="col-lg-7">
+                            <div class="cross-icon text-right d-block cross-relative planner-cross">
+
+                                <button type="button" class="cross" id="itemcross">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class=" border-bx-area p-6">
+                                <div class="row">
+                                    <div class="col-lg-12 ">
+                                        <div class="form-group ">
+                                            <label>What section do you want to post this item in?</label>
+                                            <select class="form-control" id="ddlPlannerType" asp-items="@(new SelectList(Model.PlannerTypes,"Id","Name"))">
+                                                <option value="0">Select planner type</option>
+                                                @*<option>School</option>
+                                                <option>Academics</option>
+                                                <option>Sports</option>
+                                                <option>Religious</option>
+                                                <option>Cultural</option>
+                                                <option>Documents</option>*@
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <label>Item title</label>
+                                            <input type="text" id="txtTitle" class="form-control">
+                                        </div>
+                                        <div class="form-group ">
+                                            <label>Item description</label>
+                                            <input type="text" class="form-control" id="txtDescription">
+                                        </div>
+                                        <div class="form-group ">
+                                            <label>Hyperlink</label>
+                                            <input type="text" class="form-control" id="txtHyperLink">
+                                        </div>
+                                        <div class="form-group ">
+                                            <label>Price</label>
+                                            <div class="input-group doller-sign">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                                </div>
+                                                <input type="text" class="form-control" id="Txtprice">
+                                            </div>
+                                          
+                                        </div>
+
+                                        <label>Upload a PDF</label>
+                                        <div class="form-group" id="logo-upload33">
+                                            <div class=" add-icon-bx" id="uploadpdf3">
+
+                                                <label for="uploadpdf1" class="custom-file-upload nameimage" id="plannerpdf22">
+                                                    <span></span>
+                                                    @*<label for="uploadpdf1" class="custom-file-upload nameimage">*@
+
+                                                </label>
+                                                <div class="add-icon upload-icon">
+                                                    <input id="uploadpdf1" type="file" />
+                                                    <img src="~/images/Document-add.png">
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="text-right">
+
+                                            <button type="button" class="btn btn-lumo-green" id="btnPostNewItem">Post new item</button>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- @*====end===*@ -->
+                    <!--  @*====ACTIVE ITEM====*@ -->
+                    <div id="ActiveItems" class="tab-pane fade">
+                        <!-- For demo purpose-->
+                        <div class="cross-icon text-right d-block cross-relative planner-cross">
+
+                            <button type="button" class="cross" id="activeitemcross">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class=" border-bx-area ">
+                            <div class="col-lg-7 p-6 pb-0 ">
+                                <div class="form-group ">
+                                    <label>Select a section</label>
+                                    <select class="form-control" id="ddsectiontype" asp-items="@(new SelectList(Model.PlannerTypes,"Icon","Name"))" onchange="BindActivePlannerItems()">
+                                        <option value="-1">Select Section type</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="table-responsive ">
+                                <table id="Active-Items" class="table active-items-bx">
+                                    <thead>
+                                        <tr>
+                                            <th>Item title</th>
+                                            <th>Item description</th>
+                                            <th>Hyperlink</th>
+                                            <th>Price</th>
+                                            <th>PDF document</th>
+                                            <th>Delete item</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- @* =====END======*@ -->
+                    <!-- @*======ACTIVE BOOKING======*@ -->
+                    <!-- @*======ACTIVE BOOKING======*@ -->
+                    <div id="BookingAttendance" class="tab-pane fade">
+                        <!-- For demo purpose-->
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="ml-auto cross-icon text-right cross-relative planner-cross"> <button type="button" class="cross ml-3" id="Attcross"> <span aria-hidden="true">×</span> </button> </div>
+                            </div>
+                        </div>
+                        <div class="row custom-group-area">
+                            <!-- @* ====col-4====*@ -->
+                            <div class="col-lg-5 left-group">
+                                <div class=" border-bx-area border-0">
+                                    <div class="table-responsive table-radius ">
+                                        <table id="custom-groups" class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Booking slot</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="customs-groups">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @*=====end====*@ --> <!-- @* ====col-8===*@ -->
+                            <div class="col-lg-7">
+                                <div class=" border-bx-area ">
+                                    <div class="new-message">
+                                        <div class="top-headarea">
+                                            <p class="bg-box bg-blue text-white mb-0"><span id="txttitlevalue"></span></p>
+                                        </div>
+                                        <div class="px-3 pt-3 pb-0">
+                                            <div class="form-group">
+                                                <select class="form-control" id="ddlE" onchange="showbookingtitledetails()">
+                                                    <option value="0">Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive bo-less-table">
+                                            <table id="attendence" class="table attendence">
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2">Attendees</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- @* ====end=====*@ -->
+                            </div>
+                        </div>
+                        <!-- @*=======END========*@ -->
+                    </div>
+                    <!-- @*======ACTIVE BOOKING======*@ -->
+                    <div id="ActiveBooking" class="tab-pane fade">
+                        <!-- For demo purpose-->
+                        <div class="cross-icon text-right d-block cross-relative planner-cross">
+
+                            <button type="button" class="cross" id="Active-Bookingcross">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="border-bx-area border-0">
+                            <div class="table-responsive ">
+                                <table id="Active-Booking" class="table active-bookings">
+                                    <thead>
+                                        <tr>
+                                            <th>Booking title</th>
+                                            <th>Host</th>
+                                            <th>Start date</th>
+                                            <th>End date</th>
+                                            <th>Start time</th>
+                                            <th>End time</th>
+                                            <th>Week Days</th>
+                                            <th>Spaces per day</th>
+
+                                            <th>Spaces</th>
+
+
+                                            @*   <th>Bookings</th>*@
+                                            <th>Delete </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tBookings">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--  @*=======END========*@ -->
+                    <!-- @* ======NEW BOOKING=====*@ -->
+                    <div id="NewBooking" class="tab-pane fade">
+                        <!-- For demo purpose-->
+
+                        <div class="col-lg-12">
+                            <div class="cross-icon text-right d-block cross-relative planner-cross">
+
+                                <button type="button" class="cross" id="Newcross">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="border-bx-area">
+                                <div class="row p-6">
+                                    <div class="col-lg-6 ">
+                                        <div class="form-group ">
+                                            <label>Booking title</label>
+                                            <input type="text" class="form-control" id="txtBooking" placeholder="">
+
+                                        </div>
+                                        <div class="form-group" id="txtReoccur">
+                                            <label>Does this booking reoccur?</label>
+                                            <div class="slot-area">
+                                                <div id="1" class="week-bx abc">Mon</div>
+                                                <div id="2" class="week-bx abc">Tue</div>
+                                                <div id="3" class="week-bx abc">Wed</div>
+                                                <div id="4" class="week-bx abc">Thu</div>
+                                                <div id="5" class="week-bx abc">Fri</div>
+                                                <div id="6" class="week-bx abc">Sat</div>
+                                                <div id="7" class="week-bx abc">Sun</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label>Start date</label>
+                                            <div class=" date-icon">
+                                                <input type="date" id="txtstartdate" class="form-control btn-date">
+                                            </div>
+
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>End date (reoccurrence ending date)</label>
+                                            <div class=" date-icon">
+                                                <input type="date" id="txtenddate" class="form-control btn-date">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="txtSlot">
+                                            <label>Booking timeslot</label>
+                                            <div class=" row">
+
+                                                <div class="col-md-6">
+                                                    <input type="time" class="form-control" id="txtStarttime">
+                                                </div>
+                                                <div class=" col-md-6">
+
+                                                    <input type="time" class="form-control" id="txtEndtime">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label>Booking slot availability</label>
+                                            <input type="text" class="form-control" id="txtSlotAvail" placeholder="">
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group ">
+                                            <label>Host name</label>
+                                            <input type="text" class="form-control" id="txtHost" placeholder="">
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-7 ">
+                                                <label>Host email address</label>
+                                            </div>
+                                            <div class="col-md-5 text-right ">
+                                                <label>Activate notifications</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-10 pr-1">
+                                                <div class="form-group">
+                                                    <label class="d-none">Host email address</label>
+                                                    <input type="text" class="form-control" placeholder="" id="txtEmail">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 pl-1">
+                                                <div class="form-group">
+                                                    <label class="d-none">Activate notifications</label>
+                                                    <input type="checkbox" class="styled-checkbox blue-checkbox big-checkbox" id="CheckNotification">
+                                                    <label for="styled-checkbox-1"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="text-right">
+
+                                            <button type="button" class="btn btn-lumo-green plr-6" id="btnPostBooking">Save</button>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--  @* =====END===== -->
+
+                    <!-- @*======Ticket scanner User management======*@ -->
+                    <div id="UserManagement" class="tab-pane fade">
+                        <!-- For demo purpose-->
+                        <div class="cross-icon text-right d-block cross-relative planner-cross">
+
+                            <button type="button" class="cross" id="usercross">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+
+                        <div class="">
+                            <div class="table-responsive ">
+                                <table id="User-Management" class="table active-bookings">
+                                    <thead>
+                                        <tr>
+                                            <th>User name <span class="ml-2 position-absolute"><img src="/images/Filter1.png"></span></th>
+                                            <th>Mobile number</th>
+                                            <th>Activate scanner <span class="ml-2 position-absolute"><img src="/images/Filter1.png"></span></th>
+
+                                            <th>Remove profile</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Useract">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!--  @*=======END========*@ -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- @*=====modal popup Event Popup==*@ -->
+<!-- Modal -->
+<div class="modal fade modal-add-bx" id="EventPopup" tabindex="-1" aria-labelledby="EventPopupLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleheader"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Recipient group</label>
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control" id="recipientGroup" value=".">
+
+                                    <div class="add-icon ">
+
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event Organiser</label>
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="eventorg" value="">
+
+                                    <div class="add-icon ">
+
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event start time and date</label>
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="eventstartdt">
+
+                                    <div class="add-icon ">
+                                        <img src="~/images/Edit-Square.png" id="strtedit">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event end time and date</label>
+
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="eventenddt">
+
+                                    <div class="add-icon ">
+
+                                        <img src="~/images/Edit-Square.png" id="endedit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Ticket price</label>
+                                <div class="add-icon-bx">
+                                    <div class="input-group doller-sign">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">@Model.currencyModel.CurrencyCode</span>
+                                        </div>
+                                        <input type="text" class="form-control " id="tcktp">
+                                    </div>
+                                    <div class="add-icon ">
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event description</label>
+
+                                <div class="add-icon-bx">
+                                    <textarea class="form-control bg-gray border-gray" rows="5" id="evtdesc"></textarea>
+
+                                    <div class="add-icon ">
+
+                                        <img src="~/images/Edit-Square.png" id="editdesc">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Location</label>
+
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="loc">
+
+                                    <div class="add-icon ">
+                                        <img src="~/images/Edit-Square.png" id="editloc">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group d-flex justify-content-between">
+                                <button type="button" data-dismiss="modal" class="btn btn-lumo-green pink-bg" id="btnPostevent">Close event</button>
+
+                                <div class="text-center">
+
+                                    <button type="button" data-dismiss="modal" class="btn-link btn btn-default" id="viewcollectionData">View event data</button>
+                                </div>
+
+                                <div class="text-right">
+
+                                    <button type="button" data-dismiss="modal" class="btn btn-lumo-green" id="btnPostevent">Update event</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade modal-add-bx" id="EventPopup-lock" tabindex="-1" aria-labelledby="EventPopupLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titleheaders"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Recipient group</label>
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="reccipientGroup" value="">
+
+                                    <div class="add-icon ">
+
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event Organiser</label>
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="eventtorg" value="">
+
+                                    <div class="add-icon ">
+
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event start time and date</label>
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="eventtstartdt" value="">
+
+                                    <div class="add-icon ">
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event end time and date</label>
+
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " id="eventtenddt" value="">
+
+                                    <div class="add-icon ">
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Ticket price</label>
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " value="" id="tckktp">
+
+                                    <div class="add-icon ">
+
+
+
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Event description</label>
+
+                                <div class="add-icon-bx">
+                                    <textarea class="form-control bg-gray border-gray" rows="5" id="textdescr"></textarea>
+
+                                    <div class="add-icon ">
+
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Location</label>
+
+                                <div class="add-icon-bx">
+                                    <input type="text" class="form-control " value="" id="looc">
+
+
+
+                                    <div class="add-icon ">
+                                        <img src="~/images/Lock-3.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="text-right">
+
+
+
+
+
+                                    <button type="button" data-dismiss="modal" class="btn-link btn" data-toggle="modal" data-target="#Attendees" id="viewcollectionData">View event data</button>
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+</div>
+<!-- @*======end====*@ -->
+<!-- @*======end==== -->
+<!-- @*=====modal popup Attendence Popup==*@ -->
+<!-- Attendees Modal -->
+<div class="modal fade modal-add-bx" id="Attendees" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title left-modal-title" id="eventtitlename"></h5>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-link text-white mr-5 "><span class="mr-2"><img src="~/images/Download-white.png" onclick="exportCSVExcelAttendance()"></span>Export CSV</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="Event_Attendence" class="table attendence">
+                    <thead>
+                        <tr>
+                            <th>Date<span class="ml-2 position-absolute"><img src="~/images/Filter-black.png" /></span></th>
+                            <th>Purchaser name <span class="ml-2 position-absolute"><img src="~/images/Filter-black.png" /></span></th>
+                            <th><span class="text-nowrap">Purchaser mobile </span></th>
+                            <th>Recipient name <span class="ml-2 position-absolute"><img src="~/images/Filter-black.png" /></span></th>
+                            <th><span class="text-nowrap">Recipient Mobile </span></th>
+                            <th>Amount collected <span class="ml-2 position-absolute"><img src="~/images/Filter-black.png" /></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblAttendeeslist">
+                    </tbody>
+                    <tfoot id="@*tfooteridplanner*@">
+                        @*<tr>
+                            <th colspan="5"></th>
+                            <th>Total amount <span class="pl-2 pr-1"></span><span id="totalTicketPrice"></span></th>
+                        </tr>*@
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- @*======end====*@ -->
+<!-- @*====Review Attendence check-in====*@ -->
+<!-- Modal -->
+<div class="modal fade modal-add-bx" id="ReviewAttendence" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title left-modal-title"><span id="Eventnameattendees"></span></h5>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-link text-white mr-5"><span class="mr-2"><img src="~/images/Download-white.png" onclick="exportCSVExxcelAttendance()"></span>Export CSV</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body p-0">
+                <div class="new-message">
+
+                    <div class="table-responsive">
+                        <table id="Evvent_Attendence" class="table attendence">
+                            <thead>
+                                <tr>
+                                    <th>Invitee Name<span class="ml-1 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                    <th>Payment status<span class="ml-1 position-absolute"><img src="/images/Filter-black.png"></span></th>
+                                    <th>Check in</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tblReviewAttendence">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pull-total-bottom">
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                <p>Total  <span id="totalm"></span></p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <p>Total attended <span id="totalresponse"></span></p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <p>Outstanding <span id="totaloutstanding"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="modal fade modal-add-bx" id="ReviewAttendences" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title left-modal-title"><span id="Eventnameinviteeattendees"></span></h5>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-link text-white mr-5"><span class="mr-2"><img src="~/images/Download-white.png" onclick="exportCSVExcelAttendance()"></span>Export CSV</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body p-0">
+                <div class="new-message">
+
+                    <div class="table-responsive">
+                        <table class="table attendence">
+                            <thead>
+                                <tr>
+                                    <th>Invitee Name<span class="ml-1 position-absolute"></span></th>
+                                    <th>Payment status<span class="ml-1 position-absolute"></span></th>
+                                    <th>Check in</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tblReviewAttendences">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pull-total-bottom">
+                        <div class="row">
+                            @*   <div class="col-4 text-center">
+                            <p>Total RSVP <span id="totalrsvp"></span></p>
+                            </div>*@
+                            <div class="col-4 text-center">
+                                <p>Total Checked in <span id="totalcheckedin"></span></p>
+                            </div>
+                            <div class="col-4 text-center">
+                                <p>Outstanding <span id="totalrsvpcheckedinoutstanding"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*======end====*@ -->
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="Topjop-Update" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    @*<h5>Top job!</h5>*@
+                    <h5 id="EventUpdateHeading"></h5>
+                    @*<p>You’ve successfully updated this event</p>*@
+                    <p id="eventUpdatemessage"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-pink " data-dismiss="modal">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Added====*@ -->
+<div class="modal fade modal-small-bx" id="Items-Added" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5 id="itemaddheader"></h5>
+                    @*  <p>Your item is now LIVE in your community</p>*@
+                    <p id="message"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-default btn-block">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="NewEventAdded" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Things are happening!</h5>
+                    @* <p>Your event has been successfully posted</p>*@
+                    <p id="Eventmessage"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-default btn-block">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*=======item deletion confirmation=====*@ -->
+<div class="modal fade modal-small-bx" id="delete-DeleteUserconfimation" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this profile forever.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" id="btndeleteUseryes" class="btn bg-lumo">Yes</button>
+                    <button type="button" id="btndeleteUserno" class="btn bg-pink" data-dismiss="modal">No</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-small-bx" id="delete-Upcommingconfimation" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this event forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" id="btnupcomingno" class="btn bg-pink" data-dismiss="modal">No</button>
+                    <button type="button" id="btnupcomingyes" class="btn bg-lumo">Yes</button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=======booking deletion confirmation=====*@ -->
+
+<div class="modal fade modal-small-bx" id="delete-DeleteBookconfimation" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this booking forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" id="btndeletebookingno" class="btn bg-pink" data-dismiss="modal">No</button>
+                    <button type="button" id="btndeletebookingyes" class="btn bg-lumo">Yes</button>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=====modal popup Attendence Popup==*@ -->
+<!-- Modal -->
+<div class="modal fade modal-add-bx" id="Booking_Attendees" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title left-modal-title" id="titlesheader"></h5>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-link text-white mr-5"><img src="" /><span class="mr-2"><img src="~/images/Download-white.png"></span>Export CSV</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times;
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body p-0">
+                <div class="new-message">
+
+
+                    <div class="table-responsive h-48vh overflow-auto">
+                        <table id="" class="table attendence">
+                            <thead>
+                                <tr>
+                                    <th>Attendees</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblbookingdetails">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!-- @*======end====*@ -->
+<!-- @*======NewScannerUser Payment====*@ -->
+<div class="modal fade modal-add-bx modal-sm-bx" id="NewScannerUser" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="new-message ">
+                    <div class="past-leave-box">
+                        <h5>Add a new profile</h5>
+                        <p>Please search for the user you would like to activate.</p>
+                    </div>
+                    <div class=" form-group search-bar-list px-3">
+                        <div class=" input-group diff position-relative">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+
+                                    <img src="~/images/Search-2.png" class="img-fluid">
+                                </span>
+                            </div>
+                            <input class="form-control" id="ContactNo">
+
+                        </div>
+
+                    </div>
+
+                    <ul id="ContactList">
+                    </ul>
+
+                    <div class="col-md-12 text-right">
+
+                        <button type="button" class="btn btn-lumo-green btn-block" id="btnActScan">Activate profile</button>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*=======item deletion confirmation=====*@ -->
+
+<div class="modal fade modal-small-bx" id="delete-activeitemconfimation" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this item forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" id="btnyesactiveitem" class="btn bg-lumo">Yes</button>
+                    <button type="button" id="btnnoactiveitem" class="btn bg-pink">No</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="NewPDFExistButton" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Things are happening!</h5>
+                    <p>Don't Have any PDF on this events</p>
+                    <p id="NewPDFMessageTxt"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-default btn-block">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<input type="hidden" id="CommunitySMId" value="" />
+<input type="hidden" id="plannerId" />
+<input type="hidden" id="contactId" />
+<input type="hidden" id="Dropdown" value="0" />
+<input type="hidden" id="dropdownid" />
+<input type="hidden" id="UpcomingId" />
+<input type="hidden" id="BookingId" />
+<input type="hidden" id="UserId" />
+<input type="hidden" id="CommunityBookingId" />
+<input type="hidden" id="hdnEventId" />
+<input type="hidden" id="Eventshiddenexportcsv" />
+
+<!-- @*========END======*@ -->
+
+<script>
+
+    otable21 = $('#Evvent_Attendence').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    $('#Event_Attendence').DataTable({
+        "ordering": false,
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+    //otable1 = $('#tblReviewAttendence').DataTable({
+    //    "ordering": false,
+    //    searching: false,
+    //    pagination: false,
+
+    //    "dom": 'rt<"bottom"flp><"bottom"i>'
+    //})
+    otable7 = $('#User-Management').DataTable({
+        "ordering": false,
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable8 = $('#UpcomingTable').DataTable({
+        "order": [[1, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>',
+
+
+    })
+
+
+
+    otable2 = $('#PassedEventTable').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable3 = $('#Active-Items').DataTable({
+        "ordering": false,
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable4 = $('#Active-Booking').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable6 = $('#custom-groups').DataTable({
+        "ordering": false,
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable7 = $('#attendence').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+
+    $('#Active-Bookingcross').click(function (e) {
+        $('.message-tab   a[href="#UpcomingEvent"]').tab('show');
+
+    })
+
+
+
+    $(document).on("click", "#Active-Bookingcross", function () {
+        window.location.href = "~/Dashboard/Dashboard";
+    });
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        //AddnewEventTab from Dashboard
+       
+        const urlParams = new URLSearchParams(window.location.search);
+        const param_x = urlParams.get('id');
+        if (param_x == 'addPlannerEvent') {
+            $('[href="#NewEvent"]').click();
+        }
+        const urlParamsab = new URLSearchParams(window.location.search);
+        const param_y = urlParamsab.get('id');
+        if (param_y == 'book') {
+            $('[href="#ActiveBooking"]').click();
+        }
+        const urlParamsyy = new URLSearchParams(window.location.search);
+        const param_aa = urlParamsyy.get('id');
+        if (param_aa == 'item') {
+            $('[href="#ActiveItems"]').click();
+        }
+
+        const urlParamsdd = new URLSearchParams(window.location.search);
+        const param_yy = urlParamsdd.get('id');
+        if (param_yy == 'delete') {
+            $('[href="#UpcomingEvent"]').click();
+        }
+
+        const urlParamsev = new URLSearchParams(window.location.search);
+        const param_z = urlParamsev.get('id');
+
+        //if (param_z == 'event') {
+        //    $('[href="#UpcomingEvent"]').click();
+        //}
+
+
+
+    });
+
+
+    $("#logo-uploadAccount .custom-file-upload span").show();
+    $("#logo-uploadAccount input").change(function () {
+        $("#logo-uploadAccount .custom-file-upload span").show();
+        $("#logo-uploadAccount .custom-file-upload span").text(this.files[0].name);
+    });
+    $("#logo-uploadedAccount .custom-file-upload span").show();
+    $("#logo-uploadedAccount input").change(function () {
+        $("#logo-uploadedAccount .custom-file-upload span").show();
+        $("#logo-uploadedAccount .custom-file-upload span").text(this.files[0].name);
+    });
+    $("#logo-upload33 .custom-file-upload span").show();
+    $("#logo-upload33 input").change(function () {
+        $("#logo-upload33 .custom-file-upload span").show();
+        $("#logo-upload33 .custom-file-upload span").text(this.files[0].name);
+    });
+</script>
+
+
+
+
+
+
+@*POST A NEW ITEM*@ @*Tanisha*@
+<script>
+    $(document).on("click", "#btnPostNewItem", function () {
+
+        var PlannerType = $('#ddlPlannerType option:selected').val().trim();
+        var Title = $('#txtTitle').val().trim();
+        var Description = $('#txtDescription').val().trim();
+        var HyperLink = $('#txtHyperLink').val().trim();
+        var Price = $('#Txtprice').val().trim();
+
+        //var uploadpdf = $('#imgfiles').files[0];
+        var uploadpdf = document.getElementById('uploadpdf1');
+
+
+        if (PlannerType == "" || PlannerType == 0) {
+            $('#ddlPlannerType').focus();
+            document.getElementById("ddlPlannerType").style.border = "1px solid red";
+            return false;
+        }
+        if (Title == "") {
+            $('#txtTitle').focus();
+            document.getElementById("txtTitle").style.border = "1px solid red";
+            return false;
+        }
+
+
+        //if (uploadpdf == "") {
+        //    $('#Imagfiles').focus();
+        //    document.getElementById("Imagfiles").style.border = "1px solid red";
+        //    return false;
+        //}
+        var pdffile = uploadpdf.files[0];
+        var formData = new FormData();
+        formData.append("PlannerTypeId", PlannerType);
+        //formData.append("CommunityId", 44);
+        formData.append("title", Title);
+        formData.append("Description", Description);
+        formData.append("IsArchived", "");
+        formData.append("Mediafile", pdffile);
+        formData.append("Price", Price);
+        formData.append("HyperLink", HyperLink);
+        //     alert('h1')
+
+        var Aurl = "/Planner/AddNewItem";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    //    alert('h2')
+                    $('#ddlPlannerType').val('');
+                    $('#txtTitle').val('');
+                    $('#txtDescription').val('');
+                    $('#Txtprice').val('');
+                    $('#txtHyperLink').val('');
+                    $('#plannerpdf22').text('');
+
+                    $("#Items-Added").modal("show");
+                    $("#message").text(Result.message);
+
+                }
+
+                else {
+                    $("#Items-Added").modal("show");
+                    $("#message").text(Result.message);
+                }
+                ////alert('h3')
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+    });
+    //ACTIVEITEMS Planner
+    function BindActivePlannerItems() {
+        var plannerId = $("#ddsectiontype option:selected").val();
+        //  alert(plannerId);
+        var formData = {
+            plannerTypeId: plannerId
+        }
+        var Aurl = "/Planner/ActivePlannerItems";
+        $.ajax({
+            type: "Get",
+            url: Aurl,
+            data: formData,
+            success: function (Result) {
+                console.log(Result);
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        rows += "<tr><td>" + Result.data[i].title + "</td><td>" + Result.data[i].description + "</td><td><a href=" + Result.data[i].hyperLink + " target='_blank' />" + Result.data[i].hyperLink + "</td><td>" + Result.data[i].price + "</td><td><a href=" + Result.data[i].media + " target='_blank'><img src='/images/attached-pdf.png' alt='Download' /></a></td><td><img src='/images/Delete2.png'  onclick = 'deleteidActive(" + Result.data[i].id + ")' /> </td></tr > ";
+                    }
+                    $('#Active-Items tbody').html(rows);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+    }
+
+    //DELETEACTIVEITEMS
+
+    function deleteidActive(Id) {
+        $("#delete-activeitemconfimation").modal("show");
+        $("#plannerId").val(Id);
+    }
+    $(document).on("click", "#btnnoactiveitem", function () {
+        $("#delete-activeitemconfimation").modal("hide");
+    });
+
+    $(document).on("click", "#btnyesactiveitem", function () {
+        var objdata = {
+            Id: $("#plannerId").val()
+        }
+        var Aurl = "/Planner/DeleteActiveItems";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.Status = true) {
+                    $("#delete-activeitemconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Active Item Deleted!');
+                    $("#message").text(Result.message);
+                    window.location.href = "/planner?id=item";
+
+                    BindActivePlannerItems();
+
+                }
+                else {
+                    $("#delete-activeitemconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Active Item Deleted!');
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    });
+
+    //NEW BOOKING
+    function saveNewBooking() {
+        var Bookingtitle = $('#txtBooking').val().trim();
+        var Startdate = $('#txtstartdate').val().trim();
+        var Enddate = $('#txtenddate').val().trim();
+        var StartTime = $('#txtStarttime').val().trim();
+        var EndTime = $('#txtEndtime').val().trim();
+        var Hostname = $('#txtHost').val().trim();
+        var SlotAvailability = $('#txtSlotAvail').val().trim();
+        var HostEmailname = $('#txtEmail').val().trim();
+        var Days = recurringDays.substring(1);
+        var id = $("#CommunitySMId").val();
+        // alert(Days);
+        var ActivateNotification = $('#CheckNotification').is(':checked');
+        var CombinedstartDate = Startdate + ' ' + StartTime;
+        var CombinedEndtDate = Enddate + ' ' + EndTime;
+
+        //     alert(ActivateNotification);
+        //if (Days == undefined || Days == '' || Days == null) {
+        //    alert('ok');
+        //    $('.week-bx').focus();
+        //    document.getElementsByClassName("week-bx").style.border = "1px solid red";
+        //    return false;
+        //}
+        if (Bookingtitle == "") {
+            $('#txtBooking').focus();
+            document.getElementById("txtBooking").style.border = "1px solid red";
+            return false;
+        }
+
+        if (Startdate == "") {
+            $('#txtstartdate').focus();
+            document.getElementById("txtstartdate").style.border = "1px solid red";
+            return false;
+        }
+
+        if (Enddate == "" && Days != "") {
+            $('#txtenddate').focus();
+            document.getElementById("txtenddate").style.border = "1px solid red";
+            return false;
+        }
+        if (Enddate != "" && Days == "") {
+            $('#txtstartdate').focus();
+            document.getElementById("txtenddate").style.border = "1px solid red";
+            return false;
+        }
+
+        if (StartTime == "") {
+            $('#txtStarttime').focus();
+            document.getElementById("txtStarttime").style.border = "1px solid red";
+            return false;
+        }
+        if (EndTime == "") {
+            $('#txtEndtime').focus();
+            document.getElementById("txtEndtime").style.border = "1px solid red";
+            return false;
+        }
+        if (SlotAvailability == "") {
+            $('#txtSlotAvail').focus();
+            document.getElementById("txtSlotAvail").style.border = "1px solid red";
+            return false;
+        }
+        formData = new FormData();
+        formData.append("Title", Bookingtitle);
+        formData.append("Days", Days);
+        formData.append("StartDate", CombinedstartDate);
+        formData.append("EndDate", CombinedEndtDate);
+        formData.append("NoofBooking", SlotAvailability);
+        formData.append("HostName", Hostname);
+        formData.append("StartTime", CombinedstartDate);
+        formData.append("EndTime", CombinedEndtDate);
+        formData.append("Email", HostEmailname);
+        formData.append("Hostname", Hostname);
+        formData.append("IsNotificationActive", ActivateNotification);
+
+        var Aurl = "/Planner/AddBooking";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+
+                if (status == true) {
+                    $('#txtBooking').val('');
+                    $('#txtReoccur').val('');
+                    $(".abc").removeClass('active');
+                    $(".abc").css('background-color', '#ECECEC');
+                    $('#txtstartdate').val('');
+                    $('#txtenddate').val('');
+                    $('#txtStarttime').val('');
+                    $('#txtEndtime').val('');
+                    $('#txtHost').val('');
+                    $('#txtSlotAvail').val('');
+                    $('#txtEmail').val('');
+                }
+                $("#message").text(Result.message);
+                $("#Items-Added").modal("show");
+                window.location.href = "/planner?id=book";
+            },
+            error: function (request, error) {
+                $("#message").text("Oops! something went wrong");
+                $("#Items-Added").modal("show");
+            }
+        });
+    }
+    $(document).on("click", "#btnPostBooking", function () {
+        saveNewBooking();
+    });
+
+    var recurringDays = "";
+    $(document).on("click", ".abc", function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            $(this).css('background-color', '#f2efef');
+
+            var dayId = "," + $(this).attr('id');
+            var pos = recurringDays.indexOf(dayId);
+            var secondPos = pos + 2;
+            var secondString = recurringDays.substring(secondPos);
+            var firstString = recurringDays.substring(0, pos);
+            recurringDays = firstString + secondString;
+        }
+        else {
+            $(this).addClass('active');
+            $(this).css('background-color', '#253347');
+            recurringDays += "," + $(this).attr('id');
+        }
+    });
+    //Delete Booking
+    function deleteBookingActive(Id) {
+        $("#delete-DeleteBookconfimation").modal("show");
+        $("#BookingId").val(Id);
+    }
+    $(document).on("click", "#btndeletebookingno", function () {
+        $("#delete-DeleteBookconfimation").modal("hide");
+    });
+    $(document).on("click", "#btndeletebookingyes", function () {
+        var objdata = {
+            Id: $("#BookingId").val()
+        }
+        var Aurl = "/Planner/DeleteBookingActiveItems";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.Status = true) {
+                    $("#delete-DeleteBookconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Active Booking Item!');
+                    $("#message").text(Result.message);
+                    BookedSpaces();
+                    $('.message-tab a[href="#ActiveBooking"]').tab("show");
+                }
+                else {
+                    $("#delete-DeleteBookconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Active Booking Item!');
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    });
+
+    $("#imgplanner").change(function () {
+        var ext = $('#imgplanner').val().split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+            $('#uploadSec4').text('');
+            // alert('invalid extension!');
+        }
+    });
+
+    //$("#pdfplanner").change(function () {
+    //    var ext = $('#pdfplanner').val().split('.').pop().toLowerCase();
+    //    if ($.inArray(ext, ['pdf']) == -1) {
+    //        $('#uploadSec3').text('');
+    //        //.  alert('invalid extension!');
+    //    }
+    //});
+
+    //$("#uploadpdf1").change(function () {
+    //    var ext = $('#uploadpdf1').val().split('.').pop().toLowerCase();
+    //    if ($.inArray(ext, ['pdf']) == -1) {
+    //        $('#plannerpdf22').text('');
+    //        //.  alert('invalid extension!');
+    //    }
+    //});
+
+
+    $(document).on("change", "#txtInvite", function () {
+        var inviteid = $('#txtInvite').val().trim();
+        if (inviteid.toLowerCase() == "all") {
+            $('#txtGroup').attr("disabled", "disabled");
+        }
+        else {
+            $('#txtGroup').attr("disabled", false);
+
+        }
+    });
+
+    // DELETE UPCOMING EVENTS
+
+    function deleteUpcomingActive(Id) {
+        $("#delete-Upcommingconfimation").modal("show");
+        $("#UpcomingId").val(Id);
+    }
+    $(document).on("click", "#btnupcomingno", function () {
+        $("#delete-Upcommingconfimation").modal("hide");
+    });
+
+    $(document).on("click", "#btnupcomingyes", function () {
+        var objdata = {
+            Id: $("#UpcomingId").val()
+        }
+        var Aurl = "/Planner/DeleteEventActiveItems";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.Status = true) {
+                    $("#delete-Upcommingconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('You are about to delete this event forever.');
+                    $("#message").text(Result.message);
+
+
+                    // window.location.href = "/planner?id=delete";
+
+                }
+                else {
+                    $("#delete-Upcommingconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('You are about to delete this event forever.');
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    });
+
+    //TICKET Scanner
+
+
+</script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+@*<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>*@
+@*Auto Complete function*@
+<script type="text/javascript">
+
+    $(document).on("click", "#btnActScan", function () {
+
+        //var contactNo = $("#contactId").val();
+        var searchNo = $("#contactId").val();
+        var formData = new FormData();
+
+        formData.append("Id", searchNo);
+        formData.append("PermissionId", 2);
+
+
+        if (searchNo == "") {
+            $('#ContactNo').focus();
+            document.getElementById("ContactNo").style.border = "1px solid red";
+            return false;
+        }
+        var Aurl = "/Planner/ActivateScanner";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                $("#ContactNo").val('');
+                $("#NewScannerUser").modal("hide");
+                _userManagement();
+                $('.message-tab a[href="#UserManagement"]').tab("show");
+            },
+            error: function (request, error) {
+                $("#NewEventAdded").modal("show");
+                $("#Eventmessage").text("Oops! something went wrong")
+            }
+        });
+    });
+
+
+
+
+    $(function () {
+        $("#ContactNo").autocomplete({
+            source: function (request, response) {
+                var searchList = $('#ContactNo').val()
+                var formdata = new FormData();
+                formdata.append('Search', searchList);
+                $.ajax({
+                    url: '/Message/GetUserContactList',
+                    data: formdata,
+                    dataType: "json",
+                    type: "POST",
+                    contentType: false,
+                    processData: false,
+                    dataFilter: function (Result) { return Result; },
+                    success: function (Result) {
+
+
+
+
+
+                        response($.map(Result, function (item) {
+                            var x = item.name + "(" + item.mobile + ")";
+                            var y = item.customerId;
+                            return {
+                                value: x, label: x, desc: y,
+                            }
+                        }))
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        var err = eval("(" + XMLHttpRequest.responseText + ")");
+
+                    }
+                });
+
+            },
+            select: function (e, i, s) {
+                $("#ContactNo").val(i.item.value);
+                $("#contactId").val(i.item.desc);
+            },
+            focus: function (event, ui) {
+                event.preventDefault();
+                $('#ContactNo').val(ui.item.label);
+            },
+            minLength: 1 //This is the Char length of inputTextBox
+        });
+
+    });
+
+    //User Management
+    $(document).ready(function () {
+        //var startdate = $("#DeliveryDate").val();
+        //$("#DeliveryDate").datepicker({ minDate: startdate });
+
+
+        _userManagement();
+        //GetBookingActiveItemsAsync();
+        BookedSpaces();
+    });
+
+    $(function () {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var minDate = year + '-' + month + '-' + day;
+
+        $('#DeliveryDate').attr('min', minDate);
+        $('#txtStartd').attr('min', minDate);
+        $('#txtstartdate').attr('min', minDate);
+        $('#txtEndd').attr('min', minDate);
+        $('#txtenddate').attr('min', minDate);
+
+    });
+
+    function _userManagement() {
+        var Aurl = "/Planner/UserManagement";
+        var formData = new FormData();
+        formData.append("PermissionId", 2);
+
+        $.ajax({
+            type: "post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '', scanner = '', Granted = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        if (Result.data[i].DeniedOrGranted == 1)
+                            Granted = 'checked';
+                        else
+                            Granted = 'unchecked';
+                        scanner = '<input type="checkbox" id="chkScanner' + Result.data[i].Id + '" name="chkScanner" class="styled-checkbox green-checkbox" onclick="BindScannerId(' + Result.data[i].Id + ')" ' + Granted + '><label for="styled-checkbox-1"></label>';
+                        rows += "<tr><td>" + Result.data[i].UserName + "</td><td>" + Result.data[i].Mobile + "</td><td>" + scanner + "</td><td><img src='/images/Delete2.png' onclick='deleteUserActive(" + Result.data[i].Id + ")'/></td></tr>";
+                    }
+                    $('#Useract').html(rows);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+
+    }
+
+    //DELETE USER
+    function deleteUserActive(Id) {
+        $("#delete-DeleteUserconfimation").modal("show");
+        $("#UserId").val(Id);
+    }
+    $(document).on("click", "#btndeleteUserno", function () {
+        $("#delete-DeleteUserconfimation").modal("hide");
+    });
+
+    $(document).on("click", "#btndeleteUseryes", function () {
+        var objdata = {
+            Id: $("#UserId").val()
+        }
+        var Aurl = "/Planner/DeleteUser";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.Status = true) {
+                    $("#delete-DeleteUserconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Profile Deleted!');
+                    $("#message").text(Result.message);
+                    _userManagement();
+
+                    $('.message-tab a[href="#UserManagement"]').tab("show");
+                }
+                else {
+                    $("#delete-DeleteUserconfimation").modal("hide");
+                    $("#Items-Added").modal("show");
+                    $("#itemaddheader").text('Profile Deleted!');
+                    $("#message").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    });
+
+    //IsScaneeractive functionality
+    function BindScannerId(Id) {
+        var chkScanner;
+        var checkbox = $('#chkScanner' + Id);
+        if (checkbox[0].checked == true)
+            chkScanner = true;
+        else
+            chkScanner = false;
+
+        var objdata = {
+            Id: Id,
+            IsScannerActive: chkScanner
+        }
+        var Aurl = "/Planner/UpdateUser";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    }
+
+    //GET Booking Attendance
+    //$(function () {
+
+    //    $("#d22").datepicker({
+    //        dateFormat: 'dd-mm-yy'
+    //    });
+    //});
+
+    $(document).ready(function () {
+        var today = new Date();
+        var date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+        $("#d22").val(date);
+
+
+        var Aurl = "/Planner/GetBookingAttendance";
+        $.ajax({
+            type: "Get",
+            url: Aurl,
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        rows += '<tr><td><a  class ="cursor-pointer" id=' + Result.data[i].id + ' onclick="Binddate(\'' + Result.data[i].id + '\',\'' + Result.data[i].title + '\')">' + Result.data[i].title + '</a></td></tr>';
+                    }
+                    $('#customs-groups').html(rows);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#message").text("Oops! something went wrong")
+            }
+        });
+    });
+
+
+    function showbookingtitledetails(Id) {
+        var Id = $("#ddlE option:selected").val();
+        var n = 0;
+        var objdata = {
+            BookindDayId: Id
+        }
+        var Aurl = "/Planner/BookedMembers";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    var rows = "<thead><tr><th colspan=2>Attendees</th></tr></thead><tbody>";
+                    //var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        n = 1;
+                        rows += "<tr><td>" + Result.data[i].MemberName + "</td><td>" + Result.data[i].BookedOn + "</td></tr> ";
+                    }
+                    if (n == 0) {
+                        rows += "<tr><td>No booking done yet</td></tr> ";
+                    }
+                    rows += '</tbody>'
+                    $('#attendence').html(rows);
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    }
+
+    //Edit For Upcomn
+    function returndateformat(date) {
+        var d = new Date(date.split("/").reverse().join("-"));
+        var dd = d.getDate();
+        var mm = d.getMonth() + 1;
+        var yy = d.getFullYear();
+        var newdate = dd + "-" + mm + "-" + yy;
+        return newdate;
+    }
+
+    function returndateformats(date) {
+        var d = new Date(date.split("-").reverse().join("-"));
+        var dd = d.getDate();
+        var mm = d.getMonth() + 1;
+        var yy = d.getFullYear();
+        var newdate = yy + "-" + mm + "-" + dd;
+        return newdate;
+    }
+
+    $(document).on("click", "#btnPostevent", function () {
+        var EventsId = $("#hdnEventId").val();
+        var startdt = $("#eventstartdt").val();
+        var enddate = $("#eventenddt").val();
+
+        if (!startdt || !enddate) {
+            alert("Please select both start and end dates.");
+            return;
+        }
+
+        var enddt = enddate.split(' ');
+        var srtdt = startdt.split(' ');
+
+        var currentDate = new Date();
+        var currentHours = String(currentDate.getHours()).padStart(2, '0');
+        var currentMinutes = String(currentDate.getMinutes()).padStart(2, '0');
+        var StartTime = currentHours + ':' + currentMinutes;
+
+        var EventStartDate = returndateformats(srtdt[0]) + ' ' + StartTime; 
+       // alert(EventStartDate);
+        var EventEndDate = returndateformats(enddt[0]) + ' ' + StartTime;
+       // alert(EventEndDate);
+
+
+        var objData = {
+            Id: EventsId,
+            Description: $("#evtdesc").val(),
+            Location: $("#loc").val(),
+            EventStartDate: EventStartDate,
+            StartTime: StartTime, // Current time
+            EventEndDate: EventEndDate,
+            EndTime: enddt[1] 
+        };
+
+        var Aurl = "/Planner/UpdateEvent";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    $("#Topjop-Update").modal("show");
+                    $("#EventUpdateHeading").text("Top job!");
+                    $("#eventUpdatemessage").text("You’ve successfully updated this event.");
+                    window.location.href = "/planner?id=event";
+
+                } else {
+                    $("#Topjop-Update").modal("show");
+                    $("#EventUpdateHeading").text("Oops!");
+                    $("#eventUpdatemessage").text(Result.message);
+                }
+            },
+            error: function (request, error) {
+                $("#Topjop-Update").modal("show");
+                $("#EventUpdateHeading").text("Oops!");
+                $("#eventUpdatemessage").text("Something went wrong");
+            }
+        });
+    });
+
+
+    $("#strtedit").on("click", function () {
+        $("#eventstartdt").attr("readonly", false);
+    });
+    $("#endedit").on("click", function () {
+        $("#eventenddt").attr("readonly", false);
+    });
+    $("#editdesc").on("click", function () {
+        $("#evtdesc").attr("readonly", false);
+    });
+    $("#editloc").on("click", function () {
+        $("#loc").attr("readonly", false);
+    });
+
+
+    function convertToAMPMFormat(datetimeString) {
+        var dateTimeParts = datetimeString.split(' ');
+        var dateParts = dateTimeParts[0].split('.');
+        var timeParts = dateTimeParts[1].split(':');
+
+        var year = dateParts[2];
+        var month = dateParts[1];
+        var day = dateParts[0];
+        var hours = parseInt(timeParts[0]);
+        var minutes = timeParts[1];
+        var seconds = timeParts[2];
+
+        // Determine AM or PM
+        var amPM = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // Handle midnight (00:00)
+
+        // Format the datetime
+        var formattedDateTime = month + '.' + day + '.' + year + ' ' + hours.toString().padStart(2, '0') + ':' + minutes + ' ' + amPM;
+        return formattedDateTime;
+    }
+
+    $(document).on("click", "#viewcollectionData", function () {
+        var totalTicketPrice = 0;
+        var totalCollectedAmount = 0;
+        var EventId = $("#hdnEventId").val();
+        var objData = {
+            EventId: EventId
+        }
+
+        var Aurl = "/Planner/ShowReviewAttendance";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objData,
+            dataType: "json",
+            success: function (Result) {
+                console.log(Result);
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '';
+                    var tfoots='';
+
+                    for (j = 0; j < Result.data.length; j++) 
+                    {
+                        totalTicketPrice = parseFloat(Result.data[j].TotalAmount);
+                        var startDate = Result.data[j].EventStartDate;
+                        var formattedDateTime = convertToAMPMFormat(startDate);
+                        rows += "<tr><td>" + formattedDateTime + "</td><td>" + Result.data[j].PurchaserName + "</td><td>" + Result.data[j].PurchaserMobile + "</td><td>" + Result.data[j].RecipientName + "</td><td>" + Result.data[j].RecipientMobile + "</td><td>  " + Result.data[j].AmountCollected.toFixed(2) + "</td></tr>";
+                        tfoots = "<tr><th colspan= '5'> </th><th>@Model.currencyModel.CurrencyCode" + totalTicketPrice.toFixed(2) + " </th></tr>"
+                       
+                    }
+
+                    //$("#totalTicketPrice").text('@Model.currencyModel.CurrencyCode' + ' ' + totalTicketPrice.toFixed(2));
+                    $("#tblAttendeeslist").html(rows);
+                    $("#tfooteridplanner").html(tfoots);
+                    $("#Attendees").modal('show');
+                }
+                else {
+                    $("#totalTicketPrice").text('@Model.currencyModel.CurrencyCode 0.00');
+                    $("#tblAttendeeslist").html('');
+                    $("#Attendees").modal('show');
+                }
+            },
+            error: function (request, error) {
+                $("#Attendees").modal('show');
+            }
+        });
+    });
+
+
+
+    function ShowReviewAttendance(Id, ename) {
+        var totalCheckedIn = 0;
+        var outstanding = 0;
+        var totalm = 0;
+
+        $("#hdnEventId").val(Id);
+        var objdata = {
+            EventId: Id
+        }
+        var Aurl = "/Planner/ShowReviewAttendance";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                console.log(Result);
+                if (Result.success == true) {
+                    var rows = '', IsChecked = '';
+                    for (i = 0; i < Result.data.length; i++) {
+
+                        if (Result.data[i].IscheckedIn == 1) {
+
+                            IsChecked = '<input type="checkbox" id="chkReviewAttendence" class="styled-checkbox green-checkbox" checked disabled><label for="styled-checkbox-1"></label>';
+                        }
+                        else {
+
+                            IsChecked = '<input type="checkbox" id="chkReviewAttendence" class="styled-checkbox green-checkbox" disabled><label for="styled-checkbox-1"></label>';
+                        }
+                        totalCheckedIn = parseFloat(Result.data[i].TotalCheckedIn);
+                        outstanding = parseFloat(Result.data[i].Outstanding);
+                        totalm = parseFloat(Result.data[i].Total);
+
+                        rows += "<tr><td>" + Result.data[i].RecipientName + "</td><td>Paid</td><td>" + IsChecked + "</td></tr>";
+                    }
+                    $("#Eventnameattendees").text(Result.data[0].Title + " attendees");
+                    $("#totalresponse").text(totalCheckedIn);
+                    $("#totaloutstanding").text(outstanding);
+                    $("#totalm").text(totalm);
+
+                    $("#tblReviewAttendence").html(rows);
+                    $("#ReviewAttendence").modal('show');
+                }
+                else {
+                    rows = "<tr><td></td><td>No Data Found</td><td></td></tr>";
+                    $("#Eventnameattendees").text(ename + " attendees");
+                    $("#tblReviewAttendence").html(rows);
+                    $("#totalresponse").text('');
+                    $("#totaloutstanding").text('');
+                    $("#totalm").text('');
+
+                    $("#ReviewAttendence").modal('show');
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    }
+
+    //function UpdateCheckin(Id) {
+    //    var Attendenceval = '';
+    //    if ($(this).is(":checked")) {
+    //        Attendenceval = $(this).val();
+    //    }
+    //    else {
+    //        Attendenceval = false;
+    //    }
+    //    alert(Attendenceval);
+    //    var objdata = {
+    //        EnviteeId: Id,
+    //        Checkin: Attendenceval
+    //    }
+    //    var Aurl = "/Planner/UpdateCheckin";
+    //    $.ajax({
+    //        type: "Post",
+    //        url: Aurl,
+    //        data: objdata,
+    //        success: function (Result) {
+    //            if (Result.success == true) {
+    //                alert('ok');
+    //            }
+    //            else {
+    //                alert('no');
+    //            }
+    //        },
+    //        error: function (request, error) {
+
+    //        }
+    //    });
+    //}
+
+
+    function showbookingdetails(Id) {
+        var objdata = {
+            CommunityBookingId: Id,
+            IsBookingStatus: true
+        }
+        var Aurl = "/Planner/GetBookingDetails";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.success == true) {
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        rows += "<tr><td>" + Result.data[i].Name + "</td></tr>";
+                    }
+                    $("#tblbookingdetails").html(rows);
+                    $("#Booking_Attendees").modal('show');
+                }
+                else {
+                    $("#Booking_Attendees").modal('show');
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    }
+
+   //function exportCSVExcelAttendance() {
+
+   //     var abcds = $("#Eventshiddenexportcsv").val();
+   //     const currentDate = new Date();
+   //     const day = String(currentDate.getDate()).padStart(2, '0');
+   //     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+   //     const year = currentDate.getFullYear();
+   //     const formattedDate = `${day}.${month}.${year}`;
+   //     const filename = `${abcds}_${formattedDate}.xls`;
+
+   //     const clonedtable = $('#Event_Attendence').clone();
+
+   //     clonedtable.find('thead tr th:first-child img').remove();
+   //     clonedtable.find('tbody tr td:first-child img').remove();
+
+   //     clonedtable.find('thead tr th:eq(1) img').remove();
+   //     clonedtable.find('tbody tr td:eq(1) img').remove();
+
+   //     clonedtable.find('thead tr th:eq(3) img').remove();
+   //     clonedtable.find('tbody tr td:eq(3) img').remove();
+
+   //     clonedtable.find('thead tr th:eq(5) img').remove();
+   //     clonedtable.find('tbody tr td:eq(5) img').remove();
+
+   //     clonedtable.find('tbody tr td:nth-child(3)').each(function () {
+   //         const mobilenumber = $(this).text();
+   //         $(this).text("'" + mobilenumber);
+   //     });
+
+   //     clonedtable.find('tbody tr td:nth-child(5)').each(function () {
+   //         const mobilenumber = $(this).text();
+   //         $(this).text("'" + mobilenumber);
+   //     });
+ 
+	  //clonedtable.table2excel({
+   //         delivery: 'value',
+   //         filename: filename
+   //     });
+   // }
+
+   function exportCSVExcelAttendance() {
+    var abcds = $("#Eventshiddenexportcsv").val();
+    const currentDate = new Date();
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const year = currentDate.getFullYear();
+    const formattedDate = `${day}.${month}.${year}`;
+    const filename = `${abcds}_${formattedDate}.xls`;
+
+    const clonedtable = $('#Event_Attendence').clone();
+
+    clonedtable.find('thead tr th:first-child img').remove();
+    clonedtable.find('tbody tr td:first-child img').remove();
+
+    clonedtable.find('thead tr th:eq(1) img').remove();
+    clonedtable.find('tbody tr td:eq(1) img').remove();
+
+    clonedtable.find('thead tr th:eq(3) img').remove();
+    clonedtable.find('tbody tr td:eq(3) img').remove();
+
+    clonedtable.find('thead tr th:eq(5) img').remove();
+    clonedtable.find('tbody tr td:eq(5) img').remove();
+
+    clonedtable.find('tbody tr td:nth-child(3)').each(function () {
+        const mobilenumber = $(this).text();
+        $(this).text("'" + mobilenumber);
+    });
+
+     clonedtable.find('tbody tr td:nth-child(5)').each(function () {
+           const mobileNumber = $(this).text();
+           $(this).text("'" + mobileNumber);
+        });
+
+        clonedtable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+
+
+
+    function exportCSVExxcelAttendance() {
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `EventAttendance_Registry_${formattedDate}.xls`;
+
+        $('#Evvent_Attendence').table2excel({
+            exclude: ".no-export",
+            filename: filename,
+            fileext: ".xls",
+            exclude_links: true,
+            exclude_inputs: true
+        });
+    }
+
+
+    function formatDate(dateString) {
+        var date = new Date(dateString);
+        var day = date.getDate().toString().padStart(2, '0');
+        var month = (date.getMonth() + 1).toString().padStart(2, '0');
+        var year = date.getFullYear();
+        return day + '.' + month + '.' + year;
+    }
+
+    function formatTime(timeString) {
+        var time = new Date("1970-01-01T" + timeString);
+        return time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function returndateformate(date) {
+    // Convert the date from mm/dd/yyyy to yyyy-mm-dd for proper parsing
+    var d = new Date(date.split("/").reverse().join("-"));
+    var dd = d.getDate();
+    var mm = d.getMonth() + 1; // January is 0!
+    var yy = d.getFullYear();
+
+    // Pad single digit day and month with leading zero
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    // Return in mm/dd/yyyy format
+    var newdate = mm + "/" + dd + "/" + yy;
+    return newdate;
+}
+
+
+    function BindUpcoming(Id) {
+        $("#hdnEventId").val(Id);
+        var objdata = {
+            Id: Id
+        }
+        var Aurl = "/Planner/GetEventDetailById";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                console.log(Result);
+                if (Result.success === true) {
+                    $("#upcomingid").val(Result.data[0].Id);
+                    $("#eventtitlename").text(Result.data[0].Title);
+                    $("#recipientGroup").attr("readonly", "readonly");
+                    $('#recipientGroup').val(Result.data[0].GroupName);
+                    $("#eventorg").attr("readonly", "readonly");
+                    $('#eventorg').val(Result.data[0].Name);
+                    $("#titleheader").text(Result.data[0].Title);
+
+                    // Format dates to mm/dd/yyyy
+                    var startdate = returndateformate(Result.data[0].EventStartDate);
+                    $("#eventstartdt").val(startdate + ' ' + Result.data[0].StartTime);
+
+                    var enddate = returndateformate(Result.data[0].EventEndDate);
+                    $("#eventenddt").val(enddate + ' ' + Result.data[0].EndTime);
+
+                    $('#loc').val(Result.data[0].Location);
+                    $('#evtdesc').val(Result.data[0].Description);
+                    $("#tcktp").attr("readonly", "readonly");
+                    $('#tcktp').val(Result.data[0].TicketPrice.toFixed(2));
+                    $("#btnpostevent").text('update');
+
+                    $("#EventPopup").modal("show");
+                } else {
+                    $("#EventPopup").modal("show");
+                }
+            },
+            error: function (request, error) {
+                // Handle error here if needed
+            }
+        });
+    }
+
+
+    function Bindpassed(Id) {
+        $("#hdnEventId").val(Id);
+        var objdata = {
+            Id: Id
+        }
+        var Aurl = "/Planner/GetEventDetailById";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                console.log(Result)
+                if (Result.success == true) {
+                    $("#upcomingid").val(Result.data[0].Id);
+                    $("#eventtitlename").text(Result.data[0].Title);
+                    $("#reccipientGroup").attr("readonly", "readonly");
+                    $('#reccipientGroup').val(Result.data[0].GroupName);
+                    $("#eventtorg").attr("readonly", "readonly");
+                    $('#eventtorg').val(Result.data[0].Name);
+                    $("#titleheaders").text(Result.data[0].Title);
+
+                    //This will show date in this format (29.12.2024)
+                    var startdate = formatDate(Result.data[0].EventStartDate);
+                    var startTime = formatTime(Result.data[0].StartTime);
+                    var startDateTimeString = startdate + ' ' + startTime;
+                    $("#eventtstartdt").val(startDateTimeString);
+
+                    //This will show time in this format (08:47 AM)
+                    var enddate = formatDate(Result.data[0].EventEndDate);
+                    var endTime = formatTime(Result.data[0].EndTime);
+                    var endDateTimeString = enddate + ' ' + endTime;
+                    $("#eventtenddt").val(endDateTimeString);
+
+                    $("#looc").attr("readonly", "readonly");
+                    $('#looc').val(Result.data[0].Location);
+                    $("#textdescr").attr("readonly", "readonly");
+                    $('#textdescr').val(Result.data[0].Description);
+                    $("#tckktp").attr("readonly", "readonly");
+                    $('#tckktp').val(Result.data[0].TicketPrice.toFixed(2));
+                    $("#btnpostevent").text('update');
+
+                    $("#EventPopup-lock").modal("show");
+
+                }
+                else {
+                    $("#EventPopup-lock").modal("show");
+                }
+            },
+            error: function (request, error) {
+            }
+        });
+    }
+
+
+
+
+    $('#Upcomingcross').click(function (e) {
+        window.location.href = "/Dashboard/Dashboard";
+    })
+    $('#eventcross').click(function (e) {
+        $('.message-tab a[href="#UpcomingEvent"]').tab("show");
+
+    })
+    $('#passedcross').click(function (e) {
+        $('.message-tab a[href="#UpcomingEvent"]').tab("show");
+    })
+    $('#itemcross').click(function (e) {
+        $('.message-tab a[href="#UpcomingEvent"]').tab("show");
+    })
+
+    $('#activeitemcross').click(function (e) {
+        $('.message-tab a[href="#UpcomingEvent"]').tab("show");
+    })
+
+    $('#Active-Bookingcross').click(function (e) {
+        $('.message-tab a[href="#UpcomingEvent"]').tab("show");
+    })
+    $('#Attcross').click(function (e) {
+        $('.message-tab a[href="#UpcomingEvent"]').tab("show");
+    })
+    $('#Newcross').click(function (e) {
+        $('.message-tab a[href="#ActiveBooking"]').tab("show");
+    })
+    $('#usercross').click(function (e) {
+        $('.message-tab a[href="#UpcomingEvent"]').tab("show");
+    });
+
+    //function BookedSpaces(Id) {
+    //    $("#CommunitySMId").val(Id);
+    //    var Obj = {
+    //        Id: Id
+    //    }
+    //    var Aurl = "/Planner/BookedSpaces";
+    //    $.ajax({
+    //        type: "GET",
+    //        url: Aurl,
+    //        success: function (Result) {
+    //            console.log(Result);
+    //            var rows = '';
+    //            for (i = 0; i < Result.data.length; i++) {
+    //                rows += "<tr><td>" + Result.data[i].title + "<span class='ml-3' onclick='BindActiveBookingData(" + Result.data[i].id + ")'></span></td><td>" + Result.data[i].hostName + "</td><td>" + ConvertDatetime(Result.data[i].startTime) + "</td><td>" + ConvertDatetime(Result.data[i].endTime) + "</td><td>" + (Result.data[i].startTime) + "</td><td>" + (Result.data[i].endTime) + "</td><td>" + Result.data[i].weekDays + "</td><td>" + Result.data[i].noOfBooking + "</td><td>" + Result.data[i].bookingCount + "/" + Result.data[i].totalSpaces + "</td>@*<td><span onclick='showbookingdetails(" + Result.data[i].id + ")'><img src='/images/Show.png'></span></td>*@<td><span><img onclick='deleteBookingActive(" + Result.data[i].id + ")' src='/images/Delete2.png'></span></td></tr>";
+
+    //            }
+    //            $("#tBookings").html(rows);
+    //            $("#CommunitySMId").val(Result.data.id);
+    //        }
+    //    });
+    //}
+    function BookedSpaces(Id) {
+        $("#CommunitySMId").val(Id);
+        var Obj = {
+            Id: Id
+        };
+        var Aurl = "/Planner/BookedSpaces";
+        $.ajax({
+            type: "GET",
+            url: Aurl,
+            success: function (Result) {
+                console.log(Result);
+                var rows = '';
+                for (var i = 0; i < Result.data.length; i++) {
+                    var endTime = new Date(Result.data[i].endTime);
+                    var startTime = new Date(Result.data[i].startTime);
+                    var endTimeFormatted = endTime.toTimeString().split(' ')[0]; 
+                    var startTimeFormatted = startTime.toTimeString().split(' ')[0]; 
+
+                    rows += "<tr><td>" + Result.data[i].title + "<span class='ml-3' onclick='BindActiveBookingData(" + Result.data[i].id + ")'></span></td>" +
+                        "<td>" + Result.data[i].hostName + "</td>" +
+                        "<td>" + ConvertDatetime(Result.data[i].startTime) + "</td>" +
+                        "<td>" + ConvertDatetime(Result.data[i].endTime) + "</td>" + 
+                        "<td>" + startTimeFormatted + "</td>" +
+                        "<td>" + endTimeFormatted + "</td>" +
+                  
+                       // "<td>" + Result.data[i].endTime + "</td>" + 
+                        "<td>" + Result.data[i].weekDays + "</td>" +
+                        "<td>" + Result.data[i].noOfBooking + "</td>" +
+                        "<td>" + Result.data[i].bookingCount + "/" + Result.data[i].totalSpaces + "</td>" +
+                        "<td><span><img onclick='deleteBookingActive(" + Result.data[i].id + ")' src='/images/Delete2.png'></span></td></tr>";
+                }
+                $("#tBookings").html(rows);
+                $("#CommunitySMId").val(Result.data.id);
+            }
+        });
+    }
+
+    //for DateOnly
+    function ConvertDatetime(value) {
+        const date = new Date(value);
+        const formattedDate = date.toLocaleDateString('en-GB', {
+            day: '2-digit', month: '2-digit', year: 'numeric'
+        }).replace(/\//g, '.');
+        return formattedDate;
+    }
+
+
+
+</script>
+
+<script type="text/javascript">
+    //ADD A NEW EVENT
+    $(document).on("click", "#btnPostNewEvent", function () {
+
+
+        var Title = $('#txtEveTitle').val().trim();
+        var coverimage = document.getElementById('imgplanner');
+        var startdate = $('#txtStartd').val().trim();
+        var starttime = $('#txtStartt').val().trim();
+        var invite = $('#txtInvite').val().trim();
+        var enddate = $('#txtEndd').val().trim();
+        var endtime = $('#txtEndt').val().trim();
+        var Group = $('#txtGroup').val().trim();
+        var Deliverydate = $('#DeliveryDate').val().trim();
+        var Deliverytime = $('#Deliverytime').val().trim();
+        var combineStartDateTime;
+        if (startdate && starttime) {
+            combineStartDateTime = startdate + "T" + starttime;
+
+        }
+         var combineEndDateTime;
+        if (startdate && starttime) {
+            combineEndDateTime = enddate + "T" + endtime;
+
+        }
+        var combinedDeliveryDateTime;
+        if (Deliverydate && Deliverytime) {
+            combinedDeliveryDateTime = Deliverydate + "T" + Deliverytime;
+
+        }
+        var Location = $('#txtLoc').val().trim();
+        //var TicketCount = $('#txtTicket').val().trim();
+        //var TicketPrice = $('#txtQTicket').val().trim();
+
+        var TicketCount = $('#txtQTicket').val().trim();
+        var TicketPrice = $("#txtTicket").val().trim().replace('@Model.currencyModel.CurrencyCode', "");
+
+
+        var EventDesc = $('#txtEventDesc').val().trim();
+        var Organizer = $('#txtOrg').val().trim();
+
+        var uploadedpdf = document.getElementById('pdfplanner');
+        if (Title == "" || Title == null) {
+            $('#txtEveTitle').focus();
+            document.getElementById("txtEveTitle").style.border = "1px solid red";
+            return false;
+        }
+        if (startdate == "") {
+            $('#txtStartd').focus();
+            document.getElementById("txtStartd").style.border = "1px solid red";
+            return false;
+        }
+        if (Organizer == "") {
+            $('#txtOrg').focus();
+            document.getElementById("txtOrg").style.border = "1px solid red";
+            return false;
+        }
+        if (starttime == "") {
+            $('#txtStartt').focus();
+            document.getElementById("txtStartt").style.border = "1px solid red";
+            return false;
+        }
+        if (enddate == "") {
+            $('#txtEndd').focus();
+            document.getElementById("txtEndd").style.border = "1px solid red";
+            return false;
+        }
+        if (endtime == "") {
+            $('#txtEndt').focus();
+            document.getElementById("txtEndt").style.border = "1px solid red";
+            return false;
+        }
+
+        if (Location == "") {
+            $('#txtLoc').focus();
+            document.getElementById("txtLoc").style.border = "1px solid red";
+            return false;
+        }
+        if (invite == "") {
+            $('#txtInvite').focus();
+            document.getElementById("txtInvite").style.border = "1px solid red";
+            return false;
+        }
+        var mediafile = uploadedpdf.files[0];
+        var coverfile = coverimage.files[0];
+        var formData = new FormData();
+        formData.append("Title", Title);
+        formData.append("Location", Location);
+        //formData.append("EventStartDate", startdate);
+        formData.append("StartTime", starttime);
+        formData.append("EndTime", endtime);
+        formData.append("Description", EventDesc);
+        //formData.append("EventEndDate", enddate);
+        formData.append("EventEndDate", combineEndDateTime);
+        formData.append("TicketCount", TicketCount);
+        formData.append("TicketPrice", TicketPrice);
+       // formData.append("ScheduleDate", Deliverydate);
+        formData.append("EventStartDate", combineStartDateTime);
+        formData.append("ScheduleDate", combinedDeliveryDateTime);
+        formData.append("ScheduleTime", Deliverytime);
+        formData.append("GroupId", Group);
+        formData.append("Mediafile", mediafile);
+        formData.append("MediaCoverfile", coverfile);
+        formData.append("OrganiserId", Organizer);
+        var Aurl = "/Planner/AddNewEvent";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    $('#txtEveTitle').val('');
+                    $('#imgplanner').val('');
+                    $('#txtStartd').val('');
+                    $('#txtStartt').val('');
+                    $('#txtInvite').val('');
+                    $('#txtEndd').val('');
+                    $('#txtEndt').val('');
+                    $('#txtGroup').val('');
+                    $('#DeliveryDate').val('');
+                    $('#Deliverytime').val('');
+                    $('#txtLoc').val('');
+                    $('#txtTicket').val('');
+                    $('#txtQTicket').val('');
+                    $('#txtEventDesc').val('');
+                    $('#txtOrg').val('');
+                    //
+                    //  $('#pdfplanner').val('');
+                    $('#uploadSec3').text('');
+                    $('#uploadSec4').text('');
+
+                    $("#NewEventAdded").modal("show");
+                    $("#Eventmessage").text(Result.message);
+
+                }
+                else {
+                    $("#NewEventAdded").modal("show");
+                    $("#Eventmessage").text(Result.message);
+                }
+                //alert('h3')
+            },
+            error: function (request, error) {
+                $("#NewEventAdded").modal("show");
+                $("#Eventmessage").text("Oops! something went wrong");
+            }
+        });
+    });
+
+    function Binddate(Id, title) {
+        $("#customs-groups tr td a").removeClass("active-bold");
+        $(`#${Id}`).addClass("active-bold");
+
+        $("#txttitlevalue").text(title);
+        $("#CommunityBookingId").val(Id);
+        var objData = {
+            MasterBookingId: Id
+        }
+        var Aurl = "/Planner/GetBookingDays";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            url: Aurl,
+            data: objData,
+            dataType: "json",
+            success: function (Result) {
+                // console.log(Result);
+                var status = Result.success;
+                var lstUsers = [];
+                if (status == true) {
+                    for (i = 0; i < Result.data.length; i++) {
+                        //  alert(lstUsers);
+                        lstUsers.push("<option value=" + Result.data[i].Id + ">" + Result.data[i].BookingDays + " </option>")
+                    }
+                    document.getElementById("ddlE").innerHTML = "<option value='0'>Select a date</option>" + lstUsers;
+                }
+            },
+            error: function (request, error) {
+                $("#Items-Added").modal("show");
+                $("#itemaddheader").text('Something went wrong!');
+                $("#message").text(error);
+            }
+
+        });
+    }
+    $(document).on("click", "#NewEventAdded button", function () {
+        window.location.href = "/planner?id=event";
+    });
+    $(document).on("click", "#Items-Added button", function () {
+        window.location.reload();
+    });
+
+    $(document).ready(function () {
+        if (~window.location.href.indexOf("event")) {
+            $('.message-tab a[href="#UpcomingEvent"]').tab('show');
+        }
+    });
+
+
+   
+ 
+
+
+</script>
+
+
+
+
+@section  Scripts{
+    @await Html.PartialAsync("/Views/Shared/_ValidationScriptsPartial.cshtml")
+}
+

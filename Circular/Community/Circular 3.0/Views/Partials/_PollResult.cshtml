@@ -1,0 +1,111 @@
+﻿@model CircularWeb.Models.MessageModel
+@{
+    int count = 1;
+
+}
+<div class=" border-bx-area">
+    @if (Model.lstPollResult != null)
+    {
+        <div class="top-headarea" id="PollTitle">
+            <p class="bg-box bg-blue text-white mb-0">@Model.lstPollResult.PollTitle</p>
+            @*   <input type="text" class="bg-box bg-blue text-lumo mb-0" value="@Model.lstPollResult.FirstOrDefault().PollTitle" id="PollTitle">*@
+
+        </div>
+
+        <div class="main-bx-area p-3 pr-4 h-120px overflow-auto">
+            <div class="form-group ">
+                <label>Question</label>
+                <input type="text" class="form-control" value="@Model.lstPollResult.Question" id="txtPollQuestion">
+            </div>
+            <div class="form-group ">
+                <label>Who received the Poll?</label>
+                <input type="text" class="form-control" value="@Model.lstPollResult.GroupName" id="txtPollType">
+            </div>
+
+            <div class="form-group ">
+                @foreach (var item in Model.lstPollResult.Options)
+                {
+                    <label id="lable1">Option #@(count++)</label>
+                    <div class="poll-box">
+                        <div class="progress ">
+                            <div class="progress-bar" role="progressbar" style="width: @item.AnswersPercentage%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"  id="txtPollOpt" onclick="Bind('@item.PollId','@item.OptionText', '@item.AnswersCount','@item.Id')" editValue1="@item.OptionText" editValaue2="@item.Id"><span class="progress-text">@item.OptionText</span></div>
+                            <div class="count-progress voter" id="votes" editValue="@item.AnswersCount">@item.AnswersCount Votes</div>
+
+                           
+                            @*<input class="progress-bar optionitem" type="text" placeholder="" value="" id="votes">*@
+                        </div>
+                    </div>
+                    <br />
+                }
+            </div>
+
+
+
+          
+        </div>
+   
+    <div class="pull-total-bottom">
+        <div class="row">
+            <div class="col-4 text-center">
+                    <p>Total recipients <span>(@Model.lstPollResult.PollMemberCount)</span></p>
+            </div>
+            <div class="col-4 text-center">
+                    <p>Total responses <span>(@Model.lstPollResult.PollResponseCount)</span></p>
+            </div>
+            <div class="col-4 text-center">
+                    <p>Outstanding <span>(@Model.lstPollResult.PollOutstandingCount)</span></p>
+            </div>
+        </div>
+    </div>
+    }
+
+</div>
+@*<script type="text/javascript" src="Scripts/ui.progressbar.js"></script>*@
+<script>
+    
+
+    function Bind(PollId, OptionText, AnswersCount, ID) {
+      
+        
+       // var selectionOptionId = $(this).attr("editValaue2");
+        $('#typeofselection').val(PollId);
+        var objdata = {
+            pollId: PollId,
+            selectionOptionId: ID
+        }
+        var Aurl = "/Message/GetPollOptionsResult";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.status = true) {
+                   
+                    $("#optiontxtfield").val(OptionText);
+                    $("#votess").val(AnswersCount);
+                    $('#PollResults1').modal('show')
+
+                    var rows = '';
+                    console.log(Result.data.lstPollResults);
+                    var members = [];
+                    for (var i = 0; i < Result.data.lstPollResults.length; i++) {
+                       
+                        rows += "<tr><td>" + Result.data.lstPollResults[i].customerName + "</td>></tr>"
+
+                        $('#memeberList tbody').html(rows);
+                    }
+                }
+                else {
+
+                }
+            },
+            error: function (request, error) {
+
+            }
+
+        });
+    }
+</script>
+
+
+

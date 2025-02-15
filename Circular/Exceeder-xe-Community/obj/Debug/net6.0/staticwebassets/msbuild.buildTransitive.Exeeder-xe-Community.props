@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Exeeder-xe-Community.props" />
+</Project>

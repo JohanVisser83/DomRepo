@@ -1,0 +1,753 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Exeeder-xe-Community.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Exeeder-xe-Community.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\animate.css",
+      "PackagePath": "staticwebassets\\css\\animate.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\buttonLoader.css",
+      "PackagePath": "staticwebassets\\css\\buttonLoader.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\custom-animation.css",
+      "PackagePath": "staticwebassets\\css\\custom-animation.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\flaticon.css",
+      "PackagePath": "staticwebassets\\css\\flaticon.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\font-awesome-pro.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome-pro.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\magnific-popup.css",
+      "PackagePath": "staticwebassets\\css\\magnific-popup.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\meanmenu.css",
+      "PackagePath": "staticwebassets\\css\\meanmenu.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\nice-select.css",
+      "PackagePath": "staticwebassets\\css\\nice-select.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\slick.css",
+      "PackagePath": "staticwebassets\\css\\slick.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\spacing.css",
+      "PackagePath": "staticwebassets\\css\\spacing.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\css\\swiper-bundle.css",
+      "PackagePath": "staticwebassets\\css\\swiper-bundle.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-brands-400.eot",
+      "PackagePath": "staticwebassets\\fonts\\fa-brands-400.eot"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-brands-400.woff",
+      "PackagePath": "staticwebassets\\fonts\\fa-brands-400.woff"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-duotone-900 (1).woff2",
+      "PackagePath": "staticwebassets\\fonts\\fa-duotone-900 (1).woff2"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-duotone-900.eot",
+      "PackagePath": "staticwebassets\\fonts\\fa-duotone-900.eot"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-duotone-900.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fa-duotone-900.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-duotone-900.woff",
+      "PackagePath": "staticwebassets\\fonts\\fa-duotone-900.woff"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-duotone-900.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fa-duotone-900.woff2"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\fonts\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\fonts\\font-awesome.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\app.png",
+      "PackagePath": "staticwebassets\\images\\app.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\00.jpg",
+      "PackagePath": "staticwebassets\\images\\banner\\00.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\010.jpg",
+      "PackagePath": "staticwebassets\\images\\banner\\010.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\011.jpg",
+      "PackagePath": "staticwebassets\\images\\banner\\011.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\banner.png",
+      "PackagePath": "staticwebassets\\images\\banner\\banner.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\bike.png",
+      "PackagePath": "staticwebassets\\images\\banner\\bike.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\border.png",
+      "PackagePath": "staticwebassets\\images\\banner\\border.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\templatebanner.png",
+      "PackagePath": "staticwebassets\\images\\banner\\templatebanner.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\video.gif",
+      "PackagePath": "staticwebassets\\images\\banner\\video.gif"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\banner\\video.mp4",
+      "PackagePath": "staticwebassets\\images\\banner\\video.mp4"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\card\\card-img-1.png",
+      "PackagePath": "staticwebassets\\images\\card\\card-img-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\card\\card-img-2.png",
+      "PackagePath": "staticwebassets\\images\\card\\card-img-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\card\\card-img-3.png",
+      "PackagePath": "staticwebassets\\images\\card\\card-img-3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\card\\card-img-4.png",
+      "PackagePath": "staticwebassets\\images\\card\\card-img-4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\card\\card-shape-1.png",
+      "PackagePath": "staticwebassets\\images\\card\\card-shape-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\card\\sale-3.png",
+      "PackagePath": "staticwebassets\\images\\card\\sale-3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\counter-shape-1.png",
+      "PackagePath": "staticwebassets\\images\\counter-shape-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\counter-shape-2.png",
+      "PackagePath": "staticwebassets\\images\\counter-shape-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\counter-shape-4.png",
+      "PackagePath": "staticwebassets\\images\\counter-shape-4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\counter\\counter-shape-1.png",
+      "PackagePath": "staticwebassets\\images\\counter\\counter-shape-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\counter\\counter-shape-2.png",
+      "PackagePath": "staticwebassets\\images\\counter\\counter-shape-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\counter\\counter-shape-4.png",
+      "PackagePath": "staticwebassets\\images\\counter\\counter-shape-4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\footer\\dwnld-1.png",
+      "PackagePath": "staticwebassets\\images\\footer\\dwnld-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\footer\\dwnld-2.png",
+      "PackagePath": "staticwebassets\\images\\footer\\dwnld-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\footer\\dwnld-3.png",
+      "PackagePath": "staticwebassets\\images\\footer\\dwnld-3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\footer\\overly.png",
+      "PackagePath": "staticwebassets\\images\\footer\\overly.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\01.png",
+      "PackagePath": "staticwebassets\\images\\hero\\01.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\02.png",
+      "PackagePath": "staticwebassets\\images\\hero\\02.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\03.png",
+      "PackagePath": "staticwebassets\\images\\hero\\03.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\04.png",
+      "PackagePath": "staticwebassets\\images\\hero\\04.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\04.webp",
+      "PackagePath": "staticwebassets\\images\\hero\\04.webp"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\05.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\05.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\06.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\06.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\07.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\07.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\08.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\08.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\09.png",
+      "PackagePath": "staticwebassets\\images\\hero\\09.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\10.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\10.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\11.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\11.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\12.png",
+      "PackagePath": "staticwebassets\\images\\hero\\12.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\13.png",
+      "PackagePath": "staticwebassets\\images\\hero\\13.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\14.png",
+      "PackagePath": "staticwebassets\\images\\hero\\14.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\15.png",
+      "PackagePath": "staticwebassets\\images\\hero\\15.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\16.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\16.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\16.psd",
+      "PackagePath": "staticwebassets\\images\\hero\\16.psd"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\17.png",
+      "PackagePath": "staticwebassets\\images\\hero\\17.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\18.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\18.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\18.png",
+      "PackagePath": "staticwebassets\\images\\hero\\18.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\Front.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\Front.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\Scene 1.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\Scene 1.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\bg.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\bg.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\browser-icon-1.png",
+      "PackagePath": "staticwebassets\\images\\hero\\browser-icon-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\browser-icon-2.png",
+      "PackagePath": "staticwebassets\\images\\hero\\browser-icon-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\browser-icon-3.png",
+      "PackagePath": "staticwebassets\\images\\hero\\browser-icon-3.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\browser-icon-4.png",
+      "PackagePath": "staticwebassets\\images\\hero\\browser-icon-4.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\browser-icon-5.png",
+      "PackagePath": "staticwebassets\\images\\hero\\browser-icon-5.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\derek.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\derek.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\derek0.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\derek0.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\generation.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\generation.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\hero-gradient-3.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\hero-gradient-3.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\hero-user.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\hero-user.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\image.png",
+      "PackagePath": "staticwebassets\\images\\hero\\image.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\joinbanner.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\joinbanner.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\line1.png",
+      "PackagePath": "staticwebassets\\images\\hero\\line1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\line2.png",
+      "PackagePath": "staticwebassets\\images\\hero\\line2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\pay.png",
+      "PackagePath": "staticwebassets\\images\\hero\\pay.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\hero\\project-gallery-img7.jpg",
+      "PackagePath": "staticwebassets\\images\\hero\\project-gallery-img7.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\logo\\logo-black.png",
+      "PackagePath": "staticwebassets\\images\\logo\\logo-black.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\logo\\logo-black0.png",
+      "PackagePath": "staticwebassets\\images\\logo\\logo-black0.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\rate-logo-1.png",
+      "PackagePath": "staticwebassets\\images\\rate-logo-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\rate-shape-1.png",
+      "PackagePath": "staticwebassets\\images\\rate-shape-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\rate-shape-2.png",
+      "PackagePath": "staticwebassets\\images\\rate-shape-2.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\service-shape-3-1.png",
+      "PackagePath": "staticwebassets\\images\\service-shape-3-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\images\\sv-icon-3-1.png",
+      "PackagePath": "staticwebassets\\images\\sv-icon-3-1.png"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\ScrollSmoother.min.js",
+      "PackagePath": "staticwebassets\\js\\ScrollSmoother.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\ScrollTrigger.min.js",
+      "PackagePath": "staticwebassets\\js\\ScrollTrigger.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\ajax-form.js",
+      "PackagePath": "staticwebassets\\js\\ajax-form.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\counterup.js",
+      "PackagePath": "staticwebassets\\js\\counterup.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\gsap.min.js",
+      "PackagePath": "staticwebassets\\js\\gsap.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\imagesloaded-pkgd.js",
+      "PackagePath": "staticwebassets\\js\\imagesloaded-pkgd.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\isotope-pkgd.js",
+      "PackagePath": "staticwebassets\\js\\isotope-pkgd.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\jarallax.js",
+      "PackagePath": "staticwebassets\\js\\jarallax.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\jquery.buttonLoader.js",
+      "PackagePath": "staticwebassets\\js\\jquery.buttonLoader.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\jquery.buttonLoader.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.buttonLoader.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\jquery.js",
+      "PackagePath": "staticwebassets\\js\\jquery.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\magnific-popup.js",
+      "PackagePath": "staticwebassets\\js\\magnific-popup.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\meanmenu.js",
+      "PackagePath": "staticwebassets\\js\\meanmenu.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\nice-select.js",
+      "PackagePath": "staticwebassets\\js\\nice-select.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\parallax-scroll.js",
+      "PackagePath": "staticwebassets\\js\\parallax-scroll.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\purecounter.js",
+      "PackagePath": "staticwebassets\\js\\purecounter.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\slick.min.js",
+      "PackagePath": "staticwebassets\\js\\slick.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\split-text.min.js",
+      "PackagePath": "staticwebassets\\js\\split-text.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\swiper-bundle.js",
+      "PackagePath": "staticwebassets\\js\\swiper-bundle.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\tilt.jquery.js",
+      "PackagePath": "staticwebassets\\js\\tilt.jquery.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\waypoints.js",
+      "PackagePath": "staticwebassets\\js\\waypoints.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\js\\wow.js",
+      "PackagePath": "staticwebassets\\js\\wow.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\CircularSphere\\Circular\\Exceeder-xe-Community\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Exeeder-xe-Community.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Exeeder-xe-Community.props",
+      "PackagePath": "build\\Exeeder-xe-Community.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Exeeder-xe-Community.props",
+      "PackagePath": "buildMultiTargeting\\Exeeder-xe-Community.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Exeeder-xe-Community.props",
+      "PackagePath": "buildTransitive\\Exeeder-xe-Community.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CircularWeb</RootNamespace>
+    <AssemblyName>CircularWeb</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Middleware\**" />
+    <Compile Remove="Uploads\QRs\**" />
+    <Content Remove="Middleware\**" />
+    <Content Remove="Uploads\QRs\**" />
+    <EmbeddedResource Remove="Middleware\**" />
+    <EmbeddedResource Remove="Uploads\QRs\**" />
+    <EntityDeploy Remove="Middleware\**" />
+    <EntityDeploy Remove="Uploads\QRs\**" />
+    <None Remove="Middleware\**" />
+    <None Remove="Uploads\QRs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Business\CustomClaimsFactory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Middleware\HttpRequestResponseMiddleware.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Release\net6.0\Email\EmailTemplate\ReportIT.html" />
+    <Content Include="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="BarCode" Version="2023.7.2" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Nancy" Version="2.0.0" />
+    <PackageReference Include="NLog" Version="5.2.2" />
+    <PackageReference Include="NLog.Database" Version="5.2.2" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.2.0" />
+    <PackageReference Include="OpenIddict.Client" Version="4.4.0" />
+    <PackageReference Include="OpenIddict.Client.SystemNetHttp" Version="4.4.0" />
+    <PackageReference Include="QRCoder" Version="1.4.3" />
+    <PackageReference Include="Quartz" Version="3.7.0" />
+    <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.7.0" />
+    <PackageReference Include="SixLabors.ImageSharp.Web" Version="3.1.0" />
+    <PackageReference Include="Stripe.net" Version="42.6.0" />
+    <PackageReference Include="TimeZoneConverter" Version="6.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Circular.Core\Circular.Core.csproj" />
+    <ProjectReference Include="..\..\Circular.Framework\Circular.Framework.csproj" />
+    <ProjectReference Include="..\..\Circular.Services\Circular.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net6.0\Email\EmailTemplate\" />
+    <Folder Include="Uploads\customer\" />
+    <Folder Include="wwwroot\GenerateAttendanceQR\" />
+  </ItemGroup>
+
+</Project>

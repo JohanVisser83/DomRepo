@@ -1,0 +1,108 @@
+﻿@model CircularWeb.Models.MessageModel
+
+@if (Model.lstNewFeedsDetails != null)
+{
+     <div class="chat-box bg-white chat-main-block">
+                                        <div class="chat-header border-bottom">
+                                            <p>Information</p>
+                                        </div>
+    <div class="chat-message-box ">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Article title</label>
+                        <input type="text" class="form-control " placeholder="" value="@Model.lstNewFeedsDetails.Title" id="txtArticleTitle1">
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Who wrote this article?</label>
+                                <input type="text" class="form-control " placeholder="" value="@Model.lstNewFeedsDetails.WroteArticle" id="lblWroteArticle1" readonly>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Who received this article?</label>
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstNewFeedsDetails.GroupName" readonly>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+           @* <div class="col-md-12">
+                <div class="form-group">
+                    <label>Newsfeed image (App home page)</label>
+                        <input type="text" class="form-control " placeholder="" value="@Model.lstNewFeedsDetails.FirstOrDefault().MessageMedia" id="lblArticleCoverImg1">
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Article cover image or video</label>
+                        <input type="text" class="form-control " placeholder="" value="@Model.lstNewFeedsDetails.FirstOrDefault().MessageMedia" id="lblArticleImg1">
+
+                </div>
+            </div>*@
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>PDF document</label>
+                        <input type="text" class="form-control " placeholder="" value="@Model.lstNewFeedsDetails.DocumentPath" id="lblArticleDocfile1" readonly>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Content</label>
+
+                        <textarea id="lblSummary1" class="form-control" rows="6" readonly>@Model.lstNewFeedsDetails.Summary</textarea>
+                   
+
+                </div>
+            </div>
+
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Newfeeds Cover Images/Videos</label>
+                        <div class="row">
+                            @foreach (var item in Model.lstNewFeedsDetails.ArticleMedia)
+                            {
+
+                                @if (item.MediaType == "Image")
+                                {
+                                    <div class="col-md-3 mb-2 px-1">
+                                        <img src="@item.Media" />
+                                    </div>
+
+                                }
+                                else if (item.MediaType == "Video" && item.MediaType == "Image")
+                                {
+                                    <img src="@item.Media" />
+                                    <video style="max-height:30%; max-width:30%; margin-left:2%" controls>
+                                        <source src="@item.Media">
+                                    </video>
+                                }
+                                else
+                                {
+                                    <video style="max-height:30%; max-width:30%; margin-left:2%" controls>
+                                        <source src="@item.Media">
+                                    </video>
+                                }
+
+                            }
+                        </div>
+                        
+                    </div>
+                </div>
+        
+        
+        </div>
+
+    </div>
+ </div>
+}

@@ -1,0 +1,72 @@
+﻿@model NewCircularSubscription.Models.CommunityMembershipModel
+
+@{
+    Layout = "_Layout";
+}
+
+
+
+   
+ 
+   
+    <!-- ===========================
+       Start Main body  ============================ -->
+
+    <section class="signup-detail signup-detail2">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="message-box">
+                        <img src="~/images/ellipse.svg" class="mb-4">
+                        <h4>Ready, Set, Grow: Get Your Network Going!</h4>
+                        <p>Everything is set up! Now, all you need to do is start inviting your inner circle to your private social network. Be sure to watch our<br> starter guide to learn how the app works and discover ways to monetise your community.</p>
+                    </div>
+                    <div class="content-box padding-5">
+                        <h4 class="mb-4">Share your community sign up link</h4>
+                        <p class="mb-4">This will take people to your community’s Discover page where they can purchase or request membership. You can also ask your members to download and search for your community.</p>
+                        <div class="input-box">
+                        <input type="text" class="form-control link-container" value="@Model?.CommunityURL" id="linkContainer" readonly>
+                        <button id="copyButton" class="copy-btn"><img src="~/images/copy.svg" class="me-2">Copy</button>
+                        </div>
+                        <button class="createown"><a href="@Url.Action("Thankyou","Thankyou")"><b>Next</b></a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Javascript Files
+           ================================================== -->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var copyButton = document.getElementById('copyButton');
+        var linkContainer = document.getElementById('linkContainer');
+
+        copyButton.addEventListener('click', function () {
+            linkContainer.select();
+            linkContainer.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text to the clipboard
+            navigator.clipboard.writeText(linkContainer.value).then(function () {
+                // Optionally, display a message or change button text to indicate success
+                copyButton.textContent = 'Copied!';
+                setTimeout(function () {
+                    copyButton.textContent = 'Copy';
+                }, 2000); // Reset text after 2 seconds
+            }).catch(function (err) {
+                console.error('Failed to copy text: ', err);
+            });
+        });
+    });
+
+    </script>
+
+
+  
+
+
+

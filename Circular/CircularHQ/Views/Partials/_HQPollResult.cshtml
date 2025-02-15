@@ -1,0 +1,113 @@
+﻿@model CircularHQ.Models.HQMessageModel
+
+@{
+    int count = 1;
+
+}
+<div class="chat-box bg-white chat-main-block">
+    @if (Model.lstPollResult != null)
+    {
+        <div class="chat-message-box ">
+            <div class="comm-info-area">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Who received this Poll?</label>
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstPollResult.GroupName">
+
+                            <input type="hidden"  value="@Model.lstPollResult.PollTitle" id="poll_Title"/> 
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Poll question</label>
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstPollResult.Question">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            @foreach (var item in Model.lstPollResult.Options)
+                            {
+                                <label id="lable1">Option #@(count++)</label>
+                            <div class="poll-box">
+                                <div class="progress ">
+                                        <input type="hidden" value="@item.PollId" id="hiddenPollId" />
+                                        <input type="hidden" value="@item.Id" id="hiddenPId" />
+                                        <div class="progress-bar" role="progressbar" style="width: @item.AnswersPercentage%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" id="txtPollOpt" onclick="Bind('@item.PollId','@item.OptionText', '@item.AnswersCount','@item.Id')" editValue1="@item.OptionText" editValaue2="@item.Id"><span class="progress-text">@item.OptionText</span></div>
+                                        <div class="count-progress voter" id="votes" editValue="@item.AnswersCount">@item.AnswersCount Votes</div>
+
+
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                   
+                  
+                    <div class="col-md-12 total-count">
+
+                        <a  type="button" class="btn btn-outline-primary btn-rounded mr-4">Total recipients: @Model.lstPollResult.PollMemberCount</a>
+                        <a  type="button" class="btn btn-outline-primary btn-rounded mr-4">Total responses: @Model.lstPollResult.PollResponseCount</a>
+                        <a type="button" class="btn btn-outline-primary btn-rounded">Outstanding responses: @Model.lstPollResult.PollOutstandingCount</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+
+
+    function Bind(PollId, OptionText, AnswersCount, ID) {
+        debugger;
+      
+        var n = 0;
+        $('#typeofselection').val(PollId);
+        var objdata = {
+            pollId: PollId,
+            selectionOptionId: ID
+        }
+        var Aurl = "/Message/GetPollOptionsResult";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: objdata,
+            success: function (Result) {
+                if (Result.success = true) {
+                   
+                    $('#Poll_Result').modal('show')
+                   
+                    var abc = $("#poll_Title").val()
+                    $("#lblPollTitle").text(abc);
+                    console.log(Result.data.lstPollResults);
+                    var rows = '';
+                    
+                   
+                    for (var i = 0; i < Result.data.lstPollResults.length; i++) {
+                        n = 1;
+                        rows += "<tr><td>" + Result.data.lstPollResults[i].customerName + "</td><td>" + Result.data.lstPollResults[i].mobile + "</td><td>" + Result.data.lstPollResults[i].optionText + "</td></tr>";
+
+                        //$('#memeberList tbody').html(rows);
+                    }
+                    if (n == 0) {
+                        rows = "<tr><td>No data available</td></tr>";
+                    }
+                    $('#memeberList tbody').html(rows);
+                    
+                    $('#bodyPollResult').html(rows)
+                }
+                else {
+
+                }
+            },
+            error: function (request, error) {
+
+            }
+
+        });
+    }
+</script>
+

@@ -1,0 +1,137 @@
+﻿@model CircularHQ.Models.HQLoginModel
+
+<head>
+    <!-- Basic Page Needs
+       ================================================== -->
+    <meta charset="utf-8">
+    <link rel="icon" href="~/images/Circularlogo_long1.png">
+    <title>Community Central - Circular</title>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <!-- Mobile Specific Metas
+       ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- CSS
+       ================================================== -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<style>
+    .sidbar-hover {
+        display: none;
+    }
+</style>
+    <div class="login tab-box">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-12  bg-color ">
+                    <div class="login-inner-form">
+                        <div class="details d-flex align-content-between flex-column">
+
+                            <div class="logo mb-auto">
+                                <a href="/">
+                                    <img src="~/images/Circularlogo_long1.png" alt="logo">
+                                </a>
+                            </div>
+                            <div class="logo-area ">
+                                <form asp-action="otp" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                                    <div class="form-group">
+                                        <input type="hidden" name="UserName" id="UserName" value="@TempData["UserName"]" />
+                                        <label class="pl-4">Please insert your OTP below</label>
+                                        @*<label class="pl-4">Please insert your OTP below<sup><a href="" class="pl-1" data-toggle="modal" data-target="#info-otp"><img src="~/images/Information-Circle.png"></a></sup></label>*@
+                                       <input type="text" name="Otp" id="Otp" class="form-control input-text" maxlength="5">
+                                      
+                                        <input type="hidden" id="timezoneName" name="timezoneName" />
+                                    </div>
+
+
+                                    <div class="form-group mb-2">
+                                        <button id="Otps" class="btn btn-rounded btn-lg btn-block btn-primary">Login to my portal</button>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @if (ViewBag.ErrorMessage != null)
+                                        {
+                                            <div id="ErrorMessageBox" class="alert alert-danger">
+                                                @ViewBag.ErrorMessage
+                                            </div>
+                                        }
+                                        @*<div id="ErrorMessageBox" class="alert alert-danger">*@
+                                            <span class="mail-receive">Not receiving OTP?
+                                            <a href="mailto:support@Circular.ooo">Contact support</a>
+                                        </span>
+                                        @*</div>*@
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 ">
+                    <div class="login-right-area p-0">
+                        <img src="~/images/login-img.png">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+@*<div class="modal fade modal-add-bx modal-sm-bx" id="info-otp" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            
+            <div class="modal-body text-center">
+                <div class="new-message ">
+                    <div class="past-leave-box">
+                    <h5>Circular</h5>
+                    <p>`By entering your number, you agree to receive mobile messages from the Circular App at the phone number provided.
+Message frequency varies. Message and data rates may apply.`</p>
+                </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>*@
+    <!-- Javascript Files
+       ================================================== -->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script  src="~/js/cropbox.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+   
+    <script src="~/js/jquery-ui.js" type="text/javascript"></script>
+
+    <script src="~/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <!-- ==== security popup==== -->
+
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+       
+        var timeZoneName = Intl.DateTimeFormat().resolvedOptions().timeZone
+        var timezoneNameInput = document.getElementById("timezoneName");
+        if (timezoneNameInput) {
+            timezoneNameInput.value = timeZoneName;
+        }
+        console.log(timezoneNameInput);
+    });
+</script>

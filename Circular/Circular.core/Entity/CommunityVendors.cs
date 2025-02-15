@@ -1,0 +1,25 @@
+﻿using RepoDb.Attributes;
+
+namespace Circular.Core.Entity;
+
+[Map("tblCommunityVendors")]
+
+public class CommunityVendors : BaseEntity
+{
+    public string? BusinessName { get; set; }
+    public string? ContactPersonName { get; set; }
+    public string? EmailAddress { get; set; }
+    public string? ContactNumber { get; set; }
+    public string? BusinessAddress { get; set; }
+    public string? CustomerVendorsCode { get; set; }
+    public string? RegistrationNumber { get; set; }
+    public string? VatNumber { get; set; }
+    public string? Website { get; set; }
+
+
+
+    public override void ApplyKeys()
+    {
+
+    }
+}

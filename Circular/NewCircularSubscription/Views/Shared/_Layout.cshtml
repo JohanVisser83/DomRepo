@@ -1,0 +1,148 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs
+           ================================================== -->
+    <meta charset="utf-8">
+    <title>Circular Where real communities start</title>
+    <!-- Mobile Specific Metas
+           ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- Fav Icon -->
+    <link rel="icon" href="~/images/favicon.png" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+   @*  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> *@
+    <link rel="stylesheet" href="~/css/style.css">
+
+   
+    <!-- FontAwesome -->
+
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <!-- ===========================
+            Header
+     ============================ -->
+    <section class="header is-sticky">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container">
+                        <a class="navbar-brand" href="@Url.Action("Discover","Discover")"><img src="~/images/logo.png"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ms-auto align-items-center">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@ViewBag.LearnMoreCircularURl "><img src="~/images/learn-icon.svg">Learn more about Circular</a>
+                                </li>
+                                <li class="nav-item createown">
+                                    <a class="nav-link" href="@Url.Action("Index","CreateCommunity")">Create your own community</a>
+                                </li>
+                        <li class="nav-item createown">
+                            <a class="nav-link" href="https://connect.circular.ooo" target="_blank">Portal Login</a>
+                        </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+               @*  <nav class="navbar navbar-expand-lg w-100">
+                    <a class="navbar-brand" href="@Url.Action("Discover","Discover")"><img src="~/images/logo.png"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse text-light" id="navbarNav">
+                        <ul class="navbar-nav ms-auto align-items-center">
+                            <li class="nav-item">
+                                <a class="nav-link" href="@ViewBag.LearnMoreCircularURl "><img src="~/images/learn-icon.svg">Learn more about Circular</a>
+                            </li>
+                            <li class="nav-item createown">
+                                <a class="nav-link" href="@Url.Action("Index","CreateCommunity")">Create your own community</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav> *@
+    </section>
+    <!-- ===========================
+               Header End
+        ============================ -->
+    <section class="main-pb">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </section>
+
+   
+
+   
+    <!-- ===========================
+    footer
+    ============================ -->
+    <footer class="footer">
+        <div class="container innerdiv">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-content">
+                        <div class="d-grid">
+                            <a href="@Url.Action("Discover","Discover")"><img src="https://circularapp.io/wp-content/uploads/2024/04/Circular-Footer-Icon.webp"></a>
+                            <p>
+                                <a href="@Url.Action("Discover","Discover")">Click here to<br /> unlock your inner circle.</a>
+                            </p>
+                        </div>                       
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li>2024 © Circular App</li>
+                        <li><a href="@ViewBag.TermsOfUse">Terms of usage</a></li>
+                        <li><a href="@ViewBag.PrivacyPolicy">Privacy Policy</a></li>
+                    </ul></div>
+                <div class="col-md-6">
+                    <div class="left-bottom-div">
+                        <div class="createown">
+                            <a href="@ViewBag.CommunityPortalURl">Administrator Login</a>
+                        </div>
+                        <ul class="social-media-links">
+                            <li><a href="@ViewBag.LinkedIn" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="@ViewBag.WhatsApp" target="_blank"><i class="fa fa-whatsapp"></i></a></li>
+                            <li><a href="@ViewBag.Contactus"><i class="fa fa-paper-plane"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ===========================
+    footer End
+    ============================ -->
+
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+@*     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script> *@
+    <script type="text/javascript" src="~/js/custom.js"></script>
+   
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

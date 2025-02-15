@@ -1,0 +1,157 @@
+﻿@model CircularWeb.Models.MessageModel
+
+<div class="chat-box bg-white chat-main-block">
+    @if (Model.lstActiveNewsFeedDetails != null)
+    {
+       
+    <div class="chat-header border-bottom">
+            <p>@Model.lstActiveNewsFeedDetails.Title</p>
+    </div>
+    
+        <div class="chat-message-box ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Date Posted</label>
+                        <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.CreatedDate.ToString("dd.MM.yyyy hh:mm tt")" id="txtArticleTitle1" readonly>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Who wrote this article?</label>
+                                <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.WroteArticle" id="lblWroteArticle1" readonly>
+
+                            </div>
+                        </div>
+                       <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Who received this article?</label>
+                                <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.GroupName" readonly>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+              @*  <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Newsfeed image (App home page)</label>
+                        @if(Model.lstActiveNewsFeedDetails.MessageMedia != null)
+                        {
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.MessageMedia.Substring(Model.lstActiveNewsFeedDetails.MessageMedia.LastIndexOf('/')+1)" id="lblArticleCoverImg1">
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control " placeholder="" value="" id="lblArticleCoverImg1">
+                        }
+                    </div>
+                </div>*@
+               @* <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Article cover image or video</label>
+                        @if(Model.lstActiveNewsFeedDetails.MessageMedia != null)
+                        {
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.MessageMedia.Substring(Model.lstActiveNewsFeedDetails.MessageMedia.LastIndexOf('/')+1)" id="lblArticleImg1">
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control " placeholder="" value="" id="lblArticleImg1">
+                        }
+                    </div>
+                </div>*@
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>PDF document</label>
+                        @if(Model.lstActiveNewsFeedDetails.DocumentPath != null)
+                        {
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.DocumentPath.Substring(Model.lstActiveNewsFeedDetails.DocumentPath.LastIndexOf('/')+1)" id="lblArticleDocfile12" readonly>
+                        }
+                        else
+                        {
+                        <input type="text" class="form-control " placeholder="" value="" id="lblArticleDocfile12">
+                        }
+                    </div>
+                </div>
+               @* <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Linked item</label>
+                        <div class="add-icon-bx">
+                            <input type="text" class="form-control" value="Civvies Day Collection">
+
+                            <div class="add-icon ">
+                                <img src="~/images/lock-3.png" />
+                            </div>
+                        </div>
+                      </div>
+                </div>*@
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Content</label>
+                       
+                            <textarea id="lblSummary" rows="8" class="form-control" readonly> @Model.lstActiveNewsFeedDetails.Summary </textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Newfeeds Cover Images/Videos</label>
+                        <div class="row">
+                        @foreach (var item in Model.lstActiveNewsFeedDetails.ArticleMedia)
+                        { 
+                           
+                                @if (item.MediaType == "Image")
+                                {
+                                    <div class="col-md-3 mb-2 message-img-size">
+                                        <img src="@item.Media" />
+                                        </div>
+                                 
+                                }
+                                else if(item.MediaType == "Video" && item.MediaType == "Image")
+                                {
+                                             <div class="col-md-3 mb-2 message-img-size">
+                                          <img src="@item.Media" />
+                                          </div>
+                                    <div class="col-md-3 mb-2">
+                                            <video style="height:200px; max-width:100%" controls>
+                                                <source src="@item.Media">
+                                            </video>
+                                            </div>
+                                }
+                                else
+                                {
+                                    <video style="max-height:30%; max-width:30%; margin-left:2%" controls>
+                                        <source src="@item.Media">
+                                    </video>
+                                }
+
+                        }
+                        </div>
+                        @*<textarea id="lblSummary" rows="8" class="form-control"> @Model.lstActiveNewsFeedDetails.Summary </textarea>*@
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+
+
+    <!-- @* <div class="send-box">
+        <form action="">
+            <input type="hidden" id="customer_active_chat">
+            <input type="text" id="chat-input" class="form-control" aria-label="message…" placeholder="Write message…">
+            <div class="add-icon-bx d-inline">
+                <button type="button" class="btn-link btn"><img src="~/images/Document-add.png"></button>
+                <input type="file" name="myfile" class="form-control">
+            </div>
+            <div class="add-icon-bx d-inline">
+                <button type="button" class="btn-link btn"><img src="~/images/Image.png"></button>
+                <input type="file" name="myfile" class="form-control">
+            </div>
+            <button type="button" class="btn bg-lumo send-btn"><img src="~/images/Right-circle.png"></button>
+        </form>
+    </div>*@ -->
+</div>

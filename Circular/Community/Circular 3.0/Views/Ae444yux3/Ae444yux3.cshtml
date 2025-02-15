@@ -1,0 +1,47 @@
+﻿@model CircularWeb.Models.CommunityModel;
+@{
+    ViewData["Title"] = "Ae444yux3";
+}
+<style>
+    h1{
+        text-align:center;
+    }
+    .table-responsive {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+    table#Active-Account tr th {
+        background-color: whitesmoke;
+        padding: 9px;
+    }
+
+    table#Active-Account tr td {
+        padding: 10px 20px;
+    }
+</style>
+<h1>Hello Dom</h1>
+<div class="table-responsive ">
+    <table id="Active-Account" class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>OTP</th>
+                <th>Date-Time</th>
+                <th>Login Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ActiveOTPDetails)
+            {
+                <tr>
+                    <td class="text-left"><span class="text-over">@item.Name </span></td>
+                    <td> @item.OTP</td>
+                    <td> @item.CreatedOn</td>
+                    <td> @item.Username</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

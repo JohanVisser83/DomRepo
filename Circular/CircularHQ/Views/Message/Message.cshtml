@@ -1,0 +1,1952 @@
+﻿@model CircularHQ.Models.HQMessageModel;
+@{
+    Layout = "_Layout";
+}
+
+
+
+
+<script type="text/javascript">
+    var croppers = [];
+    var fileImgNames = [];
+    var fileType = [];
+    var fileName;
+    var i;
+
+    $(document).ready(function () {
+        $('.imageBox').hide();
+        $('#btnCrop').hide();
+
+        var options =
+        {
+            thumbBox: '.thumbBox',
+            spinner: '.spinner',
+        }
+        var cropper = $('.imageBox').cropbox(options);
+
+        $('#cover').on('change', function (e) {
+
+            var file = e.target.files;
+            if ((file[0].type) != "undefined") {
+                for (i = 0; i < file.length; i++) {
+                    fileImgNames.push(file[i].name);
+                    fileType.push(file[i].type);
+                }
+                if (fileType[fileType.length - 1] == "image/jpeg" || fileType[fileType.length - 1] == "image/jpg" || fileType[fileType.length - 1] == "image/png") {
+                    $('.imageBox').show();
+                    $('#btnCrop').show();
+
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        options.imgSrc = e.target.result;
+                        cropper = $('.imageBox').cropbox(options);
+                        console.log(cropper);
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+                else {
+                    showThumbnail(file);
+                }
+            }
+
+        })
+
+        $('#btnCrop').on('click', function (e) {
+            var img = cropper.getDataURL();
+            //$('.cropped').append('<img class="col-md-4" src="' + img + '"><div class="cross-icon image-icon pl-1"><button type="button" class="cross" onclick="dltCircleInfoItemsmessage(this)"><span aria-hidden="true" >×</span></button></div>');
+
+            $('.cropped').append('<img class="col-md-4" src = "' + img + '"><div class="cross-icon"><button type="button" class= "btn btn-default" onclick="dltCircleInfoItemsmessage(this)"><img src="~/images/cross.png"></button></div>')
+            
+            
+            
+            $('.cropped').each(function () {
+                croppers.push(img);
+                $('.imageBox').hide();
+                $('#btnCrop').hide();
+            })
+
+        })
+
+
+
+
+
+
+
+
+
+        function showThumbnail(files) {
+            for (let i = 0; i < files.length; i++) {
+                let file = files[i];
+                let thumbnail = document.getElementById("thumbnail");
+                let pDiv = document.createElement("div");
+                let video = document.createElement("video");
+                let div = document.createElement("div");
+                let crossDiv = document.createElement("div");
+                let button = document.createElement("button");
+                let span = document.createElement("span");
+
+                pDiv.setAttribute('class', 'col-sm-4');
+                thumbnail.appendChild(pDiv);
+                video.setAttribute('class', 'imgKLIK5');
+                pDiv.appendChild(video);
+                div.setAttribute('class', 'closeDiv');
+                pDiv.appendChild(div);
+                crossDiv.setAttribute('class', 'cross-icon image-icon pl-2');
+                div.appendChild(crossDiv);
+                button.setAttribute('type', 'button');
+                button.setAttribute('onclick', 'dltCircleInfoItemsmessageVedios(this)');
+                crossDiv.appendChild(button);
+
+                button.setAttribute('class', 'cross');
+                //div.appendChild(crossDiv);
+                span.setAttribute('aria-hidden', 'true');
+                span.innerHTML = '×';
+                button.appendChild(span);
+                video.file = file;
+                let reader = new FileReader()
+                reader.onload = (function (aImg) {
+                    return function (e) {
+                        let blobURL = URL.createObjectURL(file);
+                        aImg.imgSrc = e.target.result;
+                        aImg.src = blobURL;
+                        aImg.setAttribute("controls", "");
+                        croppers.push(aImg.imgSrc);
+                    };
+                }(video))
+                reader.readAsDataURL(file);
+                let canvas = document.createElement("canvas");
+                let ctx = canvas.getContext("2d");
+                video.onload = function () {
+                    ctx.drawImage(video, 100, 100);
+                }
+            }
+        }
+    });
+
+
+
+    function dltCircleInfoItemsmessageVedios(button) {
+
+        let pDiv = $(button).closest('.col-sm-4').prev('video');
+        if (pDiv) {
+            var indexToRemove = pDiv.index();
+            croppers.splice(indexToRemove, 1);
+            pDiv.remove();
+            $(button).closest('.col-sm-4').remove()
+            $('#cover').val('');
+            console.log(croppers);
+        }
+    }
+
+
+
+
+    function dltCircleInfoItemsmessage(button) {
+        var imageToRemove = $(button).closest('div').prev('img');
+        var indexToRemove = imageToRemove.index();
+        croppers.splice(indexToRemove, 1);
+        imageToRemove.remove();
+        $(button).closest('div').remove();
+        $('#cover').val('');
+        console.log(croppers);
+    }
+</script>
+
+<style>
+    .imageBox {
+        position: relative;
+        height: 267px;
+        width: 376px;
+        border: 1px solid #aaa;
+        background: #fff;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        cursor: move;
+    }
+
+        .imageBox .thumbBox {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 432px;
+            height: 300px;
+            margin-top: -149px;
+            margin-left: -216px;
+            box-sizing: border-box;
+            border: 1px solid rgb(102, 102, 102);
+            box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+            background: none repeat scroll 0% 0% transparent;
+        }
+
+        .imageBox .spinner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            line-height: 400px;
+            background: rgba(0,0,0,0.7);
+        }
+
+    #thumbnail video {
+        width: 100%;
+    }
+
+    /*.cropped {
+        margin-bottom: 20px;
+        position: relative;
+    }*/
+    /* .cropped img{
+                    margin:0 4px;
+                }*/
+
+    /*            * {
+        font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+    }*/
+</style>
+
+<style>
+
+    .custom-file-upload1 {
+        top: -7px;
+        width: 100%;
+        display: block;
+        margin: 0 !important;
+        color: #101c28 !important;
+        font-weight: normal;
+        font-size: 16px;
+        position: absolute;
+    }
+    .ui-autocomplete {
+        z-index: 1051 !important;
+        float: left;
+        height: 230px;
+        overflow-y: auto;
+        border-radius: 6px 6px 11px 11px;
+    }
+
+    .ui-widget.ui-widget-content {
+        border: none !important;
+    }
+
+    .ui-menu li.ui-menu-item .ui-menu-item-wrapper {
+        border-radius: unset;
+    }
+
+    .ui-widget.ui-widget-content {
+        box-shadow: none;
+        background: #ffffff;
+        color: #101C28;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .ui-menu .ui-menu-item {
+        margin-bottom: 3px;
+    }
+
+    .image_container {
+        max-width: 200px;
+        max-height: 450px;
+        /*display:none;*/
+    }
+</style>
+
+   
+               
+    <div class="main-content-area">
+                    <div class="bg-gray main-top-area">
+                        <div class="row pt-7">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="form-group mb-0">
+                                    <select class="form-control top-select-bg" id="ddlCommunity" asp-items="@(new SelectList(Model.Communities,"Id","OrgName"))">
+                                        <option selected="" value="0">Select a community</option>
+                                       @* <option value="all">All</option>
+                                        <option value="group">Group</option>*@
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar">
+                        <ul class="nav nav-tabs tab-data-area ">
+                            <li><a data-toggle="tab" href="#message" class="active">Inbox</a></li>
+                            <li><a href="" data-toggle="modal" data-target="#NewMessages" class="modal-line">New message</a></li>
+                            <li><a data-toggle="tab" href="#newsfeed-article">Newsfeed articles</a></li>
+                            <li><a data-toggle="modal" href="#NewArticle" class="modal-line">Post new article</a></li>
+                            <li><a data-toggle="tab" href="#PollResult" class="">Poll results</a></li>
+                            <li><a data-toggle="modal" href="#StartPoll">Post a poll</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="message" role="tabpanel" aria-labelledby="message-tab">
+                            <div class="message-tabs-area">
+                                <div class="row no-gutters message-box ">
+                                    <!-- Users box-->
+                                    <div class="col-lg-4 px-0">
+                                        <div class="message-sidebar border-right h-28px">
+                                            <div class="search-communication-area">
+                                                <div class=" form-group search-bar-list px-3">
+                                                    <input class="form-control search" type="text" placeholder="Search message" id="SearchreadMessage">
+                                                </div>
+                                                <ul class="nav nav-tabs tab-data-area">
+                                                    <li><a data-toggle="tab" href="#All" class="active" id="AllInbox">All</a></li>
+                                                    <li><a data-toggle="tab" href="#Unread" id="UnreadInbox">Unread</a></li>
+                                                    <li><a data-toggle="tab" href="#Archived" class="" id="ArchivedInbox">Archived</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade show active" id="All" role="tabpanel" aria-labelledby="All-tab">
+                                                     @if (Model != null || Model.lstMessages.Count() > 0)
+                                                    {
+                                                        <div class="unread-message-box ">
+                                                            <ul id="messageList" class="h-49vh overflow-auto user-chat-list">
+                                                                @foreach (var item in Model.lstMessages)
+                                                               {
+                                                                <li>
+                                                                    <a class="d-flex justify-content-between align-content-center active" href="javascript:void(0);">
+                                                                        <div class="d-flex align-content-center user-box">
+                                                                            <div class="user-profile">
+                                                                                    <img src="@item.SenderProfilePic" class="rounded-circle">
+                                                                            </div>
+                                                                            <div class="user-info">
+                                                                                 @if (item.IsUnread == 1)
+                                                                                 {
+                                                                                        <h6 class="titleSendername" style="font-weight:700" title="@item.SenderFirstName" editValue="@item.SenderId">@item.SenderFirstName *</h6>
+                                                                                        <p>@item.SenderMessage</p>
+                                                                                 }
+                                                                                 else
+                                                                                 {
+                                                                                        <h6 class="titleSendername" title="@item.SenderFirstName" editValue="@item.SenderId">@item.SenderFirstName</h6>
+
+                                                                                        <p>@item.SenderMessage</p>
+                                                                                 }
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="right-icon archiveSend" data-toggle="modal" id="@item.SenderId">
+                                                                            <img src="~/images/Down-Square1.png">
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                               }
+                                                            </ul>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="tab-pane fade" id="Unread" role="tabpanel" aria-labelledby="Unread-tab">
+                                                    <div class="unread-message-box ">
+                                                        @if (Model != null || Model.lstMessages.Count() > 0)
+                                                        {
+                                                            <div class="unread-message-box ">
+                                                                <ul class="h-49vh overflow-auto user-chat-list">
+                                                                    @foreach (var item in Model.lstMessages)
+                                                                    {
+                                                                        <li>
+                                                                            @if (item.IsUnread == 1)
+                                                                                {
+                                                                            <a class="d-flex justify-content-between align-content-center active" href="javascript:void(0);">
+                                                                                
+                                                                                    <div class="d-flex align-content-center user-box">
+                                                                                
+                                                                                        <div class="user-profile">
+                                                                                            <img src="@item.SenderProfilePic" class="rounded-circle">
+                                                                                        </div>
+                                                                                        <div class="user-info">
+                                                                                                <h6 class="titleSendername" style="font-weight:700" title="@item.SenderFirstName" editValue="@item.SenderId">@item.SenderFirstName *</h6>
+                                                                                                <p>@item.SenderMessage</p>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                        <div class="right-icon archiveSend" data-toggle="modal" id="@item.Id">
+                                                                                    <img src="~/images/Down-Square1.png">
+                                                                                </div>
+                                                                              
+                                                                            </a>
+                                                                            }
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="Archived" role="tabpanel" aria-labelledby="Archived-tab">
+                                                    @if (Model != null || Model.lstArchivedMessage.Count() > 0)
+                                                    {
+                                                        <div class="unread-message-box ">
+                                                            <ul class="h-49vh overflow-auto user-chat-list" id="lista1archived">
+                                                                 @foreach (var item in Model.lstArchivedMessage)
+                                                                 {
+                                                                    <li>
+                                                                        <a class="d-flex justify-content-between align-content-center active" href="javascript:void(0);">
+
+                                                                            <div class="d-flex align-content-center user-box">
+                                                                                <div class="user-profile">
+                                                                                    <img src="@item.SenderProfilePic" class="rounded-circle">
+                                                                                </div>
+                                                                                
+                                                                                    <div class="user-info">
+                                                                                    @if (item.IsUnread == 1)
+                                                                                    {
+                                                                                        <h6 class="lblArchived" style="font-weight:700" title="@item.SenderFirstName" editValue="@item.SenderId">@item.SenderFirstName *</h6>
+                                                                                        <p>@item.SenderMessage</p>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <h6 class="lblArchived" title="@item.SenderFirstName" editValue="@item.SenderId">@item.SenderFirstName</h6>
+                                                                                        <p>@item.SenderMessage</p>
+                                                                                    }
+                                                                                    
+                                                                                    </div>
+                                                                                
+                                                                            </div>
+                                                                                <div class="right-icon UnArchivedMessage" data-toggle="modal" id="@item.Id">
+                                                                                    <img src="~/images/up-arrow.png">
+                                                                                </div>
+                                                                           
+                                                                        </a>
+                                                                    </li>
+                                                                 } 
+                                                            </ul>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Chat Box All Messages-->
+                                    <div class="col-lg-8 px-0">
+                                        <div class="chat-box bg-white chat-main-block">
+                                            
+                                            <div id="messageSummary">
+                                                @Html.Partial("~/Views/Partials/_HQMessageSummary.cshtml", Model)
+                                            </div>
+
+                                             <div id="UnreadmessageSummary">
+                                                @Html.Partial("~/Views/Partials/_HQUnreadMessageSummary.cshtml", Model)
+                                            </div>
+
+
+                                             <div id="ArchivedmessageSummary">
+                                                @Html.Partial("~/Views/Partials/_HQArchivedMessageSummary.cshtml", Model)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Chat Box Archived Messages-->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="newsfeed-article" role="tabpanel" aria-labelledby="newsfeed-article-tab">
+                            <div class="message-tabs-area">
+                                <div class="row no-gutters message-box ">
+                                    <!-- Users box-->
+                                    <div class="col-lg-4 px-0">
+                                        <div class="message-sidebar border-right h-28px">
+                                            <div class="search-communication-area p-0 pb-2">
+                                                <ul class="nav nav-tabs tab-data-area">
+                                                    <li><a data-toggle="tab" href="#Article-active" class="active">Active</a></li>
+                                                    <li><a data-toggle="tab" href="#Article-Archived">Archived</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade show active" id="Article-active" role="tabpanel" aria-labelledby="Article-active-tab">
+                                                     @if (Model != null || Model.lstNewsFeeds.Count() > 0)
+                                                    {
+                                                        <div class="unread-message-box ">
+                                                            <ul class="h-49vh overflow-auto user-chat-list">
+                                                            @foreach(var item in Model.lstNewsFeeds)
+                                                            {
+                                                                <li>
+                                                                    <a class="d-flex justify-content-between align-content-center active" href="javascript:void(0);">
+                                                                        <div class="d-flex align-content-center user-box">
+                                                                            <div class="user-profile">
+                                                                                <img src="@item.MessageMedia" class="rounded-circle">
+                                                                            </div>
+                                                                            <div class="user-info">
+                                                                            <h6 class="lblNewfeeds" editvalue="@item.Id" editvalue1="@item.Title" editvalue2="@item.WroteArticle" , editvalue3="@item.MessageMedia" editvalue4="@item.MessageMediaThumbnail" editvalue5="@item.DocumentPath" editvalue6="@item.Summary">@item.Title</h6>
+                                                                                <p>@item.GroupName</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="right-icon" data-toggle="modal" id="@item.Id">
+                                                                            <img src="~/images/Down-Square1.png">
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+
+                                                            }
+                                                            </ul>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="tab-pane fade" id="Article-Archived" role="tabpanel" aria-labelledby="Article-Archived-tab">
+                                                    @if (Model != null || Model.ArchivedArticle.Count() > 0)
+                                                    {
+                                                        <div class="unread-message-box ">
+                                                            <ul class="h-49vh overflow-auto user-chat-list">
+                                                                      @foreach (var item in Model.ArchivedArticle)
+                                                                     {
+                                                  
+                                                                        <li>
+                                                                            <a class="d-flex justify-content-between align-content-center active" href="javascript:void(0);">
+                                                                                <div class="d-flex align-content-center user-box">
+                                                                                    <div class="user-profile">
+                                                                                        <img src="" class="rounded-circle">
+                                                                                    </div>
+                                                                                    <div class="user-info">
+                                                                                    <h6 class="lblArchiveNewfeeds" editvalue="@item.Id" editvalue1="@item.Title" editvalue2="@item.WroteArticle" , editvalue3="@item.MessageMedia" editvalue4="@item.MessageMedia" editvalue5="@item.DocumentPath" editvalue6="@item.Summary">@item.Title</h6>
+                                                                                        <p>@item.GroupName</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="right-icon UnArchivedArticle" data-toggle="modal" id="@item.Id">
+                                                                                    <img src="~/images/up-arrow.png">
+                                                                                </div>
+                                                                            </a>
+                                                                        </li>
+                                                                     }
+                                                            </ul>
+                                                        </div>
+                                                    }      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Chat Box-->
+                                    <div class="col-lg-8 px-0" id="_ActiveArticle1">
+                                            @Html.Partial("~/Views/Partials/_HQActiveArticle.cshtml", Model)
+                                    </div>
+                                    <div class="col-lg-8 px-0" id="_ActiveArticle1" style="display:none">
+                                        @Html.Partial("~/Views/Partials/_HQArchivedArticle.cshtml", Model)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="PollResult" role="tabpanel" aria-labelledby="PollResult-tab">
+                            <div class="message-tabs-area">
+                                <div class="row no-gutters message-box ">
+                                    <!-- Users box-->
+                                    <div class="col-lg-4 px-0">
+                                        <div class="message-sidebar border-right h-28px">
+                                            <div class="search-communication-area p-0 pb-2">
+                                                <ul class="nav nav-tabs tab-data-area">
+                                                    <li><a data-toggle="tab" href="#Pull-Active" class="active">Active</a></li>
+                                                    <li><a data-toggle="tab" href="#Pull-Archived" class="">Archived</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="Pull-Active" role="tabpanel" aria-labelledby="Pull-Active-tab">
+
+                                                    <div class="unread-message-box ">
+                                                         @if (Model.lstPolllist.Count() > 0)
+                                                        {
+                                                            <ul id="listreadMessage" class="h-49vh overflow-auto user-chat-list">
+                                                                @foreach (var item in Model.lstPolllist)
+                                                                {
+                                                                <li>
+                                                                    <a class="d-flex justify-content-between align-content-center active" href="javascript:void(0);">
+                                                                        <div class="d-flex align-content-center user-box">
+                                                                            <div class="user-profile">
+                                                                                <img src="" class="rounded-circle">
+                                                                            </div>
+                                                                            <div class="user-info">
+                                                                                    <h6 editvalue="@item.PollTitle" editValue1="@item.Question" editValue5="@item.Id" class="lblPollTitle">@item.PollTitle </h6>
+                                                                                <p>@item.GroupName</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="right-icon" data-toggle="modal" id="@item.Id">
+                                                                            <img src="~/images/Down-Square1.png">
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                }
+                                                            </ul>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="Pull-Archived" role="tabpanel" aria-labelledby="Pull-Archived-tab">
+                                                    <div class="unread-message-box ">
+                                                        <ul class="h-49vh overflow-auto user-chat-list">
+                                                            <li>
+                                                                <a class="d-flex justify-content-between align-content-center active" href="javascript:void(0);">
+                                                                    <div class="d-flex align-content-center user-box">
+                                                                        <div class="user-profile">
+                                                                            <img src="" class="rounded-circle">
+                                                                        </div>
+                                                                        <div class="user-info">
+                                                                            <h6></h6>
+                                                                            <p></p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="right-icon" data-toggle="modal" id="102">
+                                                                        <img src="~/images/Down-Square1.png">
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                           
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Chat Box-->
+                                    <div class="col-lg-8 px-0" id="PollResultsss">
+                                        @Html.Partial("~/Views/Partials/_HQPollResult.cshtml", Model)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            
+
+
+
+    <!-- ===================modal====================== -->
+    <!--Create Form Compose a new message-->
+    <div class="modal fade modal-add-bx" id="NewMessages" tabindex="-1" aria-labelledby="NewMessagesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md  modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Compose a new message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img src="../images/Close.png">
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="new-message">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select class="form-control text-center rounded form-height-45" id="ddlMessageCommunity" asp-items="@(new SelectList(Model.Communities,"Id","OrgName"))">
+                                            <option selected>Select an Community</option>
+                                           
+                                        </select>
+                                    </div>
+                                </div>
+                         
+                               <div class="col-md-12">
+                                    <div class="form-group select-wrap ">
+                                        <select class="form-control  text-center rounded form-height-45 allCommunityUsers" id="MessageUsers">
+                                            <option selected>Select Community User</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-12">
+
+                                    <label>Schedule delivery</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="date-icon date-right-icon">
+
+                                                    <input type="text" id="Scheduledate" class="btn-date form-control ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="time" class="form-control" id="Scheduletime">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-boder-bx" placeholder="Insert your notification title">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="9" placeholder="Compose your message" id="Message"></textarea>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row align-items-center" id="logo-upload127">
+                        <div class="col-md-4">
+                            <div class="cross-icon document-upld">
+                                <label for="pdffilesMessages" class="custom-file-upload1 nameimage1">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="d-flex align-items-center justify-content-end">
+                                @*<button type="button" class="btn-default border-0 font-weight-bold fs-20"><i>i</i></button>*@
+                                @*<button  class="btn-default border-0 font-weight-bold fs-20" id="boldButton">B</button>*@
+                                @*<button type="button" class="btn-default border-0 " id="emojiButton"><img src="~/images/Happy.png"></button>*@
+                                <div class="add-icon-bx d-inline">
+                                    <input type="file" id="pdffilesMessages" accept="">
+                                    <button type="button" class="btn-default border-0"><img src="" /><img id="imageBroad" src="~/images/Document-add.png" /></button>
+
+                                </div>
+                                <button type="button" class="btn btn-success has-spinner btn-rounded btn-md" id="SendMessage">Send message</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END-->
+    <!--EDIT FORM Compose a new message-->
+    <div class="modal fade modal-add-bx" id="EditMessages" tabindex="-1" aria-labelledby="EditMessagesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Compose a new message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img src="~/images/Close.png">
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="new-message">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select class="form-control text-center rounded form-height-45">
+                                            <option selected>Planagro Sustainability Network</option>
+                                            <option value="all">All</option>
+                                            <option value="group">Group</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group select-wrap ">
+                                        <select class="form-control  text-center rounded">
+                                            <option selected>North America Chapter</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group select-wrap ">
+                                        <select class="form-control  text-center rounded">
+                                            <option selected>Texas Chapter Zone 5</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class=" form-group search-bar-list">
+                                        <div class=" input-group diff2">
+                                            <input type="hidden" id="Number" value="">
+                                            <input class="form-control search text-center ui-autocomplete-input " type="text" autocomplete="off" placeholder="Search a mobile number or individual" id="ContactNo">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <img src="~/images/Search-2.png" class="img-fluid">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <ul id="ContactList">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+
+                                    <label>Schedule delivery</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="date-icon date-right-icon">
+
+                                                    <input type="text" id="edit_schedule_date" class="btn-date form-control ">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="time" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-boder-bx" placeholder="A reminder Jessica Albatrossi will be visiting your chapter next month" id="BroadcastTitle">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="9" placeholder="Compose your message">
+                                       Attention to all members,
+
+We would like to remind you that your chapter is representing us all as the leader in urban farming and innovative solutions to creating a more sustainable future for everyone. We extend our heartfelt thanks for your hard work, support, donations, and everything else that has brought us this far. We truly appreciate it.
+                                    </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <label for="imgfiles" id="lblBroadcastPdf">
+
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row align-items-center" id="logo-upload127">
+                        <div class="col-md-4">
+                            <div class="cross-icon document-upld">
+                                <label for="pdffilesBroadcast" class="custom-file-upload1 nameimage1">
+                                    <span></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="d-flex align-items-center justify-content-end">
+                                @*<button type="button" class="btn-default border-0 font-weight-bold fs-20"><i>i</i></button>
+                                <button type="button" class="btn-default border-0 font-weight-bold fs-20">B</button>
+                                <button type="button" class="btn-default border-0 "><img src="~//Happy.png"></button>*@
+                                <div class="add-icon-bx d-inline">
+                                    <input type="file" id="pdffilesBroadcast" accept="">
+                                    <button type="button" class="btn-default border-0"><img src="" /><img id="imageBroad" src="~/images/Document-add.png" /></button>
+
+                                </div>
+                                <button type="button" class="btn btn-success has-spinner btn-rounded btn-md">Send message</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END-->
+    <!--Create Form Compose a new Article-->
+    <div class="modal fade modal-add-bx" id="NewArticle" tabindex="-1" aria-labelledby="NewArticleLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-scrollable modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Compose a new article</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img src="~/images/Close.png">
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="new-message">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="form-group">
+                                        <select class="form-control text-center rounded form-height-45">
+                                            <option selected>Select an Community</option>
+                                            <option value="all">All</option>
+                                            <option value="group">Group</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group select-wrap">
+                                        <select class="form-control  text-center rounded" onchange="onchangeArticleMasterType(this)" id="ddlArticleAudience">
+                                            <option selected value="1">Select an audience</option>
+                                            <option value="all">All</option>
+                                            <option value="group">Group</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group select-wrap ">
+                                        <select class="form-control  text-center rounded allArticleUsers" id="ddlArticleMasterUsers">
+                                            <option selected>Select a group</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-boder-bx" placeholder="Insert your article title" id="txtArticleTitle">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-boder-bx" placeholder="Who wrote this article?" id="txtWroteArticle">
+                                    </div>
+                                    <div class="form-group  add-icon-bx rounded border">
+                                        <label for="cover" class="custom-file-upload nameimage bg-transparent">
+                                            <span>Add a cover photo or video</span>
+                                        </label>
+                                        <div class="add-icon bg-white">
+                                            <input id="cover" type="file" accept="image/video/*">
+                                            <img src="~/images/Add-Circle.png">
+                                        </div>
+                                    </div>
+                                 
+
+                                    <div class="form-group">
+                                        <div class="imageBox">
+                                            <div class="thumbBox"></div>
+                                            <div class="spinner" style="display: none">Loading...</div>
+                                        </div>
+                                        <div class="action">
+                                            <input type="button" id="btnCrop" value="Crop">
+                                        </div>
+                                        </div>
+                                     
+                                   <div class="form-group ml-3">
+                                            <div class="row g-2">
+                                                <div class="col-3">
+                                                        <div class="cropped">
+                                                        </div>
+                                                </div>
+                                             </div>
+                                        <div class="form-group ml-3">
+                                            <div id="thumbnail" class="row m-0 video-thumb"></div>
+                                        </div>
+                                    
+                                    
+                                   </div> 
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="23" placeholder="Compose your article" id="txtcomposeArticle"></textarea>
+                                    </div>
+                                    <div class="row align-items-center" id="logo-upload11">
+                                        <div class="col-md-4">
+                                            <div class="cross-icon document-upld">
+                                                <label for="Articlepdfdoc" class="custom-file-upload1 nameimage1 pt-0">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                       
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                           @* <button type="button" class="btn-default border-0 font-weight-bold fs-20"><i>i</i></button>
+                                            <button type="button" class="btn-default border-0 font-weight-bold fs-20">B</button>
+                                            <button type="button" class="btn-default border-0 "><img src="~/images/Happy.png"></button>*@
+                                            <div class="add-icon-bx d-inline">
+                                                <input type="file" id="Articlepdfdoc" accept=".pdf,.doc">
+                                                <button type="button" class="btn-default border-0"><img src="" /><img id="imageBroad" src="~/images/Document-add.png" /></button>
+
+                                            </div>
+                                            <button type="button" class="btn btn-success has-spinner btn-rounded btn-md" id="SendArticle">Post article</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END-->
+    <!--Start a Poll-->
+    <div class="modal fade modal-add-bx" id="StartPoll" tabindex="-1" aria-labelledby="NewMessagesLabel" aria-hidden="true">
+        <div class="modal-dialog   modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Start a Poll</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img src="~/images/Close.png">
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="new-message">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <select class="form-control text-center rounded form-height-45">
+                                            <option selected>Select a community</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group select-wrap ">
+                                        <select class="form-control  text-center rounded" onchange="onchangeStartpollMasterType(this)" id="ddlPollAudience">
+                                            <option selected value="1">Select an audience</option>
+                                            <option value="all">All</option>
+                                            <option value="group">Group</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group select-wrap">
+                                        <select class="form-control  text-center rounded allPollUsers" id="pollMasterUsers">
+                                            <option selected>Select a group</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-boder-bx" placeholder="Give your poll a title" id="txtPollTile">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control bg-boder-bx" placeholder="Add a question" id="txtPollQue">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-4">
+                                    <div class="border-bottom"></div>
+                                </div>
+                                @*<div class="col-md-12">
+                                    <div class=" form-group ">
+                                        <div class=" input-group diff2">
+                                            <input class="form-control bg-boder-bx border-right-0" placeholder="Add an option">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text bg-boder-bx border-left-0">
+                                                    <img src="~/images/Add-Circle.png" class="img-fluid">
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>*@
+                                <div class="col-md-12" id="abcstartpoll">
+                                  
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group ">
+                                        <div class="fs-14" id="appendOption">+ Add more options</div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="button" class="btn btn-success has-spinner btn-rounded btn-md" id="SendPoll">Send poll</button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- successfull Modal -->
+    <div class="modal fade modal-small-bx" id="successfull" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Yippee!</h5>
+                        <p>Your message has been sent successfully.</p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-secondary btn-md btn-rounded" id="closmessagepopupbtn">
+                            <span aria-hidden="true">Close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- @*=====end=====*@ -->
+    <!-- SpreadingNews Modal -->
+    <div class="modal fade modal-small-bx" id="SpreadingNews" tabindex="-1" aria-labelledby="SpreadingNewsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Spreading the good news!</h5>
+                        <p>Your article has been posted successfully.</p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-secondary btn-md btn-rounded" id="ArticleClosedPopup">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- pollSuccessfull Modal -->
+    <div class="modal fade modal-small-bx" id="pollSuccessfull" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Yippee!</h5>
+                        <p>Your poll has been sent successfully.</p>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-secondary btn-md btn-rounded" id="closePoll">
+                            <span aria-hidden="true">Close</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ======End====== -->
+
+     <!-- LeavePast Modal -->
+    <div class="modal fade modal-small-bx" id="LeavePast" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Leave it in the past.</h5>
+                        <p>Are you sure you want to archive this item?</p>
+                    </div>
+                    <div class="text-center">
+                       
+                        <button type="button" class="btn btn-secondary btn-md btn-rounded" data-dismiss="modal" id="Noarchivemessage">No</button>
+                         <button type="button" class="btn btn-secondary btn-md btn-rounded" id="Archivemessagedone">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @*=====end=====*@ -->
+
+     <!-- Message Archive-->
+    <div class="modal fade modal-small-bx" id="MessageArchive" tabindex="-1" aria-labelledby="ArchiveLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Locked down!</h5>
+                        <p>Your message has been archived successfully.</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-md btn-rounded"  id="closeMessageArchive">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- Unarchive Modal -->
+    <div class="modal fade modal-small-bx" id="Unarchive" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Unarchive item</h5>
+                        <p>Are you sure?</p>
+                    </div>
+                    <div class="text-center">
+                          <button type="button" class="btn btn-secondary btn-md btn-rounded" id="UnArchivemessagedone">Yes</button>
+                       
+                         <button type="button" class="btn btn-secondary btn-md btn-rounded" id="NoUnarchivemessage">No</button>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @*=====end=====*@ -->
+
+     <!-- UnarchiveArticle Modal -->
+    <div class="modal fade modal-small-bx" id="UnarchiveArticle" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="past-leave-box">
+                        <h5>Unarchive item</h5>
+                        <p>Are you sure?</p>
+                    </div>
+                    <div class="text-center">
+                       
+                        <button type="button" class="btn btn-secondary btn-md btn-rounded" id="NoUnarchiveArticle">No</button>
+                         <button type="button" class="btn btn-secondary btn-md btn-rounded" id="UnArchiveArticledone">Yes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @*=====end=====*@ -->
+
+    <!-- Poll Result Tab-->
+    <div class="modal fade modal-add-bx" id="Poll_Result" tabindex="-1" aria-labelledby="NewMessagesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl  modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content">
+                <div class="col-12  bg-gray pull-header">
+                                 <div class="row justify-content-between align-items-center">
+                                 <h5 id="lblPollTitle">{poll_title}</h5>
+                                 <a type="button" class="btn btn-info  btn-md btn-rounded " id="poll-back" href="communication-suite.html">Back</a>
+                              </div>
+                              </div>
+                <div class="modal-body px-0 pt-0 ">
+                    <div class="main-content-bx">
+                            <div class="table-responsive ">
+                                <table class="table filter-table" id="memeberList">
+                                    <thead>
+                                        <tr>
+                                            <th><span>Name</span> <span class="ml-2 position-absolute"><img src="~/images/Filter.png"></span></th>
+                                            <th>Mobile number</th>
+                                            <th><span>Vote result</span> <span class="ml-2 position-absolute"><img src="~/images/Filter.png"></span></th>
+                                            <th><button type="button" class="btn btn-success  btn-rounded ">Export CSV</button></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bodyPollResult">
+                                   
+                                              
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+       
+            
+     </div>
+                <!-- End -->
+
+    <!-- END-->
+    <div class="overlay"></div>
+    <!-- @*======end====*@ -->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <!-- Bootstrap jQuery -->
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="~/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="~/js/cropbox.js"></script>
+
+    <!-- ==== custom js==== -->
+    <script src="~/js/custom.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+ @*   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.0.1/tinymce.min.js"></script>*@
+   @* <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>*@
+
+
+
+
+
+<input type="hidden" id="messagedropdown" />
+<input type="hidden" id="messagedropdownId" />
+<input type="hidden" id="Customerid" value="" />
+<input type="hidden" id="articleDropdown" value="0" />
+<input type="hidden" id="articledropdownid" />
+<input type="hidden" id="polldropdownId" />
+<input type="hidden" id="polldropdown" />
+<input type="hidden" id="typeofselection" value="" />
+
+
+
+
+<script>
+
+    $("#logo-upload127 .custom-file-upload1 span").show();
+    $("#logo-upload127 input").change(function () {
+
+        $("#logo-upload127 .custom-file-upload1 span").show();
+        $("#logo-upload127 .custom-file-upload1 span").text(this.files[0].name);
+
+    });
+
+    $("#logo-upload11 .custom-file-upload1 span").show();
+    $("#logo-upload11 input").change(function () {
+
+        $("#logo-upload11 .custom-file-upload1 span").show();
+        $("#logo-upload11 .custom-file-upload1 span").text(this.files[0].name);
+
+    });
+
+    $(function () {
+
+        $("#datefrom").datepicker();
+        $("#Scheduledate").datepicker({
+            beforeShow: function (input, inst) {
+
+                $('.overlay').addClass('d-block');
+            },
+            onSelect: function (dateText, inst) {
+                $('.overlay').removeClass('d-block');
+
+
+            },
+            dateFormat: 'dd-mm-yy'
+        });
+
+        $("#datetime1").datepicker({
+            beforeShow: function (input, inst) {
+                $('.overlay').addClass('d-block');
+            },
+            onSelect: function (dateText, inst) {
+                $('.overlay').removeClass('d-block');
+
+
+            },
+
+        });
+
+
+    });
+
+   
+</script>
+
+<script>
+ $(document).ready(function() {
+   $('#ArchivedmessageSummary').hide();
+   $('#UnreadmessageSummary').hide();
+
+
+   $('#ArchivedInbox').click(function() {
+        $('#messageSummary').hide();
+        $('#UnreadmessageSummary').hide();
+        $('#ArchivedmessageSummary').show();
+   })
+
+   $('#AllInbox').click(function () {
+       $('#UnreadmessageSummary').hide();
+       $('#ArchivedmessageSummary').hide();
+       $('#messageSummary').show();
+   });
+
+   $('#UnreadInbox').click(function () {
+        $('#messageSummary').hide();
+        $('#ArchivedmessageSummary').hide();
+        $('#UnreadmessageSummary').show();
+   })
+ });
+</script>
+
+
+ <script>
+     $(document).ready(function() {
+            var max_fields    = 10; //maximum input boxes allowed
+            var add_button    = $("#appendOption"); //Add button ID
+
+            var x = 1; //initlal text box count
+            $(add_button).click(function(e){ //on add input button click
+             e.preventDefault();
+             // if(x < max_fields){ 
+             //   x++;         
+            $('#abcstartpoll').append('<div class="form-group abc2"><input type="text" name="mytext[]" class="form-control bg-boder-bx pollappend" placeholder="Add a options" id="txtpolloption[]"></div>')
+        
+        
+            //}
+           });
+    });
+
+
+      </Script>
+
+
+
+<script>
+    $('#MessageUsers').change(function () {
+        var val = $(this).val();
+        $("#messagedropdownId").val(val);
+    });
+
+    $('#ddlArticleMasterUsers').change(function () {
+        var val = $(this).val();
+        $("#articledropdownid").val(val);
+    });
+
+    $('#ArticleClosedPopup').click(function () {
+        window.location.href = "/Message/Message?id=article";
+    });
+
+</script>
+
+<script>
+    
+    //getMessageDetails for selectedUser
+
+    $(".titleSendername").on('click', function () {
+        $("#messageList li a h6").removeClass("active-bold");
+        $(this).addClass("active-bold");
+        //$("#MessageTitle").text("Messages with " + $(this).attr("title"));
+        var id = $(this).attr("editValue");
+        var URL = "/Message/GetAdminConversations"
+        $(this).prop('disabled', true);
+        $(".preloader").removeClass("hide").addClass("show");
+
+        $.post(URL, { Id: id }, function (data) {
+
+            $(".preloader").removeClass("show").addClass("hide");
+            $("#messageSummary").html(data);
+            //setTimeout(() => {
+            //    var height = document.getElementById('chatArea').scrollHeight;
+            //    $("#chatArea").scrollTop(height)
+
+            //}, 500);
+
+        });
+
+    });
+
+    // Archived MessageSummary Details functionality
+
+    $('.lblArchived').click(function () {
+        $("#lista1archived li a h6").removeClass("active-bold");
+        $(this).addClass("active-bold");
+        //$("#ArchiveMessage").text("Messages with " + $(this).attr("title"));
+        var id = $(this).attr("editValue");
+        var URL = "/Message/GetArchivedMessageSummary"
+        $.post(URL, { Id: id }, function (data) {
+
+            $("#ArchivedmessageSummary").html(data);
+            //setTimeout(() => {
+            //    var height = document.getElementById('chatArea-arhi').scrollHeight;
+            //    $("#chatArea-arhi").scrollTop(height)
+
+            //}, 500);
+        })
+    })
+
+    // Active Article list Details
+
+    $(".lblNewfeeds").on('click', function () {
+        $(".unread-message-box ul li a h6").removeClass("active-bold");
+        $(this).addClass("active-bold");
+        var id = $(this).attr("editvalue");
+        var URL = "/Message/GetActiveArticleDetails"
+        $.post(URL, { Id: id }, function (result) {
+            console.log(result)
+            $('#_ActiveArticle1').html(result);
+        });
+    });
+
+    // Archived Article Details
+
+    $(".lblArchiveNewfeeds").on('click', function () {
+        $(".unread-message-box ul li a h6").removeClass("active-bold");
+        $(this).addClass("active-bold");
+        var id = $(this).attr("editvalue");
+        var URL = "/Message/GetArchivedArticleDetails"
+        $.post(URL, { Id: id }, function (result) {
+            console.log(result)
+            $('#_ArchiveArticle1').html(result);
+        });
+
+    });
+
+    // poll Details
+
+    $('.lblPollTitle').click(function () {
+        $("#custom-groups tr td").removeClass("active-bold");
+        $(this).addClass("active-bold");
+        var id = $(this).attr("editValue5");
+
+        var URL = "/Message/GetPollDetails"
+        $.post(URL, { PollId: id }, function (result) {
+
+           
+            $('#PollResultsss').html(result);
+
+
+        });
+    });
+
+        $(".archiveSend").on('click', function () {
+            var id = $(this).attr('id');
+            $('#typeofselection').val(id);
+            $('#LeavePast').modal('show');
+        })
+
+
+        $(document).on('click', '#Archivemessagedone', function () {
+                var id = $('#typeofselection').val();
+                var Aurl = "/Message/ArchivedMessage";
+             $.post(Aurl, { UserId: id }, function (result) {
+                  $('#LeavePast').modal('hide');
+                  $('#MessageArchive').modal('show')
+            });
+        });
+
+
+        $('#closeMessageArchive').click(function() {
+            location.reload();
+        })
+
+
+         $(".UnArchivedMessage").on('click', function () {
+
+            var id = $(this).attr('id');
+            $('#typeofselection').val(id);
+            $('#Unarchive').modal('show');
+        })
+
+        $('#UnArchivemessagedone').click(function () {
+
+            var id = $('#typeofselection').val();
+            var Aurl = "/Message/UnArchivedMessage";
+            $.post(Aurl, { ArchivedUserid: id }, function (result) {
+
+             location.reload();
+
+            })
+        })
+
+        $(document).on('click', '#NoUnarchivemessage', function () {
+            $("#Unarchive").modal("hide");
+        });
+
+
+        $(".UnArchivedArticle").on('click', function () {
+
+            var id = $(this).attr('id');
+            $('#typeofselection').val(id);
+            $('#UnarchiveArticle').modal('show');
+        })
+
+        $('#UnArchiveArticledone').click(function () {
+            var id = $('#typeofselection').val();
+            var Aurl = "/Message/UnArchivedArticle";
+            $.post(Aurl, { ArchivedUserid: id }, function (result) {
+
+                location.reload();
+
+            })
+        });
+
+         $(document).on('click', '#NoUnarchiveArticle', function () {
+            $("#UnarchiveArticle").modal("hide");
+        });
+
+
+    // Post New Article 
+
+    function onchangeArticleMasterType(event) {
+        $("#articleDropdown").val(event.value);
+        var userType = event.value;
+        if (userType == "all") {
+            $('#ddlArticleMasterUsers').hide();
+            $('.allArticleUsers').hide();
+        }
+        var Url = '/Message/DropDownGroupList';
+        $.post(Url, { type: userType }, function (data) {
+            if (data.length < 1) {
+            }
+            var lstUsers = [];
+            for (var i = 0; i <= data.length - 1; i++) {
+                if (userType == "group") {
+                    lstUsers.push("<option value=" + data[i].id + ">" + data[i].groupName + "</option>")
+                    var grouplist = data[i].id
+                    $("#articledropdownid").val(grouplist);
+                    $('.allArticleUsers').show();
+                    $('#ddlArticleMasterUsers').show();
+                }
+                if (userType == "all") {
+                    $('#ddlArticleMasterUsers').hide();
+                    $('.allArticleUsers').hide();
+                }
+            }
+            document.getElementById("ddlArticleMasterUsers").innerHTML = "<option value='0'>Select a group</option>" + lstUsers;
+            $('.preloader').addClass('hide').removeClass('show');
+
+        })
+    }
+
+</script>
+
+
+<script>
+   
+
+    $("#ddlMessageCommunity").change(function () {
+      
+        DDlCommunitymember();
+    });
+
+
+    function DDlCommunitymember() {
+        var CommunityId = $("#ddlMessageCommunity").val()
+        $.ajax({
+            type: "GET",
+            url: "/Message/DropDownCommunityUserList?CommunityId=" + CommunityId,
+            success: function (response) {
+                console.log(response.data);
+                if (response.data.length < 1) { }
+                var lstUsers = [];
+                for (var i = 0; i <= response.data.length - 1; i++)
+                {
+                    if (response.data.id !== 0) 
+                    {
+                        //var customerId = $("#Customerid").val(response.data[i].customerId);
+
+                        lstUsers.push("<option value=" + response.data[i].customerId + ">" + response.data[i].firstName + "</option>")
+                    }
+                }
+                document.getElementById("MessageUsers").innerHTML = "<option value='0'>Select Community User</option>" + lstUsers;               
+            }
+
+        });
+    }
+
+
+   
+
+</script>
+<script>
+
+    // Send New Message
+
+
+    $('#SendMessage').click(function () {
+    
+        var userId = $("#MessageUsers").val();
+        var txtMessage = $("#Message").val();
+       
+        var pdfMessage = document.getElementById('pdffilesMessages');
+        var ScheduleDate = $('#Scheduledate').val();
+        var ScheduleTime = $('#Scheduletime').val();
+
+        if (userId == "") {
+            $('#MessageUsers').focus();
+            document.getElementById("MessageUsers").style.border = "1px solid red";
+            return false;
+        }
+
+        if ((ScheduleDate == "" || ScheduleDate == 0) && (ScheduleTime == "" || ScheduleTime == 0)) {
+            var formdata = new FormData();
+            formdata.append('ToId', userId);
+            formdata.append('Message', txtMessage);
+            formdata.append('Mediafile', pdfMessage.files[0]);
+
+            $.ajax({
+                url: '/Message/SaveMessage',
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function (result) {
+                    $('#successfull').modal('show')
+                    // location.reload();
+                },
+                error: function () {
+
+                    console.log('Failed ');
+                }
+            });
+        }
+        else {
+
+            var formdata = new FormData();
+            formdata.append('ToId', contactNo);
+            formdata.append('Message', txtMessage);
+            formdata.append('MessageExchangecode', 0);
+            formdata.append('Schedule', ScheduleDate);
+            formdata.append('ScheduleTime', ScheduleTime)
+            formdata.append('Mediafile', pdfMessage.files[0]);
+
+
+            $.ajax({
+                url: '/Message/SaveScheduleMessage',
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function (result) {
+                    $('#successfull').modal('show')
+                },
+                error: function () {
+                    console.log('Failed ');
+                }
+            });
+        }
+    });
+
+
+
+
+     $(document).on('click', "#SendChatbtn", function () {
+        
+         
+            var txtMessChatInputfield = $('#chat-input').val().trim();
+            var pdfMessage = document.getElementById('chatboximg11');
+            if(txtMessChatInputfield == '' && pdfMessage == '')
+            {
+                return false;
+            }
+
+            var receiver = $('#toid').val();
+            var formdata = new FormData()
+             if (pdfMessage != '')
+             {
+                     formdata.append('Mediafile', pdfMessage.files[0]);
+             }
+
+            formdata.append('ToId', receiver);
+            formdata.append('Message',txtMessChatInputfield);
+            $.ajax({
+                url: '/Message/SaveMessage',
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formdata,
+                dataType: 'json',
+                success: function (result) {
+                    location.reload();
+                },
+                error: function () {
+                    console.log('Failed ');
+                }
+            });
+        })
+
+    // Send New Article
+
+
+    $("#SendArticle").click(function () {
+
+        var articletitle = $('#txtArticleTitle').val();
+        var composeArticle = $('#txtcomposeArticle').val();
+        var drpvalue = $("#ddlArticleAudience").val();
+        var rdbtn = $("#selectval").val();
+        var selecteddropdown = $("#articledropdownid").val();
+        var GroupIdSelected = $('#ddlArticleMasterUsers').val();
+        var UploadArticlepdfdoc = document.getElementById('Articlepdfdoc');
+        var uploadImg = document.getElementById('cover');
+        var wroteArticle = $('#txtWroteArticle').val();
+        var imgs = document.getElementById('cover');
+
+        if (articletitle == "") {
+
+            $('#txtArticleTitle').focus();
+            document.getElementById("txtArticleTitle").style.border = "1px solid red";
+            return false;
+        }
+
+        if (drpvalue == '1') {
+
+            $('#ddlArticleAudience').focus();
+            document.getElementById("ddlArticleAudience").style.border = "1px solid red";
+            return false;
+        }
+
+        if (wroteArticle == "") {
+
+            $('#txtWroteArticle').focus();
+            document.getElementById("txtWroteArticle").style.border = "1px solid red";
+            return false;
+        }
+
+        //if (composeArticle == "") {
+        //    alert('4');
+        //    $('#txtcomposeArticle').focus();
+        //    document.getElementById("txtcomposeArticle").style.border = "1px solid red";
+        //    return false;
+        //}
+
+        if (!uploadImg.files || !uploadImg.files.length) {
+            $('#logo-upload2').focus();
+            document.getElementById("logo-upload2").style.border = "1px solid red";
+            return false;
+        }
+
+
+        if (drpvalue == "all") {
+            var Isgroup = 0
+            var ReferenceId = 0
+        } else {
+            var Isgroup = 1
+            var ReferenceId = selecteddropdown
+        }
+
+        var btn = $(this);
+        $(btn).buttonLoader('start');
+
+        var formdata = new FormData()
+        formdata.append('Title', articletitle);
+        formdata.append('Summary', composeArticle);
+        formdata.append('SelectedId', GroupIdSelected);
+        formdata.append('Type', drpvalue);
+        formdata.append('IsGroup', Isgroup);
+        formdata.append('ReferenceId', ReferenceId);
+        formdata.append('WroteArticle', wroteArticle);
+        formdata.append('Mediafile', uploadImg.files[0]);
+        formdata.append('Mediafile', UploadArticlepdfdoc.files[0]);
+
+
+
+        if (croppers.length == 0) {
+
+            formdata.append('Mediafile', imgs);
+            formdata.append("ArticleMedia[0].filename", fileImgNames);
+            formdata.append("ArticleMedia[0].MediaType", fileType);
+        }
+        else {
+            for (var i = 0; i < croppers.length; i++) {
+                var articleMediaItem = croppers[i];
+                formdata.append("ArticleMedia[" + i + "].Media", articleMediaItem);
+
+                var articleMediafilename = fileImgNames[i];
+                formdata.append("ArticleMedia[" + i + "].filename", articleMediafilename);
+
+                var articleMediaType = fileType[i];
+                formdata.append("ArticleMedia[" + i + "].MediaType", articleMediaType);
+            }
+        }
+
+
+
+
+
+        $.ajax({
+            url: '/Message/SendNewFeeds',
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: 'json',
+            success: function (result) {
+                $(btn).buttonLoader('stop');
+                $('#composeArticle').modal('hide')
+                $('#SpreadingNews').modal('show')
+
+
+            },
+            error: function () {
+
+                console.log('Failed ');
+            }
+        });
+    })
+
+</script>
+
+<script>
+    function onchangeStartpollMasterType(event) {
+
+        $("#Polldropdown").val(event.value);
+
+        var userType = event.value;
+
+
+        if (userType == "all") {
+
+            $('#pollMasterUsers').hide();
+            $('.allPollUsers').hide();
+        }
+
+        var Url = '/Message/DropDownGroupList';
+        $.post(Url, { type: userType }, function (data) {
+
+            if (data.length < 1) {
+
+            }
+            var lstUsers = [];
+            for (var i = 0; i <= data.length - 1; i++) {
+
+                if (userType == "group") {
+
+                    lstUsers.push("<option value=" + data[i].id + ">" + data[i].groupName + "</option>")
+                    var grouplist = data[i].id
+                    $("#polldropdownId").val(grouplist);
+                    $('.allPollUsers').show();
+                    $('#pollMasterUsers').show();
+
+
+                }
+
+                if (userType == "all") {
+
+                    $('#pollMasterUsers').hide();
+                    $('.allPollUsers').hide();
+                }
+            }
+
+            document.getElementById("pollMasterUsers").innerHTML = "<option value='0'>Select a group</option>" + lstUsers;
+
+            $('.preloader').addClass('hide').removeClass('show');
+
+        })
+    }
+
+
+
+    var countOption = []
+
+    $('#SendPoll').on('click', function () {
+      
+        var a = $(".pollappend");
+        var textOps = $("input[name='mytext[]']")
+            .map(function () { return $(this).val(); }).get();
+        var selecteddropdown = $("#polldropdownId").val();
+        // var GroupIdSelected = $('#pollMasterUsers').val();
+        var polltitle = $('#txtPollTile').val();
+        var txtQuestion = $('#txtPollQue').val();
+        var drpvalue = $("#ddlPollAudience").val();
+
+        if (textOps.length < 2) {
+            $('#pollmissingOptions').modal('show');
+            return false;
+        }
+
+
+        if (drpvalue == '1') {
+            $('#ddlPollAudience').focus();
+            document.getElementById("ddlPollAudience").style.border = "1px solid red";
+            return false;
+        }
+
+        if (polltitle == "") {
+            $('#txtPollTile').focus();
+            document.getElementById("txtPollTile").style.border = "1px solid red";
+            return false;
+        }
+        if (txtQuestion == "") {
+            $('#txtPollQuestion').focus();
+            document.getElementById("txtPollQuestion").style.border = "1px solid red";
+            return false;
+        }
+
+
+        if (drpvalue == "all") {
+            var Isgroup = 0
+        } else {
+            var Isgroup = 1
+            var ReferenceId = selecteddropdown
+        }
+
+        var formdata = new FormData();
+        formdata.append('Question', txtQuestion);
+        formdata.append('PollTitle', polltitle);
+        formdata.append('Type', drpvalue)
+        formdata.append('ReferenceId', selecteddropdown);
+        formdata.append('Options[0].OptionText', textOps);
+
+        $.ajax({
+            url: '/Message/SendPoll',
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: 'json',
+            success: function (result) {
+                $('#StartPoll').modal('hide');
+                $('#pollSuccessfull').modal('show');
+
+            },
+            error: function () {
+
+                console.log('Failed ');
+            }
+        });
+
+    })
+</script>
+

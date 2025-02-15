@@ -1,0 +1,67 @@
+﻿@model CircularWeb.Models.MessageModel
+
+
+<div class="chat-message-box">
+    @if (Model.broadcastSummaryDetails.Count() > 0)
+{
+        foreach (var item in Model.broadcastSummaryDetails)
+    {
+        <div class="media ">
+          
+
+            <div class="media-body ">
+                <div class="rounded chat-head">
+
+                    <h5>Title: @item.Title </h5>
+                        <p class="date-bx">Created on: @item.CreatedDate.ToString("dd.MM.yyyy hh:mm tt")</p>
+                        <p class="date-bx">Scheduled on: @item.ScheduleDateTime?.ToString("dd.MM.yyyy hh:mm tt")</p>
+                        <p class="date-bx">Audience: @item.Audience</p>
+                        <p class="date-bx">Status: @item.BroadcastStatus</p>
+                </div>
+                    <h5>Message:<br></h5>
+                    @if (item.MessageTypeId == 101 || item.MessageTypeId == 10106)
+                    {
+                        <p>@item.Text</p>
+                    }
+                    @if (item.MessageTypeId == 102 || item.MessageTypeId == 10105)
+                    {
+                        <p>@item.Text</p>
+                    }
+                    @if (item.MessageTypeId == 10102 || item.MessageTypeId == 10103)
+                    {
+                        if ((@item.MessageMedia.Substring(item.MessageMedia.LastIndexOf('.') + 1) != "jpg") && (@item.MessageMedia.Substring(item.MessageMedia.LastIndexOf('.') + 1) != "jpeg") && (@item.MessageMedia.Substring(item.MessageMedia.LastIndexOf('.') + 1) != "png"))
+                        {
+                            <p>
+                                <a target="_blank" href="@item.MessageMedia" onmouseover="this.style.textDecoration = 'underline'" onmouseout="this.style.textDecoration = 'none'">
+                                    @item.MessageMedia.Substring(item.MessageMedia.LastIndexOf('/')+1)
+                                </a>
+                            </p>
+                        }
+                        else
+                        {
+                            <div class="addicon-bx d-inline">
+                                <img src="@item.MessageMedia">
+                                <span></span>
+                            </div>
+                        }
+                    }
+                    @if (item.MessageTypeId == 103)
+                    {
+                        <div class="addicon-bx d-inline">
+                            <img src="@item.MessageMedia">
+                            <span></span>
+                        </div>
+                    }
+
+               
+            </div>
+    
+        
+        </div>
+    }
+
+}
+</div>
+    
+
+

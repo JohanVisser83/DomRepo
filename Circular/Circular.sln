@@ -1,0 +1,145 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circular", "Circular\Circular.csproj", "{80B13AA5-BB11-4648-A210-0FAC921BC5F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{E717ABD5-DC4C-45AC-94F5-0B03280EACBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{09D25699-4856-438B-94C7-401D65F5A13F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{C434CB49-D3C1-403B-9492-223415A46A33}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circular.Framework", "Circular.Framework\Circular.Framework.csproj", "{C69F5D68-17D5-47B6-8535-244C6DDD4657}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circular.Core", "Circular.core\Circular.Core.csproj", "{AB4FE5E6-1633-4866-80A5-309C54700B2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circular.Data", "Circular.Data\Circular.Data.csproj", "{92F35D00-646B-49D7-A65E-AC497C07851C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circular.Services", "Circular.Services\Circular.Services.csproj", "{6F53255A-C570-4BE8-951F-017D6A06387D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Circular 3.0", "Community\Circular 3.0\Circular 3.0.csproj", "{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Agent", "Agent", "{638DA9DB-C6C3-4CC3-9138-CBA0904CB9EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CircularScheduledJobs", "MessageSchedule\CircularScheduledJobs.csproj", "{16360EE8-512A-40A3-8F43-CCFA61ACE699}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CircularSubscriptions", "CircularSubscriptions\CircularSubscriptions.csproj", "{B5C040A4-F5C2-47C1-9357-760CAF7942B0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exeeder-xe-Community", "Exceeder-xe-Community\Exeeder-xe-Community.csproj", "{84BE6D76-3711-4962-8B38-2A11478711ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CircularHQ", "CircularHQ\CircularHQ.csproj", "{A680F252-939F-4FB7-B105-804694BB0E3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewCircularSubscription", "NewCircularSubscription\NewCircularSubscription.csproj", "{A21FA25D-FBD0-41FC-A179-DE90BC5A8052}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80B13AA5-BB11-4648-A210-0FAC921BC5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80B13AA5-BB11-4648-A210-0FAC921BC5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80B13AA5-BB11-4648-A210-0FAC921BC5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80B13AA5-BB11-4648-A210-0FAC921BC5F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69F5D68-17D5-47B6-8535-244C6DDD4657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C69F5D68-17D5-47B6-8535-244C6DDD4657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C69F5D68-17D5-47B6-8535-244C6DDD4657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C69F5D68-17D5-47B6-8535-244C6DDD4657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB4FE5E6-1633-4866-80A5-309C54700B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4FE5E6-1633-4866-80A5-309C54700B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4FE5E6-1633-4866-80A5-309C54700B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4FE5E6-1633-4866-80A5-309C54700B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F35D00-646B-49D7-A65E-AC497C07851C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F35D00-646B-49D7-A65E-AC497C07851C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F35D00-646B-49D7-A65E-AC497C07851C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F35D00-646B-49D7-A65E-AC497C07851C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F53255A-C570-4BE8-951F-017D6A06387D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F53255A-C570-4BE8-951F-017D6A06387D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F53255A-C570-4BE8-951F-017D6A06387D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F53255A-C570-4BE8-951F-017D6A06387D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF2CA91-4B62-43E0-A43A-F515C3CACD31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16360EE8-512A-40A3-8F43-CCFA61ACE699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16360EE8-512A-40A3-8F43-CCFA61ACE699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16360EE8-512A-40A3-8F43-CCFA61ACE699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16360EE8-512A-40A3-8F43-CCFA61ACE699}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5C040A4-F5C2-47C1-9357-760CAF7942B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C040A4-F5C2-47C1-9357-760CAF7942B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C040A4-F5C2-47C1-9357-760CAF7942B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C040A4-F5C2-47C1-9357-760CAF7942B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84BE6D76-3711-4962-8B38-2A11478711ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BE6D76-3711-4962-8B38-2A11478711ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BE6D76-3711-4962-8B38-2A11478711ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BE6D76-3711-4962-8B38-2A11478711ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A680F252-939F-4FB7-B105-804694BB0E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A680F252-939F-4FB7-B105-804694BB0E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A680F252-939F-4FB7-B105-804694BB0E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A680F252-939F-4FB7-B105-804694BB0E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21FA25D-FBD0-41FC-A179-DE90BC5A8052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21FA25D-FBD0-41FC-A179-DE90BC5A8052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21FA25D-FBD0-41FC-A179-DE90BC5A8052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21FA25D-FBD0-41FC-A179-DE90BC5A8052}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{80B13AA5-BB11-4648-A210-0FAC921BC5F1} = {E717ABD5-DC4C-45AC-94F5-0B03280EACBE}
+		{C434CB49-D3C1-403B-9492-223415A46A33} = {09D25699-4856-438B-94C7-401D65F5A13F}
+		{C69F5D68-17D5-47B6-8535-244C6DDD4657} = {09D25699-4856-438B-94C7-401D65F5A13F}
+		{92F35D00-646B-49D7-A65E-AC497C07851C} = {C434CB49-D3C1-403B-9492-223415A46A33}
+		{6F53255A-C570-4BE8-951F-017D6A06387D} = {C434CB49-D3C1-403B-9492-223415A46A33}
+		{16360EE8-512A-40A3-8F43-CCFA61ACE699} = {638DA9DB-C6C3-4CC3-9138-CBA0904CB9EB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3D6E516-E392-404D-8C0B-48B95DED3E41}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/bizbrollysolutions
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Circular.core\\Circular.Core.csproj
+		SccProjectName1 = Circular.core
+		SccLocalPath1 = Circular.core
+		SccProjectUniqueName2 = Circular.Data\\Circular.Data.csproj
+		SccProjectTopLevelParentUniqueName2 = Circular.sln
+		SccProjectName2 = Circular.Data
+		SccLocalPath2 = Circular.Data
+		SccProjectUniqueName3 = Circular.Framework\\Circular.Framework.csproj
+		SccProjectTopLevelParentUniqueName3 = Circular.sln
+		SccProjectName3 = Circular.Framework
+		SccLocalPath3 = Circular.Framework
+		SccProjectUniqueName4 = Circular.Services\\Circular.Services.csproj
+		SccProjectTopLevelParentUniqueName4 = Circular.sln
+		SccProjectName4 = Circular.Services
+		SccLocalPath4 = Circular.Services
+		SccProjectUniqueName5 = Circular\\Circular.csproj
+		SccProjectTopLevelParentUniqueName5 = Circular.sln
+		SccProjectName5 = Circular
+		SccLocalPath5 = Circular
+		SccProjectUniqueName6 = Community\\Circular\u00203.0\\Circular\u00203.0.csproj
+		SccProjectName6 = Community/Circular\u00203.0
+		SccLocalPath6 = Community\\Circular\u00203.0
+		SccProjectUniqueName7 = CircularSubscriptions\\CircularSubscriptions.csproj
+		SccProjectName7 = CircularSubscriptions
+		SccLocalPath7 = CircularSubscriptions
+		SccProjectUniqueName8 = MessageSchedule\\CircularScheduledJobs.csproj
+		SccProjectTopLevelParentUniqueName8 = Circular.sln
+		SccProjectName8 = MessageSchedule
+		SccLocalPath8 = MessageSchedule
+		SccProjectUniqueName9 = Exceeder-xe-Community\\Exeeder-xe-Community.csproj
+		SccProjectName9 = Exceeder-xe-Community
+		SccLocalPath9 = Exceeder-xe-Community
+		SccProjectUniqueName10 = CircularHQ\\CircularHQ.csproj
+		SccProjectName10 = CircularHQ
+		SccLocalPath10 = CircularHQ
+		SccProjectUniqueName11 = NewCircularSubscription\\NewCircularSubscription.csproj
+		SccProjectName11 = NewCircularSubscription
+		SccLocalPath11 = NewCircularSubscription
+	EndGlobalSection
+EndGlobal

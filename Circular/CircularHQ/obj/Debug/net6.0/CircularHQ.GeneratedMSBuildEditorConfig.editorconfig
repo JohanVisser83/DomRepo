@@ -1,0 +1,103 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CircularHQ
+build_property.RootNamespace = CircularHQ
+build_property.ProjectDir = D:\Projects\CircularSphere\Circular\CircularHQ\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Projects\CircularSphere\Circular\CircularHQ
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/AffiliateManagement/AffiliateManagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWZmaWxpYXRlTWFuYWdlbWVudFxBZmZpbGlhdGVNYW5hZ2VtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/CommunityManagement/CommunityManagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbXVuaXR5TWFuYWdlbWVudFxDb21tdW5pdHlNYW5hZ2VtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/CommunityProfile/CommunityProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbXVuaXR5UHJvZmlsZVxDb21tdW5pdHlQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Dashboard/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Login/otp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cb3RwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/MemberManagement/MemberManagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyTWFuYWdlbWVudFxNZW1iZXJNYW5hZ2VtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Message/Message.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVxNZXNzYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Partials/_HQActiveArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0hRQWN0aXZlQXJ0aWNsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Partials/_HQArchivedArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0hRQXJjaGl2ZWRBcnRpY2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Partials/_HQArchivedMessageSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0hRQXJjaGl2ZWRNZXNzYWdlU3VtbWFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Partials/_HQMessageSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0hRTWVzc2FnZVN1bW1hcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Partials/_HQPollResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0hRUG9sbFJlc3VsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Partials/_HQUnreadMessageSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0hRVW5yZWFkTWVzc2FnZVN1bW1hcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/CircularHQ/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5jl6d9znge

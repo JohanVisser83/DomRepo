@@ -1,0 +1,2871 @@
+﻿@model CircularWeb.Models.SportsModel;
+@{
+    Layout = "_Layout";
+}
+<div class="col-lg-11 col-md-11  col-sm-10 col-10">
+    <div class="body-content">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="sidebar mt-38">
+                    <ul class="nav nav-tabs tab-data message-tab">
+                        <li>
+                            <p class="tab-text">Sports</p>
+                        </li>
+                        <li><a data-toggle="tab" href="#SportsManagement" class="active">Sports management</a></li>
+                        <li><a data-toggle="tab" href="#SportsTypeActiveBtn">Sports Type</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="tab-content ">
+                    <!-- @* =====SportsManagement Groups =====*@ -->
+                    <div id="SportsManagement" class="tab-pane fade new-event active show">
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="ml-auto cross-icon text-right  cross-relative planner-cross" id="Sportscross">
+                                    <button type="button" class="cross ml-3">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row custom-group-area ">
+                            <!--  @* ====col-4====*@ -->
+                            <!-- @*=====end====*@ -->
+                            <!-- @* ====col-8===*@ -->
+                            <div class="col-lg-12 ">
+                                <div class=" border-bx-area">
+                                    <ul class="nav nav-tabs sports-tabs">
+                                        <li><a data-toggle="tab" href="#Upcoming" id="activeupcoming">Upcoming</a></li>
+                                        <li><a data-toggle="tab" href="#Results">Results</a></li>
+
+                                    </ul>
+                                    <div class="tab-content pb-0  ">
+
+                                        <!-- ====end==== -->
+                                        <!-- @* =====Team=====*@ -->
+                                        <div id="Upcoming" class="tab-pane fade active show ">
+                                            <div class="table-responsive border-radius-0">
+                                                <table class="table " id="upcoming-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="display:none">Day</th>
+                                                            <th><span>Date</span><span class="ml-2"><img src="~/images/Filter1.png"></span></th>
+                                                            <th>Event</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <button type="button" class="btn btn-block btn-link btn-lumo " data-target="#AddNewSport" data-toggle="modal"><span class="mr-2"><img src="~/images/Add-Circle.png"></span>Add a new event</button>
+                                        </div>
+                                        <!--  @*==end===*@ -->
+                                        <!-- @* =====Fixtures=====*@ -->
+                                        <div id="Results" class="tab-pane fade ">
+                                            <div class="table-responsive border-radius-0">
+                                                <table class="table " id="results-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="display:none">Day</th>
+                                                            <th><span>Date</span><span class="ml-2"><img src="~/images/Filter1.png"></span></th>
+                                                            <th>Event</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <!--  @*==end===*@ -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- @* ====end=====*@ -->
+                        </div>
+                    </div>
+                    <!-- @*==end===*@ -->
+
+                    <div id="SportsTypeActiveBtn" class="tab-pane fade new-event  ">
+                        <div class="safty-top-area">
+                            <div class="row align-items-center">
+                                <div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+                                    <button type="button" class="cross ml-3" id="btnCrossSportsId">
+
+                                        <span aria-hidden="true">×</span>
+
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row custom-group-area ">
+                            <!--  @* ====col-4====*@ -->
+                            <div class="col-lg-12">
+                                <div class=" border-bx-area  ">
+                                    <div class="table-responsive border-radius-0">
+                                        <table id="SportsType_groups" class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th>Activites</th>
+                                                    <th>Delete</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var item in Model.lstactivity)
+                                                {
+
+                                                    <tr>
+                                                        <td editValue="@item.Id" class="lblsports">@item.Activities</td>
+                                                        <td onclick="DeleteSportTypeId(@item.Id)"><img src="~/images/Delete2.png"></td>
+                                                        <td onclick="EditSportTypeId(@item.Id)"><img src="/images/edit.png" /></td>
+
+                                                    </tr>
+
+
+
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn btn-block btn-link btn-lumo " data-target="#Adding-Sport_Type" data-toggle="modal"><span class="mr-2"><img src="~/images/Add-Circle.png"></span>Add New Sports Type</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- @*==end===*@ -->
+                </div>
+
+
+
+
+
+            </div>
+
+            <!-- @* =====SportsManagement Groups =====*@ -->
+
+
+        </div>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+
+
+<!-- @*======Add New Sport====*@ -->
+<div class="modal fade modal-add-bx" id="AddNewSport" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add a new event</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+                    <div class="col-md-12">
+
+
+
+                        <div class="form-group ">
+                            <label>What is the name of this event?</label>
+                            <input type="text" class="form-control" id="txtnamesports">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Select a date for this event</label>
+                            <div class=" date-icon">
+                                <input type="text" id="datetime2" class="form-control  btn-date">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Upload a PDF for this event</label>
+                            <div class=" add-icon-bx" id="logo-uploadAccount">
+                                <label for="pdfcommunitys" class="custom-file-upload nameimage" id="uploadSec3">
+                                    <span></span>
+                                </label>
+
+                                <div class="add-icon upload-icon">
+                                    <input id="pdfcommunitys" type="file" accept=".pdf,.doc" onchange="ProductreadURLS12(this)">
+                                    <img src="~/images/Add-Circle.png">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <label>Cover Image</label>
+                            <div class=" add-icon-bx">
+
+                                <input type="text" id="txtCoverImage" class="form-control" disabled>
+                                <div class="add-icon">
+                                    <input type="file" id="CoverImage" accept="txtCoverImage/*" onchange="CoverreadURL(this);" class="form-control">
+                                    <img src="~/images/add-image-icon.png">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-lumo-green" id="btnsubmitsports">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*=====modal popup ==*@ -->
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx small-datatable" id="AddNewEvent" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="eventtitlename">Manage fixtures</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+
+                        <div class="form-group ">
+                            <label>Fixture title</label>
+                            <input type="text" class="form-control " id="txtTitleFixture">
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Start time</label>
+                            <input type="time" class="form-control " id="txtStartDate">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Location or Venue</label>
+                            <input type="text" class="form-control " id="txtlocation">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Home Team</label>
+                            <input type="text" class="form-control " id="txthometeam">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Away Team</label>
+                            <input type="text" class="form-control " id="txtawayteam">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Sport Type</label>
+                            <select class="form-control" id="txtsportsid" asp-items="@(new SelectList(Model.lstactivity, "Id", "Activities"))">
+                                <option selected>Select Sport Type</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <button type="button" class="btn btn-lumo-green btn-block mt-4 py-3" id="Btnaddfixture">Add fixture</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="table-responsive px-4 pb-4 table-gray-head">
+                <table id="Managefixtures" class="table ">
+                    <thead>
+                        <tr>
+                            <th>Fixture title</th>
+                            <th>Start time</th>
+                            <th>Location</th>
+                            <th>Home team</th>
+                            <th>Away team</th>
+                            <th>Sport Type</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="UpcomingView">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- @*======end====*@ -->
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx" id="Adding-Final_team-member" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="eventtitlename2">Adding Final Score</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Final Score</label>
+                            <input type="text" class="form-control " id="txtFinalResults">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <button type="button" class="btn btn-lumo-green btn-block mt-2 py-3" id="SaveFinalTeamMember">Save Result</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx small-datatable" id="Adding-UpcomingHome_team-member" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="eventtitlename8">Adding team members</h5>
+                <button type="button" class="close" aria-label="Close" onclick="sportsclosebtntxt()">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+
+                        <div class="form-group ">
+                            <label>Number or Position</label>
+                            <input type="text" class="form-control " id="UpcomingHometeamposition">
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Full name</label>
+                            <input type="text" class="form-control " id="UpcomingHomefullname">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Type</label>
+                            <select class="form-control" id="txtPlayerType">
+                                <option selected>Select a Type</option>
+                                <option>Player</option>
+                                <option>Captain</option>
+                                <option>Coach</option>
+                                <option>Fitness Coach</option>
+                                <option>Assistant</option>
+                                <option>Physiotherapist</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <button type="button" class="btn btn-lumo-green btn-block mt-4 py-3" id="SaveUpcomingHomeMember">Add team member</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="table-responsive px-4 pb-4 table-gray-head">
+                <table id="AddingUpcomingHomeMember" class="table ">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Full name</th>
+                            <th>Type</th>
+                            <th>Delete</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyhometeam">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx small-datatable" id="Adding-UpcomingAway_team-member" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="eventtitlename7">Adding team members</h5>
+                <button type="button" class="close" aria-label="Close" onclick="Uniquesportsclose()">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+
+                        <div class="form-group ">
+                            <label>Number or Position</label>
+                            <input type="text" class="form-control " id="UpcomingAwayteamposition">
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Full name</label>
+                            <input type="text" class="form-control " id="UpcomingAwayfullname">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <label>Type</label>
+                            <select class="form-control" id="UpcomingAwaytxtPlayerType">
+                                <option selected>Select a Type</option>
+                                <option>Player</option>
+                                <option>Captain</option>
+                                <option>Coach</option>
+                                <option>Fitness Coach</option>
+                                <option>Assistant</option>
+                                <option>Phyiotherapist</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group ">
+                            <button type="button" class="btn btn-lumo-green btn-block mt-4 py-3" id="SaveUpcomingAwayMember">Add team member</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="table-responsive px-4 pb-4 table-gray-head">
+                <table id="tableawayupcomin" class="table ">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Full name</th>
+                            <th>Type</th>
+                            <th>Delete</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="txttableaway">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx small-datatable" id="Adding-ResultHome_team-member" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="eventtitlename3">Adding team members</h5>
+                <button type="button" class="close" aria-label="Close" onclick="uniqueresulthomeclosebtn()">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+
+                        <div class="form-group ">
+                            <label>Number or Position</label>
+                            <input type="text" class="form-control " id="ResultHometeamposition">
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                            <label>Full name</label>
+                            <input type="text" class="form-control " id="ResultHomefullname">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                            <label>Type</label>
+                            <select class="form-control" id="ResultHometxtPlayerType">
+                                <option selected>Select a Type</option>
+                                <option>Player</option>
+                                <option>Captain</option>
+                                <option>Coach</option>
+                                <option>Fitness Coach</option>
+                                <option>Assistant</option>
+                                <option>Phyiotherapist</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    @* <div class="col-md-3">
+                    <div class="form-group ">
+                    <button type="button" class="btn btn-lumo-green btn-block mt-4 py-3" id="SaveResultHomeMember">Add team member</button>
+                    </div>
+                    </div>*@
+
+                </div>
+            </div>
+            <div class="table-responsive px-4 pb-4 table-gray-head">
+                <table id="tbodyResulthometeam" class="table ">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Full name</th>
+                            <th>Type</th>
+                            <th>Delete</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="txttbodyResulthome">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx small-datatable" id="Adding-ResultAway_team-member" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="eventtitlename4">Adding team members</h5>
+                <button type="button" class="close" aria-label="Close" onclick="uniqueresultawaysclosebtn()">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+
+                        <div class="form-group ">
+                            <label>Number or Position</label>
+                            <input type="text" class="form-control " id="ResultAwayteamposition">
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                            <label>Full name</label>
+                            <input type="text" class="form-control " id="ResultAwayfullname">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                            <label>Type</label>
+                            <select class="form-control" id="ResultAwaytxtPlayerType">
+                                <option selected>Select a Type</option>
+                                <option>Player</option>
+                                <option>Captain</option>
+                                <option>Coach</option>
+                                <option>Fitness Coach</option>
+                                <option>Assistant</option>
+                                <option>Phyiotherapist</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    @* <div class="col-md-3">
+                    <div class="form-group ">
+                    <button type="button" class="btn btn-lumo-green btn-block mt-4 py-3" id="SaveResultAwayMember">Add team member</button>
+                    </div>
+                    </div>*@
+
+                </div>
+            </div>
+            <div class="table-responsive px-4 pb-4 table-gray-head">
+                <table id="tbodyResultAwayteam" class="table ">
+
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Full name</th>
+                            <th>Type</th>
+                            <th>Delete</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="txttheadaway">
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="modal fade modal-add-bx" id="View-past-Fixture" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="eventtitlename5">Manage fixtures</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+
+            <div class="table-responsive px-4 py-4 table-gray-head">
+                <table id="ViewManagefixtures" class="table ">
+                    <thead>
+                        <tr>
+                            <th>Fixture title</th>
+                            <th>Start time</th>
+                            <th>Location</th>
+                            <th>Home team</th>
+                            <th>Away team</th>
+                            <th>Final score</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- @*======end====*@ -->
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="SuperJob" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Super job!</h5>
+                    <p>You’ve successfully added your sport.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Add New Team====*@ -->
+<div class="modal fade modal-add-bx" id="AddNewTeam" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Add a new team name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="new-message">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Team name</label>
+                            <input type="text" class="form-control" id="team_Name">
+                        </div>
+                        <div class="form-group ">
+                            <label>Coach name</label>
+                            <input type="text" class="form-control" id="coach_Name">
+                        </div>
+                        <div class="form-group ">
+                            <label>Fitness coach</label>
+                            <input type="text" class="form-control" id="fitness_Coach">
+                        </div>
+                        <div class="form-group ">
+                            <label>Physiotherapist</label>
+                            <input type="text" class="form-control" id="physiotherapist">
+                        </div>
+                        <div class="form-group ">
+                            <label>Assistant</label>
+                            <input type="text" class="form-control" id="assistant">
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-lumo-green" id="createTeam">Create team</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Looks Good====*@ -->
+<div class="modal fade modal-small-bx" id="LooksGood" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Looks good!</h5>
+                    <p>You’ve successfully added Result.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-lumo-green" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Add New Sport====*@ -->
+<div class="modal fade modal-add-bx" id="SportsTemplates" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Sports templates</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="sport-bx-area">
+                    <p>
+                        Please review the templates below carefully as they will directly impact how your sports data is displayed in the app. Selecting an incorrect template will require you to restart the entire process.
+                    </p>
+                    <h6>Point system</h6>
+                    <p>The point system used in these sports is a scoring method that assigns points to teams based on various actions during the game. Points are typically awarded for scoring goals or tries as well as for successful conversions, penalty kicks, and drop goals. Each of these actions is worth a different number of points. The point system is used to determine the winner of a match, with the team that has accumulated the most points at the end being declared the victor.</p>
+                    <h6>Scoring table</h6>
+                    <p>Scoring table events are competitions such as athletics and swimming where athletes participate in multiple events. The points earned by an athlete are then added up to determine their overall score and ranking in the competition</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="ItemDeletionConf" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this event forvever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" onclick="nodeletesportsbtn()" class="btn bg-lumo">No</button>
+                    <button type="button" onclick="ondeletesports()" class="btn bg-pink">Yes</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="ItemDeletionConfResults" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this event forvever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" onclick="ONdeleteResultNO()" class="btn bg-lumo">No</button>
+                    <button type="button" onclick="ONdeleteResultYES()" class="btn bg-pink">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="TeamMemberDeletion" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this item forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn bg-lumo " onclick="TeamMemberNobtn()">No</button>
+                    <button type="button" class="btn bg-pink" onclick="TeamMemberYesBtn()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="AwayTeamMemberDeletion" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this item forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn bg-lumo " onclick="AwayTeamMemberNobtn()">No</button>
+                    <button type="button" class="btn bg-pink " onclick="AwayTeamMemberYesBtn()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="ResultHomeDeletion" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this item forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn bg-lumo" onclick="ResultHomeNobtn()">No</button>
+                    <button type="button" class="btn bg-pink" onclick="ResultHomeYesBtn()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="ResultAwayDeletion" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this item forever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn bg-lumo" onclick="ResultAwayNobtn()">No</button>
+                    <button type="button" class="btn bg-pink" onclick="ResultAwayYesBtn()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Game timer settings====*@ -->
+<div class="modal fade modal-small-bx" id="GameTimer" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Game timer settings</h5>
+                    <p>Please choose a time duration that exceeds your game period. Once this timer elapses, the fixture will be automatically moved to the results section and will no longer be displayed as an upcoming fixture.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Archive Confirmation ====*@ -->
+<div class="modal fade modal-small-bx" id="ArchiveConfirmation" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>Please note, once you archive this game you will not be able to edit this result.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-default ">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item End Season ====*@ -->
+<div class="modal fade modal-small-bx" id="EndSeason" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>Kindly be informed that archiving the season will result in the removal of all data related to this season from the app.</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-default ">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Security checkpoint ====*@ -->
+<div class="modal fade modal-small-bx" id="SecurityCheckpoint" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Security checkpoint</h5>
+                    <div class="form-group ">
+                        <label>Please insert your password to proceed</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- @*=======item error message  successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="erroritemsports" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+
+                    <p id="errmsg1sports"></p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-block" data-dismiss="modal">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- @*=======item error message  successfully=====*@ -->
+<!-- @*=======item added successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="ConfirmationMessagesports" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+
+                    <p id="TxtMessagesports">Data Saved Successfully</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-default btn-block" onclick="ClosebtnOnly()">
+                        <span aria-hidden="true">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*=======item added successfully=====*@ -->
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="NewSportsmessage" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+
+                    <p id="sportssalemessage"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-pink" data-dismiss="modal" id="closesportsmessage">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======Item Deletion Confermations ====*@ -->
+<div class="modal fade modal-small-bx" id="ItemDeletionSportType" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5>Are you sure?</h5>
+                    <p>You are about to delete this event forvever :(</p>
+                </div>
+                <div class="text-center">
+                    <button type="button" onclick="NoSportTypeId()" class="btn bg-lumo">No</button>
+                    <button type="button" onclick="YesSportTypeId()" class="btn bg-pink">Yes</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx" id="Edit-Sport_Type" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="AddSportType">Sports Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Sport Type</label>
+                            <input type="text" class="form-control " id="TXTfinalSportsType">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <button type="button" class="btn btn-lumo-green btn-block mt-2 py-3" onclick="SaveSportTypePopup()">Update</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="SportType-Update" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5 id="SportTypeUpdateHeading"></h5>
+                    <p id="SportTypeUpdatemessage"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-default btn-block" onclick="closeSportType()">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="SportType-SavedMessage" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="past-leave-box">
+                    <h5 id="SportTypesavemessageHeading"></h5>
+                    <p id="SportTypesavedmessage"></p>
+                </div>
+                <div class="text-center">
+
+                    <button type="button" class="btn btn-default btn-block" onclick="closeSportTypesavedmessage()">Close</button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- @*======END======*@ -->
+<!-- Add a new Event -->
+<div class="modal fade modal-add-bx" id="Adding-Sport_Type" tabindex="-1" aria-labelledby="AttendeesLabel" aria-hidden="true">
+    <div class="modal-dialog  w-500 modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="AddSportTypeid">Sports Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    &times;
+                </button>
+            </div>
+            <div class="safty-top-area p-4 ">
+                <div class="row align-items-center">
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <label>Sport Type</label>
+                            <input type="text" class="form-control " id="TXTfinalAddingSportsType">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <button type="button" class="btn btn-lumo-green btn-block mt-2 py-3" id="AddingSportTypePopup">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<input type="hidden" id="IddeleteSports" />
+<input type="hidden" id="txtDeleteTeamMemebers" />
+<input type="hidden" id="txtAwayDeleteTeamMemebers" />
+<input type="hidden" id="TeamId" />
+<input type="hidden" id="activityid" />
+<input type="hidden" id="lblsportstypeid" />
+<input type="hidden" id="lblSportLightId" />
+<input type="hidden" id="UpcominghomeHidden" />
+<input type="hidden" id="txtvalueofaway" />
+<input type="hidden" id="ResulthomeHidden" />
+<input type="hidden" id="ResultAwayHidden" />
+<input type="hidden" id="FixtureHiddenId" />
+<input type="hidden" id="IdissueHidden" />
+<input type="hidden" id="HomeTeamHiddenId" />
+<input type="hidden" id="hiddenfielsportype" />
+<input type="hidden" id="EditSportTypeEditBtn" />
+<input type="hidden" id="FixtureHiddenResultUpdateId" />
+
+<input type="hidden" id="Eventdate" />
+
+
+
+
+
+<script>
+
+    $('#btnCrossSportsId').click(function (e) {
+        $('.message-tab a[href="#SportsManagement"]').tab("show");
+    })
+
+
+    $(document).ready(function () {
+
+
+        $('#txtsportsid').addClass("active");
+        $('#activeupcoming').addClass("active");
+        var Aurl = "/Sports/GetUpcoming";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            dataType: "json",
+            success: function (Result) {
+
+                var status = Result.success;
+                if (status == true) {
+                    var rows = '';
+                    var tfoots = '';
+                    for (i = 0; i < Result.data.length; i++) {
+
+                        var date = new Date(Result.data[i].sportsDate);
+                        console.log(date);
+                        var options =
+                        {
+                            weekday: 'long',
+                            year: 'numeric',
+                            day: 'numeric',
+                            month: 'long'
+                        };
+                        var formattedDate = date.toLocaleDateString('en-US', options);
+
+                        rows += "<tr><td style='display:none'>" + Result.data[i].sportsDate + "</td><td style='text-align:left'><span style='display:none'>" + Result.data[i].id + "</span>" + formattedDate + "</td><td><img src='/images/edit.png' id='btnupdatecomingfiture' />&nbsp " + Result.data[i].sportsName + " </td><td><img src='/images/Delete2.png' onclick='ondeleteuser(" + Result.data[i].id + ")'/></td></tr>";
+                    }
+
+                    $('#upcoming-table tbody').html(rows);
+
+                    $('#upcoming-table tbody').addClass("active");
+                    var oTable = $('#upcoming-table').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#upcoming-table tbody').html(rows);
+                        var tab = $('#upcoming-table').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    }
+                    else {
+                        $('#communitydate2_length').hide();
+                    }
+                }
+            },
+            error: function (request, error) {
+
+            }
+        });
+    });
+
+    $('#Sportscross').click(function (e) {
+        window.location.href = "/Dashboard/Dashboard";
+    })
+
+    $(document).ready(function () {
+        $('#activeupcoming').addClass("active");
+
+        var Aurl = "/Sports/GetResult";
+        $.ajax({
+            type: "Get",
+            url: Aurl,
+            dataType: "json",
+            success: function (Result) {
+                var status = Result.success;
+                if (status === true) {
+                    var rows = '';
+                    for (var i = 0; i < Result.data.length; i++) {
+                        var date = new Date(Result.data[i].sportsDate);
+                        var options = {
+                            weekday: 'long',
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric'
+                        };
+                        var formattedDate = date.toLocaleDateString('en-US', options);
+
+                        rows += "<tr><td style='display:none'>" + Result.data[i].sportsDate + "</td><td style='text-align:left'>" + formattedDate + "</td><td><img src='/images/Show.png' class='mr-1' data-target='#View-past-Fixture' data-toggle='modal' onclick='ResultManageFixtureData(" + Result.data[i].id + ")'/> " + Result.data[i].sportsName + "</td><td><img src='/images/Delete2.png' onclick='ondeleteresult(" + Result.data[i].id + ")'/></td></tr>";
+                    }
+                    $('#results-table tbody').html(rows);
+
+                    var oTable = $('#results-table').DataTable();
+                    if (oTable != undefined && oTable != null) {
+                        oTable.destroy();
+                        oTable = null;
+                        $('#results-table tbody').html(rows);
+                        var tab = $('#results-table').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+                    } else {
+                        $('#communitydate2_length').hide();
+                    }
+                }
+            },
+            error: function (request, error) {
+                //$('#erroritemsports').modal('show');
+                //$("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    });
+
+
+    otable1 = $('#Managefixtures').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable9 = $('#upcoming-table').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+
+    otable10 = $('#results-table').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable3 = $('#ViewManagefixtures').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+    otable3 = $('#SportsType_groups').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+</script>
+
+<script>
+    $(function () {
+
+        $("#datefrom").datepicker();
+        $("#datetime").datepicker();
+        $("#datetime2").datepicker({
+
+            beforeShow: function (input, inst) {
+
+                $('.overlay').addClass('d-block');
+            },
+            onSelect: function (dateText, inst) {
+                $('.overlay').removeClass('d-block');
+
+
+            },
+            dateFormat: 'dd-mm-yy'
+
+        });
+        $(".overlay").on("click", function () {
+            $(".overlay").removeClass("d-block");
+        });
+
+    });
+
+</script>
+
+
+<script>
+
+
+
+    otable1 = $('#AddingUpcomingHomeMember').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable3 = $('#custom-groups').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+
+    otable5 = $('#tableawayupcomin').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+    otable6 = $('#tbodyResulthometeam').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+
+    otable7 = $('#tbodyResultAwayteam').DataTable({
+        "order": [[0, "desc"]],
+        searching: false,
+        pagination: false,
+
+        "dom": 'rt<"bottom"flp><"bottom"i>'
+    })
+
+</script>
+
+<script>
+
+
+    //1.activity
+    function CoverreadURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result)
+            };
+            imagename = input.files[0].name;
+            $('#txtCoverImage').val(imagename);
+        }
+
+    }
+
+
+    function ProductreadURLS12(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result)
+            };
+            pdfname = input.files[0].name;
+            $('#pdfcommunitys').val(pdfname);
+        }
+
+    }
+
+    $("#logo-uploadAccount .custom-file-upload span").show();
+    $("#logo-uploadAccount input").change(function () {
+        $("#logo-uploadAccount .custom-file-upload span").show();
+        $("#logo-uploadAccount .custom-file-upload span").text(this.files[0].name);
+    });
+
+
+
+    $("#txtnamesports").on("keyup", function () { document.getElementById("txtnamesports").style.border = "1px solid white"; });
+    // $("#datetime2").on("click", function () { document.getElementById("datetime2").style.border = "1px solid white"; });
+
+    function returndateformats(date) {
+        var d = new Date(date.split("-").reverse().join("-"));
+        var dd = d.getDate();
+        var mm = d.getMonth() + 1;
+        var yy = d.getFullYear();
+        var newdate = yy + "-" + mm + "-" + dd;
+        return newdate;
+    }
+    $("#btnsubmitsports").on('click', function () {
+
+
+        var SportsName = $("#txtnamesports").val();
+        var SportsDate = $("#datetime2").val();
+        var SportPDF = document.getElementById("pdfcommunitys");
+        var imagepath = document.getElementById("CoverImage");
+        var currentDate = new Date();
+        var currentTime = currentDate.toLocaleTimeString();
+
+        var combinedExpiryDateTime = SportsDate + ' ' + currentTime;
+        var formData = new FormData();
+
+        if (SportsName == '') {
+            $('#txtnamesports').focus();
+            document.getElementById("txtnamesports").style.border = "1px solid red";
+            return false;
+        }
+        if (SportsDate == '') {
+            $('#datetime2').focus();
+            document.getElementById("datetime2").style.border = "1px solid white";
+            return false;
+        }
+
+        var formData = new FormData();
+        formData.append("SportsName", SportsName);
+        formData.append("SportsDate", combinedExpiryDateTime);
+        formData.append("SportPDF", SportPDF.files[0]);
+        formData.append("CoverImage", imagepath.files[0]);
+
+
+
+        var Aurl = "/Sports/AddNewSports";
+
+
+
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (success) {
+
+                if (success.success == true) {
+
+                    $('#AddNewSport').modal('hide');
+                    $("#txtnamesports").val('');
+                    $("#datetime2").val('');
+                    $("#lblsportstypeid").val('');
+                    $("#txtHomeTeamValue").val('');
+                    $("#txtAwayTeamValue").val('');
+                    $("#pdfcommunitys").val('');
+
+                    window.location.reload();
+
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+
+
+    });
+
+
+
+    //1.upcoming delete//
+    function ondeleteuser(id) {
+
+        $("#ItemDeletionConf").modal('show');
+        var Ids = id;
+        $("#IddeleteSports").val(Ids);
+    }
+    function ondeletesports(Id) {
+        var Id = $("#IddeleteSports").val();
+        var objdata =
+        {
+            Id: Id
+        }
+
+        var Aurl = "/Sports/DeleteSports";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objdata,
+
+            success: function (success) {
+
+                if (success.success == true) {
+                    $("#ItemDeletionConf").modal('hide');
+
+
+                    $('.message-tab a[href="#Upcoming"]').tab('show');
+                    window.location.reload();
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+    }
+    function nodeletesportsbtn() {
+        $("#ItemDeletionConf").modal('hide');
+        $('.message-tab a[href="#Upcoming"]').tab('show');
+    }
+
+
+
+    //1.Result delete
+    function ondeleteresult(id) {
+
+        $("#ItemDeletionConfResults").modal('show');
+        var Ids = id;
+        $("#IddeleteSports").val(Ids);
+    }
+    function ONdeleteResultYES(Id) {
+        var Id = $("#IddeleteSports").val();
+        var objdata =
+        {
+            Id: Id
+        }
+
+        var Aurl = "/Sports/DeleteSports";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objdata,
+
+            success: function (success) {
+
+                if (success.success == true) {
+                    $("#ItemDeletionConfResults").modal('hide');
+
+                    window.location.href = '/Sports/Sports?id=Result'
+
+
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+    }
+    function ONdeleteResultNO() {
+        $("#ItemDeletionConfResults").modal('hide');
+        $('.message-tab a[href="#Results"]').tab('show');
+    }
+
+
+
+
+
+
+
+
+    //1.Result ManageFixture
+    function ResultManageFixtureData(id) {
+
+        $('#lblSportLightId').val(id);
+
+        var objdata =
+        {
+            SportId: id
+        }
+
+        var Aurl = "/Sports/GetUpcomingManageFixture";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            data: objdata,
+            dataType: "json",
+            success: function (Result) {
+
+                var status = Result.success;
+
+                if (status == true) {
+
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        var inputTime = Result.data[i].time;
+                        var timeParts = inputTime.split(':');
+                        var hours = parseInt(timeParts[0]);
+                        var minutes = parseInt(timeParts[1]);
+
+                        var period = hours >= 12 ? "pm" : "am";
+                        hours = hours % 12;
+                        hours = hours ? hours : 12;
+                        var formattedTime = hours + ":" + (minutes < 10 ? '0' : '') + minutes + period;
+
+                        $('#FixtureHiddenId').val(Result.data[i].id);
+                        var formattedresult = ",\"" + Result.data[i].result + "\"";
+                        //alert(formattedresult);
+                        rows += "<tr><td>" + Result.data[i].fixtureTitle + "</td><td>" + formattedTime + "</td><td>" + Result.data[i].location + "</td><td><img src='/images/edit.png' onclick='resulthometeam(" + Result.data[i].homeTeamId + ")'/>&nbsp " + Result.data[i].homeTeam + "</td><td><img src='/images/edit.png' onclick='resultAwayTeam(" + Result.data[i].awayTeamId + ")'/>&nbsp " + Result.data[i].awayTeam + "</td><td><img src='/images/edit.png' onclick='resultFinalTeam(" + Result.data[i].id + formattedresult + ")'/></td></tr>";
+                    }
+                    $('#ViewManagefixtures tbody').html(rows);
+
+                    var oTable = $('#ViewManagefixtures').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#ViewManagefixtures tbody').html(rows);
+                        var tab = $('#ViewManagefixtures').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    }
+                    else {
+                        $('#communitydate2_length').hide();
+                    }
+
+
+
+
+                }
+
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    }
+
+    $(document).on("click", "#btnupdatecomingfiture", function () {
+        var tr = $(this).closest('tr');
+        var id = tr.find('span').eq(0).text();
+        var date = tr.find('td').eq(0).text();
+        $("#Eventdate").val(date);
+        var Idvalues = $("#IdissueHidden").val(id);
+        $('#AddNewEvent').modal('show');
+        $('#lblSportLightId').val(id);
+        var Obj =
+        {
+            SportId: id
+        }
+
+        var Aurl = "/Sports/GetUpcomingManageFixture";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+            dataType: "json",
+            success: function (Result) {
+
+                var status = Result.success;
+
+
+                if (status == true) {
+
+                    var rows = '';
+
+                    for (i = 0; i < Result.data.length; i++) {
+
+                        var inputTime = Result.data[i].time;
+                        var timeParts = inputTime.split(':');
+                        var hours = parseInt(timeParts[0]);
+                        var minutes = parseInt(timeParts[1]);
+
+                        var period = hours >= 12 ? "pm" : "am";
+                        hours = hours % 12;
+                        hours = hours ? hours : 12;
+                        var formattedTime = hours + ":" + (minutes < 10 ? '0' : '') + minutes + period;
+
+                        $('#FixtureHiddenId').val(Result.data[i].id);
+                        $('#HomeTeamHiddenId').val(Result.data[i].homeTeamId);
+                        rows += "<tr><td>" + Result.data[i].fixtureTitle + "</td><td>" + formattedTime + "</td><td>" + Result.data[i].location + "</td><td><img src='/images/edit.png' onclick='UpcomingHomeTeamMember(" + Result.data[i].homeTeamId + ")'/>&nbsp " + Result.data[i].homeTeam + "</td><td><img src='/images/edit.png' onclick='UpcomingAwayTeamMember(" + Result.data[i].awayTeamId + ")'/>&nbsp " + Result.data[i].awayTeam + "</td><td>" + Result.data[i].activities + " </td></tr>";
+                    }
+                    $('#Managefixtures tbody').html(rows);
+
+                    var oTable = $('#Managefixtures').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#Managefixtures tbody').html(rows);
+                        var tab = $('#Managefixtures').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    } else {
+                        $('#communitydate2_length').hide();
+                    }
+
+
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+
+        });
+    });
+
+
+
+    // 1.Save Upcoming Manage Fixture
+
+    $("#txtTitleFixture").on("keyup", function () {
+        document.getElementById("txtTitleFixture").style.border = "1px solid white";
+    });
+
+    $("#txtStartDate").on("change", function () { document.getElementById("txtStartDate").style.border = "1px solid white"; });
+
+
+    $("#txtlocation").on("keyup", function () {
+        document.getElementById("txtlocation").style.border = "1px solid white";
+    });
+
+    $("#txthometeam").on("keyup", function () {
+        document.getElementById("txthometeam").style.border = "1px solid white";
+    });
+
+    $("#txtawayteam").on("keyup", function () {
+        document.getElementById("txtawayteam").style.border = "1px solid white";
+    });
+    function formatDate(dateStr) {
+        var date = new Date(dateStr);
+        var day = ("0" + date.getDate()).slice(-2);
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+        var year = date.getFullYear();
+        return month + '/' + day + '/' + year;
+    }
+    $("#txtsportsid").on("change", function () { document.getElementById("txtsportsid").style.border = "1px solid white"; });
+    $("#Btnaddfixture").on('click', function () {
+        // var eventdate=
+        var usingHiddenfield = $("#IdissueHidden").val();
+        var eventdate = $("#Eventdate").val();
+      //  alert(eventdate);
+        var Titlefixture = $("#txtTitleFixture").val();
+        var Starttime = $("#txtStartDate").val();
+       // alert(Starttime);
+        var location = $("#txtlocation").val();
+        var SportSpotlightId = $('#lblSportLightId').val();
+        var home = $('#txthometeam').val();
+        var away = $('#txtawayteam').val();
+        var Sportstype = $("#txtsportsid").val();
+        var changeformat = formatDate(eventdate);
+       // alert(changeformat);
+        var CombinedstartDate = changeformat + ' ' + Starttime;
+       // alert(CombinedstartDate);
+        var timeParts = Starttime.split(":");
+        var hours = parseInt(timeParts[0], 10);
+        var minutes = timeParts[1];
+        var period = hours >= 12 ? "pm" : "am";
+
+        if (hours > 12) {
+            hours -= 12;
+        } else if (hours === 0) {
+            hours = 12;
+        }
+        hours = hours.toString().padStart(2, '0');
+        var convertedTime = hours + ":" + minutes + " " + period;
+
+
+        if (Titlefixture == '') {
+            $('#txtTitleFixture').focus();
+            document.getElementById("txtTitleFixture").style.border = "1px solid red";
+            return false;
+        }
+        if (Starttime == '') {
+            $('#txtStartDate').focus();
+            document.getElementById("txtStartDate").style.border = "1px solid red";
+            return false;
+        }
+        if (location == '') {
+            $('#txtlocation').focus();
+            document.getElementById("txtlocation").style.border = "1px solid red";
+            return false;
+        }
+        if (home == '') {
+            $('#txthometeam').focus();
+            document.getElementById("txthometeam").style.border = "1px solid red";
+            return false;
+        }
+        if (away == '') {
+            $('#txtawayteam').focus();
+            document.getElementById("txtawayteam").style.border = "1px solid red";
+            return false;
+        }
+        if ($('#txtsportsid').val() == "Select Sport Type") {
+            $('#txtsportsid').focus();
+            $('#txtsportsid').css('border', '1px solid red');
+            return false;
+        }
+
+
+
+
+
+        var formData = new FormData();
+        formData.append("FixtureTitle", Titlefixture);
+        formData.append("Time", CombinedstartDate);
+        formData.append("Location", location);
+        formData.append("SportId", SportSpotlightId);
+        formData.append("HomeTeam", home);
+        formData.append("AwayTeam", away);
+        formData.append("SportTypeId", Sportstype);
+
+
+
+        var Aurl = "/Sports/AddFixture";
+
+
+
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (success) {
+                // console.log()
+                if (success.success == true) {
+
+                    $('#txtTitleFixture').val('');
+                    $('#txtStartDate').val('');
+                    $('#txtlocation').val('');
+                    $('#txtawayteam').val('');
+                    $('#txthometeam').val('');
+                    $('#txtsportsid').val('Select Sport Type');
+
+                    $('#ConfirmationMessagesports').modal('show');
+                    //                    viewupcomingfixture(usingHiddenfield);
+
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    });
+
+
+
+    //1.upcoming home team member
+    function UpcomingHomeTeamMember(homeTeamId) {
+
+        $("#Adding-UpcomingHome_team-member").modal('show');
+        $("#AddNewEvent").modal('hide');
+        var aparanaId = homeTeamId;
+        $("#UpcominghomeHidden").val(aparanaId);
+
+        var Obj =
+        {
+            TeamId: aparanaId
+        }
+
+        var Aurl = "/Sports/GetAddedTeamMember";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+
+            success: function (Result) {
+                console.log(Result);
+                var status = Result.success;
+
+                if (status == true) {
+
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+                        rows += "<tr><td>" + Result.data[i].positionNumber + "</td><td>" + Result.data[i].fullName + "</td><td>" + Result.data[i].playerType + "</td><td><img src='/images/Delete2.png' onclick='Deletehome(" + Result.data[i].id + ")'/></td></tr>";
+                    }
+                    $('#AddingUpcomingHomeMember tbody').html(rows);
+                    var oTable = $('#AddingUpcomingHomeMember').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#AddingUpcomingHomeMember tbody').html(rows);
+                        var tab = $('#AddingUpcomingHomeMember').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    }
+                    else {
+                        $('#communitydate2_length').hide();
+                    }
+
+
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+
+        });
+
+    }
+
+    //1. save upcoming home team member
+    $("#UpcomingHometeamposition").on("keyup", function () {
+        document.getElementById("UpcomingHometeamposition").style.border = "1px solid white";
+    });
+
+    $("#UpcomingHomefullname").on("keyup", function () {
+        document.getElementById("UpcomingHomefullname").style.border = "1px solid white";
+    });
+
+    $("#txtPlayerType").on("change", function () { document.getElementById("txtPlayerType").style.border = "1px solid white"; });
+
+    $("#SaveUpcomingHomeMember").on('click', function () {
+
+
+        var SavingSportHome = $('#HomeTeamHiddenId').val();
+        var txtPosition = $("#UpcomingHometeamposition").val();
+        var txtfullname = $("#UpcomingHomefullname").val();
+        var HOMEid = $("#UpcominghomeHidden").val();
+        var player = $("#txtPlayerType").val();
+        var FixtureHome = $("#FixtureHiddenId").val();
+
+        if (txtPosition == '') {
+            $('#UpcomingHometeamposition').focus();
+            document.getElementById("UpcomingHometeamposition").style.border = "1px solid red";
+            return false;
+        }
+        if (txtfullname == '') {
+            $('#UpcomingHomefullname').focus();
+            document.getElementById("UpcomingHomefullname").style.border = "1px solid red";
+            return false;
+        }
+        if ($('#txtPlayerType').val() == "Select a Type") {
+            $('#txtPlayerType').focus();
+            $('#txtPlayerType').css('border', '1px solid red');
+            return false;
+        }
+
+        var formData = new FormData();
+        formData.append("PositionNumber", txtPosition);
+        formData.append("FullName", txtfullname);
+        formData.append("TeamId", HOMEid);
+        formData.append("PlayerType", player);
+        formData.append("FixtureId", FixtureHome);
+
+
+        var Aurl = "/Sports/SaveTeamMember";
+
+
+
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (success) {
+
+                if (success.success == true) {
+
+                    $('#ConfirmationMessagesports').modal('show');
+                    $("#UpcomingHometeamposition").val('');
+                    $("#UpcomingHomefullname").val('');
+                    $("#txtPlayerType").val('Select a Type');
+                    UpcomingHomeTeamMember(SavingSportHome)
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    });
+
+    function ClosebtnOnly() {
+        $('#ConfirmationMessagesports').modal('hide');
+    }
+
+    function sportsclosebtntxt() {
+        $('#Adding-UpcomingHome_team-member').modal('hide');
+        $('#AddNewEvent').modal('show');
+    }
+
+    //1.delete home team member
+    function Deletehome(id) {
+
+        $("#TeamMemberDeletion").modal('show');
+        var deleteTM = id;
+        $("#txtDeleteTeamMemebers").val(deleteTM);
+
+    }
+    function TeamMemberYesBtn(id) {
+        var Teamhomeids = $('#HomeTeamHiddenId').val();
+        console.log(Teamhomeids);
+        var Id = $("#txtDeleteTeamMemebers").val();
+        var objdata =
+        {
+            Id: Id
+        }
+
+        var Aurl = "/Sports/DeleteTeamMembers";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objdata,
+
+            success: function (success) {
+
+                if (success.success == true) {
+                    $("#TeamMemberDeletion").modal('hide');
+                    UpcomingHomeTeamMember(Teamhomeids);
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+    }
+    function TeamMemberNobtn() {
+        $("#TeamMemberDeletion").modal('hide');
+    }
+
+
+
+
+
+    //1.upcoming Away Team Member
+    function UpcomingAwayTeamMember(awayTeamId2) {
+
+        $("#Adding-UpcomingAway_team-member").modal('show');
+        $("#AddNewEvent").modal('hide');
+        var Idss = awayTeamId2;
+        $("#txtvalueofaway").val(Idss);
+
+        var Obj =
+        {
+            TeamId: Idss
+        }
+
+        var Aurl = "/Sports/GetAddedTeamMember";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+
+            success: function (Result) {
+
+                var status = Result.success;
+                if (status == true) {
+
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+
+                        rows += "<tr><td>" + Result.data[i].positionNumber + "</td><td>" + Result.data[i].fullName + "</td><td>" + Result.data[i].playerType + "</td><td><img src='/images/Delete2.png' onclick='DeleteAway(" + Result.data[i].id + ")'/></td></tr>";
+
+
+                    }
+                    $('#tableawayupcomin tbody').html(rows);
+                    var oTable = $('#tableawayupcomin').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#tableawayupcomin tbody').html(rows);
+                        var tab = $('#tableawayupcomin').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    }
+                    else {
+                        $('#communitydate2_length').hide();
+                    }
+
+
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+
+        });
+
+    }
+
+    //1.save away upcoming team member
+    $("#UpcomingAwayteamposition").on("keyup", function () {
+        document.getElementById("UpcomingAwayteamposition").style.border = "1px solid white";
+    });
+
+    $("#UpcomingAwayfullname").on("keyup", function () {
+        document.getElementById("UpcomingAwayfullname").style.border = "1px solid white";
+    });
+
+    $("#UpcomingAwaytxtPlayerType").on("change", function () { document.getElementById("UpcomingAwaytxtPlayerType").style.border = "1px solid white"; });
+    $("#SaveUpcomingAwayMember").on('click', function () {
+
+        var newSportawaydata = $("#txtvalueofaway").val();
+
+        var lblposition = $("#UpcomingAwayteamposition").val();
+        var lblfullname = $("#UpcomingAwayfullname").val();
+        var lblHOMEid = $("#txtvalueofaway").val();
+        var upcomingplayer = $("#UpcomingAwaytxtPlayerType").val();
+        var FixtureId = $("#FixtureHiddenId").val();
+
+        if (lblposition == '') {
+            $('#UpcomingAwayteamposition').focus();
+            document.getElementById("UpcomingAwayteamposition").style.border = "1px solid red";
+            return false;
+        }
+        if (lblfullname == '') {
+            $('#UpcomingAwayfullname').focus();
+            document.getElementById("UpcomingAwayfullname").style.border = "1px solid red";
+            return false;
+        }
+        if ($('#UpcomingAwaytxtPlayerType').val() == "Select a Type") {
+            $('#UpcomingAwaytxtPlayerType').focus();
+            $('#UpcomingAwaytxtPlayerType').css('border', '1px solid red');
+            return false;
+        }
+
+        var formData = new FormData();
+        formData.append("PositionNumber", lblposition);
+        formData.append("FullName", lblfullname);
+        formData.append("TeamId", lblHOMEid);
+        formData.append("PlayerType", upcomingplayer);
+        formData.append("FixtureId", FixtureId);
+
+
+
+
+        var Aurl = "/Sports/SaveTeamMember";
+
+
+
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (success) {
+
+                if (success.success == true) {
+
+                    $('#ConfirmationMessagesports').modal('show');
+                    $("#UpcomingAwayteamposition").val('');
+                    $("#UpcomingAwayfullname").val('');
+                    $("#UpcomingAwaytxtPlayerType").val('Select a Type');
+                    UpcomingAwayTeamMember(newSportawaydata);
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    });
+
+    function ClosebtnOnly() {
+        $('#ConfirmationMessagesports').modal('hide');
+    }
+    function Uniquesportsclose() {
+        $('#Adding-UpcomingAway_team-member').modal('hide');
+        $('#AddNewEvent').modal('show');
+    }
+
+
+
+    //1.delete Upcoming away team member
+    function DeleteAway(id) {
+
+
+        $("#AwayTeamMemberDeletion").modal('show');
+        var Awaydelete = id;
+        $("#txtAwayDeleteTeamMemebers").val(Awaydelete);
+
+    }
+
+    function AwayTeamMemberYesBtn(id) {
+
+        var newSportawaydelete = $("#txtvalueofaway").val();
+        var Id = $("#txtAwayDeleteTeamMemebers").val();
+
+        var objdata =
+        {
+            Id: Id
+        }
+
+        var Aurl = "/Sports/DeleteTeamMembers";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objdata,
+
+            success: function (success) {
+
+                if (success.success == true) {
+                    $("#AwayTeamMemberDeletion").modal('hide');
+                    UpcomingAwayTeamMember(newSportawaydelete);
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+    }
+    function AwayTeamMemberNobtn() {
+        $("#AwayTeamMemberDeletion").modal('hide');
+
+    }
+
+
+
+
+    //1.Result home team member
+    function resulthometeam(homeTeamId) {
+
+        $("#Adding-ResultHome_team-member").modal('show');
+        $("#View-past-Fixture").modal('hide');
+        var Ids = homeTeamId;
+        $("#ResulthomeHidden").val(Ids);
+
+        var Obj =
+        {
+            TeamId: Ids
+        }
+
+        var Aurl = "/Sports/GetAddedTeamMember";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+
+
+                        rows += "<tr><td>" + Result.data[i].positionNumber + "</td><td>" + Result.data[i].fullName + "</td><td>" + Result.data[i].playerType + "</td><td><img src='/images/Delete2.png' onclick='DeleteResulthome(" + Result.data[i].id + ")'/></td></tr>";
+
+
+                    }
+                    $('#tbodyResulthometeam tbody').html(rows);
+                    var oTable = $('#tbodyResulthometeam').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#tbodyResulthometeam tbody').html(rows);
+                        var tab = $('#tbodyResulthometeam').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    }
+                    else {
+                        $('#communitydate2_length').hide();
+                    }
+
+
+
+
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+
+        });
+    }
+    function uniqueresulthomeclosebtn() {
+        $('#Adding-ResultHome_team-member').modal('hide');
+        $('#View-past-Fixture').modal('show');
+    }
+
+
+
+
+
+    //1.delete Result home team member
+    function DeleteResulthome(id) {
+
+        $("#ResultHomeDeletion").modal('show');
+        $("#Adding-ResultHome_team-member").modal('hide');
+        var deleteTM = id;
+        $("#ResulthomeHidden").val(deleteTM);
+
+    }
+    function ResultHomeYesBtn(id) {
+        var Id = $("#ResulthomeHidden").val();
+        var objdata =
+        {
+            Id: Id
+        }
+
+        var Aurl = "/Sports/DeleteTeamMembers";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objdata,
+
+            success: function (success) {
+
+                if (success.success == true) {
+                    $("#ResultHomeDeletion").modal('hide');
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+    }
+    function ResultHomeNobtn() {
+        $("#ResultHomeDeletion").modal('hide');
+    }
+
+
+
+
+
+    //1.Result Away team member
+    function resultAwayTeam(awayTeamId) {
+
+        $("#Adding-ResultAway_team-member").modal('show');
+        $("#View-past-Fixture").modal('hide');
+        var awayvar = awayTeamId;
+        $("#ResultAwayHidden").val(awayvar);
+
+        var Obj =
+        {
+            TeamId: awayvar
+        }
+
+        var Aurl = "/Sports/GetAddedTeamMember";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+
+            success: function (Result) {
+
+                var status = Result.success;
+
+
+                if (status == true) {
+
+                    var rows = '';
+                    for (i = 0; i < Result.data.length; i++) {
+
+
+                        rows += "<tr><td>" + Result.data[i].positionNumber + "</td><td>" + Result.data[i].fullName + "</td><td>" + Result.data[i].playerType + "</td><td><img src='/images/Delete2.png' onclick='DeleteResultAway(" + Result.data[i].id + ")'/></td></tr>";
+
+
+                    }
+                    $('#tbodyResultAwayteam tbody').html(rows);
+                    var oTable = $('#tbodyResultAwayteam').DataTable();
+                    if (oTable != undefined && oTable != null) {
+
+                        oTable.destroy();
+                        oTable = null;
+                        $('#tbodyResultAwayteam tbody').html(rows);
+                        var tab = $('#tbodyResultAwayteam').DataTable({
+                            "order": [[0, "desc"]],
+                            searching: false,
+                            pagination: false,
+
+                            "dom": 'rt<"bottom"flp><"bottom"i>'
+                        });
+
+                    }
+                    else {
+                        $('#communitydate2_length').hide();
+                    }
+
+
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+
+        });
+
+    }
+    function uniqueresultawaysclosebtn() {
+        $('#Adding-ResultAway_team-member').modal('hide');
+        $('#View-past-Fixture').modal('show');
+    }
+
+
+    //1.delete Result away team member
+    function DeleteResultAway(id) {
+
+        $("#ResultAwayDeletion").modal('show');
+        $("#Adding-ResultAway_team-member").modal('hide');
+        var deleteaway = id;
+        $("#ResultAwayHidden").val(deleteaway);
+
+    }
+    function ResultAwayYesBtn(id) {
+        var Id = $("#ResultAwayHidden").val();
+        var objdata =
+        {
+            Id: Id
+        }
+
+        var Aurl = "/Sports/DeleteTeamMembers";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objdata,
+
+            success: function (success) {
+
+                if (success.success == true) {
+                    $("#ResultAwayDeletion").modal('hide');
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+    }
+    function ResultAwayNobtn() {
+        $("#ResultHomeDeletion").modal('hide');
+    }
+
+
+    function resultFinalTeam(Id, result) {
+        $('#FixtureHiddenResultUpdateId').val(Id);
+        $("#View-past-Fixture").modal('hide');
+        $("#txtFinalResults").val(result);
+
+        $("#Adding-Final_team-member").modal('show');
+    }
+
+    $("#SaveFinalTeamMember").on('click', function () {
+
+
+
+        var IdABC = $('#FixtureHiddenResultUpdateId').val();
+        var txtFinalResults = $("#txtFinalResults").val();
+        var formData = new FormData();
+        formData.append("Result", txtFinalResults);
+        formData.append("Id", IdABC);
+
+
+        var Aurl = "/Sports/SaveResult";
+
+
+
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formData,
+            dataType: "json",
+            success: function (success) {
+                $("#txtFinalResults").val('');
+                if (success.success == true) {
+
+                    $('#LooksGood').modal('show');
+                    $('#Adding-Final_team-member').modal('hide');
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $("#txtFinalResults").val('');
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    });
+
+
+
+    $(document).ready(function () {
+        if (~window.location.href.indexOf("Result")) {
+            $('.sports-tabs a[href="#Results"]').tab('show');
+        }
+
+        if (~window.location.href.indexOf("ManageFixtureScreen")) {
+            $('.sports-tabs a[href="#AddNewEvent"]').tab('show');
+        }
+
+        if (~window.location.href.indexOf("SportstypeReload")) {
+            $('.message-tab a[href="#SportsTypeActiveBtn"]').tab('show');
+        }
+
+    });
+
+
+    function DeleteSportTypeId(Id) {
+
+        $("#ItemDeletionSportType").modal('show');
+        var SportDelete = Id;
+        $("#hiddenfielsportype").val(SportDelete);
+    }
+    function YesSportTypeId(Id) {
+        var Id = $("#hiddenfielsportype").val();
+        var objdata =
+        {
+            Id: Id
+        }
+
+        var Aurl = "/Sports/DeleteSportsType";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: objdata,
+
+            success: function (success) {
+
+                if (success.success == true) {
+                    $("#ItemDeletionSportType").modal('hide');
+                    $("#ItemDeletionSportType").modal('hide');
+                    window.location.href = '/Sports/Sports?id=SportstypeReload'
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+
+    }
+    function NoSportTypeId() {
+        $("#ItemDeletionSportType").modal('hide');
+
+    }
+
+
+
+
+
+    function EditSportTypeId(Id) {
+
+        $("#Edit-Sport_Type").modal('show');
+        var SportEditbtn = Id;
+        $("#EditSportTypeEditBtn").val(SportEditbtn);
+
+        var Getbtnforsports = $("#EditSportTypeEditBtn").val();
+        var Obj =
+        {
+            Id: Getbtnforsports
+        }
+        var Aurl = "/Sports/GetSportsType";
+        $.ajax({
+
+            type: "Get",
+            url: Aurl,
+            data: Obj,
+            success: function (Result) {
+                var status = Result.success;
+                if (status == true) {
+                    console.log(Result.data[0].activities);
+                    $('#TXTfinalSportsType').val(Result.data[0].activities);
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+
+        });
+
+    }
+    function SaveSportTypePopup() {
+
+
+        var Activity = $('#TXTfinalSportsType').val();
+        var Id = $("#EditSportTypeEditBtn").val();
+
+        var formdata = new FormData();
+
+        formdata.append('Activities', Activity)
+        formdata.append('Id', Id)
+
+
+        var Aurl = "/Sports/UpdateSportType";
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: formdata,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function (Result) {
+
+
+                if (Result.success == true) {
+
+                    $("#Edit-Sport_Type").modal("hide");
+                    $("#SportType-Update").modal("show");
+                    $("#SportTypeUpdateHeading").text("Top! job");
+                    $("#SportTypeUpdatemessage").text("You’ve successfully updated this Sports Type!");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    }
+    function closeSportType() {
+        window.location.href = '/Sports/Sports?id=SportstypeReload'
+    }
+
+
+
+    $("#AddingSportTypePopup").on('click', function () {
+
+
+        var SportTypeName = $("#TXTfinalAddingSportsType").val();
+        var Aurl = "/Sports/SaveSportType";
+        var objdatas =
+        {
+            Activities: SportTypeName
+        }
+
+        if (SportTypeName == '') {
+
+            $('#TXTfinalAddingSportsType').focus();
+            document.getElementById("TXTfinalAddingSportsType").style.border = "1px solid red";
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            data: JSON.stringify(objdatas),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (success) {
+                if (success.success == true) {
+                    $('#Adding-Sport_Type').modal('hide');
+                    $("#SportType-SavedMessage").modal("show");
+                    $("#SportTypesavemessageHeading").text("Top! job");
+                    $("#SportTypesavedmessage").text("You’ve successfully Saved Sports Type!");
+
+                }
+                else {
+                    $('#erroritemsports').modal('show');
+                    $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+                }
+            },
+            error: function (request, error) {
+                $('#erroritemsports').modal('show');
+                $("#errmsg1sports").html("OOPS! Something Went Wrong.");
+            }
+        });
+    });
+
+    function closeSportTypesavedmessage() {
+        window.location.href = '/Sports/Sports?id=SportstypeReload'
+    }
+
+
+
+
+
+
+
+</script>

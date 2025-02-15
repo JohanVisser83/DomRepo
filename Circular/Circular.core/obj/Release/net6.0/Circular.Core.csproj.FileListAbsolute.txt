@@ -1,0 +1,14 @@
+D:\Projects\CircularSphere\Circular\Circular.core\bin\Release\net6.0\Select.Html.dep
+D:\Projects\CircularSphere\Circular\Circular.core\bin\Release\net6.0\Select.Tools.dep
+D:\Projects\CircularSphere\Circular\Circular.core\bin\Release\net6.0\Circular.Core.deps.json
+D:\Projects\CircularSphere\Circular\Circular.core\bin\Release\net6.0\Circular.Core.dll
+D:\Projects\CircularSphere\Circular\Circular.core\bin\Release\net6.0\Circular.Core.pdb
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\Circular.Core.csproj.AssemblyReference.cache
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\Circular.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\Circular.Core.AssemblyInfoInputs.cache
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\Circular.Core.AssemblyInfo.cs
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\Circular.Core.csproj.CoreCompileInputs.cache
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\Circular.Core.dll
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\refint\Circular.Core.dll
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\Circular.Core.pdb
+D:\Projects\CircularSphere\Circular\Circular.core\obj\Release\net6.0\ref\Circular.Core.dll

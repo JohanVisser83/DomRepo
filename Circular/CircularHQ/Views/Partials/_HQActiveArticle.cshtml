@@ -1,0 +1,120 @@
+﻿@model CircularHQ.Models.HQMessageModel
+<div class="chat-box bg-white chat-main-block">
+    @if(Model.lstActiveNewsFeedDetails != null)
+    {
+        <div class="chat-message-box ">
+            <div class="comm-info-area">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Who received this article?</label>
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.GroupName" readonly>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Article title</label>
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.Title" readonly>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Written by</label>
+                            <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.WroteArticle" readonly id="lblWroteArticle1">
+                    </div>
+                </div>
+                @*<div class="col-md-6">
+                    <div class="form-group">
+                        <label>Newsfeed image (app homepage)?</label>
+                        <input type="text" class="form-control " placeholder="imagename.png">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Cover image(s) or video</label>
+                        <input type="text" class="form-control " placeholder="imagename.png">
+                    </div>
+                </div>*@
+               @* <div class="col-md-6">
+                    <div class="form-group">
+                        <label>PDF Document</label>
+                        <input type="text" class="form-control " placeholder="document.pdf">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Linked item?</label>
+                        <input type="text" class="form-control " placeholder="{account or event linke}">
+                    </div>
+                </div>*@
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>PDF document</label>
+                            @if (Model.lstActiveNewsFeedDetails.DocumentPath != null)
+                            {
+                                <input type="text" class="form-control " placeholder="" value="@Model.lstActiveNewsFeedDetails.DocumentPath.Substring(Model.lstActiveNewsFeedDetails.DocumentPath.LastIndexOf('/')+1)" id="lblArticleDocfile12" readonly>
+                            }
+                            else
+                            {
+                                <input type="text" class="form-control " placeholder="" value="" id="lblArticleDocfile12">
+                            }
+                        </div>
+                    </div>
+
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Total opens</label>
+                        <input type="text" class="form-control " placeholder="{count_opens}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Total likes</label>
+                        <input type="text" class="form-control " placeholder="{count_likes}">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Content</label>
+                            <textarea id="lblSummary1" class="form-control" rows="20" readonly>@Model.lstActiveNewsFeedDetails.Summary</textarea>
+                    </div>
+                </div>
+                    <div class="row">
+                        @foreach (var item in Model.lstActiveNewsFeedDetails.ArticleMedia)
+                        {
+
+                            @if (item.MediaType == "Image")
+                            {
+                                <div class="col-md-3 mb-2 message-img-size">
+                                    <img src="@item.Media" />
+                                </div>
+
+                            }
+                            else if (item.MediaType == "Video" && item.MediaType == "Image")
+                            {
+                                <div class="col-md-3 mb-2 message-img-size">
+                                    <img src="@item.Media" />
+                                </div>
+                                <div class="col-md-3 mb-2">
+                                    <video style="height:200px; max-width:100%" controls>
+                                        <source src="@item.Media">
+                                    </video>
+                                </div>
+                            }
+                            else
+                            {
+                                <video style="max-height:30%; max-width:30%; margin-left:2%" controls>
+                                    <source src="@item.Media">
+                                </video>
+                            }
+
+                        }
+                    </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

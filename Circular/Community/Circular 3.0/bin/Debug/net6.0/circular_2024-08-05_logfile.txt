@@ -1,0 +1,20 @@
+2024-08-05 13:51:14.5087 INFO {ReqId:"c7bf6b5c-206d-4507-96c1-f5329c72b76f", Message:"http localhost:7142/  username=aljay%40circlechurch.co.za&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cB8EaRB5qROU0fBIhmkOwwUXW30q-fs6JwLtBoQVdZnJeiKUNQjGVzbaprDyXiBnN0agvFC7lcpkpOxQKEvSdNxj6Ap1dqk6WwBx_x6UCg6cmG6f6dM7tPO9Fsr9Wp7NVM"}
+2024-08-05 13:51:15.8913 INFO Inside Login
+2024-08-05 13:52:56.2096 INFO Inside Login
+2024-08-05 13:52:56.2536 INFO {ReqId:"fffbe377-e91a-49df-b466-ebcc858cd6fa", Message:"http localhost:7142/  username=aljay%40circlechurch.co.za&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cBgUVk0oCEcFQGJ_Gh5p8hFdnMkNIC7dvmt67cffUwB2fbGR-a5zyP_YDZAwUAyvyvxM1PtahgpgfzReTIFQMaI1zFWebXyQYd9D4_c01sAi9xN9fUs2jxH12FCDvSHr0w"}
+2024-08-05 13:54:13.1869 INFO {ReqId:"37a5908e-c3a1-4a0d-99c0-d313f0235740", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=aljay%40circlechurch.co.za&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cBSg1rU4znu_3WCAg-KeNWwvwu4XOT-KQwOtYo1T3lvoD4YbaJQiiNMbW58D7O6qJgkqMYgnfdR_7bECbt89fDnpO_14uQ6fXrkWKCcwxS0peM9kRsu3uG2EVlb40NVVKE"}
+2024-08-05 13:54:16.2674 INFO Inside OTP verification
+2024-08-05 15:40:07.0793 INFO {ReqId:"192a2770-307a-4787-bbd7-4fd584592e8f", Message:"http localhost:7142/  username=aljay%40circlechurch.co.za&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cA825SJ6_jB7Ky_DqTHidBN7yPyk1rmCFVTssZ-UHFEpM7EuKmTIAjIydtCbMW9yMKyzD_c6AEoHInoHDJkQsMnsZFi72bN4WHZsHU1ZjxZolAnGNSdvBIP4hVEvVHL8Xk"}
+2024-08-05 15:40:14.3171 INFO Inside Login
+2024-08-05 15:40:48.7056 INFO {ReqId:"0db93d7a-17c0-480e-8083-0ead58f19277", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=aljay%40circlechurch.co.za&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cAxoxtqQWod0UAy4S0mWNES56PElZJa8tgBFnqOed6FwANDgkPN4e3DXY5JO3MXsrm5qocSr8dw5bHvIqMzoeka1WBUc6K6PtF_3VNnqeu5Yl65tS1M2kEGhgGhSTTfudk"}
+2024-08-05 15:40:51.5832 INFO Inside OTP verification
+2024-08-05 16:02:01.1764 INFO {ReqId:"1b8fdf81-a06e-4f22-b079-9d4bbc2c1e7d", Message:"http localhost:7142/  username=clansaffy%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cA2Rxa1NKccCOAy0iJs3So4PCtW5PIFxP0OaQUq0shMFoQCfU6udInxZLJQdtkqkMDw4Q7p8tHvKfrm1bKDzCX0S80Ex2Ssi_eIa3UtntJj1edccP10KXKGWzQT_3JJMqg"}
+2024-08-05 16:02:02.6711 INFO Inside Login
+2024-08-05 16:02:16.1195 INFO {ReqId:"7ff4230f-9789-4551-ae03-03ce9c838568", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=clansaffy%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cA2CPef_-lqBnDSXmymBACKhnOFD85bD2CF67WlGTs09m-2TBwOym5wArJA9T1kqcHM4oYFc3RqHoW3WRp62ibjoxInLyo-ftFUncOM8TfkGUnvByG0dUperI6TmLFtkcQ"}
+2024-08-05 16:02:24.1875 INFO Inside OTP verification
+2024-08-05 16:04:18.0017 INFO {ReqId:"da944aaa-742a-4691-8da4-da42aa1bfdec", Message:"http localhost:7142/Dashboard/DropDownGroupList  type=all"}
+2024-08-05 16:07:21.7789 INFO {ReqId:"fa4a0119-cfee-48ea-a6c6-3b51131bf097", Message:"http localhost:7142/Dashboard/DropDownGroupList  type=all"}
+2024-08-05 17:17:36.0220 INFO {ReqId:"8c82a4a0-267f-4b0b-8c93-5637b1473fb9", Message:"http localhost:7142/  username=connellclare89%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cBCKbkUpOfV4luytBn6wqETi2uoA3WFn2coEBUThZzsxWk1tWm81rza1jT1xA7sYCxVTr-rSEFtCVP45W-B-58g0f1d__SXQ5tj_QS-I7xoIYwN9umE6sHd9YqWOPrKWs0"}
+2024-08-05 17:17:38.6528 INFO Inside Login
+2024-08-05 17:17:59.5761 INFO {ReqId:"e2b3b160-605c-40f1-8472-6500d986c374", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=connellclare89%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cBch1SWsjgdWf3l8jZ9Qd4FbpLPqBnuDBFBD_5mk986krlf34wAX9feWVZIPcKoPt4oqoaxsJUwyPrPVFK9D6LJkFhXqobv-hrld1Ri4xj9jlgNt5ofEnUPXp2v0ruCccw"}
+2024-08-05 17:18:01.1463 INFO Inside OTP verification

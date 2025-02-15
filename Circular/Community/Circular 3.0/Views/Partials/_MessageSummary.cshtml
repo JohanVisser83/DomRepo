@@ -1,0 +1,162 @@
+﻿@model CircularWeb.Models.MessageModel
+<div class="chat-message-box" id="chatArea">
+    @if (Model != null && Model.lstMessageSummary.MessageGroups.Count > 0)
+    {
+            foreach (var a in Model.lstMessageSummary.MessageGroups[0].MessageList)
+            {
+                @if(a.IsCommunityPortalMessage == 1)
+                {
+                    <div class="media ">
+                        @if (a.SenderProfilePic == "" || a.SenderProfilePic == "NA")
+                        {
+                            <div class="chatimg-box">
+                                <img src="" alt="user" class="rounded-circle">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="chatimg-box">
+                                <img src="@a.SenderProfilePic" class="rounded-circle">
+                            </div>
+                        }
+
+                        <div class="media-body ">
+                            <div class="rounded chat-head">
+
+                                <h5>@a.SenderFirstName </h5>
+                                <input type="hidden" id="toid" value="@a.ToId" />
+                            <p class="date-bx">@a.CreatedDate.ToString("dd.MM.yyyy hh:mm tt")</p>
+                            </div>
+                            @if (a.MessageTypeId == 101 || a.MessageTypeId == 10106)
+                            {
+                                <p>@a.Message</p>
+                            }
+                            @if (a.MessageTypeId == 102 || a.MessageTypeId == 10105)
+                            {
+                                <p>@a.Message</p>
+                            }
+                            @if (a.MessageTypeId == 10102 || a.MessageTypeId == 10103)
+                            {
+                            if ((@a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('.') + 1) != "jpg") && (@a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('.') + 1) != "jpeg") && (@a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('.') + 1) != "png"))
+                                {
+                                    <p >
+                                    <a target="_blank" href="@a.MessageMedia" onmouseover="this.style.textDecoration = 'underline'" onmouseout="this.style.textDecoration = 'none'">
+                                        @a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('/')+1)
+                                        </a>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <div class="addicon-bx d-inline">
+                                    <img src="@a.MessageMedia">
+                                        <span></span>
+                                    </div>
+                                }
+                            }
+                            @if (a.MessageTypeId == 103)
+                            {
+                                <div class="addicon-bx d-inline">
+                                <img src="@a.MessageMedia">
+                                    <span></span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="media chat-right">
+                            @if (a.SenderProfilePic == "" || a.SenderProfilePic == "NA")
+                            {
+                                <div class="chatimg-box">
+                                   <img src="" alt="user" class="rounded-circle">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="chatimg-box">
+                                <img src="@a.SenderProfilePic" class="rounded-circle">
+                                </div>
+                            }
+
+                            <div class="media-body  ">
+                                <div class="rounded chat-head">
+                                    <h5>@a.SenderFirstName </h5>
+                                    <p class="date-bx">@a.CreatedDate.ToString("dd.MM.yyyy hh:mm tt")</p>
+                                </div>
+                                @if (a.MessageTypeId == 101 || a.MessageTypeId == 10106)
+                                {
+                                    <p style="text-align:right">@a.Message</p>
+                                }
+                                @if (a.MessageTypeId == 102 || a.MessageTypeId == 10105)
+                                {
+                                    <p style="text-align:right">@a.Message</p>
+                                }
+                                 @if (a.MessageTypeId == 10102 || a.MessageTypeId == 10103)
+                                {
+                            @if ((@a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('.') + 1) != "jpg") && (@a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('.') + 1) != "jpeg") && (@a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('.') + 1) != "png"))
+                                    {
+                                            <p style="text-align:right">
+                                    <a target="_blank" href="@a.MessageMedia" onmouseover="this.style.textDecoration = 'underline'" onmouseout="this.style.textDecoration = 'none'">
+                                        @a.MessageMedia.Substring(a.MessageMedia.LastIndexOf('/')+1)
+                                                        </a>
+                                             </p>
+                                    }
+                                    else
+                                    {
+                                        <div class="addicon-bx d-inline">
+                                    <img src="@a.MessageMedia" style="text-align:right">
+                                            <span></span>
+                                        </div>
+                                    }
+                                }
+                                @if (a.MessageTypeId == 103)
+                                {
+                                    <div class="addicon-bx d-inline">
+                                <img src="@a.MessageMedia" style="text-align:right">
+                                        <span></span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+            }
+        }
+
+    }
+    else
+    {
+        
+    }
+
+</div>
+
+
+             
+
+<div class="send-box" id="logo-upload44">
+    <form action="">
+        <div class="send-left">
+        <input type="hidden" id="customer_active_chat">
+        <textarea type="text" id="chat-input" class="form-control" aria-label="message…" placeholder="Write message…"></textarea>
+        <label for="" class="custom-file-upload1 nameimage1 main-img"></label>
+        </div>
+        <div class="send-right">
+            <div class="add-icon-bx d-inline">
+                <button type="button" class="btn-link btn"><img src="~/images/Document-add.png"></button>
+                <input type="file" id="chatboximg11">
+            </div>
+            <button type="button" class="btn bg-lumo send-btn" id="SendChatbtn"><img src="~/images/Right-circle.png"></button>
+        </div>
+    </form>
+</div>
+
+ <script>
+    $("#logo-upload44 .custom-file-upload1").show();
+    $("#logo-upload44 input").change(function () {
+
+        $("#logo-upload44 .custom-file-upload1").show();
+        $("#logo-upload44 .custom-file-upload1").text(this.files[0].name);
+        $('#chat-input').attr('placeholder', '');
+        $('#chat-input').attr('readonly', 'readonlybb');
+    });
+ </script>

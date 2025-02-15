@@ -1,0 +1,306 @@
+﻿@model NewCircularSubscription.Models.SubscriptionFeaturesModel;
+@{
+    Layout = "_Layout";
+}
+
+    <!-- ===========================
+       Start Main body  ============================ -->
+
+    <section class="pricing">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-9">
+                    <div class="top-heading">
+                        <h1>We know, “We’re basic!”</h1>
+                        <p>
+                            No hidden fees. No nasty surprises.<br>
+                            With Circular, you always know what you're paying for.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-detail">
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                                role="tab" aria-controls="home" aria-selected="true">
+                            Monthly Payment
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                                role="tab" aria-controls="profile" aria-selected="false">
+                            Annual Payment (Save 15%)
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        @if (Model != null)
+                        {
+
+
+                            <div class="row">
+
+                                <div class="col-lg-4 col-md-4">
+                                    @if (Model != null && Model.startUpsFeatures.Count() > 0)
+                                    {
+                                        <div class="feature-left-price">
+
+                                            <div class="feature-member-box">
+                                            <h2 class="title"  >@Model.startUpsFeatures.FirstOrDefault().Name</h2>
+                                                <h3>@Model.currency @Model.startUpsFeatures.FirstOrDefault().Code<span>/ @Model.startUpsFeatures.FirstOrDefault().PlanType</span></h3>
+                                                <div class="des">
+                                                    @*<strong>Additional fees</strong>*@
+                                                   @* <p>@Model.startUpsFeatures.FirstOrDefault().AdditionalFees</p>*@
+                                                </div>
+                                            <button class="btn btn-primary btn-block btn-rounded btnstartUps" editvalue="@Model.startUpsFeatures.FirstOrDefault().Name" editValue1="@Model.startUpsFeatures.FirstOrDefault().Code" editValue2="@Model.startUpsFeatures.FirstOrDefault().MemberRange" editvalue3="@Model.startUpsFeatures.FirstOrDefault().Id"><a class="text-white">Create my community</a></button>
+                                                <div class="ul-list">
+                                                    <p>What is included?</p>
+                                                    @Html.Raw(@Model.startUpsFeatures.FirstOrDefault().Desc)
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+
+                                <div class="col-lg-4 col-md-4">
+                                    @if (Model != null && Model.essentialFeatures.Count() > 0)
+                                    {
+
+
+                                        <div class="feature-left-price">
+
+                                            <div class="feature-member-box">
+                                                <h2 class="title" editvalue="@Model.essentialFeatures.FirstOrDefault().Name">@Model.essentialFeatures.FirstOrDefault().Name</h2>
+                                                <h3>@Model.currency @Model.essentialFeatures.FirstOrDefault().Code<span>/ @Model.essentialFeatures.FirstOrDefault().PlanType</span></h3>
+                                                <div class="des">
+                                                   @* <strong>Additional fees</strong>
+                                                    <p>@Model.essentialFeatures.FirstOrDefault().AdditionalFees</p>*@
+                                                </div>
+                                            <button class="btn btn-primary btn-block btn-rounded btnstartUps" id="btnessentialFeatures" editvalue="@Model.essentialFeatures.FirstOrDefault().Name" editValue1="@Model.essentialFeatures.FirstOrDefault().Code" editValue2="@Model.essentialFeatures.FirstOrDefault().MemberRange" editvalue3="@Model.essentialFeatures.FirstOrDefault().Id">
+                                                <a class="text-white">Start a 7 day free trial</a>
+
+                                    </button>
+
+                                                <div class="ul-list">
+                                                    <p>What is included?</p>
+                                                    @Html.Raw(@Model.essentialFeatures.FirstOrDefault().Desc)
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    }
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    @if (Model != null && Model.revenueMaxFeatures.Count() > 0)
+                                    {
+                                        <div class="feature-left-price">
+
+                                            <div class="feature-member-box">
+                                                <h2 class="title" editvalue="@Model.revenueMaxFeatures.FirstOrDefault().Name">@Model.revenueMaxFeatures.FirstOrDefault().Name</h2>
+                                                <h3>@Model.currency @Model.revenueMaxFeatures.FirstOrDefault().Code<span>/ @Model.revenueMaxFeatures.FirstOrDefault().PlanType</span></h3>
+                                                <div class="des">
+                                                   @* <strong>Additional fees</strong>
+                                                    <p>@Model.revenueMaxFeatures.FirstOrDefault().AdditionalFees</p>*@
+                                                </div>
+                                            <button class="btn btn-primary btn-block btn-rounded btnstartUps" id="btnrevenueMaxFeatures" editvalue="@Model.revenueMaxFeatures.FirstOrDefault().Name" editValue1="@Model.revenueMaxFeatures.FirstOrDefault().Code" editValue2="@Model.revenueMaxFeatures.FirstOrDefault().MemberRange" editvalue3="@Model.revenueMaxFeatures.FirstOrDefault().Id">
+                                                <a class="text-white">Start a 14 day free trial</a>
+
+                                    </button>
+
+                                                <div class="ul-list">
+                                                    <p>What is included?</p>
+                                                    @Html.Raw(@Model.revenueMaxFeatures.FirstOrDefault().Desc)
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    }
+                                </div>
+
+
+
+                            </div>
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    @if (Model != null)
+                    {
+
+
+                        <div class="row">
+
+                            <div class="col-lg-4 col-md-4">
+                                @if (Model != null && Model.startUpsFeaturesYearly.Count() > 0)
+                                {
+                                    <div class="feature-left-price">
+
+                                        <div class="feature-member-box">
+                                            <h2 class="title">@Model.startUpsFeaturesYearly.FirstOrDefault().Name</h2>
+                                            <h3>@Model.currency @Model.startUpsFeaturesYearly.FirstOrDefault().Code<span>/ @Model.startUpsFeaturesYearly.FirstOrDefault().PlanType</span></h3>
+                                            <div class="des">
+                                                <strong>Additional fees</strong>
+                                                <p>@Model.startUpsFeaturesYearly.FirstOrDefault().AdditionalFees</p>
+                                            </div>
+                                            <button class="btn btn-primary btn-block btn-rounded btnstartUps" editvalue="@Model.startUpsFeaturesYearly.FirstOrDefault().Name" editValue1="@Model.startUpsFeaturesYearly.FirstOrDefault().Code" editValue2="@Model.startUpsFeaturesYearly.FirstOrDefault().MemberRange" editvalue3="@Model.startUpsFeaturesYearly.FirstOrDefault().Id"><a class="text-white">Create my community</a></button>
+                                            <div class="ul-list">
+                                                <p>What is included?</p>
+                                                @Html.Raw(@Model.startUpsFeaturesYearly.FirstOrDefault().Desc)
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                }
+
+                            </div>
+
+                            <div class="col-lg-4 col-md-4">
+                                @if (Model != null && Model.essentialFeaturesYearly.Count() > 0)
+                                {
+
+
+                                    <div class="feature-left-price">
+
+                                        <div class="feature-member-box">
+                                            <h2 class="title" editvalue="@Model.essentialFeaturesYearly.FirstOrDefault().Name">@Model.essentialFeaturesYearly.FirstOrDefault().Name</h2>
+                                            <h3>@Model.currency @Model.essentialFeaturesYearly.FirstOrDefault().Code<span>/ @Model.essentialFeaturesYearly.FirstOrDefault().PlanType</span></h3>
+                                            <div class="des">
+                                                <strong>Additional fees</strong>
+                                                <p>@Model.essentialFeaturesYearly.FirstOrDefault().AdditionalFees</p>
+                                            </div>
+                                            <button class="btn btn-primary btn-block btn-rounded btnstartUps" id="btnessentialFeatures" editvalue="@Model.essentialFeaturesYearly.FirstOrDefault().Name" editValue1="@Model.essentialFeaturesYearly.FirstOrDefault().Code" editValue2="@Model.essentialFeaturesYearly.FirstOrDefault().MemberRange" editvalue3="@Model.essentialFeaturesYearly.FirstOrDefault().Id">
+                                                <a class="text-white">Start a 7 day free trial</a>
+
+                                    </button>
+
+                                            <div class="ul-list">
+                                                <p>What is included?</p>
+                                                @Html.Raw(@Model.essentialFeaturesYearly.FirstOrDefault().Desc)
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                }
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                @if (Model != null && Model.revenueMaxFeaturesYearly.Count() > 0)
+                                {
+                                    <div class="feature-left-price">
+
+                                        <div class="feature-member-box">
+                                            <h2 class="title" editvalue="@Model.revenueMaxFeaturesYearly.FirstOrDefault().Name">@Model.revenueMaxFeaturesYearly.FirstOrDefault().Name</h2>
+                                            <h3>@Model.currency @Model.revenueMaxFeaturesYearly.FirstOrDefault().Code<span>/ @Model.revenueMaxFeaturesYearly.FirstOrDefault().PlanType</span></h3>
+                                            <div class="des">
+                                                <strong>Additional fees</strong>
+                                                <p>@Model.revenueMaxFeaturesYearly.FirstOrDefault().AdditionalFees</p>
+                                            </div>
+                                            <button class="btn btn-primary btn-block btn-rounded btnstartUps" id="btnrevenueMaxFeatures" editvalue="@Model.revenueMaxFeaturesYearly.FirstOrDefault().Name" editValue1="@Model.revenueMaxFeaturesYearly.FirstOrDefault().Code" editValue2="@Model.revenueMaxFeaturesYearly.FirstOrDefault().MemberRange" editvalue3="@Model.revenueMaxFeaturesYearly.FirstOrDefault().Id">
+                                                <a class="text-white">Start a 14 day free trial</a>
+                                    </button>
+
+                                            <div class="ul-list">
+                                                <p>What is included?</p>
+                                                @Html.Raw(@Model.revenueMaxFeaturesYearly.FirstOrDefault().Desc)
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                }
+                            </div>
+
+
+
+                        </div>
+                    }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Javascript Files
+           ================================================== -->
+
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".feature-left-price").click(function () {
+                $(".feature-left-price").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+
+
+
+
+    <script>
+    $(".btnstartUps").click(function () {
+        var subscriptionTierId = $(this).attr("editvalue3");
+        var plan = $(this).attr("editvalue");
+        var price = $(this).attr("editvalue1");
+        var planType = $(this).attr("editvalue2");
+
+        var formdata = new FormData();
+        formdata.append('SubscriptionTierId', subscriptionTierId);
+        formdata.append('PlanType', planType);
+        formdata.append('Price', price);
+        formdata.append('Plan', plan);
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SaveSelectedFeatureDetails", "Feature")',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: "json",
+            success: function (Result) {
+                if (Result.success == true) {
+                    
+                    window.location.href = '@Url.Action("Payment","Feature")';
+                }
+                else {
+
+                }
+            },
+            error: function (Result) {
+
+                console.log('Failed ');
+            }
+        });
+
+    })
+   
+    </script>
+
+

@@ -1,0 +1,9 @@
+2024-08-12 13:54:18.9315 INFO {ReqId:"12f98787-2c40-4b24-9382-670466ccebcb", Message:"http localhost:7142/  username=ALLSAINTSCIRCULAR%40GMAIL.COM&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cB-5EvsSfWotW7gDxAWBsPlxGFTt-qOpblpevIl7MoDjzh6eEvSrD4a9_sShRrJhf6HohQaAgxenDIIDGpFOG7p5bERDc-_5fs9orvk_sAeL6uwuZtAJjf6Wkqj3Voqx5HzUINHvc7l6EH4mvWIPaVixigMM63ZdMYHiH1CfzdDlg"}
+2024-08-12 13:54:29.5701 INFO Inside Login
+2024-08-12 13:55:40.6427 INFO {ReqId:"d4e80f8f-5466-483f-9a0c-08f2bc6d62c5", Message:"http localhost:7142/  username=ALLSAINTSCIRCULAR%40GMAIL.COM&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cD8B0IaKh8yee-nvvR5yM-RUpBRwTcupQp6iCsvrHpIvb7J-pPC7hL43FoV4doWU6VVaWDusOFzy3OoH_n-MfxatkMCZcVwFu0HDMDi86uJ8yonz-vfE5MNlEQ0NNrRf__1JU9VEhb19h-IpHJcdhH6KcP3aDhKczr8l5RtBQF8MQ"}
+2024-08-12 13:55:42.4561 INFO Inside Login
+2024-08-12 15:53:51.9970 INFO {ReqId:"980c19f5-7db2-471f-bf38-af0b423c9862", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cDPOlsyTIDE4if4zlxsIw-9EZ5lFBXBhib1Nk-XMToCBfClZbKOXdvYnCcz3dAF_GW0vsmhF4g_2NeszMgkqCljV49KiwzOwoBOzrDUQXaOdqNhJ9xzsIuVoflKy7mTT-4D1BfJcfQTlHJnaC7SH1-fXPWSU41P92kOsVKwYX5gYg"}
+2024-08-12 15:53:54.4696 INFO Inside Login
+2024-08-12 15:54:15.2134 INFO {ReqId:"94221e37-ad9c-4516-b103-6324de868ee5", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cAqFQi1U2SKR8wwZTbwW5uqXWza3z76RGgoNqTwo_aYaqV5-XkAle8hCftv-pwsKoGF7BJF7Y08yD8FwdDNcBKOZA5vTHRlVh1n-u_GLnPkkhjo4wwcZ9s1qIFgzegzSgYPQC4xda-YWTSTooblNraJ1gn6l_LYol-pAjY69UHIaw"}
+2024-08-12 15:54:20.2293 INFO Inside OTP verification
+2024-08-12 15:57:38.4764 INFO {ReqId:"3c65d107-a33c-46f3-a98f-b799b4f3aaf7", Message:"http localhost:7142/Storefront/GetProductByID ?id=159 "}

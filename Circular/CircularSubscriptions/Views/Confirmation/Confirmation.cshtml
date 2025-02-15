@@ -1,0 +1,59 @@
+﻿@model CircularSubscriptions.Models.CommunityFeaturesModel;
+<head>
+    <!-- Basic Page Needs
+       ================================================== -->
+    <meta charset="utf-8">
+    <title>Join Circular: Your Ultimate Community Engagement & Collaboration Hub</title>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <link rel="icon" href="~/images/favicon.png">
+</head>
+<!-- ===========================
+      1st section make community
+      ============================ -->
+<div class="main-area">
+      <section class="header-area">
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+                <div class="row">
+                        <a class="navbar-brand mr-auto" href="https://circular.ooo/" target="_blank"><img src="~/images/logo-black.png" class="img-fluid logo-bx"></a>
+                 </div>
+             </div>
+          </nav>
+    </section>
+      <section class="section-pb-bx">
+         <div class="container">
+            <div class="row">
+               <!-- ====start=== -->
+               <div class="col-lg-5 col-md-6">
+                  <div class="left-calculate">
+                      <div class="left-comm">
+                           <h3>Beep twice if you're a cheeky<br> chunk of code on a mission to mischief.
+                  </h3>
+                     <p>For our community's integrity and security, users must add a credit card on file. This ensures access by genuine individuals, not bots or trolls. We aim to offer a safe, seamless experience. While many features are free, surpassing our freemium limits transitions you to a subscription, with fees as previously detailed in the pricing section.</p>
+
+                            <a class="btn btn-info btn-block mt-5" href="@Url.Action("Payment","Confirmation")">@Model.PayButtonText </a>
+                            <p class="text-center"><small>Current month charges are pro-rata basis</small></p>
+                        </div>
+                  </div>
+                  
+               </div>
+              <!--  ====== End ====== -->
+
+               <!--  =======start col-7======= -->
+             
+               <!--  =======end col-6========= -->
+               <div class="paylastbox">
+                    <img src="~/images/payCir.png" class="img-fluid">
+
+                 </div>
+            </div>
+         </div>
+      </section>
+    <!-- ===========================
+      1st section End
+      ============================ -->
+</div>

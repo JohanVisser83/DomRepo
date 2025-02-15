@@ -1,0 +1,48 @@
+2024-08-26 12:38:01.6671 INFO {ReqId:"0db4e662-4175-42e8-b484-0bdfb08b8737", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cB8tKPWOUJ08HiCyGgpPuth7bc67jSbhr7aDg7J7aJeAp3I0r1vuz7qQ3E2syOu_krR3tBuFjNR_Wvhl8kBXBlBUq_fLf6mApqpMh_P3YzsbzDD5pLRiEsLo_Zd8cAsReRGR8lNiK5-l-c--OTb2ldLsoLbN4TzrOJdRMzYc5hQhw"}
+2024-08-26 12:38:02.4027 INFO Inside Login
+2024-08-26 12:38:18.5433 INFO {ReqId:"79fe2eaf-f50f-4523-afe1-6fc5a6c9e74d", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cDGH1f6vaL6EIi-5AO82MPOxwQDgJeFUJTdetQ0b3WqeAEC08RhkbRcxncPvmXXw-Y2AWNhRrK9vvTaZr-T5k8TAKkDOr7Oq8RSZBrIKfSEnII4KbnjfOR8T60leUYa4glTI4D90nKPnv-zdjz9QWJj8yhyKoNtyEEgJR3ea7pcqQ"}
+2024-08-26 12:38:18.6397 INFO Inside OTP verification
+2024-08-26 12:39:39.9806 INFO {ReqId:"4fb8a615-e762-49b6-ace9-ea8108243440", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cC4wNdbqX515lK4seRIjg9JEoGlb2eUED4Rcn-JXffWhTHP27JQRxUgpx6yEJ_n4BWp3qx35Yr_rAnDn50IWDaeRFuFgJy1iRaksi1WjCxEpRoOtGxwI-Fbzd7wJAI-DnA"}
+2024-08-26 12:39:39.9806 INFO Inside Login
+2024-08-26 12:40:52.4131 INFO {ReqId:"9cf9c618-862e-4849-9b8a-06bcbf3a270d", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cDQNDm1wvcs3zO7xpu-xBNff9wFEK1Jd5vadGSmnckWpbTPcVL2XlKLSXmnfjCAZFWyVLjWOmjb4BFqEuav6q8RRjDSJVZqcl_fVhu_Fk5cZ4ce9K5i-K_WmKPlO9UEQko"}
+2024-08-26 12:40:52.5562 INFO Inside Login
+2024-08-26 12:40:58.7933 INFO {ReqId:"1d94afd3-c6df-4c41-a4bd-48552bdbfdc7", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cDQNDm1wvcs3zO7xpu-xBNff9wFEK1Jd5vadGSmnckWpbTPcVL2XlKLSXmnfjCAZFWyVLjWOmjb4BFqEuav6q8RRjDSJVZqcl_fVhu_Fk5cZ4ce9K5i-K_WmKPlO9UEQko"}
+2024-08-26 12:40:58.8072 INFO Inside Login
+2024-08-26 12:41:06.7664 INFO {ReqId:"f6a4384a-21f9-4652-8cb1-921be49758c6", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cDM8o6hjMnTBYtSmFxjawBJ0dr7bkFQC_6UVeSkGqs6Q1gF-PxiPUezlzApmgPLm3yASh2eCoHc6EHMyxcVfdUx2EOKdG9Oumib_VUyJkvS2lCi8f5nuizfl5KD2XcQAiA"}
+2024-08-26 12:41:06.7840 INFO Inside OTP verification
+2024-08-26 12:45:03.3750 INFO {ReqId:"38e98320-fe00-4292-89df-d9ee0d4276da", Message:"http localhost:7142/Planner/GetEventDetailById  Id=351"}
+2024-08-26 12:45:13.7223 INFO {ReqId:"177d2721-46d2-4251-a391-d8ce9a1d41a3", Message:"http localhost:7142/Planner/GetEventDetailById  Id=359"}
+2024-08-26 12:45:43.8423 INFO {ReqId:"697a181b-feaf-452c-ac2e-cd87bcbd08bd", Message:"http localhost:7142/Planner/UpdateEvent  Id=359&Description=TT+ka+event&Location=TT&EventStartDate=2024-8-28&StartTime=12%3A40%3A00&EventEndDate=2024-8-31&EndTime=12%3A40%3A00"}
+2024-08-26 12:56:03.9237 INFO {ReqId:"4de6e330-3d68-4b14-8925-032139347012", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cD2TG_dmsoqRUSa37ZssfsHePdP1X5mj_WufNLQPlnCuVQDjUu-Fed_NwUFliv-QPNc9WEMmAiprpmb134Lpss39mbinl9HrJ9us-rS2C-LgbjKEQvnW2tksW3UB95qcrMDXONZGjY6MYhPcG3H09f5bT5nQ0u1g738f_ZPizMytQ"}
+2024-08-26 12:56:04.0725 INFO Inside Login
+2024-08-26 12:56:16.6821 INFO {ReqId:"a3e13490-8c41-44ae-84af-25074e838e6f", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cATF_OpBbNjlVRxyGcADkoRa15XA6kLDr66o8vP05jyB2QJ9ARMGWns6RYLaH236Hlu2JeScWArHiZXkcNXD3Q4EsQIxPc2-kXLbmpcNsmYTJ2QbjmIwTv9nb2fmdSsu89w317a3W0N2CMLyydB7NpZcu5HOsDUDF1TK4mhSiN1Jg"}
+2024-08-26 12:56:16.7110 INFO Inside OTP verification
+2024-08-26 13:40:02.7096 INFO {ReqId:"2343db3b-da1a-4f75-ad68-893a08df8ae4", Message:"http localhost:7142/Message/GetAdminConversations  Id=110"}
+2024-08-26 13:40:09.3850 INFO {ReqId:"5b432a17-a1bc-4968-ab2a-1ccb693c3f37", Message:"http localhost:7142/Message/GetAdminConversations  Id=104"}
+2024-08-26 13:40:12.3902 INFO {ReqId:"3362a36b-5a1f-4c4b-8042-d66bfea052d4", Message:"http localhost:7142/Message/GetAdminConversations  Id=10125"}
+2024-08-26 13:40:23.7369 INFO {ReqId:"d3f4bac9-dd99-469a-a780-325dc1a1b639", Message:"http localhost:7142/Message/GetAdminConversations  Id=10151"}
+2024-08-26 13:40:28.5102 INFO {ReqId:"166f1062-f17a-4837-85f1-41ad1062bd18", Message:"http localhost:7142/Message/GetAdminConversations  Id=10125"}
+2024-08-26 13:40:34.3738 INFO {ReqId:"7bd39340-ea6e-4a54-9083-ecaafbec5ce0", Message:"http localhost:7142/Message/GetAdminConversations  Id=10151"}
+2024-08-26 13:40:43.7868 INFO {ReqId:"f1696a47-b1ec-4dbf-8d8e-bff522cae42a", Message:"http localhost:7142/Message/GetAdminConversations  Id=10197"}
+2024-08-26 13:47:20.6936 INFO {ReqId:"53d286ac-3006-41b3-925d-9ddf4c68f823", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cCkymOq_D4Lnl8VBZfu-58iPQQSRoZd4PSOrch7d3Ls5NpUsjQ6Q-pAh9_XppAX97Nu2oQEU6IZd1hkw3KuvCY-V3sPdxXNpBRzaqUQal5xwI51jlKSHlpGiyNoCKIV-ZGgBaVf6Y2pkkm9xI6HFQFubw8TD7kZA_JH88XWVeFSzg"}
+2024-08-26 13:47:20.9015 INFO Inside Login
+2024-08-26 13:47:38.3190 INFO {ReqId:"5b61d637-ca0d-42b8-97ed-614edee536eb", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cDw8m9OsPWL6VWw8aCDWW6kVdBnwFzmLVZg_Q7qlwaIPOYufXWgx2nN3aPh87bJZudRm1fdagc1XTaMC5GXjYW-ULpWYoT2NYERrqUnQ4XKBOcTtYhVpVDmE5q5mlc2E7OfN-p7LfOT__O2JYVuO_01W9R8t90SOAFoW7lJA4Clyg"}
+2024-08-26 13:47:38.3423 INFO Inside OTP verification
+2024-08-26 13:47:54.8355 INFO {ReqId:"2cd73540-0f07-46ee-86ce-deab65097f7c", Message:"http localhost:7142/Message/GetAdminConversations  Id=10197"}
+2024-08-26 13:52:02.4760 INFO {ReqId:"24512d1d-fc16-40b7-a8e2-2e8ce0161ada", Message:"http localhost:7142/Planner/GetEventDetailById  Id=361"}
+2024-08-26 13:55:11.4142 INFO {ReqId:"afdc62e3-d905-44f9-a9f9-0b35bedf5316", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cD2OcN-IzRFAXOeeK-n0rnRpxfiwdPn3L7tkP0PGrdz6rvVbzpGHKL5-BzL40LgTUxbvW9oGX8_r7vRoOOKdnD9Cog2m1lJPwPURAeerO8ELFNKdr6iENs4PgDmQM_qtmY"}
+2024-08-26 13:55:11.5355 INFO Inside Login
+2024-08-26 13:55:24.7374 INFO {ReqId:"1a9d4b78-1b47-4257-9209-8ee95d09d671", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cDo5FKLNIhHMwklCOrhs1n3UfOi78NHpZus52umiAeNVbZKBPagNV9z3gmy9I4e2i0ohtpS6bmhz75zlejVJIFrfUodnL9KxjIeaUrK3uJL7RsgKj4SRz-K5tXNCK-oxy0"}
+2024-08-26 13:55:24.7879 INFO Inside OTP verification
+2024-08-26 13:56:00.8683 INFO {ReqId:"0075920b-23c7-45e9-a847-959499747784", Message:"http localhost:7142/Message/GetAdminConversations  Id=10197"}
+2024-08-26 13:58:39.9334 INFO {ReqId:"f8bcbf14-8c1f-4de3-b4b4-c34293453792", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cCJc-SurL8mCAylURWQUJKYQwf7VzzjcPpuzVWqeagBvewMkzizUiVeOJd1Hp8JoLbVW8A5QkAkluMjzUY7cVJoYWPE8HZ0S8O_Uui7MZHwMKBHKivi5bUhylYrlHwfhM6-9bqNXI2ccYjqczOdUK0nqy8GpmCse4I8hi0nJw9pHA"}
+2024-08-26 13:58:40.0718 INFO Inside Login
+2024-08-26 13:58:43.2153 INFO {ReqId:"b9240a28-d452-4b92-9ab3-3c5376ba3e49", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cCJc-SurL8mCAylURWQUJKYQwf7VzzjcPpuzVWqeagBvewMkzizUiVeOJd1Hp8JoLbVW8A5QkAkluMjzUY7cVJoYWPE8HZ0S8O_Uui7MZHwMKBHKivi5bUhylYrlHwfhM6-9bqNXI2ccYjqczOdUK0nqy8GpmCse4I8hi0nJw9pHA"}
+2024-08-26 13:58:43.2392 INFO Inside Login
+2024-08-26 13:59:02.7204 INFO {ReqId:"f26f2770-2383-4864-b3c3-658f78f897a3", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cAZRWPSkHvohHt6be6t2FWndEzmSRDtRIH8mxBcXNQsh_G_34Q9wh-B4QDYmSJuSO2m4-rbbffJtXMWwxQ-LsKT2aMWMt7kw9jcB9PqhvUOzAsz8aD7nNuOO8iwkYOcNPCIeBVXObFAbQpJH3qVYI-KYigCHAjjd41dHqupfU9r_w"}
+2024-08-26 13:59:02.7497 INFO Inside OTP verification
+2024-08-26 14:08:46.9513 INFO {ReqId:"32a0f0b0-d772-49a3-bcb9-bab826237841", Message:"http localhost:7142/  username=ambika.rahangdale007%40gmail.com&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cAFXJhdmpYZdutsqrmjrqYMLGkEtm9Ymmnjr_9cqJvt2CTMXp4alahCnAJTQHJ74njrqwmtUQ47bgpkDL8cdyg-oRu4oi2DS5TFYG1ojv-iLqG6FPQS5FYgFnhJTWK5mbE2_MYhrFHVTKEG4rNNIDA311-UdumcUA0pkv6eYPJ5eQ"}
+2024-08-26 14:08:49.4208 INFO Inside Login
+2024-08-26 14:09:11.2659 INFO {ReqId:"e9c19c66-302e-48c0-8d30-4bdcc059cc4e", Message:"http localhost:7142/Login/otp  Otp=12345&UserName=ambika.rahangdale007%40gmail.com&timezoneName=Asia%2FCalcutta&__RequestVerificationToken=CfDJ8CV3-W8lYElHlR8lvXtX5cCpYP2H4yn1X0HKhQ6K7Dgp0BLvSVLwnKbcmOFPNVi_9GnXjT5YiA2IBbUaWOgamiM8rJkTxip7DT6jLZndvGYsSMmGxIY6CR6rd7Eh4Gq6HX0zKSdMw02tmPQ1wbc14weueL53fzdFIje9SEZzCe0tzQwpT_6y56EeWbhT_f3y6g"}
+2024-08-26 14:09:16.4319 INFO Inside OTP verification
+2024-08-26 14:10:33.2951 INFO {ReqId:"cbcc33a5-6a6b-49c7-97a1-bbd71bb210eb", Message:"http localhost:7142/Planner/GetEventDetailById  Id=362"}

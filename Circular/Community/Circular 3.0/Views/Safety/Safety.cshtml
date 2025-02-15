@@ -1,0 +1,3310 @@
+﻿@{
+	Layout = "_Layout";
+}
+<style type="text/css" media="print">
+	.noPrint {
+		display: none;
+	}
+
+</style>
+<style>
+	.ui-menu .ui-menu-item a {
+		font-size: 12px;
+	}
+
+	.ui-autocomplete {
+		z-index: 1051 !important;
+		float: left;
+		height: 230px;
+		overflow-y: auto;
+		border-radius: 6px 6px 11px 11px;
+	}
+
+	.ui-widget.ui-widget-content {
+		border: none !important;
+	}
+
+	.ui-menu li.ui-menu-item .ui-menu-item-wrapper {
+		border-radius: unset;
+	}
+
+	.ui-widget.ui-widget-content {
+		box-shadow: none;
+		background: #ffffff;
+		color: #101C28;
+		font-size: 14px;
+		font-weight: 500;
+	}
+
+	.ui-menu .ui-menu-item {
+		margin-bottom: 3px;
+	}
+</style>
+
+
+
+
+<div class="col-lg-11 col-md-11  col-sm-10 col-10" id="nonPrintable">
+	<div class="body-content">
+
+
+		<div class="row">
+			<div class="col-lg-2">
+				<div class="sidebar mt-38">
+
+					<ul class="nav nav-tabs tab-data message-tab">
+
+						<li><a data-toggle="tab" href="#AttendanceRegistry" class="active">Attendance registry</a></li>
+						<li><a data-toggle="tab" href="#SickSubmission">Sick note submission</a></li>
+						<li><a data-toggle="tab" href="#WellnessCounselling">Wellness & Counselling</a></li>
+						<li><p class="tab-text">Transport</p></li>
+						<li><a data-toggle="tab" href="#Traveller">Traveller status</a></li>
+						<li><a data-toggle="modal" href="#AddVehicle">Add a vehicle</a></li>
+						<li><a data-toggle="modal" data-target="#PriceKilometer">Price per kilometer/mile</a></li>
+						<li><a data-toggle="modal" data-target="#PriceCodes">Price display codes</a></li>
+						<li><a data-toggle="tab" href="#TicketSales">Ticket sales</a></li>
+						<li><a data-toggle="modal" data-target="#TravelTicket">Add a new ticket</a></li>
+						<li><p class="tab-text">Scanner profiles</p></li>
+						<li><a data-toggle="tab" href="#AttendanceManagement">User management</a></li>
+						<li><a data-toggle="modal" data-target="#NewScannerUser">Add a profile</a></li>
+					</ul>
+					<div class="qr-code-bx">
+						<img src="~/images/download qr code - attendance icon.png" id="QRAttendance" onclick="GenerateAttendanceQRbtn()">
+						<p>Download your QR code for attendance scanner here</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-10">
+
+				<div class="tab-content">
+					<!-- @* =====Attendance Registry=====*@ -->
+					<div id="AttendanceRegistry" class="tab-pane fade active show ">
+						<div class="safty-top-area">
+							<div class="row align-items-center">
+								<div class="col-md-3 text-center">
+									<label>Select a date</label>
+									<div class="form-group">
+										<div class="date-icon">
+											<input type="text" id="datetimefromattendance" class="form-control  btn-date" onchange="GetAttendanceRegistrydetail()">
+										</div>
+									</div>
+
+								</div>
+								<div class="col-md-3 text-center">
+									<div class="form-group ">
+										<label>Select a class</label>
+										<select class="form-control" asp-items="@(new SelectList(Model.lstCommunityClasses,"Id","Name"))" id="ddlattendance" onchange="GetAttendanceRegistrydetail()">
+											<option value="">Select</option>
+										</select>
+
+
+									</div>
+								</div>
+								<div class="col-md-3 text-center">
+									<div class="form-group ">
+										<label>Select a Teacher</label>
+										<select class="form-control" asp-items="@(new SelectList(Model.lstcommclassteachers,"Id","StaffName"))" id="teachernameddl" onchange="GetAttendanceRegistrydetail()">
+											<option value="">Select</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+									<button type="button" class="btn btn-link "><span class="mr-2 export-btn" id="exportBtn"><img src="~/images/Black-Download.png" onclick="exportCSVExcelAttendance()"></span>Export CSV</button>
+									<button type="button" class="cross">
+										<a href="@Url.Action("Dashboard","Dashboard")">
+											<span aria-hidden="true">×</span>
+										</a>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- For Attendance Registry purpose-->
+						<!-- Users box-->
+						<div class="border-bx-area border-0">
+							<div class="table-responsive">
+								<table id="Attendance_registry" class="table">
+									<thead>
+										<tr>
+											<th>Name <span class="ml-2"><img src="/images/Filter-1.png"></span></th>
+											<th>Status <span class="ml-2"><img src="~/images/Filter-1.png"></span></th>
+											<th>Date & time</th>
+											<th>Class <span class="ml-2"><img src="~/images/Filter-1.png"></span></th>
+											<th>Teacher <span class="ml-2"><img src="~/images/Filter-1.png"></span></th>
+
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+					<!--  @*==end===*@ -->
+					<!-- @*====SickSubmission====*@ -->
+					<div id="SickSubmission" class="tab-pane fade ">
+						<div class="safty-top-area">
+							<div class="row align-items-center">
+								<div class="col-md-3 text-center">
+									<label>Select a period</label>
+									<div class="form-group ">
+										<div class="date-icon">
+											<input type="text" id="Formdate" class="form-control  btn-date" onchange="GetSickNoteDetails()">
+
+										</div>
+									</div>
+
+								</div>
+								<div class="col-md-3 text-center">
+									<div class="form-group ">
+										<label>Select a class</label>
+										<select class="form-control" asp-items="@(new SelectList(Model.lstCommunityClasses,"Id","Name"))" id="ddlsicknote" onchange="GetSickNoteDetails()">
+											<option value="0">Select</option>
+
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-3 text-center">
+									<div class="form-group ">
+
+										<label>Select a Teacher</label>
+										<select class="form-control" asp-items="@(new SelectList(Model.lstcommclassteachers,"Id","StaffName"))" id="teachersicknoteddl" onchange="GetSickNoteDetails()">
+											<option value="0">Select</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+									<button type="button" class="btn btn-link " id="exportfiles"><span class="mr-2"><img src="~/images/Black-Download.png" onclick="exportCSVExcel()"></span>Export CSV</button>
+									<button type="button" class="cross">
+										<a href="@Url.Action("Safety","Safety")">
+											<span aria-hidden="true">×</span>
+										</a>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class=" border-bx-area border-0">
+							<div class="table-responsive">
+								<table id="Sick-Submission" class="table ">
+									<thead>
+										<tr>
+											<th>Name <span class="mr-2"><img src="~/images/Filter1.png" /></span></th>
+											<th>From</th>
+											<th>To</th>
+											<th>Attachment</th>
+
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+
+					</div>
+
+					<!--  @*====end===*@ -->
+					<!-- @*=====New Event=====*@ -->
+					<div id="WellnessCounselling" class="tab-pane fade new-event ">
+						<!-- For demo purpose-->
+						<div class="cross-icon text-right d-block cross-relative">
+
+							<button type="button" class="cross">
+								<a href="@Url.Action("Safety","Safety")">
+									<span aria-hidden="true">×</span>
+								</a>
+							</button>
+						</div>
+
+						<div class="col-lg-8 position-realtive">
+							<ul class="nav nav-tabs tab-welness  pt-lg-4">
+
+								@foreach (var item in Model.getCommunityGuidanceWellnessOptions)
+								{
+									<li><a data-toggle="modal" data-target="#GuidanceCounsellings" class="active" onclick="GetGuidance(@item.Id)">@item.ButtonName</a></li>
+								}
+							</ul>
+							<div class="p-6 border-bx-area">
+								<div class="Wellness-tab">
+
+									<div class="tab-content tab-welnes-content">
+										<div id="GuidanceCounselling" class="tab-pane fade active show">
+											<div class="form-group ">
+												<label>Landing Page writeup</label>
+												<textarea class="form-control height-auto" id="LandingPage" rows="7" placeholder=""></textarea>
+											</div>
+											<p class="border-bottom">Overview</p>
+											<div class="form-group">
+												<label>Overview cover image</label>
+												<div class=" add-icon-bx" id="coverImg">
+													<div class="form-control  pt-3" id="lblStfImg"></div>
+													<div class="add-icon upload-icon">
+														<input type="file" id="safetycoverimg" name="myfile" accept="image/*" onchange="UpdateStaffImagereadURL(this);" class="form-control" />
+														<img src="~/images/Add-Circle.png">
+													</div>
+												</div>
+											</div>
+
+
+											<div class="form-group ">
+												<label>Overview writeup</label>
+
+												<textarea class="form-control height-auto" id="Overview" rows="7" placeholder=""></textarea>
+											</div>
+											@*<p class="border-bottom pl-2">Report an incident</p>
+											<div class="form-group ">
+												<label>Incident report email inbox address</label>
+												<input type="text" id="IncidentEmail" class="form-control">
+											</div>*@
+											<div class="text-right">
+												<button type="button" id="ReportUpdate" class="btn btn-lumo-green">Update</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+
+
+					</div>
+					<!-- ======End===== -->
+					<!-- @*  ====Traveller Status====*@ -->
+					<div id="Traveller" class="tab-pane fade ">
+						<div class="safty-top-area">
+							<div class="row align-items-center">
+								<div class="col-md-3 text-center">
+									<label>Select a period</label>
+									<div class="form-group ">
+										<div class="date-icon">
+											<input type="text" id="datefrom" class="form-control  btn-date" onchange="GetVehiclesdetails()">
+
+										</div>
+									</div>
+
+								</div>
+								<div class="col-md-3 text-center">
+									<div class="form-group ">
+										<label>Select a vehicle</label>
+										<select class="form-control" id="ddlVehicleType" onchange="GetVehiclesdetails()">
+											<option selected="">All</option>
+											@foreach (var item in Model.lstvehicles)
+											{
+												<option value="@item.Id">@item.VechilesName</option>
+
+											}
+										</select>
+									</div>
+								</div>
+
+								<div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+									<button type="button" class="btn btn-link"><span class="mr-2"><img src="~/images/Black-Download.png" onclick="exportCSVExcelTravel()"></span>Export CSV</button>
+									<button type="button" class="cross">
+										<a href="@Url.Action("Safety","Safety")">
+											<span aria-hidden="true">×</span>
+										</a>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="border-bx-area border-0">
+							<div class="table-responsive ">
+								<table id="TravellerStatus" class="table">
+									<thead>
+										<tr>
+
+											<th>Name <span class="mr-2"><img src="~/images/Filter1.png" /></span></th>
+											<th>Driver Name</th>
+											<th>ON Transport</th>
+											<th>OFF Transport</th>
+											<th>Vehicle</th>
+
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+
+					</div>
+
+					<!--@*====end===*@ -->
+					<!-- @*====Traveller Status====*@ -->
+					<div id="TicketSales" class="tab-pane fade ">
+						<div class="safty-top-area">
+							<div class="row align-items-center">
+
+								<div class="ml-auto cross-icon text-right  cross-relative planner-cross">
+
+									<button type="button" class="cross">
+										<a href="@Url.Action("Safety","Safety")">
+											<span aria-hidden="true">×</span>
+										</a>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class=" border-bx-area border-0">
+							<div class="table-responsive">
+								<table id="Ticket-Sales" class="table ">
+									<thead>
+										<tr>
+											<th style="display:none"></th>
+
+											<th class="text-left">Ticket <span class="mr-2"><img src="~/images/Filter1.png" /></span></th>
+											<th>Start time</th>
+											<th>Ticket price</th>
+											<th>Tickets sold</th>
+											<th><span class="text-nowrap">Total ticket value</span></th>
+											<th>View ticket</th>
+											<th>Delete ticket</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										@if (Model.lstTicketsale.Count > 0)
+										{
+
+											foreach (var item in Model.lstTicketsale)
+											{
+
+												<tr>
+													<td style="display:none"> @item.Id</td>
+													<td class="text-left">@item.TicketName</td>
+													<td>@item.StartDateTime</td>
+													<td>@Model.currencyModel.CurrencyCode @item.TicketPrice</td>
+
+													<td><a><span onclick="GetTicketSoldView(@item.Id)">@item.SoldCount/@item.TicketCount</span></a></td>
+													<td>@Model.currencyModel.CurrencyCode @(@item.SoldCount * item.TicketPrice)</td>
+													<td>
+														<a>
+															<span onclick="onviewticket(@item.Id)" class="ticket-w20"><img src="~/images/Ticket-black.png"></span>
+														</a>
+													</td>
+													<td><span><img src="~/images/Delete2.png" onclick="ondeleteing(@item.Id)"></span></td>
+
+												</tr>
+											}
+
+										}
+										else
+										{
+											<tr> <td>No Records Found!</td></tr>
+
+										}
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+
+					</div>
+					<!--   @*====end===*@ -->
+					<!-- @*======Ticket scanner User management======*@ -->
+					<div id="AttendanceManagement" class="tab-pane fade ">
+						<!-- For demo purpose-->
+						<div class="cross-icon text-right d-block cross-relative planner-cross">
+
+							<button type="button" class="cross">
+								<a href="@Url.Action("Safety","Safety")">
+									<span aria-hidden="true">×</span>
+								</a>
+							</button>
+						</div>
+
+						<div class="border-bx-area border-0">
+							<div class="table-responsive">
+								<table id="Attendance-Management" class="table active-bookings">
+									<thead>
+										<tr>
+											<th>User name</th>
+											<th>Mobile number</th>
+											<th>Attendance Scanner</th>
+											<th>Transport scanner</th>
+											<th>Remove Profile</th>
+										</tr>
+									</thead>
+									<tbody id="usermanagentgetid">
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+
+					</div>
+					<!--@*=======END========*@-->
+
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="qrCodeImageContainer">
+</div>
+
+
+<!-- @*======Guidance Counselling====*@ -->
+<div class="modal fade modal-add-bx" id="GuidanceCounsellings" tabindex="-1" aria-labelledby="GuidanceCounsellingLabel" aria-hidden="true">
+	<div class="modal-dialog  w-500">
+		<div class="modal-content">
+			<div class="modal-header">
+
+				<h5 class="modal-title" id="buttonTitle" value=""></h5>
+
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+
+			</div>
+			<div class="modal-body p-0">
+				<div class="new-message">
+
+					<div class="row p-6">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Button name</label>
+								<div class=" add-icon-bx">
+
+									<input class="form-control " id="buttonname" value="Guidance & Counselling" />
+									<div class="add-icon">
+
+										<img src="~/images/edit.png">
+									</div>
+								</div>
+
+							</div>
+							<div class="form-group">
+								<label>Email address</label>
+								<input type="text" class="form-control " id="txtEmail" value="email@domain.com" />
+
+							</div>
+							<div class="form-group">
+								<label>Contact number</label>
+								<input type="text" class="form-control" id="txtContact" value="+27 83 000 0000" />
+
+							</div>
+							<div class="form-group">
+								<label>Book a session hyperlink (i.e Calendly)</label>
+								<input type="text" id="txtHyperlink" class="form-control" />
+
+							</div>
+							<div class="form-group">
+								<label>Information</label>
+								<textarea class="form-control height-auto bg-gray border-0" id="txtInformation" rows="4" placeholder=""></textarea>
+
+							</div>
+							<div class="form-group">
+								<label>Is Visible</label>
+								<input type="checkbox" id="mycheckbox" />
+								@*<input type="hidden" id="isCheckboxChecked" name="IsChecked" value="0" />*@
+							</div>
+						</div>
+						<div class="col-md-12 text-right">
+							<button type="button" id="Update" class="btn btn-lumo-green">Update</button>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======Add a Vehicle====*@ -->
+<div class="modal fade modal-add-bx small-datatable" id="AddVehicle" tabindex="-1" aria-labelledby="AddVehicleLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable w-500">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title ">Add a vehicle</h5>
+
+
+				<button type="button" id="btnclosevehicle" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+
+			</div>
+
+			<div class="modal-body p-0">
+				<div class="new-message">
+
+					<div class="row p-4">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Vehicle name</label>
+								<input type="text" class="form-control" id="txtusername">
+
+							</div>
+						</div>
+						<div class="col-md-12 text-right">
+							<button type="button" class="btn btn-lumo-green" id="btnsubmitVehicle">Add a vehicle</button>
+						</div>
+
+					</div>
+					<div class="table-responsive">
+						<table id="Vehicle-List" class="table attendence">
+							<thead>
+								<tr>
+									<th style="display:none">Id</th>
+									<th class="text-left">Current vehicle list</th>
+									<th class="text-right"></th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model.lstvehicles)
+								{
+									<tr>
+										<td style="display:none"> @item.Id</td>
+										<td class="text-left">@item.VechilesName</td>
+										<td class="text-right">
+											<button type="button" class="btn-link btn"><img src="~/images/cil_qr-code.png" onclick="AddVehiclesQRcode(@item.Id)"></button>
+											<button type="submit" class="btn-link btn"><img src="~/images/Delete2.png" onclick="Show_id(@item.Id)" /></button>
+										</td>
+									</tr>
+
+								}
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*=======item deletion confirmation vehicles=====*@ -->
+<div class="modal fade modal-small-bx" id="delete-confimations" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+					<h5>Are you sure?</h5>
+					<p>You are about to delete this vehicle forever :(</p>
+				</div>
+				<div class="text-center">
+
+					<button type="button" class="btn bg-pink" onclick="onno()">No</button>
+					<button type="button" class="btn bg-lumo" id="yesbutton" onclick="onyes()">Yes</button>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=======item deleteprice price display =====*@ -->
+<div class="modal fade modal-small-bx" id="deleteprice" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+					<h5>Are you sure?</h5>
+					<p>You are about to delete this QR code forever.</p>
+				</div>
+				<div class="text-center">
+
+					<button type="button" class="btn bg-pink" onclick="onnoprice()">No</button>
+					<button type="button" class="btn bg-lumo" id="yesbutton" onclick="onyesPrice()">Yes</button>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=======item deleteuser price display =====*@ -->
+<div class="modal fade modal-small-bx" id="deleteUser" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+					<h5>Are you sure?</h5>
+					<p>You are about to delete this profile forever :(</p>
+				</div>
+				<div class="text-center">
+
+					<button type="button" class="btn bg-pink" onclick="onnoUser()">No</button>
+					<button type="button" class="btn bg-lumo" onclick="onyesUser()">Yes</button>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=======item deleteticket price display =====*@ -->
+<div class="modal fade modal-small-bx" id="deleteTicket" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+					<h5>Are you sure?</h5>
+					<p>You are about to delete this ticket forever :(</p>
+				</div>
+				<div class="text-center">
+
+					<button type="button" class="btn bg-pink" onclick="onnoTicket()">No</button>
+					<button type="button" class="btn bg-lumo" onclick="onyesTickets()">Yes</button>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=======item added successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="ConfirmationSafety" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+
+					<p id="TxtSafety"></p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-pink" onclick="ClosebtnOnlySafety()">
+						<span aria-hidden="true">Close</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*=======item added successfully=====*@ -->
+@*Successfully A*@
+<!-- @*=======item added successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="TxtSaveVehicle" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+
+					<p id="Txtsavevehiclemsg"></p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-pink" onclick="CloseTxtsavevehiclemsg()">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*=======item added successfully=====*@ -->
+@*Successfully A*@
+<!-- @*=======item added successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="TxtPriceDisplayMessage" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+
+					<p id="TxtPriceMessage"></p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-pink" onclick="ClosebtnTxtPriceMessage()">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*=======item added successfully=====*@ -->
+@*Successfully A*@
+<!-- @*=======item added successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="ConfirmationMessage" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+
+					<p id="TxtMessage"></p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-pink" onclick="ClosebtnOnly()">
+						<span aria-hidden="true">Close</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*=======item added successfully=====*@ -->
+<!-- @*=======item added successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="ConfirmationPriceCode" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+
+					<p id="TxtPriceCode"></p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-pink" onclick="ClosebtnOnlyPriceCode()">
+						<span aria-hidden="true">Close</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*=======item added successfully=====*@ -->
+<!-- @*=======item blank not successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="blankitem" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+
+					<p id="errmsg"></p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-default btn-block" data-dismiss="modal">
+						<span aria-hidden="true">Close</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*=======item blank not  successfully=====*@ -->
+<!-- @*=======item error message  successfully=====*@ -->
+<div class="modal fade modal-small-bx" id="erroritem" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+
+					<p id="errmsg1"></p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-default btn-block" data-dismiss="modal">
+						<span aria-hidden="true">Close</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- @*=======item error message  successfully=====*@ -->
+
+<div class="modal fade modal-small-bx" id="ItemUpdated" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+					<h5>You’re community is officially safer!</h5>
+					<p>The price has been updated successfully.</p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn bg-pink" onclick="closeupdatemethod()">Close</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=======WELLNESS $ COUNSELLING LANDING PAGE UPDATE=======*@ -->
+<div class="modal fade modal-small-bx" id="WellnessUpdated" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+					<h5>You’re community is officially safer!</h5>
+					<p>This section has been updated successfully.</p>
+				</div>
+				<div class="text-center">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- @*========END======*@ -->
+<!-- @*=======QR CODE For ADD Vehicles=======*@ -->
+<div class="modal fade modal-add-bx" id="QR-code" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog w-500 modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header qrpthed">
+				<h5 class="modal-title" id="newque"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body p-0 text-center">
+				<div class="qr-codeS">
+
+					<img id="imgqr" class="downloadable" />
+				</div>
+			</div>
+			<div class="modal-footer p-0">
+				<button type="button" class="btn btn-block btn-link btn-lumo " id="downloadImage" onclick="imageone()"><span class="mr-2"><img src="~/images/Black-Download.png" /></span>Download QR code</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*====END=====*@ -->
+<!-- @*=======QR CODE For Price Display Code=======*@ -->
+<div class="modal fade modal-add-bx" id="QR-codedisplay" tabindex="-1" aria-labelledby="UnarchiveLabel" aria-hidden="true">
+	<div class="modal-dialog w-500 modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="newqrprice"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+			</div>
+			<div class="modal-body p-0 text-center">
+				<div class="qr-codeSdisplay">
+					<img id="imgqrdisplay" />
+				</div>
+			</div>
+			<div class="modal-footer p-0">
+				<button type="button" class="btn btn-block btn-link btn-lumo" id="downloadImagenew" onclick="functionPrintdisplay()"><span class="mr-2"><img src="~/images/Black-Download.png" /></span> Download QR code</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- @*====END=====*@ -->
+<!-- @*======Set Price Kilometer====*@ -->
+<div class="modal fade modal-add-bx" id="PriceKilometer" tabindex="-1" aria-labelledby="AddVehicleLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title ">Set price per kilometer/mile</h5>
+
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+
+			</div>
+			<div class="modal-body p-0">
+				<div class="new-message">
+
+					<div class="row p-6">
+						<div class="col-md-12">
+							<div class="form-group ">
+								<div class="position-relative">
+									<input type="text" class="form-control " id="ppkval" value="" min="1" onkeyup="priceValidation()">
+									<span id="priceError" style="color: red;"></span>
+									<span class="doller-sign">@Model.currencyModel.CurrencyCode</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 text-right">
+
+							<button type="button" class="btn btn-lumo-green" id="updateprice" onclick="PriceKilometer1()">Price Updated</button>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======pricing display QR code====*@ -->
+<div class="modal fade modal-add-bx small-datatable" id="PriceCodes" tabindex="-1" aria-labelledby="AddVehicleLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title ">Add a pricing display QR code</h5>
+
+
+				<button type="button" id="btnclosepricedisplay" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+
+			</div>
+			<div class="modal-body p-0">
+				<div class="new-message">
+
+					<div class="row px-4 pt-3">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Display name</label>
+								<input type="text" class="form-control" id="displayname" />
+
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Price</label>
+								<div class="position-relative">
+									<input type="text" class="form-control" id="pricename" value="" />
+									<span class="doller-sign">@Model.currencyModel.CurrencyCode</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 text-right">
+
+							<button type="submit" class="btn btn-lumo-green" id="pricecodeqr">Generate QR code</button>
+						</div>
+
+					</div>
+					<div class="table-responsive">
+						<table id="Price-Codes" class="table attendence">
+							<thead>
+								<tr>
+									<th style="display:none">Id</th>
+									<th class="text-left">Active pricing display QR codes</th>
+									<th class="text-right"></th>
+
+
+								</tr>
+							</thead>
+							<tbody>
+
+								@foreach (var item in Model.lstDisplaycode)
+								{
+
+									<tr>
+										<td style="display:none">@item.Id</td>
+										<td class="text-left">@item.Title</td>
+										<td class="text-right">
+											<button type="button" class="btn-link btn"><img src="~/images/cil_qr-code.png" onclick="pricedisplayQRcode(@item.Id)"></button>
+											<button type="submit" class="btn-link btn"><img src="~/images/Delete2.png" onclick="Delete(@item.Id)" /></button>
+										</td>
+
+
+									</tr>
+
+								}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+<!-- @*===end====*@ -->
+<!-- @*======Travel ticket====*@ -->
+
+<div class="modal fade modal-add-bx" id="TravelTicket" tabindex="-1" aria-labelledby="TravelTicketLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title ">Travel ticket</h5>
+
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+
+			</div>
+			<div class="modal-body p-0">
+				<div class="new-message">
+
+					<div class="row p-6">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Ticket name</label>
+								<input type="text" class="form-control " id="ticketname">
+
+							</div>
+							<div class="form-group ">
+								<label>Ticket price (if it’s a free event, please leave blank)</label>
+								<div class="position-relative">
+									<input type="text" class="form-control " id="ticketprice" value="">
+									<span class="doller-sign">@Model.currencyModel.CurrencyCode</span>
+								</div>
+							</div>
+							<div class="form-grsoup">
+								<label>How many tickets are on sale?</label>
+								<input type="text" class="form-control" id="ticketsale">
+
+							</div>
+							<div class="form-group">
+								<label>Time (please set a start time for when this journey begins)</label>
+								<input type="time" class="form-control" id="ticketofcreation">
+
+							</div>
+							<div class="form-group">
+								<label>Start Date</label>
+								<div class="date-icon">
+									<input type="date" class="form-control" id="datestarting">
+								</div>
+							</div>
+							<div class="form-group">
+								<label>End Date</label>
+								<div class="date-icon">
+									<input type="date" class="form-control" id="enddateT">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 text-right">
+
+							<button type="button" class="btn btn-lumo-green" id="CreateTicket">Create ticket</button>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*===start another modal for ticket sale====*@ -->
+
+<div class="modal fade modal-add-bx" id="TravelTickettt" tabindex="-1" aria-labelledby="TravelTicketLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title ">Travel ticket</h5>
+
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					&times;
+				</button>
+
+			</div>
+			<div class="modal-body p-0">
+				<div class="new-message">
+
+					<div class="row p-6">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Ticket name</label>
+								<input type="text" class="form-control " id="ticketnamett">
+
+							</div>
+							<div class="form-group">
+								<label>Ticket price (if it’s a free event, please leave blank)</label>
+								<input type="text" class="form-control " id="ticketpricett" value="@Model.currencyModel.CurrencyCode">
+
+							</div>
+							<div class="form-group">
+								<label>How many tickets are on sale?</label>
+								<input type="text" class="form-control" id="ticketsalett">
+
+							</div>
+							<div class="form-group">
+								<label>Time (please set a start time for when this journey begins)</label>
+								<input type="text" class="form-control" id="ticketofcreationtt">
+
+							</div>
+							<div class="form-group">
+								<label>Start Date</label>
+								<input type="text" class="form-control" id="datestartingtt">
+
+							</div>
+							<div class="form-group">
+								<label>End Date</label>
+								<input type="text" class="form-control" id="enddateTtt">
+
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- @*===End another modal for ticket sale====*@ -->
+<!-- @*======collection data====*@ -->
+<div class="modal fade modal-add-bx" id="TicketSold" tabindex="-1" aria-labelledby="Collection-dataLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable w-500 modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title left-modal-title">Ticket’s sold</h4>
+				<div class="d-flex">
+					<button type="button" class="btn btn-link text-white mr-5"><img src="" /><span class="mr-2"><img src="~/images/Download-white.png" onclick="exportCSVExcelTicketsold()"></span>Export CSV</button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						&times;
+					</button>
+				</div>
+			</div>
+			<div class="modal-body p-0">
+				<div class="new-message">
+
+
+					<div class="table-responsive h-100vh overflow-auto">
+						<table id="ticketpurchase" class="table attendence">
+							<thead>
+								<tr>
+									<th>User</th>
+									<th>Amount</th>
+
+								</tr>
+							</thead>
+							<tbody id="TicketsoldBody">
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- @*===end====*@ -->
+<!-- @*======NewScannerUser Payment====*@ -->
+<div class="modal fade modal-small-bx " id="NewScannerUser" tabindex="-1" aria-labelledby="AddProductLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered w-430px">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="new-message ">
+					<div class="past-leave-box">
+						<h5>Add a new profile</h5>
+						<p>Please search for the profile you would like <br>to activate.</p>
+					</div>
+
+
+					<div class=" form-group search-bar-list px-3">
+						<div class="input-group diff position-relative">
+							<div class="input-group-prepend">
+								<span class="input-group-text">
+									<img src="~/images/Search-2.png" class="img-fluid">
+								</span>
+							</div>
+							<input class=form-control type="text" placeholder="" id="datarecord">
+
+						</div>
+					</div>
+					<ul id="Contactmembers"></ul>
+
+					<div class="col-md-12 text-right">
+
+						<button type="button" class=" btn-lumo-green btn-block" id="btnaddscanner">Activate profile</button>
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- @*======top jop update saved====*@ -->
+<div class="modal fade modal-small-bx" id="NewTicketmessage" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-dialog-centered">
+		<div class="modal-content">
+
+			<div class="modal-body text-center">
+				<div class="past-leave-box">
+					@*@<h5>Things are happening!</h5>*@
+					@*<p>Your event has been successfully posted</p>*@
+					<p id="Ticketsalemessage"></p>
+				</div>
+				<div class="text-center">
+
+					<button type="button" class="btn btn-pink" data-dismiss="modal" id="closeticketmessage">Close</button>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- @*======END======*@ -->
+<!-- @*===end====*@ -->
+
+<input type="hidden" id="fromdatesick" value="" />
+<input type="hidden" id="grpid" value="" />
+<input type="hidden" id="guidanceId" value="" />
+<input type="hidden" id="lstgroupId" value="">
+<input type="hidden" id="tsdelete" value="" />
+<input type="hidden" id="org" value="" />
+<input type="hidden" id="ppkidhidden" value="" />
+<input type="hidden" id="grpidprice" value="" />
+<input type="hidden" id="abcd" value="" />
+<input type="hidden" id="UserIdbtn" />
+<input type="hidden" id="deletehidden" />
+<input type="hidden" id="deleteticketid" />
+<input type="hidden" id="searchCustomerId" />
+
+
+<div class="overlay"></div>
+
+
+<script>
+
+	$(document).ready(function () {
+
+		//Wellness $ Counselling
+		const redirectWellnessCounselling = new URLSearchParams(window.location.search);
+		const safteyWellCou = redirectWellnessCounselling.get('id');
+		if (safteyWellCou == 'safteyWC') {
+			$('[href="#WellnessCounselling"]').click();
+		}
+
+		
+
+		//Close PopUp Wellness $ Counselling
+		const closeRedirectWellnessCounselling = new URLSearchParams(window.location.search);
+		const closeSafteyWellCou = closeRedirectWellnessCounselling.get('id');
+		if (closeSafteyWellCou == 'closeSafteyWC') {
+			$('[href="#WellnessCounselling"]').click();
+		}
+
+
+	});
+</script>
+
+<script type="text/javascript">
+
+  otable3 = $('#Ticket-Sales').DataTable({
+		"order": [[0, 'desc']],
+		searching: false,
+		pagination: false,
+		sorting: true,
+
+		"dom": 'rt<"bottom"flp><"bottom"i>'
+	})
+	otable6 = $('#Price-Codes').DataTable({
+		"order": [[0, "desc"]],
+		searching: false,
+		pagination: false,
+
+		"dom": 'rt<"bottom"flp><"bottom"i>'
+	})
+	otable1 = $('#Vehicle-List').DataTable({
+		"order": [[0, "desc"]],
+		searching: false,
+		pagination: false,
+
+		"dom": 'rt<"bottom"flp><"bottom"i>'
+	})
+
+	otable2 = $('#Attendance').DataTable({
+		"order": [[2, "asc"]],
+		searching: false,
+		pagination: false,
+
+		"dom": 'rt<"bottom"flp><"bottom"i>'
+	})
+	
+	otable4 = $('#Attendance-Management').DataTable({
+		"order": [[0, 'desc']],
+		searching: false,
+		pagination: false,
+
+		"dom": 'rt<"bottom"flp><"bottom"i>'
+
+	})
+
+	otable7 = $('#ticketpurchase').DataTable({
+		"order": [[0, "desc"]],
+		searching: false,
+		pagination: false,
+
+		"dom": 'rt<"bottom"flp><"bottom"i>'
+
+
+	})
+	otable8 = $('#Attendance_registry').DataTable({
+		"order": [[0, "desc"]],
+		searching: false,
+		pagination: false,
+
+		"dom": 'rt<"bottom"flp><"bottom"i>'
+
+	})
+
+	$("#fifth").addClass("active");
+
+</script>
+
+
+<script type="text/javascript">
+
+	$(function () {
+		$("#datefrom").datepicker({
+
+			dateFormat: 'dd-mm-yy',
+		});
+
+		$("#datetimefromattendance").datepicker({
+
+			dateFormat: 'dd-mm-yy',
+		});
+
+		$("#Todate").datepicker({
+
+			beforeShow: function (input, inst) {
+				$('.overlay').addClass('d-block');
+			},
+			onSelect: function (dateText, inst) {
+				$('.overlay').removeClass('d-block');
+			}
+		});
+
+		$("#Formdate").datepicker({
+
+			dateFormat: 'dd-mm-yy',
+		});
+
+		$("#Formdate1").datepicker({
+
+			dateFormat: 'dd-mm-yy',
+			beforeShow: function (input, inst) {
+				$('.overlay').addClass('d-block');
+			},
+			onSelect: function (dateText, inst) {
+				$('.overlay').removeClass('d-block');
+			}
+		});
+
+		//$("#datestarting").datepicker({
+		//	dateFormat: 'dd-mm-yy',
+		//	beforeShow: function (input, inst) {
+		//		$('.overlay').addClass('d-block');
+		//	},
+		//	onSelect: function (dateText, inst) {
+		//		$('.overlay').removeClass('d-block');
+		//	}
+		//});
+
+		//$("#enddateT").datepicker({
+		//	dateFormat: 'dd-mm-yy',
+		//	beforeShow: function (input, inst) {
+		//		$('.overlay').addClass('d-block');
+		//	},
+		//	onSelect: function (dateText, inst) {
+		//		$('.overlay').removeClass('d-block');
+		//	}
+		//});
+
+		$(".overlay").on("click", function () {
+			$(".overlay").removeClass("d-block");
+		});
+
+	});
+
+</script>
+
+
+
+<script>
+	//-----Add vehicle-----
+	$("#btnclosevehicle").on('click', function () {
+		$('#txtusername').val('');
+	});
+	$("#txtusername").on("keyup", function () {
+		document.getElementById("txtusername").style.border = "1px solid white";
+	});
+	$(document).on("click", "#btnsubmitVehicle", function () {
+		var VechilesName = $("#txtusername").val();
+		var VechilesDesc = "";
+
+
+		var objdata =
+		{
+			VechilesName: VechilesName,
+			VechilesDesc: VechilesDesc
+		}
+
+		var Aurl = "/Safety/AddVehicles";
+
+		if (VechilesName == "") {
+			$('#txtusername').focus();
+			document.getElementById("txtusername").style.border = "1px solid red";
+			return false;
+		}
+
+		else {
+			$.ajax({
+				type: "POST",
+				url: Aurl,
+				data: JSON.stringify(objdata),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (success) {
+					if (success.success == true) 
+					{
+						$('#AddVehicle').modal('hide');
+						$('#Txtsavevehiclemsg').append(success.message);
+						$("#TxtSaveVehicle").modal("show");
+					}
+					else {
+						$('#erroritem').modal('show');
+						$("#errmsg1").html("OOPS! Something Went Wrong.");
+					}
+				},
+				error: function (request, error) {
+					$('#erroritem').modal('show');
+					$("#errmsg1").html("OOPS! Something Went Wrong.");
+				}
+			});
+
+		}
+	});
+
+	function CloseTxtsavevehiclemsg() {
+		window.location.href = '/safety/safety?id=Vehicle'
+	}
+
+	//--------------delete vehicles---
+	function Show_id(id) {
+		$("#AddVehicle").modal('hide');
+		$("#delete-confimations").modal('show');
+		var grpid = id;
+		$("#grpid").val(grpid);
+	}
+	function onyes() {
+
+		var id = $("#grpid").val();
+		var objdata =
+		{
+			id: id
+		}
+		var Aurl = "/Safety/DeleteVehicles";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: JSON.stringify(objdata),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function (success) {
+
+				if (success.success == true) {
+					$("#delete-confimations").modal('hide');
+					$('#AddVehicle').modal('hide');
+					$('#TxtSafety').append(success.message);
+					$("#ConfirmationSafety").modal("show");
+
+				}
+				else {
+					$('#erroritem').modal('show');
+					$("#errmsg1").html("OOPS! Something Went Wrong.");
+				}
+			},
+			error: function (request, error) {
+				$('#erroritem').modal('show');
+				$("#errmsg1").html("OOPS! Something Went Wrong.");
+			}
+		});
+
+	}
+	function ClosebtnOnlySafety() {
+		window.location.href = '/safety/safety?id=Vehicle'
+	}
+	function onno() {
+		$("#AddVehicle").modal('hide');
+		window.location.href = '/safety/safety?id=Vehicle'
+	}
+
+
+	//-----Open QR code for Add Vehicles---
+	var a = '';
+	function AddVehiclesQRcode(Id) {
+		var obj =
+		{
+			id: Id
+		}
+		var Aurl = "/Safety/QRCodeItems";
+		$.ajax({
+
+			type: "GET",
+			url: Aurl,
+			data: obj,
+			dataType: "json",
+			success: function (Result) {
+				var status = Result.success;
+				if (status == true) {
+					$("#AddVehicle").modal("hide");
+					$('#imgqr').attr("src", Result.data.qrCode.qrPath);
+					a = Result.data.qrCode.qrPath;
+				}
+				$('#newque').html(Result.data.vechilesName);
+
+				$('#QR-code').modal("show");
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+
+		});
+	}
+
+
+	//----Download QR code for add vehicles--
+	$(document).ready(function () {
+		$('#downloadImage').click(function () {
+			var qrCodeImg = $('#imgqr');
+			var imageUrl = qrCodeImg.attr('src');
+			var link = document.createElement('a');
+			link.download = 'Add Vehicles qrcode.png';
+			link.href = imageUrl;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		});
+	});
+	function imageone() {
+		$('#QR-code').modal("hide");
+	}
+
+
+	//---EXPORT pdf
+
+
+	function exportCSVExcel() {
+		const currentDate = new Date();
+		const day = String(currentDate.getDate()).padStart(2, '0');
+		const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+		const year = currentDate.getFullYear();
+		const formattedDate = `${day}-${month}-${year}`;
+		const filename = `Sick_Note_Submission_${formattedDate}.xls`;
+
+		const clonedTable = $('#Sick-Submission').clone();
+
+		clonedTable.find('th:last-child, td:last-child').remove();
+		clonedTable.find('thead tr th:first-child img').remove();
+		clonedTable.find('tbody tr td:first-child img').remove();
+
+		clonedTable.table2excel({
+			delivery: 'value',
+			filename: filename
+		});
+	}
+
+
+	function exportCSVExcelAttendance() {
+		const currentDate = new Date();
+		const day = String(currentDate.getDate()).padStart(2, '0');
+		const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+		const year = currentDate.getFullYear();
+		const formattedDate = `${day}-${month}-${year}`;
+		const filename = `Attendance_Registry_${formattedDate}.xls`;
+
+		const clonedTable = $('#Attendance_registry').clone();
+
+		clonedTable.find('thead tr th:first-child img').remove();
+		clonedTable.find('tbody tr td:first-child img').remove();
+
+
+		clonedTable.find('thead tr th:eq(1) img').remove();
+		clonedTable.find('tbody tr td:eq(1) img').remove();
+
+
+
+		clonedTable.find('thead tr th:eq(3) img').remove();
+		clonedTable.find('tbody tr td:eq(3) img').remove();
+
+		clonedTable.find('thead tr th:eq(4) img').remove();
+		clonedTable.find('tbody tr td:eq(4) img').remove();
+
+
+		clonedTable.table2excel({
+			delivery: 'value',
+			filename: filename
+		});
+	}
+
+
+	function exportCSVExcelTravel() {
+		const currentDate = new Date();
+		const day = String(currentDate.getDate()).padStart(2, '0');
+		const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+		const year = currentDate.getFullYear();
+		const formattedDate = `${day}-${month}-${year}`;
+		const filename = `Traveller_Status_${formattedDate}.xls`;
+
+		const clonedTable = $('#TravellerStatus').clone();
+
+
+
+		clonedTable.find('thead tr th:first-child img').remove();
+		clonedTable.find('tbody tr td:first-child img').remove();
+
+
+
+		clonedTable.table2excel({
+			delivery: 'value',
+			filename: filename
+		});
+	}
+
+
+
+	function exportCSVExcelTicketsold() {
+		const currentDate = new Date();
+		const day = String(currentDate.getDate()).padStart(2, '0');
+		const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+		const year = currentDate.getFullYear();
+		const formattedDate = `${day}-${month}-${year}`;
+		const filename = `Ticket_Sold_${formattedDate}.xls`;
+
+		const clonedTable = $('#ticketpurchase').clone();
+
+
+		clonedTable.table2excel({
+			delivery: 'value',
+			filename: filename
+		});
+	}
+
+
+
+	@*--------------Update price per km------------*@
+		function PriceKilometer1() {
+
+			var priceper = $('#ppkval').val();
+
+			var formdata = new FormData();
+			formdata.append('CommunityId', 1);
+			formdata.append('PricePerKm', priceper.replace('@Model.currencyModel.CurrencyCode', ""))
+
+
+			var Aurl = "/Safety/UpdatePriceperkm";
+			$.ajax({
+				type: "POST",
+				url: Aurl,
+				data: formdata,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function (Result) {
+					if (Result.success == true) {
+						$('#PriceKilometer').modal('hide');
+						$('#ItemUpdated').modal('show');
+						$('#ppkval').val(Result.data[0].pricePerKm);
+
+					}
+				},
+				error: function (request, error) {
+					$("#erroritem").modal("show");
+					$("#errmsg1").text("Oops! something went wrong")
+				}
+			});
+		}
+
+	function closeupdatemethod() {
+		$("#ItemUpdated").modal('hide');
+		setTimeout(function () {
+			window.location.href = '/safety/safety?id=kilometer'
+		}, 250);
+	}
+
+
+	$(document).ready(function () {
+		PriceKilometeronclick();
+	});
+	function PriceKilometeronclick() {
+
+		var Obj =
+		{
+			CommunityId: 1
+		}
+		var Aurl = "/Safety/GetPricePerKm";
+		$.ajax({
+
+			type: "Get",
+			url: Aurl,
+			data: Obj,
+			success: function (Result) {
+				var status = Result.success;
+				if (status == true) {
+					var abc = Result.data[0].pricePerKm;
+					$('#ppkval').val(abc.toFixed(2));
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+
+		});
+
+	}
+
+
+
+	@*--------Start add price display code------*@
+		$("#pricecodeqr").on('click', function () {
+		
+
+			var Price = $("#pricename").val().replace('@Model.currencyModel.CurrencyCode', "");
+			var Title = $("#displayname").val();
+
+			var objdatas =
+			{
+				OrgId: 0,
+				Price: Price,
+				Title: Title,
+				ExpiryDate: ''
+			}
+			var Aurl = "/Safety/AddPriceDisplayCode";
+
+			if (Title == "") {
+				$('#displayname').focus();
+				document.getElementById("displayname").style.border = "1px solid red";
+				return false;
+			}
+
+			else if (Price == "") {
+				$('#pricename').focus();
+				document.getElementById("pricename").style.border = "1px solid red";
+				return false;
+			}
+
+			else {
+				$.ajax({
+					type: "POST",
+					url: Aurl,
+					data: JSON.stringify(objdatas),
+					contentType: "application/json; charset=utf-8",
+					dataType: "json",
+					success: function (success) {
+
+						if (success.success == true) {
+							$('#PriceCodes').modal('hide')
+
+							$("#TxtPriceDisplayMessage").modal('show');
+							$('#TxtPriceMessage').text(success.message);
+
+
+						}
+						else {
+							$('#erroritem').modal('show');
+							$("#errmsg1").html("OOPS! Something Went Wrong.");
+						}
+					},
+					error: function (request, error) {
+						$('#erroritem').modal('show');
+						$("#errmsg1").html("OOPS! Something Went Wrong.");
+					}
+				});
+			}
+		});
+
+	function ClosebtnTxtPriceMessage() {
+		window.location.href = '/safety/safety?id=qr'
+	}
+
+	@*QR code for display code*@
+		function pricedisplayQRcode(Id) {
+			var obj =
+			{
+				id: Id
+			}
+			var Aurl = "/Safety/QRCodePriceItems";
+			$.ajax({
+
+				type: "GET",
+				url: Aurl,
+				data: obj,
+				dataType: "json",
+				success: function (Result) {
+					var status = Result.success;
+
+					if (status == true) {
+						$("#PriceCodes").modal("hide");
+						$('#imgqrdisplay').attr("src", Result.data.qrCode.qrPath);
+						a = Result.data.qrCode.qrPath
+					}
+					$('#newqrprice').html(Result.data.title + ' || ' + Result.data.price);
+					$('#QR-codedisplay').modal("show");
+				},
+
+				error: function (request, error) {
+					$("#erroritem").modal("show");
+					$("#errmsg1").text("Oops! something went wrong")
+				}
+
+			});
+		}
+
+
+	@*Download QR code for vehicles display code*@
+		$(document).ready(function () {
+			$('#downloadImagenew').click(function () {
+				var qrCodeImg = $('#imgqrdisplay');
+				var imageUrl = qrCodeImg.attr('src');
+				var link = document.createElement('a');
+				link.download = 'Price display qrcode.png';
+				link.href = imageUrl;
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+			});
+		});
+	function functionPrintdisplay() {
+		$('#QR-codedisplay').modal("hide");
+	}
+
+	@*-------delete price display code start-------*@
+		function Delete(id) {
+			$("#PriceCodes").modal('hide');
+			$("#deleteprice").modal('show');
+			var grpidprice = id;
+			$("#grpidprice").val(grpidprice);
+		}
+	function onyesPrice() {
+		var id = $("#grpidprice").val();
+
+		var objdata =
+		{
+			id: id
+		}
+
+		var Aurl = "/Safety/DeletePriceDisplayCode";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: JSON.stringify(objdata),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+			success: function (success) {
+
+				if (success.success == true) {
+					$("#deleteprice").modal('hide');
+					$('#PriceCodes').modal('hide');
+					$('#TxtPriceCode').append(success.message);
+					$("#ConfirmationPriceCode").modal("show");
+
+
+				}
+				else {
+					$('#erroritem').modal('show');
+					$("#errmsg1").html("OOPS! Something Went Wrong.");
+				}
+			},
+			error: function (request, error) {
+				$('#erroritem').modal('show');
+				$("#errmsg1").html("OOPS! Something Went Wrong.");
+			}
+		});
+
+	}
+	function ClosebtnOnlyPriceCode() {
+		window.location.href = '/safety/safety?id=qr'
+	}
+	function onnoprice() {
+		$("#deleteprice").modal('hide');
+		window.location.href = '/safety/safety?id=qr'
+	}
+
+
+	//-------Start QRAttendanceScanner-----
+
+	function GenerateAttendanceQRbtn() {
+
+
+		var Aurl = "/Safety/AttendanceQRCode";
+		$.ajax({
+
+			type: "GET",
+			url: Aurl,
+			dataType: "json",
+			success: function (Result) {
+				var status = Result.success;
+
+				if (status == true) {
+
+					var qrCodeImageUrl = Result.data.qrPath
+					window.open(qrCodeImageUrl, '_blank');
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+		});
+	}
+	//-------End QRAttendanceScanner-----
+
+
+
+
+
+
+	@*--------------Start Add a new Ticket------------*@
+		var deleteticketid;
+	function ondeleteing(Id) {
+		$("#deleteTicket").modal('show');
+		deleteticketid = Id;
+		$("#deleteticketid").val(deleteticketid);
+	}
+	function onyesTickets() {
+
+		var objdata =
+		{
+			Id: deleteticketid
+		}
+
+
+		var Aurl = "/Safety/DeleteTicket";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: objdata,
+
+			success: function (success) {
+
+				if (success.success == true) {
+
+					$('#TxtMessage').append(success.message);
+					window.location.href = '/safety/safety?id=Travel'
+
+				}
+				else {
+					$('#erroritem').modal('show');
+					$("#errmsg1").html("OOPS! Something Went Wrong.");
+				}
+			},
+			error: function (request, error) {
+				$('#erroritem').modal('show');
+				$("#errmsg1").html("OOPS! Something Went Wrong.");
+			}
+		});
+
+	}
+	function onnoTicket() {
+		$("#deleteTicket").modal('hide');
+		window.location.href = '/safety/safety?id=Travel'
+	}
+
+
+	$("#ticketprice").on("keyup", function () {
+		document.getElementById("ticketprice").style.border = "1px solid white";
+	});
+
+	$("#ticketofcreation").on("change", function () {
+		document.getElementById("ticketofcreation").style.border = "1px solid white";
+	});
+
+	$("#datestarting").on("change", function () {
+		document.getElementById("datestarting").style.border = "1px solid white";
+	});
+
+	$("#ticketname").on("keyup", function () {
+		document.getElementById("ticketname").style.border = "1px solid white";
+	});
+
+	$("#ticketsale").on("keyup", function () {
+		document.getElementById("ticketsale").style.border = "1px solid white";
+	});
+
+	$("#enddateT").on("change", function () {
+		document.getElementById("enddateT").style.border = "1px solid white";
+	});
+
+	$("#datestarting").on("change", function () {
+		document.getElementById("datestarting").style.border = "1px solid white";
+	});
+
+	function returndateformats(date) {
+		var d = new Date(date.split("-").reverse().join("-"));
+		var dd = d.getDate();
+		var mm = d.getMonth() + 1;
+		var yy = d.getFullYear();
+		var newdate = yy + "-" + mm + "-" + dd;
+		return newdate;
+	}
+	$(document).on("click", "#CreateTicket", function () {
+
+		var TicketName = $("#ticketname").val();
+		var TicketPrice = $("#ticketprice").val().replace('@Model.currencyModel.CurrencyCode', "");
+		var TicketCount = $("#ticketsale").val();
+		var TicketTime = $("#ticketofcreation").val();
+		var StartDate = $("#datestarting").val();
+		var EndDate = $("#enddateT").val();
+
+		if (TicketName == "") {
+			$('#ticketname').focus();
+			document.getElementById("ticketname").style.border = "1px solid red";
+			return false;
+		}
+		if (TicketPrice == '') {
+			TicketPrice = 0;
+		}
+		if (TicketCount == '') {
+			$('#ticketsale').focus();
+			document.getElementById("ticketsale").style.border = "1px solid red";
+			return false;
+		}
+		if (TicketTime == '') {
+			$('#ticketofcreation').focus();
+			document.getElementById("ticketofcreation").style.border = "1px solid red";
+			return false;
+		}
+		if (StartDate == '') {
+			$("#NewTicketmessage").modal('show');
+			$("#Ticketsalemessage").html("Please Select start date!");
+			return false;
+		}
+		if (EndDate == '') {
+			$("#NewTicketmessage").modal('show');
+			$("#Ticketsalemessage").html("Please Select end date!");
+			return false;
+		}
+
+		var CombinedStartDate = StartDate + ' ' + TicketTime;
+		var CombinedticketDate = StartDate + ' ' + TicketTime;
+		
+		var CombinedEndDate = EndDate + ' ' + TicketTime;
+		alert(CombinedEndDate);
+		//console.log("CombinedStartDate:", CombinedStartDate);
+		var objdatas = {
+			TicketName: TicketName,
+			TicketPrice: TicketPrice,
+			TicketCount: TicketCount,
+			TicketTime: CombinedticketDate,
+			StartDate: CombinedStartDate,
+			EndDate: CombinedEndDate
+		}
+
+		var Aurl = "/Safety/AddNewTicket";
+
+		$.ajax({
+			type: 'POST',
+			url: Aurl,
+			data: objdatas,
+			dataType: 'json',
+			success: function (Result) {
+				var status = Result.success;
+				if (status == true) {
+					$('#TravelTicket').modal('hide');
+					$('#TxtMessage').append(Result.message);
+				location.reload();
+				} else {
+					$('#erroritem').modal('show');
+					$("#errmsg1").html("OOPS! Something Went Wrong.");
+				}
+			},
+			error: function (request, error) {
+				$('#erroritem').modal('show');
+				$("#errmsg1").html("OOPS! Something Went Wrong.");
+			}
+		});
+	});
+
+
+	function ClosebtnOnly() {
+		$("#ConfirmationMessage").modal('hide');
+		setTimeout(function () {
+			window.location.reload();
+		}, 250);
+	}
+	function GetTicketSoldView(Id) {
+		var Obj =
+		{
+			Id: Id
+
+		}
+
+		var Aurl = "/Safety/TicketSold";
+		$.ajax({
+
+			type: "Get",
+			url: Aurl,
+			data: Obj,
+			dataType: "json",
+			success: function (Result) {
+				var status = Result.success;
+				$('#TicketsoldBody>tr>td ').remove();
+				if (status == true) {
+					var rows = '';
+					for (i = 0; i < Result.data.length; i++) {
+
+						var efg = Result.data[i].amount;
+						rows += "<tr><td>" + Result.data[i].userName + "</td><td>" + efg.toFixed(2) + "</td></tr> ";
+					}
+					$('#TicketsoldBody').append(rows);
+					$('#TicketSold').modal('show');
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+
+		});
+
+	}
+	function onviewticket(Id) {
+
+		var objdata =
+		{
+			Id: Id
+		}
+
+		var Aurl = "/Safety/ViewTicket";
+		$.ajax({
+
+			type: "Get",
+			url: Aurl,
+			data: objdata,
+			dataType: "json",
+			success: function (Result) {
+				var status = Result.success;
+
+
+				if (status == true) {
+
+
+					$('#ticketnamett').val(Result.data[0].ticketName);
+					$("#ticketnamett").attr("readonly", "readonly");
+
+
+					var startDate = Result.data[0].startDate;
+					var parts = startDate.split("T");
+					var datePart = parts[0];
+					var dateParts = datePart.split("-");
+					var year = dateParts[0];
+					var month = dateParts[1];
+					var day = dateParts[2];
+					var formattedDate = day + "-" + month + "-" + year;
+					$('#datestartingtt').val(formattedDate);
+					$("#datestartingtt").attr("readonly", "readonly");
+
+
+
+
+					$('#ticketpricett').val('@Model.currencyModel.CurrencyCode' + Result.data[0].ticketPrice);
+					$("#ticketpricett").attr("readonly", "readonly");
+
+					$('#ticketsalett').val(Result.data[0].ticketCount);
+					$("#ticketsalett").attr("readonly", "readonly");
+
+
+					var EndDate = Result.data[0].endDate;
+					var parts = EndDate.split("T");
+					var datePart = parts[0];
+					var dateParts = datePart.split("-");
+					var year = dateParts[0];
+					var month = dateParts[1];
+					var day = dateParts[2];
+					var formattedDate = day + "-" + month + "-" + year;
+					$('#enddateTtt').val(formattedDate);
+					$("#enddateTtt").attr("readonly", "readonly");
+
+
+
+
+					//var ticketTime1 = new Date(Result.data[0].ticketTime);
+					//$('#ticketofcreationtt').val(formatTime(ticketTime1));
+
+					$('#ticketofcreationtt').val(Result.data[0].ticketTime);
+					$("#ticketofcreationtt").attr("readonly", "readonly");
+
+					$('#TravelTickettt').modal('show');
+
+
+				}
+				else {
+					$('#erroritem').modal('show');
+					$("#errmsg1").html("OOPS! Something Went Wrong.");
+				}
+			},
+			error: function (request, error) {
+				$('#erroritem').modal('show');
+				$("#errmsg1").html("OOPS! Something Went Wrong.");
+			}
+		});
+
+	}
+	function formatTime(date) {
+		var options = { hour: '2-digit', minute: '2-digit', hour12: true };
+		return date.toLocaleTimeString('en-US', options);
+	}
+
+	
+
+	// @*------------start sick submission---*@
+
+		function formatDateTime(dateTimeString) {
+			const dateTime = new Date(dateTimeString);
+			const date = dateTime.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.');
+			const time = dateTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+			return `${date} ${time}`;
+
+		}
+
+		function GetSickNoteDetails() {
+		
+			var Fromdatesick = $('#Formdate').val();
+			var ddlsicknotes = $('#ddlsicknote').val();
+			var teachersick = $('#teachersicknoteddl').val();
+
+			var Obj =
+			{
+				classid: ddlsicknotes,
+				Fromdatesick: Fromdatesick.split("-").reverse().join("/"),
+				Teacherid: teachersick
+			};
+			var urlblank;
+
+			var Aurl = "/Safety/SickNoteItems";
+
+			$.ajax({
+				type: "Get",
+				url: Aurl,
+				data: Obj,
+				success: function (Result) {
+					var status = Result.success;
+					if (status == true) {
+						var rows = '';
+						for (i = 0; i < Result.data.length; i++) {
+							
+							if (Result.data[i].url == "undefine") {
+								urlblank = "#";
+							} else {
+								urlblank = Result.data[i].url;
+							}
+							rows += "<tr><td>" + Result.data[i].fullName + "</td><td>" + formatDateTime(Result.data[i].sickFromDate) + "</td><td>" + formatDateTime(Result.data[i].sickToDate) + "</td><td><a href=" + urlblank + "  target='_blank'><img src='/images/Document-Justify.png' alt='Download' /></a></td></tr>";
+						}
+
+						$('#Sick-Submission tbody').html(rows);
+
+						var oTable = $('#Sick-Submission').DataTable();
+						if (oTable != undefined && oTable != null) {
+							oTable.destroy();
+							oTable = null;
+							$('#Sick-Submission tbody').html(rows);
+							var tab = $('#Sick-Submission').DataTable({
+								"order": [[2, "desc"]],
+								searching: false,
+								pagination: false,
+								"dom": 'rt<"bottom"flp><"bottom"i>'
+							});
+						} else {
+							$('#communitydate2_length').hide();
+						}
+					}
+				}
+			});
+		}
+
+
+	$(document).ready(function () {
+	
+		Reflectsicknotesdata();
+	});
+	function Reflectsicknotesdata() {
+
+		var Obj = {
+			classid: 0,
+			Teacherid: 0
+		};
+		var urlblank;
+		var Aurl = "/Safety/SickNoteItems";
+
+		$.ajax({
+			type: "Get",
+			url: Aurl,
+			data: Obj,
+			success: function (Result) {
+				var status = Result.success;
+
+				if (status == true) {
+					var rows = '';
+					for (i = 0; i < Result.data.length; i++) {
+				
+						if (Result.data[i].url == "undefine") {
+					
+							urlblank = "#";
+						} else {
+							urlblank = Result.data[i].url;
+						}
+
+						rows += "<tr><td>" + Result.data[i].fullName + "</td><td>" + formatDateTime(Result.data[i].sickFromDate) + "</td><td>" + formatDateTime(Result.data[i].sickToDate) + "</td><td><a href=" + urlblank + "  target='_blank'><img src='/images/Document-Justify.png' alt='Download' /></a></td></tr>";
+					}
+
+					$('#Sick-Submission tbody').html(rows);
+
+					var oTable = $('#Sick-Submission').DataTable();
+					if (oTable != undefined && oTable != null) {
+						oTable.destroy();
+						oTable = null;
+						$('#Sick-Submission tbody').html(rows);
+						var tab = $('#Sick-Submission').DataTable({
+							"order": [[2, "desc"]],
+							searching: false,
+							pagination: false,
+							"dom": 'rt<"bottom"flp><"bottom"i>'
+						});
+					} else {
+						$('#communitydate2_length').hide();
+					}
+				}
+			}
+		});
+
+	}
+
+	function formatDate(date) {
+		var options = {
+			day: 'numeric',
+			month: 'short',
+			year: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			hour12: true
+		};
+		return date.toLocaleDateString('en-US', options);
+	}
+
+
+	$(document).ready(function () {
+		ReflectTravelStatusdata();
+	});
+	function ReflectTravelStatusdata() {
+		var Obj =
+		{
+			communityid: 1,
+			VehicleId: 0
+		};
+		var urlblank;
+		var Aurl = "/Safety/travelstatusItems";
+
+		$.ajax({
+			type: "Get",
+			url: Aurl,
+			data: Obj,
+			success: function (Result) {
+				var status = Result.success;
+
+				if (status == true) {
+					var rows = '';
+					for (i = 0; i < Result.data.length; i++) {
+
+						rows += "<tr><td>" + Result.data[i].fullName + "</td><td>" + Result.data[i].driverName + "</td><td>" + Result.data[i].scanOnDate + "</td><td>" + Result.data[i].scanOffDate + "</td><td>" + Result.data[i].vechilesName + "</td></tr> ";
+					}
+					$('#TravellerStatus tbody').html(rows);
+
+
+					var oTable = $('#TravellerStatus').DataTable();
+					if (oTable != undefined && oTable != null) {
+
+						oTable.destroy();
+						oTable = null;
+						$('#TravellerStatus tbody').html(rows);
+						var tab = $('#TravellerStatus').DataTable({
+							"order": [[0, "desc"]],
+							searching: false,
+							pagination: false,
+
+							"dom": 'rt<"bottom"flp><"bottom"i>'
+						});
+
+					} else {
+						$('#communitydate2_length').hide();
+					}
+				}
+			}
+		});
+
+	}
+
+
+
+
+
+</script>
+
+
+
+<script>
+	$(document).ready(function () {
+		GetUserManagementMethod();
+	});
+
+	@*for getting data on dropdown*@
+		$(function () {
+			$("#datarecord").autocomplete({
+				source: function (request, response) {
+					var searchList = $('#datarecord').val()
+					var formdata = new FormData();
+					formdata.append('Search', searchList);
+					$.ajax({
+						url: '/Message/GetUserContactList',
+						data: formdata,
+						dataType: "json",
+						type: "POST",
+						contentType: false,
+						processData: false,
+						dataFilter: function (Result) { return Result; },
+						success: function (Result) {
+
+
+							response($.map(Result, function (item) {
+								var x = item.name + "(" + item.mobile + ")";
+								var y = item.customerId;
+								return {
+									value: x, label: x, desc: y,
+								}
+							}))
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							var err = eval("(" + XMLHttpRequest.responseText + ")");
+
+						}
+					});
+
+				},
+				select: function (e, i, s) {
+					$("#Contactmembers").val(i.item.value);
+					$("#searchCustomerId").val(i.item.desc);
+				},
+				focus: function (event, ui) {
+					event.preventDefault();
+					$('#Contactmembers').val(ui.item.label);
+				},
+				minLength: 1 //This is the Char length of inputTextBox
+			});
+
+		});
+
+	@*for post data on clicking add a scanner profile*@
+		$(document).on("click", "#btnaddscanner", function () {
+			var contactNo = $("#searchCustomerId").val();
+			var formData = new FormData();
+			formData.append("Mobileno", contactNo);
+			formData.append("PermissionId", 1);
+			var Aurl = "/Safety/ActivateScannerSafety";
+			$.ajax({
+				type: "Post",
+				url: Aurl,
+				cache: false,
+				contentType: false,
+				processData: false,
+				data: formData,
+				dataType: "json",
+				success: function (Result) {
+					$('#datarecord').val('');
+					$('#NewScannerUser').modal('hide');
+					window.location.href = '/safety/safety?id=launchUM'
+				},
+				error: function (request, error) {
+					$("#erroritem").modal("show");
+					$("#errmsg1").text("Oops! something went wrong");
+				}
+			});
+		});
+
+
+	function GetUserManagementMethod() {
+		var obj =
+		{
+			PermissionId: 1
+		}
+		var Aurl = "/Safety/UserManagementSafety";
+		$.ajax({
+			type: "Get",
+			url: Aurl,
+			data: obj,
+			success: function (Result) {
+				var status = Result.success;
+				if (status == true) {
+					var rows = '', scanner = '', Transport = '';
+					for (i = 0; i < Result.data.length; i++) {
+						if (Result.data[i].DeniedOrGranted == true) {
+							scanner = '<input type="checkbox" class="styled-checkbox green-checkbox" checked id="chkScanner" onclick=checkScanner(' + Result.data[i].UserId + ')><label for="styled-checkbox-1" ></label>';
+
+						} else {
+							scanner = '<input type="checkbox" id="chkScanners" class="styled-checkbox green-checkbox" onclick=UncheckScanner(' + Result.data[i].UserId + ')><label for="styled-checkbox-1"></label>';
+						}
+						if (Result.data[i].TransportDeniedOrGranted == true) {
+							Transport = '<input type="checkbox" id="chkScannertransport" class="styled-checkbox green-checkbox" checked onclick=checkTransport(' + Result.data[i].UserId + ')><label for="styled-checkbox-1"></label>';
+						} else {
+							Transport = '<input type="checkbox" id="chkScannertransports" class="styled-checkbox green-checkbox" onclick=UncheckTransportss(' + Result.data[i].UserId + ')><label for="styled-checkbox-1"></label>';
+						}
+						rows += "<tr><td>" + Result.data[i].UserName + "</td><td>" + Result.data[i].Mobile + "</td><td>" + scanner + "</td><td>" + Transport + "</td><td><img src='/images/Delete2.png' onclick='ondeleteuser(" + Result.data[i].UserId + ")'/></td></tr>";
+					}
+
+					$('#usermanagentgetid').html(rows);
+					$('#Attendance-Management tbody').addClass("active");
+					var oTable = $('#Attendance-Management').DataTable();
+					if (oTable != undefined && oTable != null) {
+
+						oTable.destroy();
+						oTable = null;
+						$('#Attendance-Management tbody').html(rows);
+						var tab = $('#Attendance-Management').DataTable({
+							"order": [[0, "desc"]],
+							searching: false,
+							pagination: false,
+
+							"dom": 'rt<"bottom"flp><"bottom"i>'
+						});
+
+					}
+					else {
+						$('#communitydate2_length').hide();
+					}
+
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong");
+			}
+		});
+
+	}
+
+
+
+
+
+	function ondeleteuser(Id) {
+		$("#deleteUser").modal('show');
+		var deletehidden = Id;
+		$("#deletehidden").val(deletehidden);
+	}
+	function onyesUser(Id) {
+		var Id = $("#deletehidden").val();
+		var objdata =
+		{
+			Id: Id
+		}
+
+		var Aurl = "/Safety/DeleteUserSafety";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: objdata,
+			success: function (success) {
+				if (success.success == true) {
+					$("#deleteUser").modal('hide');
+					$('#TxtMessage').append(success.message);
+					$("#ConfirmationMessage").modal("show");
+					window.location.href = '/safety/safety?id=launchUM'
+				}
+				else {
+					$('#erroritem').modal('show');
+					$("#errmsg1").html("OOPS! Something Went Wrong.");
+				}
+			},
+			error: function (request, error) {
+				$('#erroritem').modal('show');
+				$("#errmsg1").html("OOPS! Something Went Wrong.");
+			}
+		});
+	}
+
+
+
+	function onnoUser() {
+		$("#deleteUser").modal('hide');
+
+	}
+
+	function checkScanner(Id) {
+		
+		var IsActivescanner;
+		IsActivescanner = 0;
+
+		var formData = new FormData();
+		formData.append("Id", Id);
+		formData.append("IsScannerActive", IsActivescanner);
+		formData.append("PermissionId", 1);
+
+		var Aurl = "/Safety/UpdateAttendanceScanner";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: formData,
+			contentType: false,
+			processData: false,
+			dataType: "json",
+			success: function (Result) {
+				if (Result.success == true) {
+					$('#TxtMessage').append(Result.message);
+					window.location.href = '/safety/safety?id=launchUM'
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+		});
+
+	}
+	function UncheckScanner(Id) {
+
+		
+		var IsActivescanner;
+		IsActivescanner = 1;
+
+
+		var formData = new FormData();
+		formData.append("Id", Id);
+		formData.append("IsScannerActive", IsActivescanner);
+		formData.append("PermissionId", 1);
+
+		var Aurl = "/Safety/UpdateAttendanceScanner";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: formData,
+			contentType: false,
+			processData: false,
+			dataType: "json",
+			success: function (Result) {
+
+
+				if (Result.success == true) {
+					$('#TxtMessage').append(Result.message);
+					window.location.href = '/safety/safety?id=launchUM'
+
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+		});
+
+	}
+
+
+
+
+	function checkTransport(Id) {
+
+		var IsTransportActives;
+
+		IsTransportActives = 0;
+
+
+
+		var formData = new FormData();
+		formData.append("Id", Id);
+		formData.append("IsScannerActive", IsTransportActives);
+		formData.append("PermissionId", 5);
+
+		var Aurl = "/Safety/UpdateAttendanceScanner";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: formData,
+			contentType: false,
+			processData: false,
+			dataType: "json",
+			success: function (Result) {
+
+
+				if (Result.success == true) {
+					$('#TxtMessage').append(Result.message);
+					window.location.href = '/safety/safety?id=launchUM'
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+		});
+
+	}
+
+	function UncheckTransportss(Id) {
+
+		
+		var IsTransportActivess;
+		IsTransportActives = 1;
+
+
+		var formData = new FormData();
+		formData.append("Id", Id);
+		formData.append("IsScannerActive", IsTransportActives);
+		formData.append("PermissionId", 5);
+
+		var Aurl = "/Safety/UpdateAttendanceScanner";
+		$.ajax({
+			type: "POST",
+			url: Aurl,
+			data: formData,
+			contentType: false,
+			processData: false,
+			dataType: "json",
+			success: function (Result) {
+
+
+				if (Result.success == true) {
+					$('#TxtMessage').append(Result.message);
+					window.location.href = '/safety/safety?id=launchUM'
+
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+		});
+
+	}
+
+
+</script>
+
+<script>
+
+	$(document).ready(function () {
+		ReflectAttendancedata();
+	});
+
+	//function ReflectAttendancedata() 
+	//{ 
+	//	var Obj = 
+	//	{		
+	//		Classid:0,
+	//		Teacherid:0,
+	//		STARTDATE: "01-01-0001 00:00:00"
+	//	}
+	//	//alert('hi')
+	//	var Aurl = "/Safety/AttendanceRegistryItems";
+	//	$.ajax({
+	//		type: "Get",
+	//		url: Aurl,
+	//		data: Obj,
+	//		success: function (Result) {
+	//			var status = Result.success;
+	//			//alert(new Date());
+	//			if (status == true) 
+	//			{
+	//				//alert(2);
+	//				//alert(Result.data.length);
+	//				var rows = '';
+	//				for (i = 0; i < Result.data.length; i++) {
+	//					var datapr;
+	//					if (Result.data[i].ispresent == 1) {
+	//						datapr = "Yes"
+	//					}
+	//					else {
+	//						datapr = "No"
+	//					}
+
+	//					rows += "<tr><td>" + Result.data[i].customerName + "</td><td>" + datapr + "</td><td>" + Result.data[i].date + "</td><td>" + Result.data[i].className + "</td><td>" + Result.data[i].teacherName + "</td></tr> ";
+	//				}
+
+
+	//				var oTable = $('#Attendance_registry').DataTable();
+	//				if (oTable != undefined && oTable != null) {
+
+	//					oTable.destroy();
+	//					oTable = null;
+	//					$('#Attendance_registry tbody').html(rows);
+	//					var tab = $('#Attendance_registry').DataTable({
+	//						"order": [[2, "asc"]],
+	//						searching: false,
+	//						pagination: false,
+
+	//						"dom": 'rt<"bottom"flp><"bottom"i>'
+	//					});
+
+	//				} 
+	//				else {
+	//					$('#communitydate2_length').hide();
+	//				}
+
+	//				if (rows != '') {
+	//					$('#Attendance_registry tbody').html(rows);
+	//				}
+	//				else {
+	//					//alert('hk')
+	//					$('#Attendance_registry tbody').html("<td style='display:inline-block;'>No data available in table</td>");
+	//				}
+	//			}
+	//		},
+	//		error: function (request, error) {
+	//			$("#erroritem").modal("show");
+	//			$("#errmsg1").text("Oops! something went wrong");
+	//		}
+
+	//	});
+
+
+
+	//}
+
+	function ReflectAttendancedata() {
+		var Obj = {
+			Classid: 0,
+			Teacherid: 0,
+			STARTDATE: "01-01-0001 00:00:00"
+		};
+
+		var Aurl = "/Safety/AttendanceRegistryItems";
+		$.ajax({
+			type: "Get",
+			url: Aurl,
+			data: Obj,
+			success: function (Result) {
+				var status = Result.success;
+
+				if (status == true) {
+					var rows = '';
+					for (var i = 0; i < Result.data.length; i++) {
+						var datapr = Result.data[i].ispresent == 1 ? "Yes" : "No";
+
+						// Check if the date is "0001-01-01T00:00:00" or "1900-01-01T00:00:00"
+						var dateDisplay = (Result.data[i].date == "0001-01-01T00:00:00" || Result.data[i].date == "1900-01-01T00:00:00") ? "" : Result.data[i].date;
+
+						rows += "<tr><td>" + Result.data[i].customerName + "</td><td>" + datapr + "</td><td>" + dateDisplay + "</td><td>" + Result.data[i].className + "</td><td>" + Result.data[i].teacherName + "</td></tr>";
+					}
+
+					var oTable = $('#Attendance_registry').DataTable();
+					if (oTable != undefined && oTable != null) {
+						oTable.destroy();
+					}
+
+					$('#Attendance_registry tbody').html(rows);
+					$('#Attendance_registry').DataTable({
+						"order": [[2, "asc"]],
+						searching: false,
+						pagination: false,
+						"dom": 'rt<"bottom"flp><"bottom"i>'
+					});
+
+					if (rows === '') {
+						$('#Attendance_registry tbody').html("<tr><td colspan='5' style='text-align:center;'>No data available in table</td></tr>");
+					}
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong");
+			}
+		});
+	}
+
+	function GetAttendanceRegistrydetail() {
+
+		var ddlattendance = $('#ddlattendance').val();
+		var startdate = $('#datetimefromattendance').val();
+		//alert(startdate)
+		var teachers = $('#teachernameddl').val();
+		var Obj =
+		{
+			Classid: ddlattendance,
+			STARTDATE: startdate.split("-").reverse().join("/"),
+			Teacherid: teachers
+		}
+
+
+		var Aurl = "/Safety/AttendanceRegistryItems";
+		$.ajax({
+			type: "Get",
+			url: Aurl,
+			data: Obj,
+			success: function (Result) {
+				var status = Result.success;
+				if (status == true) {
+
+					var rows = '';
+					for (i = 0; i < Result.data.length; i++) {
+						var datapr;
+						if (Result.data[i].ispresent == 1) 
+						{
+							datapr = "Yes"
+						}
+						else 
+						{
+							datapr = "No"
+						}
+
+						rows += "<tr><td>" + Result.data[i].customerName + "</td><td>" + datapr + "</td><td>" + Result.data[i].date + "</td><td>" + Result.data[i].className + "</td><td>" + Result.data[i].teacherName + "</td></tr> ";
+					}
+
+
+					var oTable = $('#Attendance_registry').DataTable();
+					if (oTable != undefined && oTable != null) {
+
+						oTable.destroy();
+						oTable = null;
+						$('#Attendance_registry tbody').html(rows);
+						var tab = $('#Attendance_registry').DataTable({
+							"order": [[2, "asc"]],
+							searching: false,
+							pagination: false,
+
+							"dom": 'rt<"bottom"flp><"bottom"i>'
+						});
+
+					} else {
+						$('#communitydate2_length').hide();
+					}
+
+					if (rows != '') {
+						$('#Attendance_registry tbody').html(rows);
+					}
+					else {
+						$('#Attendance_registry tbody').html("<td style='display:inline-block;'>No data available in table</td>");
+					}
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong");
+			}
+
+		});
+
+	}
+	function returndateformat(date) {
+		var d = new Date(date.split("/").reverse().join("-"));
+		var dd = d.getDate();
+		var mm = d.getMonth() + 1;
+		var yy = d.getFullYear();
+		var hh = d.getHours();
+		var min = d.getMinutes();
+		var sec = d.getSeconds();
+		var mili = d.getMilliseconds();
+		var newdate = dd + "-" + mm + "-" + yy + "-" + hh + "-" + min + "-" + sec + "-" + mili;
+		return newdate;
+	}
+
+</script>
+
+
+<script>
+
+	//Starting of Adding Guidance and Counselling Buttons
+	function GetGuidance(Id) {
+		var Obj =
+		{
+			Id: Id
+		}
+
+		var Aurl = "/Safety/GetGuidance";
+		$.ajax({
+			type: "Get",
+			url: Aurl,
+			data: Obj,
+			success: function (Result) {
+				var status = Result.success;
+				if (status == true) {
+					var titleName = Result.data.buttonName;
+					$('#buttonTitle').text(titleName);
+					$('#buttonname').val(Result.data.buttonName);
+					$('#txtEmail').val(Result.data.email);
+					$('#txtContact').val(Result.data.contactNumber);
+					$('#txtInformation').val(Result.data.information);
+					$('#txtHyperlink').val(Result.data.bookSessionHyperlink);
+					if (Result.data.isVisible == 1) {
+						document.getElementById("mycheckbox").checked = true;
+					} else {
+						document.getElementById("mycheckbox").checked = false;
+					}
+					$("#guidanceId").val(Result.data.id);
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+		});
+	}
+	$(function () {
+		$("#Update").click(function () {
+			var safteyGuidanceId = $("#guidanceId").val();
+			var ButtonName = $('#buttonname').val();
+			var Email = $('#txtEmail').val();
+			var Contact = $('#txtContact').val();
+			var Description = $('#txtInformation').val();
+			var HyperLink = $('#txtHyperlink').val();
+			var IsVisible = $('#mycheckbox').prop('checked');
+			var checkboxValue = IsVisible ? 1 : 0;
+
+			var formData = new FormData();
+			formData.append("ButtonName", ButtonName);
+			formData.append("Email", Email);
+			formData.append("ContactNumber", Contact);
+			formData.append("Information", Description);
+			formData.append("BookSessionHyperlink", HyperLink);
+			formData.append("IsVisible", checkboxValue);
+			formData.append("Id", safteyGuidanceId);
+
+
+			var Aurl = "/Safety/UpdateGuidancee";
+			$.ajax({
+				type: "POST",
+				url: Aurl,
+				data: formData,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function (Result) {
+
+					if (Result.success == true) {
+
+						$('#WellnessCounselling').modal('hide');
+						$('#TxtMessage').append(Result.message);
+						$('#buttonname').val();
+						$('#txtEmail').val();
+						$('#txtContact').val();
+						$('#txtInformation').val();
+						$('#txtHyperlink').val();
+
+						window.location.href = '/safety/safety?id=safteyWC';
+					}
+				},
+				error: function (request, error) {
+					$("#erroritem").modal("show");
+					$("#errmsg1").text("Oops! something went wrong")
+				}
+			});
+		});
+	});
+	function UpdateStaffImagereadURL(input) {
+		document.getElementById('lblStfImg').innerHTML = '';
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			updateimagename = input.files[0].name;
+			document.getElementById('lblStfImg').innerHTML = input.files[0].name
+		}
+
+	}
+
+	//Stating of Wellness & Counselling
+	$(document).ready(function () {
+		GetWellnessCounsellingByID();
+	});
+
+	function GetWellnessCounsellingByID() {
+		var Aurl = "/Safety/GetWellnessCounsellingByID";
+		$.ajax({
+			type: "Get",
+			url: Aurl,
+			success: function (Result) {
+				var status = Result.success;
+				if (status == true) {
+					$('#LandingPage').val(Result.data.landingPage);
+					$('#Overview').val(Result.data.overview);
+					$('#IncidentEmail').val(Result.data.incidentEmail);
+					var index = Result.data.coverImage.lastIndexOf("\\") + 1;
+					var filename = Result.data.coverImage.substr(index);
+					$('#lblStfImg').html(filename);
+					$("#lstgroupId").val(Result.data.id);
+				}
+			},
+			error: function (request, error) {
+				$("#erroritem").modal("show");
+				$("#errmsg1").text("Oops! something went wrong")
+			}
+		});
+	}
+
+	
+
+    $(function () {
+		$("#ReportUpdate").click(function () {
+			var wellnessId = $("#lstgroupId").val();
+			var LandingPage = $("#LandingPage").val();
+			var Overview = $("#Overview").val();
+			var IncidentEmail = $("#IncidentEmail").val();
+
+			if (LandingPage.length > 450) {
+			$('#LandingPage').focus();
+			document.getElementById("LandingPage").style.border = "1px solid red";
+			return false;
+            }
+            
+
+			var formData = new FormData();
+			formData.append('LandingPage', LandingPage);
+			formData.append('Overview', Overview);
+			formData.append('IncidentEmail', IncidentEmail);
+			formData.append("Image", document.getElementById('safetycoverimg').files[0]);
+			formData.append("Id", wellnessId);
+
+			var Aurl = "/Safety/UpdateWellnessCounselling";
+			$.ajax({
+				type: "POST",
+				url: Aurl,
+				data: formData,
+				contentType: false,
+				processData: false,
+				dataType: "json",
+				success: function (Result) {
+					if (Result.success == true) {
+
+						$('#WellnessUpdated').modal('show');
+						$('#LandingPage').val();
+						$('#Overview').val();
+						$('#IncidentEmail').val();
+
+						setTimeout(function () {
+							window.location.href = '/Safety/Safety?id=safteyWC';
+						}, 3000);
+
+					}
+				},
+				error: function (request, error) {
+					$("#erroritem").modal("show");
+					$("#errmsg1").text("Oops! something went wrong")
+				}
+			});
+		});
+	});
+
+</script>
+<script>
+	@*------------Start travellerstatus-----------*@
+		function GetVehiclesdetails() {
+
+
+			var TravelDate = $('#datefrom').val();
+			var VehicleId = $('#ddlVehicleType').val();
+
+			var Obj =
+			{
+				TravelDate: TravelDate.split("-").reverse().join("/"),
+				VehicleId: VehicleId
+			}
+
+			var Aurl = "/Safety/travelstatusItems";
+			$.ajax({
+
+				type: "Get",
+				url: Aurl,
+				data: Obj,
+				dataType: "json",
+				success: function (Result) {
+					var status = Result.success;
+
+					if (status == true) {
+						var rows = '';
+						for (i = 0; i < Result.data.length; i++) {
+
+							rows += "<tr><td>" + Result.data[i].fullName + "</td><td>" + Result.data[i].driverName + "</td><td>" + Result.data[i].scanOnDate + "</td><td>" + Result.data[i].scanOffDate + "</td><td>" + Result.data[i].vechilesName + "</td></tr> ";
+						}
+						$('#TravellerStatus tbody').html(rows);
+
+
+						var oTable = $('#TravellerStatus').DataTable();
+						if (oTable != undefined && oTable != null) {
+
+							oTable.destroy();
+							oTable = null;
+							$('#TravellerStatus tbody').html(rows);
+							var tab = $('#TravellerStatus').DataTable
+								({
+									"order": [[0, "desc"]],
+									searching: false,
+									pagination: false,
+
+									"dom": 'rt<"bottom"flp><"bottom"i>'
+								});
+
+						}
+						else {
+							$('#communitydate2_length').hide();
+						}
+					}
+
+				},
+				error: function (request, error) {
+					$("#erroritem").modal("show");
+					$("#errmsg1").text("Oops! something went wrong")
+				}
+
+			});
+
+		}
+
+	$(document).ready(function () {
+		if (~window.location.href.indexOf("launchUM")) {
+			$('.message-tab a[href="#AttendanceManagement"]').tab('show');
+		}
+		if (~window.location.href.indexOf("Travel")) {
+			$('.message-tab a[href="#TicketSales"]').tab('show');
+		}
+		if (~window.location.href.indexOf("Vehicle")) {
+			$('.message-tab a[href="#Traveller"]').tab('show');
+		}
+		if (~window.location.href.indexOf("kilometer")) {
+			$('.message-tab a[href="#Traveller"]').tab('show');
+		}
+		if (~window.location.href.indexOf("qr")) {
+			$('.message-tab a[href="#Traveller"]').tab('show');
+		}
+	});
+
+
+
+	//Validation for PricePerKm 
+	function priceValidation() {
+		var priceValue = parseFloat(document.getElementById("ppkval").value);
+
+		if (!isNaN(priceValue) && priceValue > 0) {
+			document.getElementById("priceError").innerText = "";
+		} else {
+			document.getElementById("priceError").innerText = "Price should be greater than 0";
+		}
+    }
+
+</script>
+

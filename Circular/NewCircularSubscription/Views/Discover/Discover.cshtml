@@ -1,0 +1,301 @@
+﻿@model NewCircularSubscription.Models.CommunityMembershipModel;
+@{
+    Layout = "_Layout";
+}
+<head>
+<style>
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .circle-loader {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin: 0 auto;
+           
+        }
+
+        
+   
+
+</style>
+</head>
+
+    <!-- ===========================
+       Start Main body  ============================ -->
+
+    <section class="find">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-9">
+                    <div class="display">
+                        <div class="input-group">
+                            <span class="input-group-append">
+                                <div class="input-group-text bg-transparent"><img src="~/images/search.svg"></div>
+                            </span>
+                        <input class="form-control py-2" type="search" placeholder="Find your inner circle" id="example-search-input" style="text-align: center;">
+                        </div>
+                        <!-- <button>
+                          Filter<img src="images/common-imgs/filter.svg">
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="community-list">
+        <div class="container">
+       
+            <div class="row">
+                @if(Model.CommunityMembership != null)
+                {
+                    @foreach(var items in Model.CommunityMembership)
+                    {
+                        <div class="col-md-4 community-item">
+                        <a class="BtnCommdlt" href="@Model.DiscoverCommunityAboutusURL" + "@items.CoummunityUrl">
+                            <div class="content-box" editvalue="@items.CommunityName" editvalue1="@items.MembershipType" editvalue2="@items.AccessType">
+                          
+                                <div class="background-img">
+                                  @*  <img src="~/images/dummy-bg.png" class="bg-img">*@
+                                    @if (@items.coverimage == "")
+                                    {
+                                        <img src="~/images/dummy-bg.png" class="bg-img">
+                                    }
+                                    else
+                                    {
+                                        <img src="@items.coverimage" class="bg-img">
+                                    }
+
+                                    <img src="@items.OrgLogo" class="logo-img">
+                                </div>
+                                
+                                <div class="text">
+                                    <h4 class="community-name">
+                                       @items.CommunityName 
+                                    </h4>
+                                    <p class="set-length">
+                                        @items.About
+                                    </p>
+
+                                    <div class="info" >
+                                        <div class="count">
+                                            <span>@items.PublicType</span>
+                                           @* <span class="span"></span>*@
+                                            @*<span>@items.Membercount</span>*@
+                                        </div>
+                                        @if (items.MembershipType == "Paid")
+                                        {
+                                            <button id="BtnCommdlt1" class="BtnCommdlt" editValue="@items.Id"><b>@items.JoinButton</b></button>
+                                        }
+                                        else  
+                                        {
+                                            <button id="BtnCommdlt2" class="BtnCommdlt" editValue="@items.Id"><b>@items.JoinButton</b></button>
+                                        }
+                                      
+                                    </div>
+                                </div>
+
+                            </div>
+                        </a>
+                       
+                        
+                        </div>
+                    }
+                   
+                }
+            </div>
+       
+
+       
+        <div id="loader" class="loader">
+            <div class="circle-loader"></div>
+            Fetching...
+        </div>
+        </div>
+    
+    </section>
+
+
+
+
+<script src="~/js/jquery.min.js"></script>
+
+
+
+<script>
+    
+   
+
+   $(document).ready(function () {
+
+        var currentPage = 1;
+        var isLoading = false;
+       
+
+        $('#example-search-input').on('keyup', function () {
+            var search = $(this).val().toLowerCase();
+            currentPage = 1;
+            loadCommunities(search, true); // Load communities and reset the list
+        });
+
+
+       
+        function loadCommunities(search, reset) {
+            showLoader();
+            $.ajax({
+                type: "POST",
+                url: "/Discover/GetCommunitieslistSearch",
+                data: {
+                    search: search,
+                    page: currentPage,
+                    pageSize: 20
+                },
+                success: function (result) {
+                    if (result.success) {
+                        updateCommunityList(result.data, reset);
+                    } else {
+                        console.log("Error retrieving community list");
+                    }
+                    isLoading = false;
+                    hideLoader();
+
+
+
+                    //$('#loader').hide(); // Hide loader
+                   
+                }
+            });
+        }
+
+
+        var url = '@Model.DiscoverCommunityAboutusURL';
+   
+        function updateCommunityList(communities, reset) {
+            
+            var communityListContainer = $('.community-list .row'); 
+            if (reset) {
+                communityListContainer.empty(); 
+            }
+
+            if (communities.length > 0) {
+                communities.forEach(function (community) {
+                    var membershipButton = community.membershipType === "Paid"
+                        ? `<button id="BtnCommdlt1" class="BtnCommdlt" editValue="${community.id}"><b>${community.joinButton}</b></button>`
+                        : `<button id="BtnCommdlt2" class="BtnCommdlt" editValue="${community.id}"><b>${community.joinButton}</b></button>`;
+
+                    var coverImage = community.coverimage ? community.coverimage : '/images/dummy-bg.png';
+                    var communityUrl = `${url}${community.coummunityUrl}`;
+
+                    var communityHtml = `
+                      
+                        <div class="col-md-4 community-item">
+                                <a href="${communityUrl}" class="" editValue="${community.id}">
+                            <div class="content-box" editvalue="${community.communityName}" editvalue1="${community.membershipType}" editvalue2="${community.accessType}">
+                            
+                                <div class="background-img">
+                                           
+                                    <img src="${coverImage}" class="bg-img">
+                                    <img src="${community.orgLogo}" class="logo-img">
+                                </div>
+                                <div class="text">
+                                    <h4 class="community-name">${community.communityName}</h4>
+                                    <p class="set-length">${community.about}</p>
+                                    <div class="info">
+                                        <div class="count">
+                                            <span>${community.publicType}</span>
+                                           
+                                               
+                                        </div>
+                                        ${membershipButton}
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                       
+                    `;
+
+                    communityListContainer.append(communityHtml);
+                });
+            } else if(reset){
+                communityListContainer.append('<div>No communities found</div>');
+            }
+          
+          
+           
+        }
+
+
+        function showLoader() {
+            $('#loader').show();
+           
+        }
+
+        function hideLoader() {
+            setTimeout(function () {
+                $('#loader').hide();
+            }, 3000); // 3000 milliseconds = 2 seconds
+        }
+
+
+
+
+        var observer = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting && !isLoading) {
+                isLoading = true;
+                currentPage++;
+                var search = $('#example-search-input').val().toLowerCase();
+                $('#loader').show(); // Show loader
+                loadCommunities(search, false);
+            }
+        }, {
+            rootMargin: '100px'
+        });
+
+        // Observe the footer
+        observer.observe(document.querySelector('footer'));
+
+        // Observe the footer
+        observer.observe(document.querySelector('footer'));
+        // Initial load
+        loadCommunities('', true);
+
+        var loaderElement = document.querySelector('.circle-loader');
+        var rotation = 0;
+        setInterval(function () {
+            loaderElement.style.transform = `rotate(${rotation}deg)`;
+            rotation += 10;
+        }, 50);
+    });
+
+
+    $(document).on('click', '.BtnCommdlt', function () {
+     
+        var id = $(this).attr('editValue'); 
+        $.ajax({
+            type: "Post",
+            url: "/Discover/GetCommunityDetails?id=" + id,
+            success: function (result) {
+                if (result.success == true) {
+                    window.location.href = '@Url.Action("Index", "Community")';
+                }
+                
+            }
+        });
+
+    })
+
+   
+
+</script>
+
+
+
+
+

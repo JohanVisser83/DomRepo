@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs
+       ================================================== -->
+    <meta charset="utf-8">
+    <title>Join Circular: Your Ultimate Community Engagement & Collaboration Hub</title>
+    <link rel="icon" href="~/images/circular_update1.png">
+    <!-- Mobile Specific Metas
+       ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <!-- initialize jQuery Library -->
+    <!-- <script type="text/javascript" src="js/jquery.js"></script> -->
+    <!-- Bootstrap jQuery -->
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <!-- Template custom -->
+    <!-- <script type="text/javascript" src="js/custom.js"></script> -->
+  @*  <script src="~/js/jquery-ui.js" type="text/javascript"></script>*@
+    <link   href="~/css/buttonLoader.css" rel="stylesheet">
+     <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    
+     <link href="~/css/buttonLoader.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/js/jquery.buttonLoader.js"></script>
+    <script type="text/javascript" src="~/js/jquery.buttonLoader.min.js"></script>
+</head>
+<body>
+  <div class="main-area responsive-height">
+    <!-- ===========================
+       Header Area
+    ============================ -->
+    <section class="header-area">
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+                <div class="row">
+                        <a class="navbar-brand mr-auto" href="https://circular.ooo/" target="_blank"><img src="images/circular_update.png" class="img-fluid logo-bx"></a>
+                 </div>
+             </div>
+          </nav>
+    </section>
+    <!-- ===========================
+         End
+      ============================ -->
+    <!-- ===========================
+      1st section make community
+      ============================ -->
+    <section class="make-community">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="left-comm ">
+                        <h3>You've found your people, <br>now it's time to bring much them closer.</h3>
+                        <p>Our app, much like a chameleon, adapts to every user, be it from a bustling business hub in London or a tranquil temple in Thailand. Expanding a business? Sure thing. Growing a school community? Child's play. Nurturing a spiritual congregation? Consider it done. At Circular, there's no room for trolls, nor those pesky price tags. Why, you ask? Because the best things in life, like laughter, memories, and Circular, are free.</p>
+                        <p>Let's begin setting up your soon-to-be highly successful private social network, tailored for your chosen purpose. Prioritise listening over mere 'likes' and begin utilising your secure space today.</p>
+
+                    </div>
+                    @* *@
+                    <form class="pt-3">
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <input type="hidden" id="emailUsername" value="@TempData["UserName"]" />
+                                    <input type="email" class="form-control" placeholder="Email address" name="username" id="username" onkeyup="validateEmail()">
+                                    <span id="emailError" ></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <button type="button" id="btnlogin" class="btn btn-info btn-block button-class has-spinner">Request OTP (One Time Password)</button>
+                            </div>
+                        </div>
+                            <div class="form-group">
+                                @if (ViewBag.ErrorMessage != null)
+                                {
+                                    <div id="ErrorMessageBox" class="alert alert-danger">
+                                        @ViewBag.ErrorMessage
+                                    </div>
+                                }
+                            </div>
+                    </form>
+                </div>
+                <!--  =======end col-6========= -->
+                 <div class="shape1">
+                        <img src="~/images/Rectangle.png" class="img-fluid">
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ===========================
+      1st section End
+      ============================ -->
+    <!-- Modal -->
+ </div>
+    <div class="modal fade main-modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body text-center modal-text-area">
+                    <h5>Email Verification</h5>
+                    <p>Please enter the one-time pin (OTP) that was sent to your email to verify you own your email address.</p>
+                    <form class="mt-4" asp-action="login_otp" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                        <div class="form-group text-right">
+                            <input type="text" class="form-control" id="otp" name="otp" maxlength="5">
+                         <a id="resend" class=" pr-4" onclick="resendOTP()" style="cursor:pointer"><small>Didn't receive the OTP? <b>Resend OTP</b></small></a>
+                            <a id="resend1" class=" pr-4" ><small>Sending otp...</small></a>
+                        </div>
+
+                       
+                        <button  class="btn btn-info btn-block mt-5" id="btnOTP">Verify</button>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function()
+    {
+            $('#resend1').hide();
+    });
+
+
+
+    $(document).on("click", ".button-class", function () {
+        var Email = $("#username").val();
+        if(Email == "")
+        {
+            $('#username').focus();
+            document.getElementById("username").style.border = "1px solid red";
+            return false;
+        }
+        var btn = $(this);
+        $(btn).buttonLoader('start');
+        $.ajax({
+            url: '/EmailVerification/EmailVerification',
+            type: 'POST',
+            data: {
+                UserName: Email
+            },
+            dataType: 'json',
+            success: function (response) {
+               $('.button-class').hide()
+                $(btn).buttonLoader('stop');
+                $('#staticBackdrop').modal('show');
+            },
+            error: function (response) {
+                $(btn).buttonLoader('stop');
+            }
+        });
+    });
+
+
+
+
+
+    function resendOTP()
+    {
+        $('#resend').hide();
+        $('#resend1').show();
+        var otp =  $('#otp').val();
+
+        $.ajax({
+            url: '/EmailVerification/ResendOTP',
+            type: 'POST',
+            data: {
+                otp: otp
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#resend').show();
+                $('#resend1').hide();
+                $('#staticBackdrop').modal('show');
+            },
+            error: function (response) {
+                $('#resend').show();
+                $('#resend1').hide();
+            }
+        });
+
+    }
+
+    function validateEmail() {
+        var email = document.getElementById("username").value;
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (emailPattern.test(email)) {
+            document.getElementById("emailError").innerText = "";
+        } else {
+            document.getElementById("emailError").innerText = "Please enter valid email address";
+        }
+    }
+
+
+
+
+
+
+</script>

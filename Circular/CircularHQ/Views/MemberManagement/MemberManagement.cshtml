@@ -1,0 +1,499 @@
+﻿@model CircularHQ.Models.HQCommunityManagementModel;
+@{
+    Layout = "_Layout";
+}
+
+
+
+
+
+               
+           <div class="main-content-area">
+                    <div class="bg-gray main-top-area">
+                    </div>
+                    <div class="sidebar col-12">
+                        <div class="row justify-content-between align-items-center pr-5">
+                            <ul class="nav nav-tabs tab-data-area ">
+                                <li><a data-toggle="tab" href="#MemberDatabase" class="active">Member database</a></li>
+
+
+                            </ul>
+                                <button type="button" class="btn btn-success  btn-rounded" onclick="exportCSVActiveCommunities()">Export CSV</button>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <!-- =============MemberDatabase===================== -->
+                        <div class="tab-pane fade show active" id="MemberDatabase" role="tabpanel" aria-labelledby="MemberDatabase-tab">
+                            <div class="main-content-bx">
+                                <div class="community-top-tab col-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6">
+                                            <div class=" search-bar-list  ">
+                                            <input class="form-control search bg-white" type="text" placeholder="Search for a member" id="SearchMemberlist">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive ">
+                                    <table class="table filter-table" id="member-database-table">
+                                        <thead>
+                                            <tr>
+                                                <th><span>First name(s)</span> <span class="ml-2 position-absolute"><img src="~/images/Filter.png"></span></th>
+
+                                                <th><span>Last name(s)</span> <span class="ml-2 position-absolute"><img src="~/images/Filter.png"></span></th>
+                                                <th>Mobile number</th>
+                                                <th>Email address</th>
+                                                <th><span>Community name</span> <span class="ml-2 position-absolute"><img src="~/images/Filter.png"></span></th>
+                                                <th>Action</th>
+                                                <!-- <th><button type="button" class="btn btn-success  btn-rounded ">Export CSV</button></th> -->
+
+                                            </tr>
+                                        </thead>
+                                     @if(Model != null && Model.HQAllMemberDetails.Count() > 0)
+                                        {
+                                        <tbody id="member-database-tablebody">
+                                                @foreach(var item in Model.HQAllMemberDetails)
+                                                {
+                                                    <tr>
+                                                        <td>@item.FirstName</td>
+                                                        <td>@item.LastName</td>
+                                                        <td>
+                                                            @item.Mobile
+                                                        </td>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.CommunityName</td>
+                                                        <td><a  onclick="BindMemberDetails(@item.Id)" id="UpdateMemberDatabase2">View</a></td>
+                                                    </tr>
+                                                }
+                                               
+                                               
+
+
+                                            </tbody>
+                                        }
+                                       
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- =============END===================== -->
+
+
+                    </div>
+
+                    <div class="tab-content">
+                    <!-- =============MemberDatabase===================== -->
+                    <div class="tab-pane fade show active" id="MemberDatabase2" role="tabpanel" aria-labelledby="MemberDatabase-tab">
+                        <div class="main-content-bx">
+                            <div class="community-top-tab col-12">
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <a type="button" class="btn btn-info  btn-md btn-rounded " href="@Url.Action("MemberManagement","MemberManagement")">Back</a>
+                                </div>
+                            </div>
+                            <div class="add-community col-12">
+
+                                <div class="row">
+
+                                    <div class="col-lg-6 col-md-6">
+
+                                        <div class="form-group">
+                                            <label>First name(s)</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtFirstName">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last name(s)</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtLastName">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Mobile number</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtMobileNo">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email address</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="txtEmail">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date of birth</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" id="Dob">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="form-group">
+                                            <label>eWallet balance</label>
+                                            <input type="text" class="form-control" placeholder="" id="WalletBalance">
+                                        </div>*@
+
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <button type="button" class="btn btn-primary-outline btn-block btn-rounded mb-3 mb-lg-0 mb-xl-0" data-toggle="modal" data-target="#System_Access" id="SystemAccessID"><span class="btn-img"><img src="~/images/Lock.png"></span><span>System access</span></button>
+                                            </div>
+                                            <div class="col-lg-6">
+                                    <button type="button" class="btn btn-primary btn-block btn-rounded " id="downloadQR" onclick="downloadMemberQR()"><span class="btn-img"><img src="~/images/Scan.png"></span><span>Download QR code</span></button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 pt-6 pt-lg-0 pt-md-0">
+                                        <div class="form-group">
+                                            <label>Membership type</label>
+                                           @* <select class="form-control">
+                                                <option selected=""></option>
+                                                <option value="All">{country_selected}</option>
+                                                <option value="group">{country_selected}</option>
+                                            </select>*@
+                                <input type="text" class="form-control" placeholder="" id="txtMembershiptype">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Unique identification number</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Class</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>House</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><img src="~/images/Edit.png"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label>Teacher</label>
+                                            <select class="form-control">
+                                                <option selected=""></option>
+                                                <option value="All">{country_selected}</option>
+                                                <option value="group">{country_selected}</option>
+
+
+                                            </select>
+                                        </div>
+                                        @*<div class="form-group">
+                                            <label>Manual wallet top-up</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control col-6" placeholder="" id="txtwalletamount">
+                                                <div class=" form-control col-6 bg-warning">
+                                                    <p class="mt-n1 mb-0" onclick="ManualWalletTopup()">Top-up eWallet</p>
+                                                  
+                                                </div>
+                                            </div>
+
+                                        </div>*@
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <button type="button" class="btn btn-secondary btn-block btn-rounded mb-3 mb-lg-0 mb-xl-0" onclick="canclebtn()">Cancel</button>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <button type="button" class="btn btn-success btn-block btn-rounded ">Save & Update</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- =============END===================== -->
+
+
+
+
+                </div>
+
+                </div>
+
+            <!-- ===========modal=================== -->
+            <!--member-view-->
+            <div class="modal fade modal-add-bx" id="System_Access" tabindex="-1" aria-labelledby="System_AccessLabel" aria-hidden="true">
+                <div class="modal-dialog   modal-dialog-scrollable modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">System access</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <img src="images/Close.png">
+                            </button>
+                        </div>
+                        <div class="modal-body ">
+                            <div class="community-profile-block">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>System status</label>
+                                                <select class="form-control " id="ddlblockUser">
+                                                    <option selected>Active</option>
+                                                   @* <option value="all">Pause access</option>*@
+                                                    <option value="0">Block access</option>
+                                                    @*<option value="all">Delete profile</option>*@
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="password" class="form-control" placeholder="asvgfyh">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><img src="images/Edit.png"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Passcode</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="" id="sysTxtMobile">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><img src="images/Edit.png"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Payment access</label>
+                                                <select class="form-control ">
+                                                    <option selected>Active</option>
+                                                    <option value="all">All</option>
+
+                                                </select>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-secondary btn-block btn-rounded ">Cancel</button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <button type="button" class="btn btn-success btn-block btn-rounded " id="memberBlockBtn">Save & Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        
+
+        <!-- ==== custom js==== -->
+        <script src="~/js/custom.js" type="text/javascript"></script>
+
+<input type="hidden" id="hiddenCustomerid" value="" />
+<input type="hidden" id="hiddenCommunityId" value="" />
+<input type="hidden" id="hiddenMobile" value="" />
+
+    <script>
+        $(document).ready(function () {
+         $("#MemberDatabase2").hide();
+        })
+
+        function returndateformat(date) {
+            var d = new Date(date.split("/").reverse().join("-"));
+            var dd = d.getDate().toString().padStart(2, '0');
+            var mm = (d.getMonth() + 1).toString().padStart(2, '0');
+            var yy = d.getFullYear();
+            var newdate = dd + "." + mm + "." + yy;
+            return newdate;
+        }
+
+        function BindMemberDetails(Id)
+        {     
+            $("#MemberDatabase").hide();
+            var formData = {
+                Id: Id
+            }
+            $.ajax({
+                url: '/MemberManagement/GetMemberDetails',
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                success: function (Result) {
+            
+                if(Result.success == true)
+                {
+                        console.log(Result.data)
+                        $("#hiddenCustomerid").val(Result.data[0].id);
+                        $("#hiddenCommunityId").val(Result.data[0].communityId);
+                        console.log($("#hiddenCommunityId").val(Result.data[0].communityId))
+                        console.log($("#hiddenCustomerid").val(Result.data[0].id))
+                        $("#MemberDatabase2").show();
+                        $("#txtFirstName").val(Result.data[0].firstName);
+                        $("#txtLastName").val(Result.data[0].lastName);
+                        $("#txtMobileNo").val(Result.data[0].mobile);
+                        $("#hiddenMobile").val(Result.data[0].mobile);
+                        $("#txtEmail").val(Result.data[0].email);
+                        $("#txtMembershiptype").val(Result.data[0].membershipType);
+                        var DOB = returndateformat(Result.data[0].dob);
+                        $("#Dob").val(DOB);
+                        $("#WalletBalance").val(Result.data[0].walletBalance);
+                    
+                }
+                else
+                {}
+                },
+                error: function () {
+
+                }
+            });
+        }
+
+
+        $("#SearchMemberlist").on("keyup", function () {
+            var value = this.value.toLowerCase().trim();
+            $("#member-database-tablebody tr").show().filter(function () {
+                return $(this).text().toLowerCase().trim().indexOf(value) == -1;
+            }).hide();
+        });
+
+        function canclebtn()
+    {
+        var Aurl = "/MemberManagement/MemberManagement";
+        window.location.href = Aurl;
+        
+    }
+
+
+        function exportCSVActiveCommunities() {
+
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const year = currentDate.getFullYear();
+        const formattedDate = `${day}-${month}-${year}`;
+        const filename = `member-database-table_${formattedDate}.xls`;
+
+        const clonedTable = $('#member-database-table').clone();
+
+
+        clonedTable.find('thead tr th:first-child img').remove();
+        clonedTable.find('tbody tr td:first-child img').remove();
+
+        clonedTable.find('thead tr th:eq(1) img').remove();
+        clonedTable.find('tbody tr td:eq(1) img').remove();
+
+        clonedTable.find('thead tr th:eq(6) img').remove();
+        clonedTable.find('tbody tr td:eq(6) img').remove();
+
+        clonedTable.find('tbody tr td:nth-child(3)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("" + mobileNumber);
+        });
+
+        clonedTable.find('tbody tr td:nth-child(5)').each(function () {
+            const mobileNumber = $(this).text();
+            $(this).text("" + mobileNumber);
+        });
+
+        clonedTable.table2excel({
+            delivery: 'value',
+            filename: filename
+        });
+    }
+
+
+
+
+
+         function downloadMemberQR()
+         {
+                var Id = $("#hiddenCustomerid").val();
+                var formData = {
+                    Id: Id
+                }
+                    $.ajax({
+                        type: "POST",
+                        url: '/MemberManagement/DownloadQRCode',
+                        data: formData,
+                        dataType: "json",
+                        success: function (Result) {
+                            var status = Result.success;
+                              console.log(Result.data.qrPath)
+                            if (status == true) {
+                                var qrCodeImageUrl = Result.data.qrPath
+                                window.open(qrCodeImageUrl, '_blank');
+                            }
+                        },
+                        error: function (request, error) {
+                            $("#erroritem").modal("show");
+                            $("#errmsg1").text("Oops! something went wrong")
+                        }
+                    });
+         }
+
+         $("#SystemAccessID").click(function () {
+            var mobile = $("#hiddenMobile").val();
+            $("#sysTxtMobile").val(mobile);
+         });
+
+    $(document).on("click", "#memberBlockBtn", function () {
+        debugger;
+        var CommunityId = $("#hiddenCommunityId").val();
+        var Id = $("#hiddenCustomerid").val();
+        var formData = {
+            CommunityId: CommunityId,
+            CustomerId: Id,
+            Isblocked: false
+        }
+        var Aurl = "/MemberManagement/IsBlockUser";
+        $.ajax({
+            type: "Post",
+            url: Aurl,
+            data: formData,
+            success: function (Result) {
+                location.reload();
+            },
+            error: function (request, error) {
+
+            }
+        });
+    });
+
+    </script>

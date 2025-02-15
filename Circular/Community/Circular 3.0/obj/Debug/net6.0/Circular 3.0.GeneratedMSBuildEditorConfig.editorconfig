@@ -1,0 +1,147 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CircularWeb
+build_property.RootNamespace = CircularWeb
+build_property.ProjectDir = D:\Projects\CircularSphere\Circular\Community\Circular 3.0\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Projects\CircularSphere\Circular\Community\Circular 3.0
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Account/Account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Ae444yux3/Ae444yux3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWU0NDR5dXgzXEFlNDQ0eXV4My5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Community/community.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbXVuaXR5XGNvbW11bml0eS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Dashboard/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Finance/Finance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jZVxGaW5hbmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Home/Sport-Swimming.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTcG9ydC1Td2ltbWluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Login/forgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cZm9yZ290UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Login/otp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cb3RwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Login/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUmVzZXRQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Message/Message.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVxNZXNzYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Partials/_ActiveArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0FjdGl2ZUFydGljbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Partials/_ArchiveArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0FyY2hpdmVBcnRpY2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Partials/_ArchivedMessageSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0FyY2hpdmVkTWVzc2FnZVN1bW1hcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Partials/_BroadCastMessageSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX0Jyb2FkQ2FzdE1lc3NhZ2VTdW1tYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Partials/_MessageSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX01lc3NhZ2VTdW1tYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Partials/_PollResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX1BvbGxSZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Partials/_SportsSpotLight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGlhbHNcX1Nwb3J0c1Nwb3RMaWdodC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Payment/Failure.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxGYWlsdXJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Payment/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxTdWNjZXNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Planner/Planner.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhbm5lclxQbGFubmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Safety/Safety.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FmZXR5XFNhZmV0eS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Setting/PasswordSetting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ1xQYXNzd29yZFNldHRpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Setting/Setting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ1xTZXR0aW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Sports/Sports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvcnRzXFNwb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Storefront/Storefront.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcmVmcm9udFxTdG9yZWZyb250LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CircularSphere/Circular/Community/Circular 3.0/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5i7qv7d0fx

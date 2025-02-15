@@ -1,0 +1,428 @@
+﻿@model CircularSubscriptions.Models.CreateCommunityViewModel;
+
+@*{
+    Layout = "_Layout";
+    
+}*@
+<!DOCTYPE html>
+
+<head>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+@*    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
+</head>
+<html>
+<body>
+    <!-- ===========================
+       Header Area
+    ============================ -->
+ 
+     <section class="header-area">
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+                <div class="row">
+                    <a class="navbar-brand mr-auto" href="https://circular.ooo/" target="_blank"><img src="images/circular_update.png" class="img-fluid logo-bx"></a>
+                 </div>
+             </div>
+          </nav>
+    </section>
+    <!-- ===========================
+         End
+      ============================ -->
+    <!-- ===========================
+      1st section make community
+      ============================ -->
+    <section class="community ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="left-comm ">
+                        <h3>Bravo! You're bridging the gap to your very own social haven</h3>
+                        <p>Now, It's time to breathe life into your space. Begin by adding specific community information.Drive in,enrich your platform, and let your community's essence shine through.</p>
+                        
+
+                    </div>
+                    <form class="pt-3">
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+                                <input type="text" class="form-control" placeholder="First name" id="txtFirstName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+                                <input type="text" class="form-control" placeholder="Last name" id="txtLastName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+                                <input type="date" class="form-control" placeholder="Date of birth" id="txtDOB">
+                            </div>
+                        </div>
+                       
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+                                <select class="form-control" id="ddlCountry" asp-items="@(new SelectList(Model.lstCountryName,"Id","Name"))">
+                                    <option value="1">Select a country</option>
+                                   
+                                </select>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+                                <input type="text" class="form-control" placeholder="What would you like to call your Community?" id="txtlikecommunity">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row upload-files-block" id="logo-uploadCommunity" >
+                           <div class="col-lg-11">
+                                <label for="uploadLogo" class="custom-file-upload nameimage form-control">
+                                    <span style="display: -webkit-box;">Add your community logo</span>
+                                </label>
+                                <input type="file" class="upload-btn " id="uploadLogo">
+                           </div>
+                            
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+                                <select class="form-control" id="ddlCurrencySign">
+                                    <option value="1">In what currency your community member will transact ?</option>
+                                    <option value="$" >USD</option>
+                                    <option value="R">ZAR</option>
+                                    <option value="£">GBP</option>
+                                    <option value="€">EUR</option>
+                                    <option value="$">AUD</option>
+                                    <option value="R">INR</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+                                <textarea class="form-control" rows="7" placeholder="Add a description for your community" id="txtdescription"></textarea>
+                            </div>
+                        </div>
+                        @if(@Model.AId != "")
+                        {
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+
+                                <input type="text" class="form-control" placeholder="Affiliate code" id="txtaffiliate" 
+                                maxlength="6" value="@Model.AId" readonly>
+                            </div>
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="form-group row">
+                            <div class="col-lg-11">
+
+                                <input type="text" class="form-control" placeholder="Affiliate code" id="txtaffiliate"
+                                       maxlength="6">
+                            </div>
+                        </div>
+                        }
+                        <div class="form-group row">
+                            <p class="txt-pd">How about we set up your personal login for the Circular app while we're here? Which mobile number would you like to use for logging in?</p>
+                            <div class="col-lg-11">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <select class="vodiapicker"  asp-items="@(new SelectList(Model.lstCountryName,"Code","Name"))" id="ddlCountryCode">
+                                            @foreach(var a in Model.lstCountryName)
+                                            {
+                                              
+                                                <option  class="test" data-thumbnail="@a.Desc" id="countrycode">
+                                                    @a.Code
+                                                </option>
+                                               
+                                            }
+                                        </select>
+
+                                        <div class="lang-select">
+                                            <button type="button" class="btn-select border-right-0" value=""></button>
+                                            <div class="b">
+                                                <ul id="a"></ul>
+                                            </div>
+                                        </div>
+                                     
+                                        
+                                    </div>
+                                    <input type="text" class="form-control border-left-0" aria-label="Text input with segmented dropdown button" id="txtMobile" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-11">
+                                    <div class="form-check check-bx mt-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label text-justify" for="defaultCheck1">
+                                            By clicking here, I confirm that I have read, understood, and agree to the terms and conditions of the Circular app. I acknowledge that my use of the app is subject to these terms. I also certify that the information I have provided is accurate, truthful, and up-to-date to the best of my knowledge. Any misrepresentation may be subject to legal consequences. I accept any responsibilities and consequences arising from any breach or misinformation on my part.
+                                        </label>
+                                    </div>
+                                    <div class="pl-6 pr-4 mt-4 mb-5">
+                                        <a class="btn btn-secondary btn-block" href="https://circular.ooo/terms-of-use" target="_blank">View Terms and Conditions</a>
+                                    </div>
+                                 
+                                    <input type="button" class="btn btn-info btn-block" id="btnCreateCommunity" value="Create my community"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="shape1 top-20">
+                    <img src="~/images/Rectangle.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade main-modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-body text-center modal-text-area">
+                        <h5>Mobile Verification</h5>
+                        <p>Please enter the one-time pin (OTP) that was sent to your mobile to verify you own your mobile number.</p>
+                        <form class="mt-4" asp-action="VerifyOTP">
+                            <div class="form-group text-right">
+                                <input type="hidden" class="form-control" value="" id="UserName" name="UserName" />
+                                <input type="text" class="form-control" id="otp" name="otp" maxlength="5">
+                                <a id="resend" class="pr-4" onclick="resendOTP()" style="cursor:pointer"><small>Didn't receive the OTP? <b>Resend OTP</b></small></a>
+                                <a id="resend1" class=" pr-4"><small>Sending otp...</small></a>
+
+                            </div>
+                           
+                            <button class="btn btn-info btn-block mt-5" id="btnOTP">Verify</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    </section>
+
+       <!-- ===========================
+      1st section End
+      ============================ -->
+
+    <!-- Template custom -->
+    <!-- ==== security popup==== -->
+    <input type="hidden" id="countryCodeIDS" />
+    <script>
+        $(document).ready(function () {
+            $('#resend1').hide();
+        });
+
+
+
+        $("#logo-uploadCommunity .custom-file-upload span").show();
+        $("#logo-uploadCommunity input").change(function () {
+            $("#logo-uploadCommunity .custom-file-upload span").show();
+            $("#logo-uploadCommunity .custom-file-upload span").text(this.files[0].name);
+        });
+    </script>
+    <script type="text/javascript">
+        var langArray = [];
+        $('.vodiapicker option').each(function () {
+            var img = $(this).attr("data-thumbnail");
+            var text = this.innerText;
+            var value = $(this).val();
+            var item = '<li><img src="' + img + '" alt="" value="' + value + '"/><span>' + text + '</span></li>';
+            langArray.push(item);
+           
+        })
+
+        $('#a').html(langArray);
+
+        //Set the button value to the first el of the array
+        $('.btn-select').html(langArray[0]);
+        $('.btn-select').attr('value', 'en');
+
+        //change button stuff on click
+        $('#a li').click(function () {
+            var img = $(this).find('img').attr("src");
+            var value = $(this).find('img').attr('value');
+            var text = this.innerText;
+            var item = '<li><img src="' + img + '" alt="" /><span>' + text + '</span></li>';
+            $('.btn-select').html(item);
+            $('.btn-select').attr('value', value);
+            $(".b").toggle();
+            console.log(text);
+            $('#countryCodeIDS').val(text);
+        });
+
+        $(".btn-select").click(function () {
+            $(".b").toggle();
+
+        });
+
+        //check local storage for the lang
+        var sessionLang = localStorage.getItem('lang');
+        if (sessionLang) {
+            //find an item with value of sessionLang
+            var langIndex = langArray.indexOf(sessionLang);
+            $('.btn-select').html(langArray[langIndex]);
+            $('.btn-select').attr('value', sessionLang);
+        } else {
+            var langIndex = langArray.indexOf('ch');
+            console.log(langIndex);
+            $('.btn-select').html(langArray[langIndex]);
+            //$('.btn-select').attr('value', 'en');
+        }
+    </script>
+</body>
+</html>
+
+<script>
+    $('#btnCreateCommunity').click(function () {
+      
+       // alert("hello");
+       // $('#staticBackdrop').modal('show');
+
+
+        var name = $('#txtFirstName').val();
+        var lastName = $("#txtLastName").val();
+        var dateOFbirth = $('#txtDOB').val();       
+        var country = $('#ddlCountry').val();
+        var countryName = $("#ddlCountry option:selected").text();
+        var communityName = $('#txtlikecommunity').val();
+        var currency = $('#ddlCurrencySign').val();
+        var CurrencyToken = $("#ddlCurrencySign option:selected").text();
+        var uploadLogo = document.getElementById('uploadLogo');
+        var description = $('#txtdescription').val();
+        var affiliate = $('#txtaffiliate').val();
+        var mobile = $('#txtMobile').val();
+        var countryCode = $('#countryCodeIDS').val();
+        var defaultCheck1 = $('#defaultCheck1').is(':checked');
+        $('#UserName').val(countryCode+mobile);
+       
+       
+        var formdata = new FormData();
+
+        if (name == "") {
+            $('#txtFirstName').focus();
+            document.getElementById("txtFirstName").style.border = "1px solid red";
+            return false;
+        }
+        if (lastName == "") {
+            $('#txtFirstName').focus();
+            document.getElementById("txtLastName").style.border = "1px solid red";
+            return false;
+        }
+        if (dateOFbirth == "") {
+            $('#txtDOB').focus();
+            document.getElementById("txtDOB").style.border = "1px solid red";
+            return false;
+        }       
+        if (country == '1') {
+            $('#ddlCountry').focus();
+            document.getElementById("ddlCountry").style.border = "1px solid red";
+            return false;
+        }
+        if (communityName == "") {
+            $('#txtlikecommunity').focus();
+            document.getElementById("txtlikecommunity").style.border = "1px solid red";
+            return false;
+        }
+
+        if (currency == '1') {
+            $('#ddlCurrencySign').focus();
+            document.getElementById("ddlCurrencySign").style.border = "1px solid red";
+            return false;
+        }
+
+        if (mobile == "") {
+            $('#txtlikecommunity').focus();
+            document.getElementById("txtlikecommunity").style.border = "1px solid red";
+            return false;
+        }
+
+       
+
+
+        if (defaultCheck1 == false) {
+            $('#defaultCheck1').focus();
+            document.getElementById("defaultCheck1").style.border = "1px solid red";
+            return false;
+        }
+
+        formdata.append('FirstName', name);
+        formdata.append('LastName', lastName);
+        formdata.append('DOB', dateOFbirth);
+        formdata.append('Country', country);
+        formdata.append('CommunityName', communityName);
+        formdata.append('Currency', currency);
+        formdata.append('Logo', uploadLogo.files[0]);
+        formdata.append('CountryCode', countryCode)
+        formdata.append('Mobile', mobile)
+        formdata.append('Description', description); 
+        formdata.append('AffiliateCode', affiliate);
+        formdata.append('IsTermAccepted', true);
+        formdata.append('CurrencyToken', CurrencyToken);
+        formdata.append('CountryName', countryName);
+
+        var Aurl = "/Community/Create";
+      
+        $.ajax({
+            type: "POST",
+            url: Aurl,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: "json",
+            success: function (Result) {
+
+               
+                if (Result.success == true) {
+            
+                $('#staticBackdrop').modal('show')
+                }
+
+            },
+            error: function (Result) {
+               
+                $('#staticBackdrop').modal('show')
+              
+            }
+        });
+    })
+</script>
+
+<script>
+    function resendOTP() {
+        $('#resend').hide();
+        $('#resend1').show();
+        var otp = $('#otp').val();
+
+        $.ajax({
+            url: '/Community/ResendOTP',
+            type: 'POST',
+            data: {
+                otp: otp
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#resend').show();
+                $('#resend1').hide();
+                $('#staticBackdrop').modal('show');
+            },
+            error: function (response) {
+                $('#resend').show();
+                $('#resend1').hide();
+            }
+        });
+
+    }
+</script>

@@ -1,0 +1,553 @@
+﻿@model CircularSubscriptions.Models.CommunityFeaturesModel;
+@*@{
+    Layout = "_Layout";
+    
+}*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+   @* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>*@
+ 
+</head>
+<body>
+
+<div class="main-area h-100">
+    <!-- ===========================
+       Header Area
+    ============================ -->
+    <section class="header-area">
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+                <div class="row">
+                        <a class="navbar-brand mr-auto" href="https://circular.ooo/" target="_blank"><img src="~/images/circular_update.png" class="img-fluid logo-bx"></a>
+                 </div>
+             </div>
+          </nav>
+    </section>
+    <!-- ===========================
+         End
+      ============================ -->
+    <!-- ===========================
+      1st section make community
+      ============================ -->
+    <section class="make-community pb-300">
+        <div class="container">
+            <div class="row">
+                <!-- ====start=== -->
+                <div class="col-lg-5 col-md-6">
+                    <div class="left-comm">
+                        <h3>We nearly there, just need to make <br>cent’s of the situation.</h3>
+                        <p>Roll out the red carpet! With Circular, the first 50 members of your community strut in for free. From member 51 onwards? A tiny fee, but think of it as throwing a few cents into a wishing well. Wishes do come true, after all!</p>
+                    </div>
+                    <form class="pt-3">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <label>How many members do you have?</label>
+                                <input type="text" class="form-control" id="memberInput" max="4">
+                            </div>
+                        </div>
+
+                            <div class="form-group row mt-5">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-info btn-block" id="btnsaleSubs" href="@Model.redirectContactSales" target="_blank">Contact Sales</a>
+                                </div>
+
+                            </div>
+
+                        <div class="form-group row select-group">
+                            <div class="col-sm-12">
+                              <div class="accordion" id="accordionExample">
+                                  <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                      <h2 class="mb-0">
+                                        <button class="accordion-button btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          Select your features
+                                        </button>
+                                      </h2>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                         <div class="d-flex justify-content-between align-items-center price-box">
+                                              <ul class="feature-box">
+                                                  @foreach(var item in Model.lstfeature)
+                                                  {
+                                                     
+                                                            <li>
+                                                                @if (item.IsFree == true)
+                                                                {
+                                                                <div class="">
+                                                                        <input type="checkbox"  class="cal_1Free" checked disabled >@item.Name
+
+                                                                        </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                <div class="">
+                                                                            <input type="checkbox" class="cal_1" value="@item.Price" id="feaCheckbox"  editValue="@item.Id" editValue1="@item.Code">@item.Name
+
+                                                                </div>
+                                                                }
+                                                                   
+                                                            </li>
+                                                 }
+                                               </ul>        
+                                                 
+                                                
+                                         </div>
+                                            
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+
+                         <div class="form-group row select-group">
+                            <div class="col-sm-12">
+                              <div class="accordion" id="accordion2">
+                                  <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                      <h2 class="mb-0">
+                                        <button class="accordion-button btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                          What kind of support would you like?
+                                        </button>
+                                      </h2>
+                                    </div>
+
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion2">
+                                      <div class="card-body">
+                                          <div class="d-flex justify-content-between align-items-center price-box">
+                                              <ul class="feature-box">
+                                                   @foreach(var items in Model.lstSupportfeature)
+                                                  {
+                                                    <li>
+                                                        @if(items.IsFree == true)
+                                                        {
+                                                                    <div>
+                                                                        <input type="checkbox" id="p15" class="SupportCheckboxFree" checked disabled> @items.Name
+                                                                    </div>
+                                                        }
+                                                        else
+                                                        {
+                                                                    <div>
+                                                                            <input type="checkbox" id="p15" class="SupportCheckbox" value="@items.Price" editValue="@items.Id" editValue1="@items.Code"> @items.Name
+                                                                    </div>
+                                                        }
+
+                                                     </li>
+                                                   }
+                                               </ul>   
+                                          </div>
+                                              
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                         <div class="form-group row select-group">
+                            <div class="col-sm-12">
+                              <div class="accordion" id="accordion3">
+                                  <div class="card">
+                                    <div class="card-header" id="heading3">
+                                      <h2 class="mb-0">
+                                        <button class="accordion-button btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                          Do you need help setting up your community?
+                                        </button>
+                                      </h2>
+                                    </div>
+
+                                    <div id="collapseThree" class="collapse" aria-labelledby="heading3" data-parent="#accordion3">
+                                      <div class="card-body">
+                                         <ul class="feature-box" id="reqFeatures">
+                                                    @foreach(var item in Model.lstHelpReqfeature)
+                                                    {
+                                                        <li>
+                                                                <input type="checkbox" id="helpReqcheckbox" editValue11="@item.FeatureCode" class="helpreq" value="@item.Price" editValue="@item.Id" editValue1="@item.Code">@item.Name
+                                                        </li>
+                                                    }
+                                              </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                         <div class="mobile-box">
+                            <div class="form-group row mt-5 ">
+                                <div class="col-sm-12">
+                                        @*<button class="btn btn-info btn-block" id="btnCreateComm">Create my community</button>*@
+                                        <input type="button" class="btn btn-info btn-block" id="btnCreateComm" value="Create my community" />
+                                </div>
+                            </div>
+                       </div>
+                    </form>
+                </div>
+                <!--  ====== End ====== -->
+                <!--  =======start col-7======= -->
+                <div class="col-lg-7 col-md-6" id="subsFeeDiv">
+                      
+                    <div class="rt-stepbx  ">
+                        <div class="price-estimate">
+                            <h6>Estimated monthly subscription fee</h6>
+                            <div class="price">
+                                <span>$</span><span id="lblMonthlySub">0.00</span>
+                            </div>
+                        </div>
+                        <div class="price-estimate">
+                            <h6>Additional add on services</h6>
+                            <div class="price">
+                                <span>$</span><span id="lblServiceSupport">0.00</span>
+                            </div>
+                        </div>
+                        <div class="price-estimate">
+                            <h6>Once off fees</h6>
+                            <div class="price">
+                                <span>$</span><span id="Onceoffhelp">0.00</span>
+                            </div>
+                        </div>
+                        <div class="total-price-area">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h6>Total monthly subscription fee</h6>
+                                    <div class="b-price price">
+                                            <span>$</span> <span id="perUserMonthly">0.00</span>
+                                    </div>
+                                        <p>($<span id="userMemberPerPrice">0.00</span> per member monthly)</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h6>Once off fees</h6>
+                                    <div class="b-price price">
+                                            <span>$ </span><span id="Onceoffhelp2">0.00</span>
+                                    </div>
+                                    <p>(to be paid on invoice)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--  =======end col-6========= -->
+
+               
+
+            </div>
+        </div>
+        <div class="shape1 shape-top">
+                        <img src="~/images/shape-3.png" class="img-fluid">
+                     </div>
+
+            <div class="modal fade modal-small-bx main-modal" id="FeatureAlertAddedModel" tabindex="-1" aria-labelledby="LeavePastLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-body text-center">
+                            <div class="past-leave-box">
+                                <h5>Things are happening!</h5>
+                                <p>Please select above features</p>
+
+                            </div>
+                            <div class="text-center">
+
+                                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+     </section>
+
+</div>
+
+ 
+
+
+    <!-- Template custom -->
+    <!-- ==== security popup==== -->
+  @*  <script type="text/javascript">
+        $(document).ready(function () {
+            $('.multiple-select').multiselect({
+                includeSelectAllOption: false,
+            });
+        });
+    </script>*@
+
+
+</body>
+</html>
+
+
+<script>
+
+  
+   
+
+
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+            $('#btnsaleSubs').hide();
+            $('#collapseThree ul li:eq(1)').hide();
+            $('#collapseTwo ul li:eq(3)').hide();
+
+            var featuresPricing = parseFloat('0.00');
+            var supportPricing = parseFloat('0.00');
+            var helpPricing = parseFloat('0.00');
+
+            $('.cal_1').on('change', function () {
+            var checkboxvalue = $(this).attr("value");
+            if ($(this).is(':checked')) {
+                featuresPricing = parseFloat(featuresPricing) + parseFloat(checkboxvalue);
+            }
+            else {
+                featuresPricing = parseFloat(featuresPricing) - parseFloat(checkboxvalue);
+            }
+            if (parseFloat(featuresPricing) < parseFloat('0.00'))
+            {
+                featuresPricing = parseFloat('0.00');
+            }
+            setPrices();
+        });
+
+        $('.SupportCheckbox').on('change', function () {
+            var Supportcheckboxvalue = $(this).attr("value");
+
+            if ($(this).is(':checked')) {
+                supportPricing = parseFloat(supportPricing) + parseFloat(Supportcheckboxvalue);
+            }
+            else {
+                supportPricing = parseFloat(supportPricing) - parseFloat(Supportcheckboxvalue);
+            }
+            setPrices();
+        });
+
+        $('.helpreq').on('change', function () {
+            var helpCheckBoxValue = $(this).attr("value");
+            var helpCheckBoxValueFeatureCode = $(this).attr("editValue11");
+            if ($(this).is(':checked')) {
+                helpPricing = parseFloat(helpPricing) + parseFloat(helpCheckBoxValue);
+            }
+            else {
+                helpPricing = parseFloat(helpPricing) - parseFloat(helpCheckBoxValue);
+            }
+
+            if (helpCheckBoxValueFeatureCode=="Help1")
+            {
+                $('#collapseThree ul li:eq(0)').find("input[type='checkbox']:checked").prop('checked', false);
+                $('#collapseThree ul li:eq(1)').find("input[type='checkbox']:checked").prop('checked', false);
+                helpPricing = parseFloat('0.00');
+            }
+            else
+            {
+                $('#collapseThree ul li:eq(2)').find("input[type='checkbox']:checked").prop('checked', false);
+            }
+
+            setPrices();
+        });
+
+
+
+
+        $('#memberInput').keyup(function () {
+            this.value = this.value.replace(/[^0-9]/g,'');
+            var memberCount = $('#memberInput').val();
+            if (memberCount > 500) {
+                $('#accordionExample').hide();
+                $('#accordion2').hide();
+                $('#accordion3').hide();
+                $('.mobile-box').hide();
+                $('#subsFeeDiv').hide();
+                $('#btnsaleSubs').show();
+           }
+            else if (memberCount > 50 && memberCount <= 500) {
+                $('#collapseThree ul li:eq(0)').hide();
+                $('#collapseThree ul li:eq(1)').show(); 
+                $('#collapseTwo ul li:eq(2)').hide();
+                $('#collapseTwo ul li:eq(3)').show();
+                $('#accordionExample').show();
+                $('#accordion2').show();
+                $('#accordion3').show();
+                $('.mobile-box').show();
+                $('#subsFeeDiv').show();
+                $('#btnsaleSubs').hide();
+           }
+            else if (memberCount == "") {
+                $('#collapseThree ul li:eq(0)').show();
+                $('#collapseThree ul li:eq(1)').hide();
+
+                $('#collapseTwo ul li:eq(2)').show();
+                $('#collapseTwo ul li:eq(3)').hide();
+                $('#accordionExample').show();
+                $('#accordion2').show();
+                $('#accordion3').show();
+                $('.mobile-box').show();
+                $('#subsFeeDiv').show();
+                $('#btnsaleSubs').hide();
+           }
+           else
+           {
+                $('#collapseThree ul li:eq(0)').show();
+                $('#collapseThree ul li:eq(1)').hide();
+
+                $('#collapseTwo ul li:eq(2)').show();
+                $('#collapseTwo ul li:eq(3)').hide();
+
+
+                $('#accordionExample').show();
+                $('#accordion2').show();
+                $('#accordion3').show();
+                $('.mobile-box').show();
+                $('#subsFeeDiv').show();
+                $('#btnsaleSubs').hide();
+
+           }
+
+            setPrices();
+
+
+        });
+
+        function calcualterPerUserPrice()
+        {
+            var memberCount = $('#memberInput').val();
+            var PerUserPrice = 0.00;
+            if (memberCount > 50) 
+            {
+                PerUserPrice = 0.10;
+            }
+
+            return parseFloat(PerUserPrice) + parseFloat(featuresPricing);
+        }
+
+        function setPrices()
+        {
+            var memberCount = $('#memberInput').val();
+            if (memberCount == "") { memberCount  = 0;}
+            var PerUserSubscriptionFee = calcualterPerUserPrice();
+            var totalmonthlySubscriptionFee = parseFloat(memberCount) * parseFloat(PerUserSubscriptionFee);
+            $('#userMemberPerPrice').text(PerUserSubscriptionFee.toFixed(2));
+
+            $('#lblMonthlySub').text(totalmonthlySubscriptionFee.toFixed(2));
+
+            $('#lblServiceSupport').text(supportPricing.toFixed(2));
+
+            $('#Onceoffhelp').text(helpPricing.toFixed(2));
+            $('#Onceoffhelp2').text(helpPricing.toFixed(2));
+
+            totalmonthlySubscriptionFee = parseFloat(totalmonthlySubscriptionFee) + parseFloat(supportPricing);
+            //+ parseFloat(helpPricing)
+            $('#perUserMonthly').text(totalmonthlySubscriptionFee.toFixed(2));
+
+        }
+
+
+       
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+</script>
+
+<script>
+    $('#btnCreateComm').click(function () {
+        var memeberCount = $('#memberInput').val();
+        if (memeberCount == "") {
+            $('#memberInput').focus();
+            document.getElementById("memberInput").style.border = "1px solid red";
+            return false;
+        }
+        var Feature = [];
+        $('.cal_1:checked').each(function () {
+            var features = $(this).val() + '^' + $(this).attr("editValue") + '^' + $(this).attr("editValue1")
+            Feature.push(features);
+        });
+        $('.SupportCheckbox:checked').each(function () {
+            Feature.push($(this).val() + '^' + $(this).attr("editValue") + '^' + $(this).attr("editValue1"));
+        });
+        $('.helpreq:checked').each(function () {
+            Feature.push($(this).val() + '^' + $(this).attr("editValue") + '^' + $(this).attr("editValue1"));
+        });
+        var joinedData = Feature.join(',');
+
+
+        var lblMonthlySub = $('#lblMonthlySub').text();
+        var lblServiceSupport = $('#lblServiceSupport').text();
+        var Onceoffhelp = $('#Onceoffhelp').text();
+        var perUserMonthly = $('#perUserMonthly').text();
+
+        var formdata = new FormData();
+        formdata.append('selectedFeatures', joinedData);
+        formdata.append('CustomerId', 0);
+        formdata.append('CommunityId', 0);
+        formdata.append('members', memeberCount);
+        formdata.append('monthlysubscription', lblMonthlySub);
+        formdata.append('addons', lblServiceSupport);
+        formdata.append('onceOff', Onceoffhelp);
+        formdata.append('Totalmonthlysubscription', perUserMonthly);
+       // var Aurl = "/Features/SaveFeatureDetails";
+        //var urls = "/Confirmation/Confirmation";
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SaveFeatureDetails", "Features")',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: formdata,
+            dataType: "json",
+            success: function (Result) {
+                if (Result.success == true) {
+                    window.location.href = '@Url.Action("Confirmation", "Confirmation")';
+                }
+                else
+                {
+                    window.location.href = '@Url.Action("EmailVerification", "EmailVerification")';
+                }
+            },
+            error: function (Result) {
+                window.location.href = '@Url.Action("EmailVerification", "EmailVerification")';
+                console.log('Failed ');
+            }
+        });
+
+       
+    });
+</script>

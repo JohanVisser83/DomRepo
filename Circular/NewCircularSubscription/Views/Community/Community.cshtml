@@ -1,0 +1,191 @@
+﻿@model NewCircularSubscription.Models.CommunityDetailsModel;
+@{
+    Layout = "_Layout";
+}
+
+   
+    <section class="community-detail">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                @if(Model != null)
+            {
+                <div class="col-md-10">
+                    <div class="content-box">
+                        <div class="detailpg-background-img">
+                           @* <img src="/images/dummy-bg.png" class="bg-img">*@
+                           
+                            @if (@Model.lstCommunitydetails?.FirstOrDefault().coverimage == "")
+                            {
+                                <img src="~/images/dummy-bg.png" class="bg-img">
+                            }
+                            else
+                            {
+                                <img src="@Model.lstCommunitydetails.FirstOrDefault().coverimage" class="bg-img">
+                            }
+                            @if (@Model.lstCommunitydetails?.FirstOrDefault().OrgLogo == "")
+                            {
+                                <img src="~/images/dummy-logo.svg" class="logo-img">
+                            }
+                            else
+                            {
+                                <img src="@Model.lstCommunitydetails.FirstOrDefault().OrgLogo" class="logo-img">
+                            }
+
+
+
+
+
+                        </div>
+                        
+                        <div class="text">
+                            <div class="info">
+                                <div class="detailpg-title">
+                                    <h1>
+                                        @*Community <br>Name*@
+                                        @Model.lstCommunitydetails.FirstOrDefault().CommunityName
+                                    </h1>
+                                </div>
+                                <div class="action-btns">
+                                    @if (@Model.lstCommunitydetails.FirstOrDefault().PublicType == "Private")
+                                    {
+                                        <button>
+                                          
+                                                <b>
+                                                    <img src="~/images/lock.svg"
+                                                         class="me-2 w-auto mb-2">@Model.lstCommunitydetails.FirstOrDefault().PublicType
+                                                </b>
+                                         
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button>
+                                          
+                                                <b>
+                                                    <img src="~/images/no-lock.svg"
+                                                         class="me-2 w-auto mb-2">@Model.lstCommunitydetails.FirstOrDefault().PublicType
+                                                </b>
+                                           
+                                        </button>
+                                    }
+
+
+                                    <button id="btnprice" ><b>@Model.lstCommunitydetails.FirstOrDefault().MembershipType</b></button>
+
+
+                                    @if (@Model.lstCommunitydetails.FirstOrDefault().MembershipType == "Paid")
+                                    {
+                                        <button id="btnJoinPrice" class="createown" data-price="@Model.lstCommunitydetails.FirstOrDefault().Price"><a><b id="priceValue">@Model.lstCommunitydetails.FirstOrDefault().JoinButton</b></a></button>
+                                    }
+                                    else
+                                    {
+                                        <button class="createown" id="btnJoin" editValue="@Model.lstCommunitydetails.FirstOrDefault().JoinButton"><a><b>@Model.lstCommunitydetails.FirstOrDefault().JoinButton</b></a></button>
+                                    }
+
+                                    
+                                </div>
+                            </div>
+                            <div class="text-para">
+                               @* <p>@Model.lstCommunitydetails.FirstOrDefault().PostCount posts | @Model.lstCommunitydetails.FirstOrDefault().Membercount Active </p>*@
+                                <p>
+                                    @Model.lstCommunitydetails.FirstOrDefault().About
+                                </p>
+
+                               
+
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="cover">
+                                    <img src="~/images/link.svg"
+                                         class="me-3">
+                                    <a href="@Model.lstCommunitydetails.FirstOrDefault().Website" class="links" target="_blank">
+                                        <b>@Model.lstCommunitydetails.FirstOrDefault().Website
+                                        </b>
+                                    </a></div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="cover">
+                                    <img src="~/images/address.svg"
+                                         class="me-3">
+                                    <a href="" class="links">
+                                        <b>@Model.lstCommunitydetails.FirstOrDefault().CommunityAddress
+                                        </b>
+                                    </a></div>
+                                </div>
+                            </div>
+                           @* <div class="multi-imgs">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="~/images/dummy-logo.svg" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img src="~/images/dummy-logo.svg" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <video width="100%" height="100%" controls="" muted>
+                                            <source src="~/images/movie.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <video width="100%" height="100%" controls="" muted>
+                                            <source src="~/images/movie.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img src="~/images/dummy-logo.svg" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <video width="100%" height="100%" controls="" muted>
+                                            <source src="~/images/movie.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            }
+           
+            </div>
+        </div>
+        </section>
+
+  
+    <!-- Javascript Files
+           ================================================== -->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+
+
+
+
+
+<script>
+
+   
+
+    $("#btnJoin").click(function () {
+        var btntext = $(this).attr('editValue')
+        if (btntext == "Request Access")
+        {
+            window.location.href = '@Url.Action("Index", "AccessCodeRequired")';
+        }
+        else if (btntext == "Join Community") {
+            window.location.href = '@Url.Action("Join","AccessCodeRequired")';
+        }
+        else
+        {
+            window.location.href = '@Url.Action("AccessCode", "AccessCodeRequired")';
+        }
+       
+        
+    })
+
+
+
+    $("#priceValue").click(function () {
+        window.location.href = '@Url.Action("Member", "AccessCodeRequired")';
+    });
+</script>
+

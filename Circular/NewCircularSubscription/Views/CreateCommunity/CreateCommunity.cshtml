@@ -1,0 +1,291 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+
+
+<style>
+    span#emailError {
+        color: #ff3232;
+    }
+
+   
+
+    .spinner-border-custom {
+        width: 3rem;
+        height: 3rem;
+        border-width: 0.25rem;
+        color: grey;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        vertical-align: middle;
+    }
+
+    .loading-text {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: grey;
+    }
+
+    .button-class {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
+
+    <!-- ===========================
+       Start Main body  ============================ -->
+
+    <section class="member-form">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <div class="content-box">
+                        <h3>Let’s learn a little more about you </h3>
+                        <div class="text-para">
+                            <p>
+                                At Circular, we believe in the power of genuine connections and meaningful interactions. Understanding
+                                you better is our first step toward tailoring our innovative solutions to meet your unique needs.
+                                Whether you are a community manager, event organizer, small business owner, or corporate entity, we are
+                                dedicated to empowering you with the tools that foster engagement, inclusivity, and positive change.
+                            </p>
+                            <p>
+                                Our mission is to revolutionize community engagement by breaking down communication barriers and
+                                nurturing a sense of belonging. As we embark on this journey together, let's uncover what drives you,
+                                your community's needs, and how we can help you achieve your goals.
+                            </p>
+
+                        </div>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Full name</label>
+                                    <input type="text" class="form-control" name="firstName" id="firstName">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Email address</label>
+                                    <input type="text" class="form-control" name="username" id="username" onkeyup="validateEmail()">
+                                    <span id="emailError"></span>
+                                    <span id="error-message" style="display:none;"></span>
+                                    </div>
+                                </div>
+                           
+                                <div class="col-md-12">
+                                <button id="btnReqOtp" type="button" class="button-class has-spinner">
+                                    <span class="button-text">
+                                        Request One Time Password
+                                    </span>
+                                    <span class="loading-text" style="display:none;">
+                                        <span class="spinner-border spinner-border-custom" role="status" aria-hidden="true"></span>
+                                        Please wait...
+                                    </span>
+                                </button>
+                                </div>
+
+                           
+                            
+                            </div>
+                        <div class="form-group">
+                            @if (ViewBag.ErrorMessage != null)
+                            {
+                                <div id="ErrorMessageBox" class="alert alert-danger">
+                                    @ViewBag.ErrorMessage
+                                </div>
+                            }
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade otp-popup" id="otp-popup" tabindex="-1" aria-labelledby="otp-popup" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <h3>Security checkpoint</h3>
+                    <p>
+                        You have received an OTP registration code in your email.
+                        Please enter the code to confirm your account and complete the sign-up process.
+                    </p>
+                     <form class="mt-4" asp-action="login_otp" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                        <div class="form-group">
+                            <label>One Time Password</label>
+                         <input type="text" class="form-control" id="otp" name="otp" maxlength="5">
+                        <span id="error-otp" style="display:none;"></span>
+                    </div>
+                       
+
+                    <button type="button" class="btn mt-4" id="otpbtn">
+                        <span class="button-text">Proceed</span>
+                        <span class="loading-text" style="display:none;">
+                            <span class="spinner-border spinner-border-custom" role="status" aria-hidden="true"></span>
+                            Please wait...
+                        </span>
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- Javascript Files
+           ================================================== -->
+
+
+<script type="text/javascript" src="~/js/jquery.min.js"></script>
+
+
+<script>
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            if ($('#otp-popup').hasClass('show')) {
+                event.preventDefault();
+                document.getElementById('otpbtn').click();
+            } else {
+                event.preventDefault();
+                document.getElementById('btnReqOtp').click();
+            }
+        }
+    });
+
+
+    document.getElementById('btnReqOtp').addEventListener('click', function () {
+     //$(document).on("click", ".button-class", function () {
+
+        var $button = $(this);
+        var $spinner = $button.find('.spinner-border-custom');
+        var $buttonText = $button.find('.button-text');
+        var $loadingText = $button.find('.loading-text');
+
+        // Show the spinner
+        $buttonText.hide();
+        $loadingText.show();
+        $spinner.show();
+        $button.prop('disabled', true);
+
+        var Email = $("#username").val();
+        var Name = $("#firstName").val();
+        if (Email == "") {
+            $('#username').focus();
+            document.getElementById("username").style.border = "1px solid red";
+            return false;
+        }
+        
+        $.ajax({
+            url: '/CreateCommunity/EmailVerification',
+            type: 'POST',
+            data: {
+                UserName: Email,
+                Name: Name
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#otp-popup').modal('show');
+            },
+            error: function (response) {
+               
+            },
+            complete: function () {
+                // Hide the spinner and re-enable the button
+                $loadingText.hide();
+                $spinner.hide();
+                $buttonText.show();
+                $button.prop('disabled', false);
+            }
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('otp-popup');
+        const requestOtpButton = document.getElementById('otpbtn');
+
+        // Prevent Enter key from triggering form submission
+        modal.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); 
+                requestOtpButton.click(); 
+            }
+        });
+
+
+      requestOtpButton.addEventListener('click', function () {
+           // $('#otpbtn').click(function () {
+            var $button = $(this);
+            var $spinner = $button.find('.spinner-border-custom');
+            var $buttonText = $button.find('.button-text');
+            var $loadingText = $button.find('.loading-text');
+
+            // Show the spinner
+            $buttonText.hide();
+            $loadingText.show();
+            $spinner.show();
+            $button.prop('disabled', true);
+
+        var otp = $('#otp').val();
+        $.ajax({
+            url: '/CreateCommunity/VerifyOTP',
+            type: 'POST',
+            data: {
+                otp: otp,
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.success) {
+                    $("#otp").val('');
+                    $("#otp-popup").modal('hide');
+                    $("#error-message").text(response.message).hide();
+                    window.location.href = response.redirectUrl;
+                }
+                else {
+                    $("#otp").val('');
+                    if (response.message != 'Invalid OTP.') {
+                        $("#otp-popup").modal('hide');
+                        $("#error-message").text(response.message).show();
+                    } else {
+                        $("#error-otp").text(response.message).show();
+                    }
+                }
+            },
+            error: function (response) {
+
+            },
+
+            complete: function () {
+                // Hide the spinner and re-enable the button
+                $loadingText.hide();
+                $spinner.hide();
+                $buttonText.show();
+                $button.prop('disabled', false);
+            }
+        });
+      });
+    });
+
+
+
+
+
+    function validateEmail() {
+        var email = document.getElementById("username").value;
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (emailPattern.test(email)) {
+            document.getElementById("emailError").innerText = "";
+        } else {
+            document.getElementById("emailError").innerText = "Please enter valid email address";
+        }
+    }
+    </script>

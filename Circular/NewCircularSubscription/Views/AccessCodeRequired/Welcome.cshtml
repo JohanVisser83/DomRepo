@@ -1,0 +1,133 @@
+﻿@model NewCircularSubscription.Models.CommunityDetailsModel;
+@{
+    Layout = "_Layout";
+}
+   
+    <!-- ===========================
+       Start Main body  ============================ -->
+
+    <section class="community-detail">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                @if(Model != null && Model?.lstCommunitydetails?.Count() > 0)
+            {
+                <div class="col-md-10">
+                    <div class="content-box">
+                        <div class="detailpg-background-img">
+                            @if (@Model.lstCommunitydetails?.FirstOrDefault().coverimage == "")
+                            {
+                                <img src="~/images/dummy-bg.png" class="bg-img">
+                            }
+                            else
+                            {
+                                <img src="@Model.lstCommunitydetails.FirstOrDefault().coverimage" class="bg-img">
+                            }
+                            @if (@Model.lstCommunitydetails?.FirstOrDefault().OrgLogo == "")
+                            {
+                                <img src="~/images/dummy-logo.svg" class="logo-img">
+                            }
+                            else
+                            {
+                                <img src="@Model.lstCommunitydetails.FirstOrDefault().OrgLogo" class="logo-img">
+                            }
+                        </div>
+                        <div class="text">
+                            <div class="info mb-5">
+                                <div class="detailpg-title">
+                                    <h1>
+                                       @Model.lstCommunitydetails.FirstOrDefault().CommunityName
+                                    </h1>
+                                </div>
+                                <div class="action-btns">
+                                    <button>
+                                        <a target="_blank" href="https://apps.apple.com/in/app/circular-x/id6464666159">
+                                            <b>
+                                                <img src="~/images/download.svg"
+                                                     class="me-2 w-auto">Circular iOS app
+                                            </b>
+                                        </a>
+                                    </button>
+                                    <button>
+                                        <a target="_blank" href="https://play.google.com/store/apps/details?id=com.bizbrolly.circular">
+                                            <b>
+                                                <img src="~/images/download.svg"
+                                                     class="me-2 w-auto">Circular Android app
+                                            </b>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-para">
+                                <p>@Model.lstCommunitydetails.FirstOrDefault().PostCount posts | @Model.lstCommunitydetails.FirstOrDefault().Membercount active </p>
+                                @if (@Model.lstCommunitydetails.FirstOrDefault().MembershipType.ToLower() == "Free".ToLower())
+                                {
+                                    @if (@Model.lstCommunitydetails.FirstOrDefault().AccessType.ToLower() == "Request access".ToLower())
+                                    {
+                                        <p>
+                                            <b>Your request to join the community is under review. You will be notified, once approved.</b>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p>
+                                            <b>You have joined the community successfully.</b>
+                                        </p>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>
+                                        <b>@ViewBag.Message</b>
+                                    </p>
+                                }
+
+                            
+
+                                <p>
+                                    @Model.lstCommunitydetails.FirstOrDefault().About
+                                </p>
+
+                               
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a href="" class="links">
+                                        <b>
+                                            <img src="~/images/link.svg"
+                                                 class="me-2 w-auto">@Model.lstCommunitydetails.FirstOrDefault().Website
+                                        </b>
+                                    </a>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="" class="links">
+                                        <b>
+                                            <img src="~/images/address.svg"
+                                                 class="me-2 w-auto">@Model.lstCommunitydetails.FirstOrDefault().CommunityAddress
+                                        </b>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+           
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Javascript Files
+           ================================================== -->
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+  
+
+
+
+
+  
+
+
+
+
+
